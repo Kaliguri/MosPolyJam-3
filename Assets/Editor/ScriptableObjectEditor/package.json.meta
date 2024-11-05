@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 102a7ff80a1ce834286b6f2aa6c8e8e5
+PackageManifestImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 235840
+  packageName: Scriptable Object Editor
+  packageVersion: 1.1
+  assetPath: Assets/Editor/ScriptableObjectEditor/package.json
+  uploadId: 705508

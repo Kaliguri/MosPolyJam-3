@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 7f533618e28e6064ba1c1110fcc75031
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 235840
+  packageName: Scriptable Object Editor
+  packageVersion: 1.1
+  assetPath: Assets/Editor/ScriptableObjectEditor/Editor/Scripts/Assembly/AssemblyStrings.cs
+  uploadId: 705508

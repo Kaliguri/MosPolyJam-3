@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: dce5c9732be342845b63fb56e151a2d0
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 235840
+  packageName: Scriptable Object Editor
+  packageVersion: 1.1
+  assetPath: Assets/Editor/ScriptableObjectEditor/Changelog.md
+  uploadId: 705508

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9a226c52cac1ee9419a3b91171a0420d
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 235840
+  packageName: Scriptable Object Editor
+  packageVersion: 1.1
+  assetPath: Assets/Editor/ScriptableObjectEditor/Editor/Resources/TemplateScriptable.txt
+  uploadId: 705508
