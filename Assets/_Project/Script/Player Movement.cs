@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     private Rigidbody2D rb2D => GetComponent<Rigidbody2D>();
+    private Animator animator => GetComponent<Animator>();
 
     private Vector2 moveVector2;
 
@@ -53,6 +54,9 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         rb2D.linearVelocity = moveVector2 * moveSpeed;
+
+        if (rb2D.linearVelocity.x + rb2D.linearVelocityY != 0 ) animator.SetBool("IsMove", true);
+        else                                                    animator.SetBool("IsMove", false);
     }
 
     IEnumerator Dash()
