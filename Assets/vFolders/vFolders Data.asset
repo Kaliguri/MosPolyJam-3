@@ -19,14 +19,17 @@ MonoBehaviour:
     - 14ef40669e5ea0445887111577d9ffcf
     - e0e32b159344aa04a94f75681dc656a1
     - 12dee3a2e72affd4a9717078be201bb5
+    - d29cc98a74facc948b03700874fdd31c
     values:
     - colorIndex: 6
       iconNameOrGuid: 
-    - colorIndex: 9
+    - colorIndex: 5
       iconNameOrGuid: cs Script Icon
-    - colorIndex: 2
-      iconNameOrGuid: SceneAsset Icon
+    - colorIndex: 1
+      iconNameOrGuid: 
     - colorIndex: 7
       iconNameOrGuid: Prefab Icon
-    - colorIndex: 5
+    - colorIndex: 4
       iconNameOrGuid: Shader Icon
+    - colorIndex: 2
+      iconNameOrGuid: AudioSource Icon

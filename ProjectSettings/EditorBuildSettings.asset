@@ -5,11 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/_Project/Scenes/Loading Scene.unity
+    guid: a80200f11573a644d9f6af305f0a462b
+  - enabled: 1
+    path: Assets/_Project/Scenes/Main Menu.unity
+    guid: 5402b45afaa39934d99f6508a0c824f1
+  - enabled: 1
+    path: Assets/_Project/Scenes/Game Scene.unity
+    guid: a7426c35704e0274ca5ea2a800280b3f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 909da77ec2302fd4f96cb8b8d68faac7, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 4ab7b14a89ef0524e933f56df52e65a8, type: 3}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5adfe6a86cc9f3746afbff1a99b2f6da, type: 2}
     xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 8136ea81d1d852e43829d16d43af4169, type: 2}
   m_UseUCBPForAssetBundles: 0

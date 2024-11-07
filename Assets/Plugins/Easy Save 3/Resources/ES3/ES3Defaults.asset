@@ -30,12 +30,14 @@ MonoBehaviour:
     - Assembly-CSharp-firstpass
     - MoreMountains.Feedbacks
     - VFolders
+    - ShapesRuntime
     - MoreMountains.Tools
     - MoreMountains.Feedbacks.Editor
     - MoreMountains.Tools.Editor
     - PPv2URPConverters
     - MoreMountains.Feedbacks.TextMeshPro
     - Sonity.Runtime
+    - ShapesEditor
     - Assembly-CSharp
     - SonityExample
     - MoreMountains.Feedbacks.PostProcessing
@@ -48,9 +50,8 @@ MonoBehaviour:
     - MoreMountains.Feedbacks.HDRP
     - MoreMountains.Feedbacks.URP
     - DamageNumbersPro
-    - MPUIKit.Editor
+    - ShapesSamples
     - MoreMountains.Feedbacks.NiceVibrations
-    - SOE.Editor
     - MoreMountains.Feedbacks.Authorizations
     - VFavorites
     - Lofelt.NiceVibrations.Demo
@@ -60,7 +61,6 @@ MonoBehaviour:
     - Sonity.Public.Editor
     - Lofelt.NiceVibrations.Editor
     - Sonity.Public.Runtime
-    - MPUIKit
     - TemplateSonity
     - Sirenix.OdinInspector.Modules.UnityMathematics
     - ScriptablePacker
