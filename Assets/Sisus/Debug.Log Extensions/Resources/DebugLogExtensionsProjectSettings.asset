@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9445f2911562c624e85b35f7929244a7, type: 3}
   m_Name: DebugLogExtensionsProjectSettings
   m_EditorClassIdentifier: 
-  useGlobalNamespace: 0
+  useGlobalNamespace: 1
   stripAllCallsFromBuilds: 0
   unlistedChannelsEnabledByDefault: 1
   channels:
+  - id: kiris
+    color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    enabledByDefault: 0
+    colorText: 
   - id: Kaliguri
     color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     enabledByDefault: 0
@@ -31,6 +35,6 @@ MonoBehaviour:
     alt: 0
     shift: 0
   hideStackTraceRows: []
-  useGlobalNamespaceDetermined: 0
+  useGlobalNamespaceDetermined: 1
   ignoreUnlistedChannelPrefixes: 0
   autoAddDevUniqueChannels: 1
