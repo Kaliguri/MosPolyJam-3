@@ -24042,18 +24042,18 @@ MonoBehaviour:
   - 30
   attack1_Distance: 1
   attack1_MoveDistance: 4
-  attack1_MoveSpeed: 25
-  attack2_MoveSpeed: 25
+  attack1_MoveSpeed: 40
+  attack2_MoveSpeed: 35
   attack2_Angle: 90
   attack3_Object: {fileID: 8137713491115293191, guid: bcb055436faff60499ae96468b371231, type: 3}
   attack3_Distance: 1
-  attack3_MoveSpeed: 10
-  attack3_MoveDistance: 7
-  attack3_TimeBetweenSendSlice: 0.3
-  attack3_SliceCount: 4
-  attack3_MaxOffset: 0.5
+  attack3_MoveSpeed: 25
+  attack3_MoveDistance: 2
+  attack3_TimeBetweenSendSlice: 0.1
+  attack3_SliceCount: 5
+  attack3_MaxOffset: 0.7
   attacking: 1
-  canMove: 1
+  isAttacking: 1
 --- !u!1 &2114912635
 GameObject:
   m_ObjectHideFlags: 0
