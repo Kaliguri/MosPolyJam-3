@@ -1,45 +1,90 @@
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using MoreMountains.Feedbacks;
 using UnityEngine;
+using System.Collections;
+using Sirenix.Utilities;
+using UnityEditor.PackageManager;
 
 public class UpdatesUIManager : MonoBehaviour
 {
     [SerializeField] float waitingTime = 1.2f;
-    [SerializeField] List<MMF_Player> cardFeelStartList;
+    [SerializeField] int cardCount = 3;
+    [SerializeField] List<CardUpdate> cardUpdateList;
+
+    [ReadOnly] [SerializeField] List<UpdateData> updateDataList = new(3);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    void OnEnable()
     {
+        DataTransfer();
         StartCardAnimation();
+    }
+
+    void DataTransfer()
+    {
+        var db = GameManager.instance.DB;
+        var availableUpdates = db.UpdatesList;
+
+        List<int> randomNumber = new();
+
+        if (availableUpdates.Count >= 3)
+        {
+        for (int i = 0; i < cardCount; i++)
+        {
+            int updateNumber = 0;
+            bool isUnic = false;
+
+            while (!isUnic)
+            {
+            updateNumber = Random.Range(0, availableUpdates.Count);
+            if (!randomNumber.Contains(updateNumber)) isUnic = true; 
+            }
+            randomNumber.Add(updateNumber);
+            
+            Debug.Log("Count in List:" + availableUpdates.Count + ", random Number: " + updateNumber);
+            var update = availableUpdates[updateNumber];
+
+            //updateDataList[i] = update;
+            cardUpdateList[i].DataTransfer(update);
+
+        }
+        }
+        
+        else Debug.LogError("Not enough updates!");
     }
 
     void StartCardAnimation()
     {
-        foreach (var card in cardFeelStartList)
+        foreach (var card in cardUpdateList)
         {
-            card.PlayFeedbacks();
+            card.cardFilpFeedback.PlayFeedbacks();
         }
     }
 
     public void SelectUpdate(int id)
     {
-        Debug.Log("Player select "+ id + " update");
+        //Debug.Log("Player select "+ id + " update");
+        cardUpdateList[id].updateData.UpdateScript.Use();
+        GameManager.instance.DB.UpdatesList.Remove(cardUpdateList[id].updateData);
 
-        OffOtherCard(id);
-
-        Invoke("UIOff", waitingTime);
-
-        
+        StartCoroutine(OffOtherCard(id));
     }
 
-    void OffOtherCard(int id)
+    IEnumerator OffOtherCard(int id)
     {
-        for (int i = 0; i < cardFeelStartList.Count; i++)
+        for (int i = 0; i < cardUpdateList.Count; i++)
         {
-            if (i != id) cardFeelStartList[i].PlayFeedbacks();
+            if (i != id) cardUpdateList[i].cardFilpFeedback.PlayFeedbacks();
         }
-    }
 
-    void UIOff()
+        yield return new WaitForSeconds(waitingTime);
+
+        cardUpdateList[id].cardFilpFeedback.PlayFeedbacks();
+
+        Invoke("OffUI", waitingTime);
+    }
+    void OffUI()
     {
         gameObject.SetActive(false);
     }

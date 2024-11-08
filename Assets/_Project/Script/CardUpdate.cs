@@ -1,12 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Feedbacks;
+using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 
 public class CardUpdate : MonoBehaviour
 {
+	[Title ("GameObjects Reference")]
+	public UpdateData updateData;
+
+	public TextMeshProUGUI nameText;
+	public TextMeshProUGUI descriptionText;
+
+	public Image art;
+
+	public MMF_Player cardFilpFeedback;
 	/// the possible axis on which to flip the double object
 	public enum Axis { x, y, z }
 	
@@ -41,6 +54,18 @@ public class CardUpdate : MonoBehaviour
 	/// <summary>
 	/// On Start we initialize our object
 	/// </summary>
+	/// 
+
+	public void DataTransfer(UpdateData data)
+	{
+		updateData = data;
+
+		nameText.text = updateData.Name;
+		descriptionText.text = updateData.Description;
+
+		art.sprite = updateData.Art;
+
+	}
 	protected virtual void Start()
 	{
 		Initialization();
