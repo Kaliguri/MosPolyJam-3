@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 615679047169643283}
   - component: {fileID: 9134629761791807907}
   - component: {fileID: 2931869515553223620}
-  - component: {fileID: 7712270721935984986}
   m_Layer: 0
   m_Name: Templates
   m_TagString: Untagged
@@ -62,21 +61,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: ff6961ccce7811048b0f80917d5e2d05, type: 2}
-  useDontDestroyOnLoad: 0
---- !u!114 &7712270721935984986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7091277041593286733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6e7d3db285f34c40a6186e9ce370e41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicMainMenu: {fileID: 0}
-  musicIngame: {fileID: 0}
   useDontDestroyOnLoad: 0
 --- !u!1 &9183132871604850054
 GameObject:

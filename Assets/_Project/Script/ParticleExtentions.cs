@@ -17,7 +17,11 @@ public class ParticleExtentions : MonoBehaviour
     {
         if (DestoryWhenStopped)
         {
+            if (gameObject.transform.parent.gameObject is not null)
             Destroy(gameObject.transform.parent.gameObject);
+
+            else
+            Destroy(gameObject);
             //Debug.Log("Destroy");
         }
     }
