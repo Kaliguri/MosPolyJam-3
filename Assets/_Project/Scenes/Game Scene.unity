@@ -22857,7 +22857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1508436797
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24025,13 +24025,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102705446}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3561e370ab5846844a0e367ae9b97cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackInput: {fileID: -8794716681231253964, guid: 4ab7b14a89ef0524e933f56df52e65a8, type: 3}
-  timeBetweenAttacksInCombo: 0.3
+  timeBetweenAttacksInCombo: 0.5
   attacksList:
   - {fileID: 662587701}
   - {fileID: 1458021742}
@@ -24052,7 +24052,7 @@ MonoBehaviour:
   attack3_TimeBetweenSendSlice: 0.3
   attack3_SliceCount: 4
   attack3_MaxOffset: 0.5
-  attacking: 0
+  attacking: 1
   canMove: 1
 --- !u!1 &2114912635
 GameObject:
