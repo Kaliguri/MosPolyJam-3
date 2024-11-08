@@ -57,7 +57,7 @@ public class PlayerComboAttack : MonoBehaviour
 
         if (attackInput.action.WasPressedThisFrame())
         {
-            if ((Time.time - lastClickTime <= timeBetweenAttacks && comboStep != 0) || (comboStep == 0 && comboCooldownTimer == 0f))
+            if ((Time.time - lastClickTime <= timeBetweenAttacksInCombo && comboStep != 0) || (comboStep == 0 && comboCooldownTimer == 0f))
             {
                 if (comboStep == 0) StartComboCooldown();
 
@@ -69,7 +69,7 @@ public class PlayerComboAttack : MonoBehaviour
 
                 PerformComboAttack(comboStep);
             }
-            else if (Time.time - lastClickTime > timeBetweenAttacks && comboStep != 0)
+            else if (Time.time - lastClickTime > timeBetweenAttacksInCombo && comboStep != 0)
             {
                 StartComboCooldown();
 
@@ -201,6 +201,6 @@ public class PlayerComboAttack : MonoBehaviour
     private void StartComboCooldown()
     {
         Debug.Log("StartComboCooldown");
-        comboCooldownTimer = timeBetweenCombo;
+        comboCooldownTimer = timeBetweenNewComboStart;
     }
 }
