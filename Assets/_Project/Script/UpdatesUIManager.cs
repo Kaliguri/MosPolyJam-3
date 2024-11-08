@@ -1,10 +1,7 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using MoreMountains.Feedbacks;
 using UnityEngine;
 using System.Collections;
-using Sirenix.Utilities;
-using UnityEditor.PackageManager;
 
 public class UpdatesUIManager : MonoBehaviour
 {

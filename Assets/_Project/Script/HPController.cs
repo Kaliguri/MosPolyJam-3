@@ -1,7 +1,5 @@
 using Sirenix.OdinInspector;
-using System;
 using UnityEngine;
-using VFolders.Libs;
 
 public class HPController : MonoBehaviour
 {
@@ -16,7 +14,7 @@ public class HPController : MonoBehaviour
             if (!gameObject.GetComponent<PlayerMovement>().isDashing)
             { 
                 RecieveDamage(collision.gameObject.GetComponent<EnemyBullet>().GetDamage());
-                collision.gameObject.Destroy();
+                Destroy(collision.gameObject);
             }
         }
         else if (gameObject.GetComponent<EnemyFollow>() != null && collision.gameObject.GetComponent<PlayerAttack>() != null)
@@ -33,7 +31,7 @@ public class HPController : MonoBehaviour
 
     private void Death()
     {
-        if (gameObject.GetComponent<PlayerMovement>() == null) gameObject.Destroy();
+        if (gameObject.GetComponent<PlayerMovement>() == null) Destroy(gameObject);
         else { Debug.Log("You Lose!"); }
     }
 }
