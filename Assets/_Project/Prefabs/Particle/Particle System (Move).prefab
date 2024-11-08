@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5173013993766444366}
   - component: {fileID: 2053478929531122793}
   - component: {fileID: 8271195526233058104}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System (Move)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5139449387965994861}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.456, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -222,8 +222,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.3647059, g: 0.51109034, b: 0.8117647, a: 1}
-      maxColor: {r: 0.3023318, g: 0.44159913, b: 0.8113208, a: 1}
+      minColor: {r: 0.2117647, g: 0.7394603, b: 1, a: 1}
+      maxColor: {r: 0.2117647, g: 0.8750093, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
