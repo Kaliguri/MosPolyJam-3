@@ -12,8 +12,7 @@ public class PlayerComboAttack : MonoBehaviour
     [SerializeField] InputActionReference attackInput;
 
     [Title("Combo Settings")]
-    [SerializeField] float timeBetweenAttacksInCombo = 0.3f; 
-    [SerializeField] float timeBetweenNewComboStart = 2f;
+    [SerializeField] float timeBetweenAttacksInCombo = 0.3f;
 
     [Title("AttacksGameObjects")]
     [SerializeField] List<GameObject> attacksList = new();
@@ -46,21 +45,11 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Update()
     {
-        if (comboCooldownTimer > 0)
-        {
-            comboCooldownTimer -= Time.deltaTime;
-            if (comboCooldownTimer <= 0)
-            {
-                comboCooldownTimer = 0f;
-            }
-        }
 
         if (attackInput.action.WasPressedThisFrame())
         {
-            if ((Time.time - lastClickTime <= timeBetweenAttacksInCombo && comboStep != 0) || (comboStep == 0 && comboCooldownTimer == 0f))
+            if ((Time.time - lastClickTime <= timeBetweenAttacksInCombo && comboStep != 0) || comboStep == 0)
             {
-                if (comboStep == 0) StartComboCooldown();
-
                 comboStep++;
 
                 attacking = true;
@@ -71,8 +60,6 @@ public class PlayerComboAttack : MonoBehaviour
             }
             else if (Time.time - lastClickTime > timeBetweenAttacksInCombo && comboStep != 0)
             {
-                StartComboCooldown();
-
                 comboStep = 1;
 
                 attacking = true;
@@ -190,17 +177,10 @@ public class PlayerComboAttack : MonoBehaviour
     private void Attack3(int _comboStep)
     {
         //attacksList[_comboStep - 1].SetActive(true);
-        StartComboCooldown();
     }
 
     private void ResetCombo()
     {
         comboStep = 0;
-    }
-
-    private void StartComboCooldown()
-    {
-        Debug.Log("StartComboCooldown");
-        comboCooldownTimer = timeBetweenNewComboStart;
     }
 }
