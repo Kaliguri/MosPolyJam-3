@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float dashTime;
     [SerializeField] float dashCooldown;
     [SerializeField] int dashMaxCount;
+    [SerializeField] ParticleSystem dashParticle;
     [ReadOnly] [SerializeField] int dashCurrentCount;
 
     [Title("Inputs")]
@@ -80,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         trailRenderer.emitting = true;
 
-
+        Instantiate(dashParticle, transform.position, transform.rotation);
         rb2D.linearVelocity = moveVector2 * dashPower;
 
         yield return new WaitForSeconds(dashTime);
