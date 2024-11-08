@@ -12,8 +12,8 @@ public class PlayerComboAttack : MonoBehaviour
     [SerializeField] InputActionReference attackInput;
 
     [Title("Combo Settings")]
-    [SerializeField] float timeBetweenAttacks = 0.3f; 
-    [SerializeField] float timeBetweenCombo = 2f;
+    [SerializeField] float timeBetweenAttacksInCombo = 0.3f; 
+    [SerializeField] float timeBetweenNewComboStart = 2f;
 
     [Title("AttacksGameObjects")]
     [SerializeField] List<GameObject> attacksList = new();

@@ -430,7 +430,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2125474393548655079, guid: e911a9c9c034bfd43bde61fd9ae49142, type: 3}
       propertyPath: internals.settings.dontDestroyOnLoad
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9092839830671104213, guid: e911a9c9c034bfd43bde61fd9ae49142, type: 3}
       propertyPath: m_LocalPosition.x
