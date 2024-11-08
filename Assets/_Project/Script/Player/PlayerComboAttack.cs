@@ -13,7 +13,11 @@ public class PlayerComboAttack : MonoBehaviour
     [SerializeField] float timeBetweenAttacks = 0.3f; 
     [SerializeField] float timeBetweenCombo = 2f;
 
+    [Title("AttacksGameObjects")]
+    [SerializeField] List<GameObject> attacksList = new();
+
     [Title("Attack Parameters")]
+    [SerializeField] private float attack1_Distance = 1f;
 
     private float comboCooldownTimer = 0f;
     private float lastClickTime = 0f;
@@ -48,18 +52,18 @@ public class PlayerComboAttack : MonoBehaviour
         }
     }
 
-    private void PerformComboAttack(int comboStep)
+    private void PerformComboAttack(int _comboStep)
     {
-        switch (comboStep)
+        switch (_comboStep)
         {
             case 1:
-                Attack1();
+                Attack1(_comboStep);
                 break;
             case 2:
-                Attack2();
+                Attack2(_comboStep);
                 break;
             case 3:
-                Attack3();
+                Attack3(_comboStep);
                 break;
             default:
                 ResetCombo();
@@ -67,19 +71,22 @@ public class PlayerComboAttack : MonoBehaviour
         }
     }
 
-    private void Attack1()
+    private void Attack1(int _comboStep)
     {
-        Debug.Log("Performing Attack 1");
+        Vector3 direction = transform.up;
+        attacksList[_comboStep - 1].transform.position = transform.position + direction * attack1_Distance;
+        attacksList[_comboStep - 1].transform.rotation = transform.rotation;
+        attacksList[_comboStep - 1].SetActive(true);
     }
 
-    private void Attack2()
+    private void Attack2(int _comboStep)
     {
-        Debug.Log("Performing Attack 2");
+        attacksList[_comboStep - 1].SetActive(true);
     }
 
-    private void Attack3()
+    private void Attack3(int _comboStep)
     {
-        Debug.Log("Performing Attack 3");
+        attacksList[_comboStep - 1].SetActive(true);
         StartComboCooldown();
     }
 

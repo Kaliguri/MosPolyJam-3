@@ -19,6 +19,10 @@ public class HPController : MonoBehaviour
                 collision.gameObject.Destroy();
             }
         }
+        else if (gameObject.GetComponent<EnemyFollow>() != null && collision.gameObject.GetComponent<PlayerAttack>() != null)
+        {
+            RecieveDamage(collision.gameObject.GetComponent<PlayerAttack>().GetDamage());
+        }
     }
 
     private void RecieveDamage(float damage)
