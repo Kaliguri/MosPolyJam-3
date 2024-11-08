@@ -18722,6 +18722,7 @@ GameObject:
   - component: {fileID: 2102705448}
   - component: {fileID: 2102705447}
   - component: {fileID: 2102705455}
+  - component: {fileID: 2102705456}
   - component: {fileID: 2102705449}
   - component: {fileID: 2102705451}
   - component: {fileID: 2102705452}
@@ -19043,6 +19044,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 100
   currentHP: 100
+--- !u!114 &2102705456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102705446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3561e370ab5846844a0e367ae9b97cfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackInput: {fileID: -8794716681231253964, guid: 4ab7b14a89ef0524e933f56df52e65a8, type: 3}
+  timeBetweenAttacks: 0.5
+  timeBetweenCombo: 1
 --- !u!20 &2121654846 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 18080795249021507, guid: 23e9b30828473a743bc01537164d7872, type: 3}

@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Dash()
     {
-        Debug.Log("Dash");
+        //Debug.Log("Dash");
 
         canDash = false;
         isDashing = true;
