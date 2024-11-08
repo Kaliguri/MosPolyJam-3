@@ -82,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
         canDash = false;
         isDashing = true;
+        GetComponent<Collider2D>().enabled = false; 
         trailRenderer.emitting = true;
 
         Instantiate(dashParticle, transform.position, transform.rotation);
@@ -90,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashTime);
 
         isDashing = false;
+        GetComponent<Collider2D>().enabled = true;
         trailRenderer.emitting = false;
 
         yield return new WaitForSeconds(dashCooldown);
