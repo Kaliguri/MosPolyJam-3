@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private float currentSpeed = 0f;
 
     private bool canDash = true;
-    public bool isDashing = false;
+    [ReadOnly] public bool isDashing = false;
 
     void FixedUpdate()
     {

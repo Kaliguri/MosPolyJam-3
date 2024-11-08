@@ -80,8 +80,9 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Update()
     {
+        canMove = ChechIfCanMove();
 
-        if (attackInput.action.WasPressedThisFrame())
+        if (attackInput.action.WasPressedThisFrame() && canMove)
         {
             if ((Time.time - lastClickTime <= timeBetweenAttacksInCombo && comboStep != 0) || comboStep == 0)
             {
@@ -104,8 +105,6 @@ public class PlayerComboAttack : MonoBehaviour
                 PerformComboAttack(comboStep);
             }
         }
-
-        canMove = ChechIfCanMove();
     }
 
     private bool ChechIfCanMove()
@@ -159,6 +158,7 @@ public class PlayerComboAttack : MonoBehaviour
     {
         while (Vector3.Distance(attack.transform.position, attack1TargetPosition) > 0.1f)
         {
+            if (GetComponent<PlayerMovement>().isDashing) break;
             attack.transform.position = Vector3.MoveTowards(attack.transform.position, attack1TargetPosition, attack1_MoveSpeed * Time.deltaTime);
             yield return null;
         }
@@ -197,6 +197,7 @@ public class PlayerComboAttack : MonoBehaviour
 
         while (elapsedTime < Mathf.Abs(endAngle - startAngle) / (attack2_MoveSpeed * 30))
         {
+            if (GetComponent<PlayerMovement>().isDashing) break;
             float currentAngle = Mathf.Lerp(startAngle, endAngle, elapsedTime * (attack2_MoveSpeed * 30) / Mathf.Abs(endAngle - startAngle));
 
             attack.transform.position = transform.position + attack2InitialOffset;
@@ -237,15 +238,25 @@ public class PlayerComboAttack : MonoBehaviour
             Vector3 attack3TargetPosition = attack3SliceList[i].transform.position + attack3SliceList[i].transform.up * attack3_MoveDistance;
             StartCoroutine(MoveAttack3Forward(attack3SliceList[i], attack3TargetPosition, i == attack3SliceList.Count - 1));
 
-            yield return new WaitForSeconds(attack3_TimeBetweenSendSlice);
+            float elapsed = 0f;
+            while (elapsed < attack3_TimeBetweenSendSlice)
+            {
+                if (GetComponent<PlayerMovement>().isDashing)
+                {
+                    yield break;
+                }
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
         }
-        if (attack3SliceList.Count == 0) attacksList[_comboStep - 1].gameObject.SetActive(false);
     }
+
 
     private IEnumerator MoveAttack3Forward(GameObject attack, Vector3 attack3TargetPosition, bool isLast)
     {
         while (Vector3.Distance(attack.transform.position, attack3TargetPosition) > 0.1f)
         {
+            if (GetComponent<PlayerMovement>().isDashing) break;
             attack.transform.position = Vector3.MoveTowards(attack.transform.position, attack3TargetPosition, attack3_MoveSpeed * Time.deltaTime);
             yield return null;
         }
