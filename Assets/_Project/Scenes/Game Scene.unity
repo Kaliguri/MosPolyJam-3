@@ -14963,7 +14963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackInput: {fileID: -8794716681231253964, guid: 4ab7b14a89ef0524e933f56df52e65a8, type: 3}
   timeBetweenAttacks: 0.7
-  timeBetweenCombo: 0.5
+  timeBetweenCombo: 2
   attacksList:
   - {fileID: 945798083}
   - {fileID: 1458021742}
@@ -14977,6 +14977,8 @@ MonoBehaviour:
   attack1_MoveSpeed: 10
   attack2_MoveSpeed: 4
   attack2_Angle: 30
+  attacking: 0
+  canMove: 1
 --- !u!20 &2121654846 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 18080795249021507, guid: 23e9b30828473a743bc01537164d7872, type: 3}

@@ -35,13 +35,16 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        ReadInputActions();
+        if (GetComponent<PlayerComboAttack>().canMove) 
+        {
+            ReadInputActions();
 
-        Move();
+            Move();
 
-        RotateCharacter();
+            RotateCharacter();
 
-        if (dashInput.action.IsPressed() & canDash) StartCoroutine(Dash());
+            if (dashInput.action.IsPressed() & canDash) StartCoroutine(Dash());
+        }
     }
 
     void Start()

@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -30,8 +31,9 @@ public class PlayerComboAttack : MonoBehaviour
     private Vector3 attack2InitialOffset;
     private float comboCooldownTimer = 0f;
     private float lastClickTime = 0f;
-    private bool attacking = false;
+    public bool attacking = false;
     private int comboStep = 0;
+    public bool canMove = true;
 
     private void Start()
     {
@@ -47,18 +49,18 @@ public class PlayerComboAttack : MonoBehaviour
         if (comboCooldownTimer > 0)
         {
             comboCooldownTimer -= Time.deltaTime;
-            return;
-        }
-
-        if (Time.time - lastClickTime > timeBetweenAttacks && attacking)
-        {
-            StartComboCooldown();
+            if (comboCooldownTimer <= 0)
+            {
+                comboCooldownTimer = 0f;
+            }
         }
 
         if (attackInput.action.WasPressedThisFrame())
         {
-            if ((Time.time - lastClickTime <= timeBetweenAttacks || comboStep == 0))
+            if ((Time.time - lastClickTime <= timeBetweenAttacks && comboStep != 0) || (comboStep == 0 && comboCooldownTimer == 0f))
             {
+                if (comboStep == 0) StartComboCooldown();
+
                 comboStep++;
 
                 attacking = true;
@@ -67,7 +69,30 @@ public class PlayerComboAttack : MonoBehaviour
 
                 PerformComboAttack(comboStep);
             }
+            else if (Time.time - lastClickTime > timeBetweenAttacks && comboStep != 0)
+            {
+                StartComboCooldown();
+
+                comboStep = 1;
+
+                attacking = true;
+
+                lastClickTime = Time.time;
+
+                PerformComboAttack(comboStep);
+            }
         }
+
+        //canMove = ChechIfCanMove();
+    }
+
+    private bool ChechIfCanMove()
+    {
+        for (int i = 0; i < attacksList.Count; i++)
+        {
+            if (attacksList[i].activeSelf == true) return false;
+        }
+        return true;
     }
 
     private void PerformComboAttack(int _comboStep)
@@ -177,7 +202,5 @@ public class PlayerComboAttack : MonoBehaviour
     {
         Debug.Log("StartComboCooldown");
         comboCooldownTimer = timeBetweenCombo;
-        attacking = false;
-        comboStep = 0;
     }
 }
