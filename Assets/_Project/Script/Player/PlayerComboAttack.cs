@@ -28,11 +28,12 @@ public class PlayerComboAttack : MonoBehaviour
     private Vector3 attack1TargetPosition;
     private float attack2StartAngleZ = 0f;
     private Vector3 attack2InitialOffset;
-    private float comboCooldownTimer = 0f;
     private float lastClickTime = 0f;
-    public bool attacking = false;
     private int comboStep = 0;
-    public bool canMove = true;
+
+    [Title("BoolReadonlyParametrs")]
+    [ReadOnly] public bool attacking = false;
+    [ReadOnly] public bool canMove = true;
 
     private void Start()
     {
@@ -70,7 +71,7 @@ public class PlayerComboAttack : MonoBehaviour
             }
         }
 
-        //canMove = ChechIfCanMove();
+        canMove = ChechIfCanMove();
     }
 
     private bool ChechIfCanMove()

@@ -29,26 +29,29 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator => GetComponent<Animator>();
 
     private Vector2 moveVector2;
+    private float currentSpeed = 0f;
 
     private bool canDash = true;
     public bool isDashing = false;
 
     void FixedUpdate()
     {
-        if (GetComponent<PlayerComboAttack>().canMove) 
-        {
-            ReadInputActions();
+        ReadInputActions();
 
-            Move();
+        if (GetComponent<PlayerComboAttack>().canMove) moveSpeed = currentSpeed;
+        else moveSpeed = 0f;
 
-            RotateCharacter();
 
-            if (dashInput.action.IsPressed() & canDash) StartCoroutine(Dash());
-        }
+        Move();
+
+        RotateCharacter();
+
+        if (dashInput.action.IsPressed() & canDash) StartCoroutine(Dash());
     }
 
     void Start()
     {
+        currentSpeed = moveSpeed;
         dashCurrentCount = dashMaxCount;
     }
 
