@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
 
         Move();
 
+        RotateCharacter();
+
         if (dashInput.action.IsPressed() & canDash) StartCoroutine(Dash());
     }
 
@@ -57,6 +59,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (Mathf.Abs(rb2D.linearVelocity.x) + Mathf.Abs(rb2D.linearVelocityY) != 0) animator.SetBool("IsMove", true);
         else                                                                         animator.SetBool("IsMove", false);
+    }
+
+    void RotateCharacter()
+    {
+        if (moveVector2 != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(moveVector2.y, moveVector2.x) * Mathf.Rad2Deg;
+            angle = Mathf.Round(angle / 45f) * 45f - 90f; 
+
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
     }
 
     IEnumerator Dash()
