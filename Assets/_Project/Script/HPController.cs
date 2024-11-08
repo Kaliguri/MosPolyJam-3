@@ -28,7 +28,7 @@ public class HPController : MonoBehaviour
     private void RecieveDamage(float damage)
     {
         currentHP -= damage;
-        if (currentHP < 0) { Death(); }
+        if (currentHP <= 0) { Death(); }
     }
 
     private void Death()

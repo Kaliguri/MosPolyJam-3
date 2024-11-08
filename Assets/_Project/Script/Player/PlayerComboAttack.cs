@@ -73,20 +73,38 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Attack1(int _comboStep)
     {
-        Vector3 direction = transform.up;
-        attacksList[_comboStep - 1].transform.position = transform.position + direction * attack1_Distance;
-        attacksList[_comboStep - 1].transform.rotation = transform.rotation;
-        attacksList[_comboStep - 1].SetActive(true);
+        GameObject attack = attacksList[_comboStep - 1];
+
+        Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        cursorPosition.z = transform.position.z; 
+
+        Vector3 directionToCursor = (cursorPosition - transform.position).normalized;
+        float angle = Mathf.Atan2(directionToCursor.y, directionToCursor.x) * Mathf.Rad2Deg - 90f;
+        
+        attack.transform.SetPositionAndRotation(transform.position + directionToCursor * attack1_Distance, Quaternion.Euler(new Vector3(0, 0, angle)));
+
+        attack.SetActive(true);
     }
+
 
     private void Attack2(int _comboStep)
     {
-        attacksList[_comboStep - 1].SetActive(true);
+        GameObject attack = attacksList[_comboStep - 1];
+
+        Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        cursorPosition.z = transform.position.z;
+
+        Vector3 directionToCursor = (cursorPosition - transform.position).normalized;
+        float angle = Mathf.Atan2(directionToCursor.y, directionToCursor.x) * Mathf.Rad2Deg - 90f;
+
+        attack.transform.SetPositionAndRotation(transform.position, Quaternion.Euler(new Vector3(0, 0, angle)));
+
+        attack.SetActive(true);
     }
 
     private void Attack3(int _comboStep)
     {
-        attacksList[_comboStep - 1].SetActive(true);
+        //attacksList[_comboStep - 1].SetActive(true);
         StartComboCooldown();
     }
 

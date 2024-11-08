@@ -29,6 +29,7 @@ public class EnemyFollow : MonoBehaviour
     private void Update()
     {
         FollowPlayer();
+        RotateTowardsPlayer();
     }
 
     void FollowPlayer()
@@ -47,6 +48,15 @@ public class EnemyFollow : MonoBehaviour
                 MoveAwayFromPlayer();
             }
         }
+    }
+
+    void RotateTowardsPlayer()
+    {
+        Vector2 direction = (player.position - transform.position).normalized;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private void ShootAtPlayer()
