@@ -67,7 +67,7 @@ namespace MoreMountains.Tools
 		[Tooltip("the original position of the transform, hidden and shouldn't be accessed")]
 		protected Vector3 _originalTransformPosition;
 		/// if this is true, the object can move along the path
-		public virtual bool CanMove { get; set; }
+		public virtual bool isAttacking { get; set; }
         
 		protected bool _originalTransformPositionStatus = false;
 		protected bool _active=false;
@@ -105,7 +105,7 @@ namespace MoreMountains.Tools
 		public virtual void ResetPath()
 		{
 			Initialization();
-			CanMove = false;
+			isAttacking = false;
 			transform.position = _originalTransformPosition;
 		}
 
@@ -117,7 +117,7 @@ namespace MoreMountains.Tools
 			// on Start, we set our active flag to true
 			_active=true;
 			_endReached = false;
-			CanMove = true;
+			isAttacking = true;
 
 			// if the path is null we exit
 			if(PathElements == null || PathElements.Count < 1)
@@ -198,7 +198,7 @@ namespace MoreMountains.Tools
 			if(PathElements == null 
 			   || PathElements.Count < 1
 			   || _endReached
-			   || !CanMove
+			   || !isAttacking
 			  )
 			{
 				CurrentSpeed = _vector3Zero;

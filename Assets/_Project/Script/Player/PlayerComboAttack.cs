@@ -40,7 +40,7 @@ public class PlayerComboAttack : MonoBehaviour
 
     [Title("ReadonlyParametrs")]
     [ReadOnly] public bool attacking = false;
-    [ReadOnly] public bool canMove = true;
+    [ReadOnly] public bool isAttacking = true;
     [ReadOnly] private List<GameObject> attack3SliceList = new();
 
     private void Start()
@@ -80,9 +80,9 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Update()
     {
-        canMove = ChechIfCanMove();
+        isAttacking = ChechIfisAttacking();
 
-        if (attackInput.action.WasPressedThisFrame() && canMove)
+        if (attackInput.action.WasPressedThisFrame() && isAttacking)
         {
             if ((Time.time - lastClickTime <= timeBetweenAttacksInCombo && comboStep != 0) || comboStep == 0)
             {
@@ -107,7 +107,7 @@ public class PlayerComboAttack : MonoBehaviour
         }
     }
 
-    private bool ChechIfCanMove()
+    private bool ChechIfisAttacking()
     {
         for (int i = 0; i < attacksList.Count; i++)
         {
@@ -264,7 +264,7 @@ public class PlayerComboAttack : MonoBehaviour
         attack.SetActive(false);
         attack.transform.localPosition = new Vector2(0, 0);
 
-        if (isLast) attack.transform.parent.gameObject.SetActive(false);
+        if (isLast || GetComponent<PlayerMovement>().isDashing) attack.transform.parent.gameObject.SetActive(false);
     }
 
     private void ResetCombo()

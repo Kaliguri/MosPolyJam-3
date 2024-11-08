@@ -65,7 +65,7 @@ namespace MoreMountains.Tools
 		/// internal flag, hidden and shouldn't be accessed
 		protected bool _originalTransformPositionStatus=false;
 		/// if this is true, the object can move along the path
-		public virtual bool CanMove { get; set; }
+		public virtual bool isAttacking { get; set; }
 		/// if this is true, this path has gone through its Initialization method
 		public virtual bool Initialized { get; set; }
 
@@ -101,7 +101,7 @@ namespace MoreMountains.Tools
 			// on Start, we set our active flag to true
 			_active=true;
 			_endReached = false;
-			CanMove = true;
+			isAttacking = true;
 
 			// we copy our reference if needed
 			if ((ReferenceMMPath != null) && (ReferenceMMPath.PathElements != null || ReferenceMMPath.PathElements.Count > 0))
@@ -181,7 +181,7 @@ namespace MoreMountains.Tools
 			if(PathElements == null 
 			   || PathElements.Count < 1
 			   || _endReached
-			   || !CanMove
+			   || !isAttacking
 			  )
 			{
 				return;
@@ -426,7 +426,7 @@ namespace MoreMountains.Tools
 			// same as on Start, we set our active flag to true
 			_active = true;
 			_endReached = false;
-			CanMove = true;
+			isAttacking = true;
 
 			PathElements = PathElements ?? new List<MMPathMovementElement>(configuration.Offsets.Length);
 			PathElements.Clear();
