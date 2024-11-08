@@ -24,6 +24,13 @@ public class PlayerComboAttack : MonoBehaviour
     [SerializeField] private float attack1_MoveSpeed = 10f;
     [SerializeField] private float attack2_MoveSpeed = 10f;
     [SerializeField] private float attack2_Angle = 30f;
+    [SerializeField] private GameObject attack3_Object;
+    [SerializeField] private float attack3_Distance = 1f;
+    [SerializeField] private float attack3_MoveSpeed = 10f;
+    [SerializeField] private float attack3_MoveDistance = 2f;
+    [SerializeField] private float attack3_TimeBetweenSendSlice = 0.5f;
+    [SerializeField] private int attack3_SliceCount = 4;
+    [SerializeField] private float attack3_MaxOffset = 0.5f;
 
     private Vector3 attack1TargetPosition;
     private float attack2StartAngleZ = 0f;
@@ -31,16 +38,43 @@ public class PlayerComboAttack : MonoBehaviour
     private float lastClickTime = 0f;
     private int comboStep = 0;
 
-    [Title("BoolReadonlyParametrs")]
+    [Title("ReadonlyParametrs")]
     [ReadOnly] public bool attacking = false;
     [ReadOnly] public bool canMove = true;
+    [ReadOnly] private List<GameObject> attack3SliceList = new();
 
     private void Start()
     {
+        Initialise3Attack();
+
+        SetDamage();
+    }
+
+    private void Initialise3Attack()
+    {
+        for (int i = 0; i < attack3_SliceCount; i++)
+        {
+            GameObject newAttackObject = Instantiate(attack3_Object);
+            newAttackObject.transform.SetParent(attacksList[2].transform, false);
+            newAttackObject.transform.localPosition = new Vector2(0, 0);
+            newAttackObject.SetActive(false);
+            attack3SliceList.Add(newAttackObject);
+        }
+    }
+
+    private void SetDamage()
+    {
         for (int i = 0; i < attacksList.Count; i++)
         {
-            if (i != 1) attacksList[i].GetComponent<PlayerAttack>().SetDamage(attacks_Damage[i]);
-            else attacksList[i].GetComponentInChildren<PlayerAttack>().SetDamage(attacks_Damage[i]);
+            if (i == 0) attacksList[i].GetComponent<PlayerAttack>().SetDamage(attacks_Damage[i]);
+            else if (i == 1) attacksList[i].GetComponentInChildren<PlayerAttack>().SetDamage(attacks_Damage[i]);
+            else
+            {
+                for (int j = 0; j < attack3SliceList.Count; j++)
+                {
+                    attack3SliceList[j].GetComponent<PlayerAttack>().SetDamage(attacks_Damage[i]);
+                }
+            }
         }
     }
 
@@ -177,7 +211,49 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Attack3(int _comboStep)
     {
-        //attacksList[_comboStep - 1].SetActive(true);
+        GameObject attack = attacksList[_comboStep - 1];
+
+        Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        cursorPosition.z = transform.position.z;
+
+        Vector3 directionToCursor = (cursorPosition - transform.position).normalized;
+        float angle = Mathf.Atan2(directionToCursor.y, directionToCursor.x) * Mathf.Rad2Deg - 90f;
+
+        attack.transform.SetPositionAndRotation(transform.position + directionToCursor * attack3_Distance, Quaternion.Euler(new Vector3(0, 0, angle)));
+
+        attack.SetActive(true);
+
+        StartCoroutine(SendAttack3Slices(_comboStep));
+    }
+
+    private IEnumerator SendAttack3Slices(int _comboStep)
+    {
+        for (int i = 0; i < attack3SliceList.Count; i++)
+        {
+            attack3SliceList[i].SetActive(true);
+            float randomOffset = UnityEngine.Random.Range(-attack3_MaxOffset, attack3_MaxOffset);
+            attack3SliceList[i].transform.position += attack3SliceList[i].transform.right * randomOffset;
+
+            Vector3 attack3TargetPosition = attack3SliceList[i].transform.position + attack3SliceList[i].transform.up * attack3_MoveDistance;
+            StartCoroutine(MoveAttack3Forward(attack3SliceList[i], attack3TargetPosition, i == attack3SliceList.Count - 1));
+
+            yield return new WaitForSeconds(attack3_TimeBetweenSendSlice);
+        }
+        if (attack3SliceList.Count == 0) attacksList[_comboStep - 1].gameObject.SetActive(false);
+    }
+
+    private IEnumerator MoveAttack3Forward(GameObject attack, Vector3 attack3TargetPosition, bool isLast)
+    {
+        while (Vector3.Distance(attack.transform.position, attack3TargetPosition) > 0.1f)
+        {
+            attack.transform.position = Vector3.MoveTowards(attack.transform.position, attack3TargetPosition, attack3_MoveSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        attack.SetActive(false);
+        attack.transform.localPosition = new Vector2(0, 0);
+
+        if (isLast) attack.transform.parent.gameObject.SetActive(false);
     }
 
     private void ResetCombo()
