@@ -87,23 +87,15 @@ public class PlayerComboAttack : MonoBehaviour
             if ((Time.time - lastClickTime <= timeBetweenAttacksInCombo && comboStep != 0) || comboStep == 0)
             {
                 comboStep++;
-
-                attacking = true;
-
-                lastClickTime = Time.time;
-
-                PerformComboAttack(comboStep);
             }
             else if (Time.time - lastClickTime > timeBetweenAttacksInCombo && comboStep != 0)
             {
                 comboStep = 1;
-
-                attacking = true;
-
-                lastClickTime = Time.time;
-
-                PerformComboAttack(comboStep);
             }
+
+            attacking = true;
+
+            PerformComboAttack(comboStep);
         }
     }
 
@@ -163,6 +155,8 @@ public class PlayerComboAttack : MonoBehaviour
             yield return null;
         }
 
+        lastClickTime = Time.time;
+
         attack.SetActive(false);
     }
 
@@ -206,6 +200,8 @@ public class PlayerComboAttack : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        lastClickTime = Time.time;
 
         attack.SetActive(false);
     }
@@ -264,7 +260,11 @@ public class PlayerComboAttack : MonoBehaviour
         attack.SetActive(false);
         attack.transform.localPosition = new Vector2(0, 0);
 
-        if (isLast || GetComponent<PlayerMovement>().isDashing) attack.transform.parent.gameObject.SetActive(false);
+        if (isLast || GetComponent<PlayerMovement>().isDashing) 
+        {
+            lastClickTime = Time.time;
+            attack.transform.parent.gameObject.SetActive(false); 
+        }
     }
 
     private void ResetCombo()
