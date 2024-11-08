@@ -31,7 +31,10 @@ public class PlayerComboAttack : MonoBehaviour
     [SerializeField] private float attack3_TimeBetweenSendSlice = 0.5f;
     [SerializeField] private int attack3_SliceCount = 4;
     [SerializeField] private float attack3_MaxOffset = 0.5f;
+    [SerializeField] private float inputBufferDuration = 0.2f;
 
+    private bool inputBuffered = false;
+    private float bufferedInputTime;
     private Vector3 attack1TargetPosition;
     private float attack2StartAngleZ = 0f;
     private Vector3 attack2InitialOffset;
@@ -78,28 +81,48 @@ public class PlayerComboAttack : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        isAttacking = ChechIfisAttacking();
+        isAttacking = ChechIfIsAttacking();
 
-        if (attackInput.action.WasPressedThisFrame() && isAttacking)
+        if (attackInput.action.WasPressedThisFrame())
         {
-            if ((Time.time - lastClickTime <= timeBetweenAttacksInCombo && comboStep != 0) || comboStep == 0)
+            if (isAttacking)
             {
-                comboStep++;
+                inputBuffered = true;
+                bufferedInputTime = Time.time;
             }
-            else if (Time.time - lastClickTime > timeBetweenAttacksInCombo && comboStep != 0)
+            else
             {
-                comboStep = 1;
+                ProcessAttackInput();
             }
+        }
 
-            attacking = true;
-
-            PerformComboAttack(comboStep);
+        if (!isAttacking && inputBuffered && Time.time - bufferedInputTime <= inputBufferDuration)
+        {
+            inputBuffered = false;
+            ProcessAttackInput();
         }
     }
 
-    private bool ChechIfisAttacking()
+    private void ProcessAttackInput()
+    {
+        if ((Time.time - lastClickTime <= timeBetweenAttacksInCombo && comboStep != 0) || comboStep == 0)
+        {
+            comboStep++;
+        }
+        else if (Time.time - lastClickTime > timeBetweenAttacksInCombo && comboStep != 0)
+        {
+            comboStep = 1;
+        }
+
+        attacking = true;
+        PerformComboAttack(comboStep);
+        lastClickTime = Time.time;
+    }
+
+
+    private bool ChechIfIsAttacking()
     {
         for (int i = 0; i < attacksList.Count; i++)
         {
