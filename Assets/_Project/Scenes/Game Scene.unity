@@ -2897,6 +2897,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1478348906049212081, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bcb92458d0ebd294cbe9482ed99f1197, type: 3}
     - target: {fileID: 2675498784270905477, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2977,6 +2981,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4372821689533604402, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145478430623138815, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7253985801313055621, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2985,6 +2997,30 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7302298838693627103, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302298838693627103, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bcb92458d0ebd294cbe9482ed99f1197, type: 3}
+    - target: {fileID: 7302298838693627103, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302298838693627103, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
+      propertyPath: m_Color.g
+      value: 0.44399524
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302298838693627103, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8197995667086926833, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bcb92458d0ebd294cbe9482ed99f1197, type: 3}
     - target: {fileID: 8233205207771389590, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
@@ -18446,7 +18482,7 @@ GameObject:
   - component: {fileID: 2124485243}
   - component: {fileID: 2124485242}
   m_Layer: 5
-  m_Name: UI
+  m_Name: GUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
