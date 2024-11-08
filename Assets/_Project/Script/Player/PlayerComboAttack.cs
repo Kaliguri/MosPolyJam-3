@@ -68,7 +68,6 @@ public class PlayerComboAttack : MonoBehaviour
         {
             attackPressed = false;
 
-            Debug.Log(isAttacking);
             if (isAttacking)
             {
                 inputBuffered++;
@@ -116,7 +115,6 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void ProcessAttackInput()
     {
-        Debug.Log("ProcessAttackInput");
         if ((Time.time - lastClickTime <= timeBetweenAttacksInCombo && comboStep != 0) || comboStep == 0)
         {
             comboStep++;
