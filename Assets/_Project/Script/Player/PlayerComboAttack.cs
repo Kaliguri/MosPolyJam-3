@@ -11,8 +11,8 @@ public class PlayerComboAttack : MonoBehaviour
     [SerializeField] InputActionReference attackInput;
 
     [Title("Combo Settings")]
-    [SerializeField] float timeBetweenAttacks = 0.3f; 
-    [SerializeField] float timeBetweenCombo = 2f;
+    [SerializeField] float timeBetweenAttacksInCombo = 0.3f; 
+    [SerializeField] float timeBetweenNewComboStart = 2f;
 
     [Title("AttacksGameObjects")]
     [SerializeField] List<GameObject> attacksList = new();
@@ -50,14 +50,14 @@ public class PlayerComboAttack : MonoBehaviour
             return;
         }
 
-        if (Time.time - lastClickTime > timeBetweenAttacks && attacking)
+        if (Time.time - lastClickTime > timeBetweenAttacksInCombo && attacking)
         {
             StartComboCooldown();
         }
 
         if (attackInput.action.WasPressedThisFrame())
         {
-            if ((Time.time - lastClickTime <= timeBetweenAttacks || comboStep == 0))
+            if ((Time.time - lastClickTime <= timeBetweenAttacksInCombo || comboStep == 0))
             {
                 comboStep++;
 
@@ -176,7 +176,7 @@ public class PlayerComboAttack : MonoBehaviour
     private void StartComboCooldown()
     {
         Debug.Log("StartComboCooldown");
-        comboCooldownTimer = timeBetweenCombo;
+        comboCooldownTimer = timeBetweenNewComboStart;
         attacking = false;
         comboStep = 0;
     }
