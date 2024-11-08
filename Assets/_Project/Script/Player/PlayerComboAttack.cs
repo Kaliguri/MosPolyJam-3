@@ -31,15 +31,14 @@ public class PlayerComboAttack : MonoBehaviour
     [SerializeField] private float attack3_TimeBetweenSendSlice = 0.5f;
     [SerializeField] private int attack3_SliceCount = 4;
     [SerializeField] private float attack3_MaxOffset = 0.5f;
-    [SerializeField] private float inputBufferDuration = 0.2f;
 
-    private bool inputBuffered = false;
-    private float bufferedInputTime;
+    private int inputBuffered = 0;
     private Vector3 attack1TargetPosition;
     private float attack2StartAngleZ = 0f;
     private Vector3 attack2InitialOffset;
     private float lastClickTime = 0f;
     private int comboStep = 0;
+    private bool attackPressed;
 
     [Title("ReadonlyParametrs")]
     [ReadOnly] public bool attacking = false;
@@ -51,6 +50,40 @@ public class PlayerComboAttack : MonoBehaviour
         Initialise3Attack();
 
         SetDamage();
+    }
+
+    private void Update()
+    {
+        if (attackInput.action.WasPressedThisFrame())
+        {
+            attackPressed = true;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        isAttacking = ChechIfIsAttacking();
+
+        if (attackPressed)
+        {
+            attackPressed = false;
+
+            Debug.Log(isAttacking);
+            if (isAttacking)
+            {
+                inputBuffered++;
+            }
+            else
+            {
+                ProcessAttackInput();
+            }
+        }
+
+        if (!isAttacking && inputBuffered > 0)
+        {
+            inputBuffered--;
+            ProcessAttackInput();
+        }
     }
 
     private void Initialise3Attack()
@@ -81,32 +114,9 @@ public class PlayerComboAttack : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        isAttacking = ChechIfIsAttacking();
-
-        if (attackInput.action.WasPressedThisFrame())
-        {
-            if (isAttacking)
-            {
-                inputBuffered = true;
-                bufferedInputTime = Time.time;
-            }
-            else
-            {
-                ProcessAttackInput();
-            }
-        }
-
-        if (!isAttacking && inputBuffered && Time.time - bufferedInputTime <= inputBufferDuration)
-        {
-            inputBuffered = false;
-            ProcessAttackInput();
-        }
-    }
-
     private void ProcessAttackInput()
     {
+        Debug.Log("ProcessAttackInput");
         if ((Time.time - lastClickTime <= timeBetweenAttacksInCombo && comboStep != 0) || comboStep == 0)
         {
             comboStep++;
@@ -114,6 +124,7 @@ public class PlayerComboAttack : MonoBehaviour
         else if (Time.time - lastClickTime > timeBetweenAttacksInCombo && comboStep != 0)
         {
             comboStep = 1;
+            inputBuffered = 0;
         }
 
         attacking = true;
@@ -126,9 +137,9 @@ public class PlayerComboAttack : MonoBehaviour
     {
         for (int i = 0; i < attacksList.Count; i++)
         {
-            if (attacksList[i].activeSelf == true) return false;
+            if (attacksList[i].activeSelf == true) return true;
         }
-        return true;
+        return false;
     }
 
     private void PerformComboAttack(int _comboStep)
