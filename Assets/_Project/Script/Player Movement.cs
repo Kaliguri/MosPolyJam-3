@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveVector2;
 
     private bool canDash = true;
-    private bool isDashing = false;
+    public bool isDashing = false;
 
     void FixedUpdate()
     {

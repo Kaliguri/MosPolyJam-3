@@ -6,20 +6,25 @@ using VFolders.Libs;
 public class HPController : MonoBehaviour
 {
     [Title("HP")]
-    [SerializeField] private float HP = 100f;
+    [SerializeField] public float MaxHP = 100f;
+    public float currentHP = 100f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameObject.GetComponent<PlayerMovement>() != null && collision.gameObject.GetComponent<EnemyBullet>() != null)
         {
-            RecieveDamage(collision.gameObject.GetComponent<EnemyBullet>().GetDamage());
+            if (!gameObject.GetComponent<PlayerMovement>().isDashing)
+            { 
+                RecieveDamage(collision.gameObject.GetComponent<EnemyBullet>().GetDamage());
+                collision.gameObject.Destroy();
+            }
         }
     }
 
     private void RecieveDamage(float damage)
     {
-        HP -= damage;
-        if (HP < 0) { Death(); }
+        currentHP -= damage;
+        if (currentHP < 0) { Death(); }
     }
 
     private void Death()

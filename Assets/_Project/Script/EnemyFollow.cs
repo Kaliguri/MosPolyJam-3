@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyFollow : MonoBehaviour
 {
     [Title("Follow Settings")]
-    [SerializeField] float moveSpeed = 3f;          
-    [SerializeField] float minDistance = 2f;         
-    [SerializeField] float maxDistance = 5f;         
+    [SerializeField] float moveSpeed = 3f;
+    [SerializeField] float minDistance = 2f;
+    [SerializeField] float maxDistance = 5f;
 
     [Title("Target")]
     [SerializeField] Transform player;
@@ -15,6 +15,11 @@ public class EnemyFollow : MonoBehaviour
     [Title("Projectile Settings")]
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform firePoint;
+    [SerializeField] float fireRate = 1f;            
+    [SerializeField] bool hasKickback = true;
+    [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;       
+
+    private float lastShotTime = 0f;                 
 
     private void Start()
     {
@@ -46,16 +51,25 @@ public class EnemyFollow : MonoBehaviour
 
     private void ShootAtPlayer()
     {
-        Vector2 direction = (player.position - transform.position).normalized;
+        if (Time.time - lastShotTime >= fireRate)
+        {
+            Vector2 direction = (player.position - transform.position).normalized;
 
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            bullet.transform.right = direction;
 
-        bullet.transform.right = direction;
+            if (hasKickback)
+            {
+                Vector2 recoilDirection = -direction * recoilForce;
+                transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + recoilDirection, recoilForce);
+            }
+
+            lastShotTime = Time.time;
+        }
     }
 
     void MoveTowardsPlayer()
     {
-        Vector2 direction = (player.position - transform.position).normalized;
         transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
     }
 
