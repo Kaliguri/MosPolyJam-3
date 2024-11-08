@@ -15955,10 +15955,10 @@ MonoBehaviour:
   - 20
   - 30
   attack1_Distance: 1
-  attack1_MoveDistance: 2
-  attack1_MoveSpeed: 10
-  attack2_MoveSpeed: 4
-  attack2_Angle: 30
+  attack1_MoveDistance: 4
+  attack1_MoveSpeed: 25
+  attack2_MoveSpeed: 25
+  attack2_Angle: 90
   attacking: 0
   canMove: 1
 --- !u!20 &2121654846 stripped
