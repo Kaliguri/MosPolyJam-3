@@ -6,20 +6,20 @@ public class Attack1 : MonoBehaviour
     [SerializeField] private float moveDistance = 5f;
     [SerializeField] private float moveSpeed = 10f;
 
-    private Vector3 targetPosition;
+    private Vector3 attack1TargetPosition;
 
     private void OnEnable()
     {
-        targetPosition = transform.position + transform.up * moveDistance;
+        attack1TargetPosition = transform.position + transform.up * moveDistance;
 
-        StartCoroutine(MoveForward());
+        StartCoroutine(MoveAttack1Forward());
     }
 
-    private IEnumerator MoveForward()
+    private IEnumerator MoveAttack1Forward()
     {
-        while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
+        while (Vector3.Distance(transform.position, attack1TargetPosition) > 0.1f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, attack1TargetPosition, moveSpeed * Time.deltaTime);
             yield return null;
         }
 

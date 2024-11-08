@@ -524,7 +524,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01532a70771fe04cad7f14c5f44829b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
 --- !u!1 &402325101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,7 +1247,6 @@ GameObject:
   - component: {fileID: 945798086}
   - component: {fileID: 945798085}
   - component: {fileID: 945798087}
-  - component: {fileID: 945798088}
   m_Layer: 0
   m_Name: Attack 1
   m_TagString: Untagged
@@ -1384,21 +1382,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01532a70771fe04cad7f14c5f44829b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
---- !u!114 &945798088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945798083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6253813b18393674bb5faabe46d0c1f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveDistance: 3
-  moveSpeed: 10
 --- !u!1 &991973469
 GameObject:
   m_ObjectHideFlags: 0
@@ -3912,7 +3895,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1458021743}
-  - component: {fileID: 1458021744}
   m_Layer: 0
   m_Name: Attack 2
   m_TagString: Untagged
@@ -3936,20 +3918,6 @@ Transform:
   - {fileID: 1508404308}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1458021744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458021742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c422733e134dc9148b9c53f9dd0f68cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3
-  attack2_Angle: 30
 --- !u!1 &1470516715
 GameObject:
   m_ObjectHideFlags: 0
@@ -18349,7 +18317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01532a70771fe04cad7f14c5f44829b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
 --- !u!1 &1553117567
 GameObject:
   m_ObjectHideFlags: 0
@@ -19828,7 +19795,15 @@ MonoBehaviour:
   - {fileID: 945798083}
   - {fileID: 1458021742}
   - {fileID: 230280549}
+  attacks_Damage:
+  - 10
+  - 20
+  - 30
   attack1_Distance: 1
+  attack1_MoveDistance: 2
+  attack1_MoveSpeed: 10
+  attack2_MoveSpeed: 4
+  attack2_Angle: 30
 --- !u!20 &2121654846 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 18080795249021507, guid: 23e9b30828473a743bc01537164d7872, type: 3}

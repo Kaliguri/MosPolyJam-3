@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] float damage = 10f;
+    private float damage = 10f;
 
     private void OnEnable()
     {
@@ -12,5 +12,10 @@ public class PlayerAttack : MonoBehaviour
     public float GetDamage()
     {
         return damage;
+    }
+
+    public void SetDamage(float _damage)
+    {
+        damage = _damage;
     }
 }
