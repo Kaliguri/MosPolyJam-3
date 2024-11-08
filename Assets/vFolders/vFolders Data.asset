@@ -20,6 +20,7 @@ MonoBehaviour:
     - e0e32b159344aa04a94f75681dc656a1
     - 12dee3a2e72affd4a9717078be201bb5
     - d29cc98a74facc948b03700874fdd31c
+    - 02025ba620c2b9148b634d70f3a73e3f
     values:
     - colorIndex: 6
       iconNameOrGuid: 
@@ -33,3 +34,5 @@ MonoBehaviour:
       iconNameOrGuid: Shader Icon
     - colorIndex: 2
       iconNameOrGuid: AudioSource Icon
+    - colorIndex: 10
+      iconNameOrGuid: Mesh Icon
