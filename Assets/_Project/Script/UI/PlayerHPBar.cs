@@ -10,8 +10,6 @@ public class PlayerHPBar : MonoBehaviour
     [Title("GameObject Reference")]
     [SerializeField] Slider _secondarySlider;
     [SerializeField] Slider _primarySlider;
-    [SerializeField] Image HPFillObj;
-    [SerializeField] Color playerColor;
 
     private float _maxHeatlh => FindFirstObjectByType<PlayerMovement>().gameObject.GetComponent<HPController>().MaxHP;
     private float _currentHeatlh => FindFirstObjectByType<PlayerMovement>().gameObject.GetComponent<HPController>().currentHP;
@@ -21,7 +19,6 @@ public class PlayerHPBar : MonoBehaviour
         _primarySlider.value = _currentHeatlh;
         _secondarySlider.maxValue = _maxHeatlh;
         _secondarySlider.value = _currentHeatlh;
-        HPFillObj.color = playerColor;
     }
 
     void Update()
