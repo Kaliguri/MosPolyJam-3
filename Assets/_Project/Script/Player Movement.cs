@@ -55,8 +55,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb2D.linearVelocity = moveVector2 * moveSpeed;
 
-        if (rb2D.linearVelocity.x + rb2D.linearVelocityY != 0 ) animator.SetBool("IsMove", true);
-        else                                                    animator.SetBool("IsMove", false);
+        if (Mathf.Abs(rb2D.linearVelocity.x) + Mathf.Abs(rb2D.linearVelocityY) != 0) animator.SetBool("IsMove", true);
+        else                                                                         animator.SetBool("IsMove", false);
     }
 
     IEnumerator Dash()
