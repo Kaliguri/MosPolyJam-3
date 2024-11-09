@@ -180,7 +180,7 @@ MonoBehaviour:
   attack2_MoveSpeed: 35
   attack2_StartAngle: 30
   attack3_Object: {fileID: 8137713491115293191, guid: bcb055436faff60499ae96468b371231, type: 3}
-  attack3_TimeBetweenSendSliceDescease: 0.1
+  attack3_TimeBetweenSendSliceDesceasePercent: 1
   attack3_SliceCountIncrease: 1
   attack3_Distance: 1
   attack3_MoveSpeed: 25
