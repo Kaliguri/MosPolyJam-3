@@ -11,10 +11,10 @@ public class CombatMethods : MonoBehaviour
         if (instance == null) { instance = this; }
     }
 
-    public void ApplayDamage(float damage, Collider2D collisionTargetType)
+    public void ApplayDamage(float damage, Collider2D collisionTargetType, GameObject attackingType)
     {
         var targetType = collisionTargetType.gameObject;
-        var contact = collisionTargetType.ClosestPoint(transform.position);
+        var contact = collisionTargetType.ClosestPoint(attackingType.transform.position);
 
         if (targetType.GetComponent<PlayerTag>() != null)
         {
