@@ -8,13 +8,4 @@ public class AnimatorExtension : MonoBehaviour
 
     public void SendAttackPrepared() {  GetComponentInParent<EnemyFollow>().ShootAtplayerTransform(); }
 
-    private void FixedUpdate()
-    {
-        if (attackPrepared) 
-        {
-            attackPrepared = false;
-            SendAttackPrepared(); 
-        }
-    }
-
 }
