@@ -3618,7 +3618,6 @@ GameObject:
   - component: {fileID: 1184037164}
   - component: {fileID: 1184037163}
   - component: {fileID: 1184037165}
-  - component: {fileID: 1184037166}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -3669,21 +3668,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageResistOnParry: 0.4
---- !u!114 &1184037166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184037162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 825b74a6b0f4f934d8b8a561475e943d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arenaList: []
-  spawnVFX: {fileID: 0}
-  InTheArena: 0
 --- !u!1 &1186713957
 GameObject:
   m_ObjectHideFlags: 0
@@ -29659,6 +29643,159 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 900239939118034832, guid: 4102090bb0a526f4391c39d618b44c0e, type: 3}
   m_PrefabInstance: {fileID: 3115852441401278324}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3326100255745289693
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3928738213862149087, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.391437
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928738213862149087, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -22.858881
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928738213862149087, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.13044252
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928738213862149087, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928738213862149087, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928738213862149087, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928738213862149087, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928738213862149087, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928738213862149087, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928738213862149087, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676193564859449192, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: m_Name
+      value: Level Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: arenaList.Array.data[0].combatCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: arenaList.Array.data[0].WaveCombat.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: arenaList.Array.data[0].SpawnAreaListCombat.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[0].SpawnAreaListCombat.Array.data[0]'
+      value: 
+      objectReference: {fileID: 652100081}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[0].SpawnAreaListCombat.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1293965826}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[0].SpawnAreaListCombat.Array.data[2]'
+      value: 
+      objectReference: {fileID: 725089111}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: arenaList.Array.data[0].EnableGameObjectsListAfterCombat.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: arenaList.Array.data[0].WaveCombat.Array.data[0].EnemyList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: arenaList.Array.data[0].WaveCombat.Array.data[1].EnemyList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: arenaList.Array.data[0].WaveCombat.Array.data[2].EnemyList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: arenaList.Array.data[0].WaveCombat.Array.data[3].EnemyList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[0].EnableGameObjectsListAfterCombat.Array.data[0]'
+      value: 
+      objectReference: {fileID: 936289113}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: arenaList.Array.data[0].DisableGameObjectsListForStartCombat.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[0].EnemyList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[1].EnemyList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[1].EnemyList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[2].EnemyList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[2].EnemyList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[2].EnemyList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[3].EnemyList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[3].EnemyList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[3].EnemyList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[3].EnemyList.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[0].DisableGameObjectsListForStartCombat.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2063342723}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
 --- !u!1001 &3620471106877901516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29795,6 +29932,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1451881270}
   - {fileID: 1184037164}
+  - {fileID: 3326100255745289693}
   - {fileID: 590693718}
   - {fileID: 1313133308}
   - {fileID: 702254635}
