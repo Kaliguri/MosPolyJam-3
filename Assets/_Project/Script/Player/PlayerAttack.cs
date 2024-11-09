@@ -9,6 +9,14 @@ public class PlayerAttack : MonoBehaviour
         Debug.Log("Awake" + gameObject.name);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<EnemyTag>() != null)
+        {
+            CombatMethods.instance.ApplayDamage(damage, collision.gameObject);
+        }
+    }
+
     public float GetDamage()
     {
         return damage;

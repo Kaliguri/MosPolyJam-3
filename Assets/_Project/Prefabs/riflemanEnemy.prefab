@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7040921140157568356}
   - component: {fileID: 6961455128047817613}
   - component: {fileID: 7600810865474003720}
+  - component: {fileID: 3459875139246170286}
   - component: {fileID: 4650242962856728999}
   - component: {fileID: 1263469719975811841}
   - component: {fileID: 5062915408580035249}
@@ -113,6 +114,19 @@ MonoBehaviour:
   fireRate: 1
   hasKickback: 1
   recoilForce: 0.5
+  attackPrepared: 0
+--- !u!114 &3459875139246170286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8285791383877950042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c1748020b0f7641a8b5462f3ad2f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4650242962856728999
 MonoBehaviour:
   m_ObjectHideFlags: 0
