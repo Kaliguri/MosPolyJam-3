@@ -60,6 +60,12 @@ public class PlayerComboAttack : MonoBehaviour
     [ReadOnly] public bool isAttacking = true;
     [ReadOnly] private List<GameObject> attack3SliceList = new();
 
+    static public PlayerComboAttack instance;
+    void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         Initialise3Attack();
