@@ -29696,18 +29696,6 @@ PrefabInstance:
       value: Level Manager
       objectReference: {fileID: 0}
     - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: arenaList.Array.data[0].combatCount
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: arenaList.Array.data[0].WaveCombat.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: arenaList.Array.data[0].SpawnAreaListCombat.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
       propertyPath: 'arenaList.Array.data[0].SpawnAreaListCombat.Array.data[0]'
       value: 
       objectReference: {fileID: 652100081}
@@ -29720,73 +29708,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 725089111}
     - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: arenaList.Array.data[0].EnableGameObjectsListAfterCombat.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: arenaList.Array.data[0].WaveCombat.Array.data[0].EnemyList.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: arenaList.Array.data[0].WaveCombat.Array.data[1].EnemyList.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: arenaList.Array.data[0].WaveCombat.Array.data[2].EnemyList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: arenaList.Array.data[0].WaveCombat.Array.data[3].EnemyList.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
       propertyPath: 'arenaList.Array.data[0].EnableGameObjectsListAfterCombat.Array.data[0]'
       value: 
       objectReference: {fileID: 936289113}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: arenaList.Array.data[0].DisableGameObjectsListForStartCombat.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[0].EnemyList.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[1].EnemyList.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[1].EnemyList.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[2].EnemyList.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[2].EnemyList.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[2].EnemyList.Array.data[2]'
-      value: 
-      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[3].EnemyList.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[3].EnemyList.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[3].EnemyList.Array.data[2]'
-      value: 
-      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: 'arenaList.Array.data[0].WaveCombat.Array.data[3].EnemyList.Array.data[3]'
-      value: 
-      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
     - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
       propertyPath: 'arenaList.Array.data[0].DisableGameObjectsListForStartCombat.Array.data[0]'
       value: 
