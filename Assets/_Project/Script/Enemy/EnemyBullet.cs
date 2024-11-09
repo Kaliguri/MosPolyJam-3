@@ -17,7 +17,7 @@ public class EnemyBullet : MonoBehaviour
         {
             if (!collision.gameObject.GetComponent<PlayerMovement>().isDashing)
             {
-                CombatMethods.instance.ApplayDamage(damage, collision.gameObject);
+                CombatMethods.instance.ApplayDamage(damage, collision, gameObject);
                 Destroy(gameObject);
             }
         }
