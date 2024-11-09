@@ -244,7 +244,6 @@ public class PlayerComboAttack : MonoBehaviour
     {
         float parryValue = 0;
         if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter() + defaultValue;
-        else //Debug.Log("NormalAttack1");
 
         GameObject attack = attacksList[_comboStep - 1];
 
@@ -288,7 +287,6 @@ public class PlayerComboAttack : MonoBehaviour
     {
         float parryValue = 0;
         if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter() + defaultValue;
-        else //Debug.Log("NormalAttack2");
 
         GameObject attack = attacksList[_comboStep - 1];
 
@@ -342,7 +340,6 @@ public class PlayerComboAttack : MonoBehaviour
     {
         float parryValue = 0;
         if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter() + defaultValue;
-        else //Debug.Log("NormalAttack3");
 
         GameObject attack = attacksList[_comboStep - 1];
 
