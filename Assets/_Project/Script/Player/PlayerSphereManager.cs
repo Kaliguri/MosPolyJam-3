@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class PlayerSphereManager : MonoBehaviour
 {
+    [Title("SphereSettings")]
     [SerializeField] GameObject spherePrefab;
     [SerializeField] GameObject perfectSpherePrefab;
     [SerializeField] int sphereCount = 10;
     [SerializeField] float maxOrbitRadius = 2f;
     [SerializeField] float orbitSpeed = 30f;
     [SerializeField] float moveToCenterSpeed = 5f;
+    [SerializeField] float regularSpherePoints = 1; 
+    [SerializeField] float perfectSpherePoints = 3;
 
     private List<GameObject> sphereList = new List<GameObject>();
     private List<GameObject> perfectSphereList = new List<GameObject>();
@@ -73,9 +76,28 @@ public class PlayerSphereManager : MonoBehaviour
     }
 
     [Button("PullSpheresToCenter")]
-    public void PullSpheresToCenter()
+    public float PullSpheresToCenter()
     {
+        float totalPoints = 0;
+
+        foreach (GameObject sphere in sphereList)
+        {
+            if (sphere.activeSelf)
+            {
+                if (sphere.GetComponent<PerfectSphereTag>() != null)
+                {
+                    totalPoints += perfectSpherePoints;
+                }
+                else
+                {
+                    totalPoints += regularSpherePoints;
+                }
+            }
+        }
+
         StartCoroutine(MoveSpheresToCenterCoroutine());
+
+        return totalPoints;
     }
 
     private IEnumerator MoveSpheresToCenterCoroutine()
