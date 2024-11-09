@@ -7,7 +7,7 @@ public class PlayerParry : MonoBehaviour
     [Title("Inputs")]
     [SerializeField] InputActionReference parryInput;
     [Title("ParrySettings")]
-    [SerializeField] public float PerfectParryTime = 0.3f;
+    [SerializeField] public float perfectParryTime = 0.3f;
 
     [Title("ParryParametrs")]
     [ReadOnly] public float parryTime = 0f;
@@ -25,12 +25,13 @@ public class PlayerParry : MonoBehaviour
         if (parryInput.action.WasPressedThisFrame())
         {
             isParryState = true;
+            Debug.Log("ParryState");
             parryTime = 0f;
         }
-        
-        if (parryInput.action.WasReleasedThisFrame())
+        else if (parryInput.action.WasReleasedThisFrame())
         {
             isParryState = false;
+            Debug.Log("NormalState");
         }
     }
 
@@ -40,5 +41,10 @@ public class PlayerParry : MonoBehaviour
         {
             parryTime += Time.fixedDeltaTime;
         }
+    }
+
+    public void ParryCast(bool isPerfectParry)
+    {
+
     }
 }
