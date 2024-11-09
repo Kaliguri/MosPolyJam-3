@@ -24686,6 +24686,7 @@ MonoBehaviour:
   moveInput: {fileID: -8965345552860846459, guid: 4ab7b14a89ef0524e933f56df52e65a8, type: 3}
   dashInput: {fileID: -106870424074364867, guid: 4ab7b14a89ef0524e933f56df52e65a8, type: 3}
   trailRenderer: {fileID: 2102705453}
+  dashSound: {fileID: 11400000, guid: 15e31a4b6cd5d0a4aa710a19c613fdc2, type: 2}
   isDashing: 0
 --- !u!50 &2102705451
 Rigidbody2D:

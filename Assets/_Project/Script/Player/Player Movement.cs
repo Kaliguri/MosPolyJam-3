@@ -1,5 +1,6 @@
 using System.Collections;
 using Sirenix.OdinInspector;
+using Sonity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Title("GameObject Reference")]
     [SerializeField] TrailRenderer trailRenderer;
+
+    [SerializeField] SoundEvent dashSound;
 
 
     private Rigidbody2D rb2D => GetComponent<Rigidbody2D>();
@@ -88,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
         GetComponent<Collider2D>().enabled = false; 
         trailRenderer.emitting = true;
 
+        dashSound.Play2D();
         Instantiate(dashParticle, transform.position, transform.rotation);
         rb2D.linearVelocity = moveVector2 * dashPower;
 
