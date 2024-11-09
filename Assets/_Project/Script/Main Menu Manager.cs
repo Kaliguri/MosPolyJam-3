@@ -13,6 +13,14 @@ public class MainMenuManager : MonoBehaviour
         
     }
 
+    [SerializeField] string trainingScene;
+    public void StartTraining()
+    {
+        OffSounds();
+        Invoke("LoadTrainingScene", 0.3f);
+        
+    }
+
 
     public void ExitGame()
     {
@@ -25,6 +33,11 @@ public class MainMenuManager : MonoBehaviour
     }
 
     void LoadGameScene()
+    {
+        SceneManager.LoadScene(gameScene);
+    }
+
+    void LoadTrainingScene()
     {
         SceneManager.LoadScene(gameScene);
     }
