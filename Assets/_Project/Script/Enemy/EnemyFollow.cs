@@ -10,7 +10,7 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] float maxDistance = 5f;
 
     [Title("Target")]
-    [SerializeField] Transform player;
+    [SerializeField] Transform playerTransform;
 
     [Title("Projectile Settings")]
     [SerializeField] GameObject bulletPrefab;
@@ -25,35 +25,35 @@ public class EnemyFollow : MonoBehaviour
 
     private void Start()
     {
-        player = FindFirstObjectByType<PlayerMovement>().gameObject.transform;
+        playerTransform = FindFirstObjectByType<PlayerTag>().gameObject.transform;
     }
 
     private void FixedUpdate()
     {
-        FollowPlayer();
-        RotateTowardsPlayer();
-        if (attackPrepared) ShootAtPlayer();
+        FollowplayerTransform();
+        RotateTowardsplayerTransform();
+        if (attackPrepared) ShootAtplayerTransform();
     }
 
-    void FollowPlayer()
+    void FollowplayerTransform()
     {
-        float distance = Vector2.Distance(transform.position, player.position);
+        float distance = Vector2.Distance(transform.position, playerTransform.position);
 
         if (distance > maxDistance)
         {
-            MoveTowardsPlayer();
+            MoveTowardsplayerTransform();
         }
         else
         {
-            StartShootingAtPlayer();
+            StartShootingAtplayerTransform();
             if (distance < minDistance)
             {
-                MoveAwayFromPlayer();
+                MoveAwayFromplayerTransform();
             }
         }
     }
 
-    private void StartShootingAtPlayer()
+    private void StartShootingAtplayerTransform()
     {
         if (Time.time - lastShotTime >= fireRate)
         {
@@ -62,9 +62,9 @@ public class EnemyFollow : MonoBehaviour
     }
 
 
-    private void ShootAtPlayer()
+    private void ShootAtplayerTransform()
     {
-        Vector2 direction = (player.position - transform.position).normalized;
+        Vector2 direction = (playerTransform.position - transform.position).normalized;
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         bullet.transform.right = direction;
@@ -80,22 +80,22 @@ public class EnemyFollow : MonoBehaviour
         attackPrepared = false;
     }
 
-    void RotateTowardsPlayer()
+    void RotateTowardsplayerTransform()
     {
-        Vector2 direction = (player.position - transform.position).normalized;
+        Vector2 direction = (playerTransform.position - transform.position).normalized;
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
         
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
-    void MoveTowardsPlayer()
+    void MoveTowardsplayerTransform()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.fixedDeltaTime);
     }
 
-    void MoveAwayFromPlayer()
+    void MoveAwayFromplayerTransform()
     {
-        Vector2 direction = (transform.position - player.position).normalized;
-        transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + direction, moveSpeed * Time.deltaTime);
+        //Vector2 direction = (transform.position - playerTransform.position).normalized;
+        transform.position = -Vector2.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.fixedDeltaTime);
     }
 }

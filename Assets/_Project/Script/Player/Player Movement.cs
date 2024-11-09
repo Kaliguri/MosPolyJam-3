@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 lastPlatformPosition;
 
     private Rigidbody2D rb2D => GetComponent<Rigidbody2D>();
-    private Animator animator => GetComponent<Animator>();
+    private Animator animator => GetComponentInChildren<Animator>();
 
     private Vector2 moveVector2;
     private float currentSpeed = 0f;
