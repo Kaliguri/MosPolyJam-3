@@ -10,19 +10,20 @@ public class LevelManager : MonoBehaviour
     [Title("Arena")]
     [SerializeField] List<Arena> arenaList;
 
-    [Title("Settings")]
+    [Title("VFX")]
     [SerializeField] ParticleSystem spawnVFX;
 
-    public static LevelManager instance = null;
+    [Title("Settings")]
     [ReadOnly] public bool InTheArena = false;
     [ReadOnly] public int CurrentArenaID = -1;
-    [ReadOnly] private int currentWaveNumber = -1;
-    [ReadOnly] private int currentEnemyNumber = 0;
+    [ReadOnly] [SerializeField] int currentWaveNumber = -1;
+    [ReadOnly] [SerializeField] int currentEnemyNumber = 0;
 
 
     public static UnityEvent EnemyDeath = new();
     public static void SendEnemyDeath() {  EnemyDeath.Invoke(); }
 
+    public static LevelManager instance = null;
     void Awake()
     {
         instance = this;
