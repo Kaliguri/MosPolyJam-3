@@ -1,8 +1,4 @@
-using Sirenix.OdinInspector;
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
-using static Unity.Cinemachine.CinemachineFreeLookModifier;
 
 public class CombatMethods : MonoBehaviour
 {
@@ -21,14 +17,14 @@ public class CombatMethods : MonoBehaviour
 
         if (targetType.GetComponent<PlayerTag>() != null)
         {
-            /*FeelFeedbacksManager.instance.TakeDamage.PlayFeedbacks();
+            FeelFeedbacksManager.instance.TakeDamage.PlayFeedbacks();
 
-            if (targetType.GetComponent<HPController>().GetMaxHP() * FeelFeedbacksManager.instance.HPPercenForLowHP / 100 > targetType.GetComponent<HPController>().GetCurrentHP())
-                FeelFeedbacksManager.instance.ActiveLowHPImage();*/
+            if (targetType.GetComponent<HPController>().maxHP * FeelFeedbacksManager.instance.HPPercenForLowHP / 100 > targetType.GetComponent<HPController>().currentHP)
+            FeelFeedbacksManager.instance.ActiveLowHPImage();
         }
         else if (targetType.GetComponent<EnemyTag>() != null)
         {
-            //реакция на то что враг получил урон
+            
         }
     }
 }

@@ -11,7 +11,7 @@ public class PlayerHPBar : MonoBehaviour
     [SerializeField] Slider _secondarySlider;
     [SerializeField] Slider _primarySlider;
 
-    private float _maxHeatlh => FindFirstObjectByType<PlayerMovement>().gameObject.GetComponent<HPController>().MaxHP;
+    private float _maxHeatlh => FindFirstObjectByType<PlayerMovement>().gameObject.GetComponent<HPController>().maxHP;
     private float _currentHeatlh => FindFirstObjectByType<PlayerMovement>().gameObject.GetComponent<HPController>().currentHP;
     void Start()
     {
