@@ -91,7 +91,7 @@ public class EnemyFollow : MonoBehaviour
     }
     void MoveTowardsplayerTransform()
     {
-        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.fixedDeltaTime);
+        //transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.fixedDeltaTime);
     }
 
     void MoveAwayFromplayerTransform()
