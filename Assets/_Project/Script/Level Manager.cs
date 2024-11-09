@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using Unity.Mathematics;
@@ -7,17 +8,19 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
-    [Title("Arena")]
-    [SerializeField] List<Arena> arenaList;
-
     [Title("VFX")]
     [SerializeField] ParticleSystem spawnVFX;
 
     [Title("Settings")]
+
+    [SerializeField] float waitingTimeBeforeWave = 2f;
     [ReadOnly] public bool InTheArena = false;
     [ReadOnly] public int CurrentArenaID = -1;
     [ReadOnly] [SerializeField] int currentWaveNumber = -1;
     [ReadOnly] [SerializeField] int currentEnemyNumber = 0;
+
+    [Title("Arena")]
+    [SerializeField] List<Arena> arenaList;
 
 
     public static UnityEvent EnemyDeath = new();
@@ -36,7 +39,7 @@ public class LevelManager : MonoBehaviour
             CurrentArenaID ++;
             InTheArena = true;
             SetActiveForListGameObjects(arenaList[CurrentArenaID].DisableGameObjectsListForStartCombat, false); 
-            SpawnWave();
+            StartCoroutine(SpawnWave());
         }
         
     }
@@ -56,8 +59,10 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void SpawnWave()
+    IEnumerator SpawnWave()
     {
+        yield return new WaitForSeconds(waitingTimeBeforeWave);
+
         currentWaveNumber++;
 
         var availableWave = arenaList[CurrentArenaID].WaveCombat;
@@ -98,7 +103,7 @@ public class LevelManager : MonoBehaviour
 
         else
         {
-            SpawnWave();
+            StartCoroutine(SpawnWave());
         }
 
     }
