@@ -244,7 +244,7 @@ public class PlayerComboAttack : MonoBehaviour
     {
         float parryValue = 0;
         if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter() + defaultValue;
-        else Debug.Log("NormalAttack1");
+        else //Debug.Log("NormalAttack1");
 
         GameObject attack = attacksList[_comboStep - 1];
 
@@ -288,7 +288,7 @@ public class PlayerComboAttack : MonoBehaviour
     {
         float parryValue = 0;
         if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter() + defaultValue;
-        else Debug.Log("NormalAttack2");
+        else //Debug.Log("NormalAttack2");
 
         GameObject attack = attacksList[_comboStep - 1];
 
@@ -342,7 +342,7 @@ public class PlayerComboAttack : MonoBehaviour
     {
         float parryValue = 0;
         if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter() + defaultValue;
-        else Debug.Log("NormalAttack3");
+        else //Debug.Log("NormalAttack3");
 
         GameObject attack = attacksList[_comboStep - 1];
 
@@ -361,7 +361,7 @@ public class PlayerComboAttack : MonoBehaviour
 
     private IEnumerator SendAttack3Slices(int _comboStep, float parryValue)
     {
-        Debug.Log(attack3_StartSliceCount + parryValue * attack3_SliceCountIncrease);
+        //Debug.Log(attack3_StartSliceCount + parryValue * attack3_SliceCountIncrease);
         for (int i = 0; i < attack3_StartSliceCount + parryValue * attack3_SliceCountIncrease; i++)
         {
             attack3SliceList[i].SetActive(true);
@@ -410,7 +410,7 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void ResetCombo()
     {
-        Debug.Log("ResetCombo");
+        //Debug.Log("ResetCombo");
         comboStep = 0;
         inputBuffered = 0;
     }

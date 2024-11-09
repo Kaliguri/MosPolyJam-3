@@ -3,6 +3,8 @@ using Sirenix.OdinInspector;
 using Sonity;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
+using UnityEngine.WSA;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -41,8 +43,6 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        //CheckIfOutsidePlatform();
-
         ReadInputActions();
 
         if (GetComponent<PlayerComboAttack>().isAttacking || PlayerParry.instance.isParryState) moveSpeed = 0f;
@@ -60,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        lastPlatformPosition = transform.position;
         currentSpeed = moveSpeed;
         dashCurrentCount = dashMaxCount;
     }
@@ -90,31 +91,18 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckIfOutsidePlatform()
     {
-        bool isOnPlatform = Physics2D.OverlapPoint(transform.position, platformLayerMask);
+        foreach (Tilemap tilemap in TileMapController.instance.tilemapList)
+        {
+            Vector3Int tile = tilemap.WorldToCell(transform.position);
+            if (tilemap.HasTile(tile)) return;
+        }
 
-        if (isOnPlatform)
-        {
-            lastPlatformPosition = transform.position;
-        }
-        else
-        {
-            HandleFallOffPlatform();
-        }
+        HandleFallOffPlatform();
     }
 
     void HandleFallOffPlatform()
     {
-        /*rb2D.linearVelocity = Vector2.zero;
-        canDash = false;
-        moveVector2 = Vector2.zero;
-
-        animator.SetTrigger("FallOff");
-
-        //GetComponent<PlayerHealth>().TakeDamage(10);
-
-        transform.position = lastPlatformPosition;
-
-        canDash = true;*/
+        Debug.Log("YouFall");
     }
 
     IEnumerator Dash()
@@ -123,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
 
         TrainingManager.SendTrainingMissionComplete(0);
 
+        lastPlatformPosition = transform.position;
         canDash = false;
         isDashing = true;
         GetComponent<Collider2D>().enabled = false; 
@@ -134,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
 
         yield return new WaitForSeconds(dashTime);
 
+        CheckIfOutsidePlatform();
         isDashing = false;
         GetComponent<Collider2D>().enabled = true;
         trailRenderer.emitting = false;
@@ -141,8 +131,6 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
 
         canDash = true;
-
-
     }
 }
 

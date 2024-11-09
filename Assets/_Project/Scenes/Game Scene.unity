@@ -25826,6 +25826,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7220349939094312058, guid: f5b7343ffcae36a4ba46cea977b1d191, type: 3}
+      propertyPath: tilemapList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220349939094312058, guid: f5b7343ffcae36a4ba46cea977b1d191, type: 3}
+      propertyPath: 'tilemapList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 204699785}
+    - target: {fileID: 7220349939094312058, guid: f5b7343ffcae36a4ba46cea977b1d191, type: 3}
+      propertyPath: 'tilemapList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 369119952}
+    - target: {fileID: 7220349939094312058, guid: f5b7343ffcae36a4ba46cea977b1d191, type: 3}
+      propertyPath: 'tilemapList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2054347845}
+    - target: {fileID: 7220349939094312058, guid: f5b7343ffcae36a4ba46cea977b1d191, type: 3}
+      propertyPath: 'tilemapList.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1348769772}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

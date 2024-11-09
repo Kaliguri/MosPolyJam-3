@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6047960063857185995}
   - component: {fileID: 5557936936466310404}
   - component: {fileID: 7497900597774657432}
+  - component: {fileID: 7220349939094312058}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -61,3 +62,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageResistOnParry: 0.4
+--- !u!114 &7220349939094312058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2253177717880665110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a8382f62eaa2c40a628dd68d9c2393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

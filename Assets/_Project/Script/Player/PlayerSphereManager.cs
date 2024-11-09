@@ -130,7 +130,7 @@ public class PlayerSphereManager : MonoBehaviour
 
             orbitRadius = Mathf.Max(0, orbitRadius - moveToCenterSpeed * Time.deltaTime);
 
-            Debug.Log(orbitRadius);
+            //Debug.Log(orbitRadius);
 
             yield return null;
         }
