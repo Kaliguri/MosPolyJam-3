@@ -1679,6 +1679,7 @@ GameObject:
   - component: {fileID: 937511784}
   - component: {fileID: 937511785}
   - component: {fileID: 937511786}
+  - component: {fileID: 937511787}
   m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
@@ -1697,7 +1698,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2481696194796001531}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1778,6 +1779,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &937511787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937511783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33f320a4a8f46340a22d40a5b973cae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &947053330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25225,6 +25238,7 @@ GameObject:
   - component: {fileID: 2102705448}
   - component: {fileID: 2102705455}
   - component: {fileID: 2102705456}
+  - component: {fileID: 2102705458}
   - component: {fileID: 2102705457}
   - component: {fileID: 2102705449}
   - component: {fileID: 2102705451}
@@ -25526,6 +25540,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c22bc64ec6ad054bb2906b08ac7b903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2102705458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102705446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 860145a6e1be5054ca88d5c3063b36bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parryInput: {fileID: -7850047859049867060, guid: 4ab7b14a89ef0524e933f56df52e65a8, type: 3}
+  PerfectParryTime: 0.3
+  parryTime: 0
+  isParryState: 0
 --- !u!1 &2114912635
 GameObject:
   m_ObjectHideFlags: 0
@@ -27623,7 +27653,6 @@ MonoBehaviour:
   fireRate: 1
   hasKickback: 1
   recoilForce: 0.5
-  attackPrepared: 0
 --- !u!1001 &3111187667702991211
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -20,9 +20,12 @@ public class EnemyFollow : MonoBehaviour
     [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;       
 
     private float lastShotTime = 0f;
-    public bool attackPrepared = false;
-    private Animator animator => GetComponent<Animator>();
+    private Animator animator => GetComponentInChildren<Animator>();
 
+    void Awake()
+    {
+        AnimatorExtension.AttackPrepared.AddListener(ShootAtplayerTransform);
+    }
     private void Start()
     {
         playerTransform = FindFirstObjectByType<PlayerTag>().gameObject.transform;
@@ -32,7 +35,6 @@ public class EnemyFollow : MonoBehaviour
     {
         FollowplayerTransform();
         RotateTowardsplayerTransform();
-        if (attackPrepared) ShootAtplayerTransform();
     }
 
     void FollowplayerTransform()
@@ -62,7 +64,7 @@ public class EnemyFollow : MonoBehaviour
     }
 
 
-    private void ShootAtplayerTransform()
+    public void ShootAtplayerTransform()
     {
         Vector2 direction = (playerTransform.position - transform.position).normalized;
 
@@ -77,7 +79,6 @@ public class EnemyFollow : MonoBehaviour
 
         lastShotTime = Time.time;
         animator.SetBool("isPreparingAttack", false);
-        attackPrepared = false;
     }
 
     void RotateTowardsplayerTransform()
