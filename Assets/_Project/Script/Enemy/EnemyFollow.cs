@@ -6,6 +6,7 @@ public class EnemyFollow : MonoBehaviour
 {
     [Title("Follow Settings")]
     [SerializeField] float moveSpeed = 3f;
+    //[SerializeField] float rotationSpeed = 100f;
     [SerializeField] float minDistance = 2f;
     [SerializeField] float maxDistance = 5f;
 
@@ -67,9 +68,9 @@ public class EnemyFollow : MonoBehaviour
     public void ShootAtplayerTransform()
     {
         Vector2 direction = (playerTransform.position - transform.position).normalized;
-
+        Debug.Log("SpawnSpear");
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        bullet.transform.right = direction;
+        bullet.transform.up = direction;
 
         if (hasKickback)
         {
@@ -84,19 +85,30 @@ public class EnemyFollow : MonoBehaviour
     void RotateTowardsplayerTransform()
     {
         Vector2 direction = (playerTransform.position - transform.position).normalized;
-
+         
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
         
         transform.rotation = Quaternion.Euler(0, 0, angle);
+
+
+        /*float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+
+        float currentAngle = transform.rotation.eulerAngles.z;
+
+        float newAngle = Mathf.MoveTowardsAngle(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
+
+        transform.rotation = Quaternion.Euler(0, 0, newAngle);*/
     }
+
     void MoveTowardsplayerTransform()
     {
-        //transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.fixedDeltaTime);
+        Vector2 direction = (-transform.position + playerTransform.position).normalized;
+        transform.position = Vector2.MoveTowards(transform.position, transform.position + (Vector3)direction, moveSpeed * Time.fixedDeltaTime);
     }
 
     void MoveAwayFromplayerTransform()
     {
-        //Vector2 direction = (transform.position - playerTransform.position).normalized;
-        transform.position = -Vector2.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.fixedDeltaTime);
+        Vector2 direction = (transform.position - playerTransform.position).normalized;
+        transform.position = Vector2.MoveTowards(transform.position, transform.position + (Vector3)direction, moveSpeed * Time.fixedDeltaTime);
     }
 }
