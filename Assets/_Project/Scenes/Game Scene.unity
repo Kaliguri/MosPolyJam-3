@@ -711,10 +711,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2021177341400582526, guid: 4102090bb0a526f4391c39d618b44c0e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4102090bb0a526f4391c39d618b44c0e, type: 3}
 --- !u!4 &359495487 stripped
 Transform:
@@ -27861,8 +27858,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.3019608, g: 0.44313726, b: 0.8117647, a: 1}
-      key1: {r: 0.3019608, g: 0.44313726, b: 0.8117647, a: 0}
+      key0: {r: 0.21176471, g: 0.9764706, b: 1, a: 1}
+      key1: {r: 0.21176471, g: 0.9764706, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -27995,8 +27992,8 @@ MonoBehaviour:
   parryTime: 0
   isParryState: 0
   parryShield: {fileID: 1734017062}
-  PerfectColor: {r: 1, g: 1, b: 1, a: 0.09803922}
-  NormalColor: {r: 0.21176471, g: 0.9764706, b: 1, a: 0.15686275}
+  PerfectColor: {r: 0.21176471, g: 0.9764706, b: 1, a: 0.15686275}
+  NormalColor: {r: 1, g: 1, b: 1, a: 0.078431375}
   normalParryVFX: {fileID: 1343478609204220344, guid: ff643b9add0ce494cae071ab3a3eb578, type: 3}
   perfectParryVFX: {fileID: 6774245622844870213, guid: 735fec390e0e8cb479c2fc86112d6b68, type: 3}
 --- !u!114 &2102705459

@@ -38,7 +38,7 @@ public class PlayerParry : MonoBehaviour
         if (instance == null) instance = this;
 
         SetPerfectColorForShield();
-        parryShield.SetActive(false);
+        ShieldActiveOrDeactive(false);
     }
 
     private void Update()
@@ -50,7 +50,7 @@ public class PlayerParry : MonoBehaviour
     void ParryActivate()
     {
         isParryState = true;
-        parryShield.SetActive(true);
+        ShieldActiveOrDeactive(true);
         SetPerfectColorForShield();
         parryTime = 0f;
         //Debug.Log("ParryState");
@@ -60,8 +60,14 @@ public class PlayerParry : MonoBehaviour
     void ParryDeactivate()
     {
         isParryState = false;
-        parryShield.SetActive(false);
+        ShieldActiveOrDeactive(false);
         //Debug.Log("NormalState");
+    }
+
+    void ShieldActiveOrDeactive(bool activeValue)
+    {
+        if (activeValue) parryShield.transform.localPosition = new Vector3(0,0,0);
+        else             parryShield.transform.localPosition = new Vector3(9999,9999,9999);
     }
 
     private void FixedUpdate()
