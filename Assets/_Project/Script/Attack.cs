@@ -8,11 +8,6 @@ public class Attack : MonoBehaviour
 
     private float damage = 10f;
 
-    private void OnEnable()
-    {
-        Debug.Log("Awake" + gameObject.name);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if ((collision.gameObject.GetComponent<EnemyTag>() == null && !isPlayerAttack) || (collision.gameObject.GetComponent<PlayerTag>() == null && isPlayerAttack)) CombatMethods.instance.ApplayDamage(damage, collision.gameObject);

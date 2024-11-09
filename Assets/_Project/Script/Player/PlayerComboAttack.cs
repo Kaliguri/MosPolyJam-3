@@ -22,21 +22,31 @@ public class PlayerComboAttack : MonoBehaviour
     [Title("Attack Parameters")]
     [Header("Attack 1")]
     [SerializeField] private List<float> attacks_Damage = new List<float> { 10f, 20f, 30f };
+    [SerializeField] private float attack1_DamageIncrease = 1f;
+    [SerializeField] private float attack1_ScaleYIncrease = 1f;
+    [SerializeField] private float attack1_ScaleXIncrease = 1f;
     [SerializeField] private float attack1_Distance = 1f;
     [SerializeField] private float attack1_MoveDistance = 5f;
     [SerializeField] private float attack1_MoveSpeed = 10f;
 
     [Header("Attack 2")]
+    [SerializeField] private float attack2_DamageIncrease = 1f;
+    [SerializeField] private float attack2_ScaleXIncrease = 1f;
+    [SerializeField] private float attack2_ScaleYIncrease = 1f;
+    [SerializeField] private float attack2_AngleIncrease = 1f;
     [SerializeField] private float attack2_MoveSpeed = 10f;
-    [SerializeField] private float attack2_Angle = 30f;
+    [SerializeField] private float attack2_StartAngle = 30f;
 
     [Header("Attack 3")]
     [SerializeField] private GameObject attack3_Object;
+    [SerializeField] private float attack3_TimeBetweenSendSliceDescease = 1f;
+    [SerializeField] private float attack3_SliceCountIncrease = 1f;
     [SerializeField] private float attack3_Distance = 1f;
     [SerializeField] private float attack3_MoveSpeed = 10f;
     [SerializeField] private float attack3_MoveDistance = 2f;
     [SerializeField] private float attack3_TimeBetweenSendSlice = 0.5f;
-    [SerializeField] private int attack3_SliceCount = 4;
+    [SerializeField] private int attack3_StartSliceCount = 5;
+    [SerializeField] private int attack3_MaxSliceCount = 50;
     [SerializeField] private float attack3_MaxOffset = 0.5f;
 
     [Title("Sounds")]
@@ -50,6 +60,10 @@ public class PlayerComboAttack : MonoBehaviour
 
 
 
+    private float attack1_StartScaleX;
+    private float attack1_StartScaleY;
+    private float attack2_StartScaleX;
+    private float attack2_StartScaleY;
     private float attackPressTime = 0f;
     private bool isLongPress = false;
     private int inputBuffered = 0;
@@ -73,6 +87,10 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Start()
     {
+        Initialise1Attack();
+
+        Initialise2Attack();
+
         Initialise3Attack();
 
         SetDamage();
@@ -97,27 +115,42 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isAttacking = ChechIfIsAttacking();
-
-        if (attackPressed && !PlayerParry.instance.isParryState)
+        if (!attackInput.action.IsPressed())
         {
-            attackPressed = false;
+            isAttacking = ChechIfIsAttacking();
 
-            ProcessAttackInput(isLongPress);
-            isLongPress = false;
-        }
+            if (attackPressed && !PlayerParry.instance.isParryState)
+            {
+                attackPressed = false;
 
-        if (!isAttacking && inputBuffered > 0)
-        {
-            inputBuffered--;
-            ProcessAttackInput(isLongPress);
-            isLongPress = false;
+                ProcessAttackInput(isLongPress);
+                isLongPress = false;
+            }
+
+            if (!isAttacking && inputBuffered > 0)
+            {
+                inputBuffered--;
+                ProcessAttackInput(isLongPress);
+                isLongPress = false;
+            }
         }
+    }
+
+    private void Initialise1Attack()
+    {
+        attack1_StartScaleX = attacksList[0].transform.localScale.x;
+        attack1_StartScaleY = attacksList[0].transform.localScale.y;
+    }
+
+    private void Initialise2Attack()
+    {
+        attack2_StartScaleX = attacksList[1].transform.localScale.x;
+        attack2_StartScaleY = attacksList[1].transform.localScale.y;
     }
 
     private void Initialise3Attack()
     {
-        for (int i = 0; i < attack3_SliceCount; i++)
+        for (int i = 0; i < attack3_MaxSliceCount; i++)
         {
             GameObject newAttackObject = Instantiate(attack3_Object);
             newAttackObject.transform.SetParent(attacksList[2].transform, false);
@@ -160,7 +193,6 @@ public class PlayerComboAttack : MonoBehaviour
         lastClickTime = Time.time;
     }
 
-
     private bool ChechIfIsAttacking()
     {
         for (int i = 0; i < attacksList.Count; i++)
@@ -196,8 +228,12 @@ public class PlayerComboAttack : MonoBehaviour
     {
         float parryValue = 1;
         if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter();
+        else Debug.Log("NormalAttack1");
 
         GameObject attack = attacksList[_comboStep - 1];
+
+        attack.GetComponent<Attack>().SetDamage(attacks_Damage[0] + attack1_DamageIncrease * parryValue);
+        attack.transform.localScale = new Vector3(attack1_StartScaleX * attack1_ScaleXIncrease * parryValue, attack1_StartScaleY * attack1_ScaleYIncrease * parryValue, 1);
 
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorPosition.z = transform.position.z; 
@@ -232,13 +268,15 @@ public class PlayerComboAttack : MonoBehaviour
         attack.SetActive(false);
     }
 
-
     private void Attack2(int _comboStep, bool _isLongPress)
     {
         float parryValue = 1;
         if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter();
 
         GameObject attack = attacksList[_comboStep - 1];
+
+        attack.GetComponent<Attack>().SetDamage(attacks_Damage[1] + attack1_DamageIncrease * parryValue);
+        attack.transform.localScale = new Vector3(attack2_StartScaleX * attack2_ScaleXIncrease * parryValue, attack2_StartScaleY * attack2_ScaleYIncrease * parryValue, 1);
 
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorPosition.z = transform.position.z;
@@ -252,7 +290,7 @@ public class PlayerComboAttack : MonoBehaviour
         attack2Release.Play2D();
         Instantiate(attackReleaseVFX, gameObject.transform.position, attack.transform.rotation);
 
-        attack.transform.rotation = Quaternion.Euler(0, 0, attack.transform.rotation.eulerAngles.z - attack2_Angle);
+        attack.transform.rotation = Quaternion.Euler(0, 0, attack.transform.rotation.eulerAngles.z - (attack2_StartAngle + parryValue * attack2_AngleIncrease));
         attack2StartAngleZ = attack.transform.rotation.eulerAngles.z;
         attack2InitialOffset = attack.transform.position - transform.position;
 
@@ -262,7 +300,7 @@ public class PlayerComboAttack : MonoBehaviour
     private IEnumerator SwingAttack2Sword(GameObject attack, float parryValue)
     {
         float startAngle = attack2StartAngleZ;
-        float endAngle = attack2StartAngleZ + 2 * attack2_Angle;
+        float endAngle = attack2StartAngleZ + 2 * (attack2_StartAngle + parryValue * attack2_AngleIncrease);
 
         float elapsedTime = 0f;
 
@@ -305,22 +343,22 @@ public class PlayerComboAttack : MonoBehaviour
 
     private IEnumerator SendAttack3Slices(int _comboStep, float parryValue)
     {
-        for (int i = 0; i < attack3SliceList.Count; i++)
+        for (int i = 0; i < attack3_StartSliceCount + parryValue * attack3_SliceCountIncrease; i++)
         {
             attack3SliceList[i].SetActive(true);
             float randomOffset = UnityEngine.Random.Range(-attack3_MaxOffset, attack3_MaxOffset);
             attack3SliceList[i].transform.position += attack3SliceList[i].transform.right * randomOffset;
 
             Vector3 attack3TargetPosition = attack3SliceList[i].transform.position + attack3SliceList[i].transform.up * attack3_MoveDistance;
-            StartCoroutine(MoveAttack3Forward(attack3SliceList[i], attack3TargetPosition, i == attack3SliceList.Count - 1, parryValue));
+            StartCoroutine(MoveAttack3Forward(attack3SliceList[i], attack3TargetPosition, i == attack3SliceList.Count - 1 || i + 1 == attack3_MaxSliceCount, parryValue));
 
             attack3Release.Play2D();
             Instantiate(attackReleaseVFX, gameObject.transform.position, attack3SliceList[i].transform.rotation);
 
             float elapsed = 0f;
-            while (elapsed < attack3_TimeBetweenSendSlice)
+            while (elapsed < attack3_TimeBetweenSendSlice - parryValue * attack3_TimeBetweenSendSliceDescease)
             {
-                if (GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState)
+                if (GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState || i + 1 == attack3_MaxSliceCount)
                 {
                     yield break;
                 }

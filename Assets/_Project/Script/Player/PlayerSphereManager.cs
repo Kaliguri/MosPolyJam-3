@@ -79,18 +79,20 @@ public class PlayerSphereManager : MonoBehaviour
     public float PullSpheresToCenter()
     {
         float totalPoints = 0;
-
-        foreach (GameObject sphere in sphereList)
+        foreach (var _sphereList in new List<List<GameObject>> { sphereList, perfectSphereList })
         {
-            if (sphere.activeSelf)
+            foreach (GameObject sphere in _sphereList)
             {
-                if (sphere.GetComponent<PerfectSphereTag>() != null)
+                if (sphere.activeSelf)
                 {
-                    totalPoints += perfectSpherePoints;
-                }
-                else
-                {
-                    totalPoints += regularSpherePoints;
+                    if (sphere.GetComponent<PerfectSphereTag>() != null)
+                    {
+                        totalPoints += perfectSpherePoints;
+                    }
+                    else
+                    {
+                        totalPoints += regularSpherePoints;
+                    }
                 }
             }
         }
@@ -108,9 +110,9 @@ public class PlayerSphereManager : MonoBehaviour
         {
             allReachedCenter = true;
 
-            foreach (var sphereList in new List<List<GameObject>> { sphereList, perfectSphereList })
+            foreach (var _sphereList in new List<List<GameObject>> { sphereList, perfectSphereList })
             {
-                foreach (GameObject sphere in sphereList)
+                foreach (GameObject sphere in _sphereList)
                 {
                     if (sphere.activeSelf)
                     {
