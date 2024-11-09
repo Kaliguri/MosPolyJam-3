@@ -25755,7 +25755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1734017063
 Transform:
   m_ObjectHideFlags: 0
@@ -25816,7 +25816,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 20
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.09803922}
+  m_Color: {r: 0.21176471, g: 0.9764706, b: 1, a: 0.15686275}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -27625,10 +27625,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parryInput: {fileID: -7850047859049867060, guid: 4ab7b14a89ef0524e933f56df52e65a8, type: 3}
-  perfectParryTime: 0.3
+  perfectParryTime: 0.5
   parryTime: 0
   isParryState: 0
-  parryShield: {fileID: 0}
+  parryShield: {fileID: 1734017062}
+  PerfectColor: {r: 1, g: 1, b: 1, a: 0.09803922}
+  NormalColor: {r: 0.21176471, g: 0.9764706, b: 1, a: 0.15686275}
   normalParryVFX: {fileID: 0}
   perfectParryVFX: {fileID: 0}
 --- !u!114 &2102705459

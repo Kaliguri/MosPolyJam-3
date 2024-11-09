@@ -10,7 +10,8 @@ public class PlayerParry : MonoBehaviour
     [SerializeField] InputActionReference parryInput;
 
     [Title("ParrySettings")]
-    [SerializeField] public float perfectParryTime = 0.3f;
+    [SerializeField] public float perfectParryTime = 0.5f;
+
 
     [Title("Read Only")]
     [ReadOnly] public float parryTime = 0f;
@@ -18,6 +19,10 @@ public class PlayerParry : MonoBehaviour
 
     [Title("GameObject Reference")]
     [SerializeField] GameObject parryShield;
+
+    [Title("Colors for Shield")]
+    [SerializeField] Color PerfectColor;
+    [SerializeField] Color NormalColor;
 
     [Title("VFX")]
     [SerializeField] ParticleSystem normalParryVFX;
@@ -31,6 +36,8 @@ public class PlayerParry : MonoBehaviour
     private void Awake()
     {
         if (instance == null) instance = this;
+
+        SetPerfectColorForShield();
         parryShield.SetActive(false);
     }
 
@@ -44,6 +51,7 @@ public class PlayerParry : MonoBehaviour
     {
         isParryState = true;
         parryShield.SetActive(true);
+        SetPerfectColorForShield();
         parryTime = 0f;
         //Debug.Log("ParryState");
 
@@ -75,5 +83,16 @@ public class PlayerParry : MonoBehaviour
         {
             Instantiate(normalParryVFX, parryPosition, quaternion.identity);
         }
+    }
+
+    void SetPerfectColorForShield()
+    {
+        parryShield.GetComponent<SpriteRenderer>().color = PerfectColor;
+        Invoke("SetNormalColorForShield", perfectParryTime);
+    }
+
+    void SetNormalColorForShield()
+    {
+        parryShield.GetComponent<SpriteRenderer>().color = NormalColor;
     }
 }
