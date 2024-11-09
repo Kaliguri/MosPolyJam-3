@@ -3681,30 +3681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 825b74a6b0f4f934d8b8a561475e943d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arenaList:
-  - combatCount: 3
-    DisableGameObjectsListForStartCombat:
-    - {fileID: 2063342723}
-    EnableGameObjectsListAfterCombat:
-    - {fileID: 936289113}
-    SpawnAreaListCombat:
-    - {fileID: 652100081}
-    - {fileID: 1293965826}
-    - {fileID: 725089111}
-    WaveCombat:
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-  spawnVFX: {fileID: 7838741906297169001, guid: bf3db642b6692e6488392dde7ad4a66c, type: 3}
+  arenaList: []
+  spawnVFX: {fileID: 0}
   InTheArena: 0
 --- !u!1 &1186713957
 GameObject:
@@ -27506,17 +27484,27 @@ MonoBehaviour:
   - 10
   - 15
   - 5
+  attack1_DamageIncrease: 1
+  attack1_ScaleYIncrease: 1
+  attack1_ScaleXIncrease: 1
   attack1_Distance: 1
   attack1_MoveDistance: 2
   attack1_MoveSpeed: 40
+  attack2_DamageIncrease: 1
+  attack2_ScaleXIncrease: 1
+  attack2_ScaleYIncrease: 1
+  attack2_AngleIncrease: 5
   attack2_MoveSpeed: 35
-  attack2_Angle: 90
+  attack2_StartAngle: 30
   attack3_Object: {fileID: 8137713491115293191, guid: bcb055436faff60499ae96468b371231, type: 3}
+  attack3_TimeBetweenSendSliceDescease: 0.1
+  attack3_SliceCountIncrease: 1
   attack3_Distance: 1
   attack3_MoveSpeed: 25
   attack3_MoveDistance: 2
   attack3_TimeBetweenSendSlice: 0.1
-  attack3_SliceCount: 5
+  attack3_StartSliceCount: 5
+  attack3_MaxSliceCount: 50
   attack3_MaxOffset: 0.7
   attack1Release: {fileID: 11400000, guid: b5526f3f535cb9b4882d40d1b5f6ce1d, type: 2}
   attack2Release: {fileID: 11400000, guid: b5526f3f535cb9b4882d40d1b5f6ce1d, type: 2}
@@ -27552,6 +27540,9 @@ MonoBehaviour:
   perfectParryTime: 0.3
   parryTime: 0
   isParryState: 0
+  parryShield: {fileID: 0}
+  normalParryVFX: {fileID: 0}
+  perfectParryVFX: {fileID: 0}
 --- !u!114 &2102705459
 MonoBehaviour:
   m_ObjectHideFlags: 0
