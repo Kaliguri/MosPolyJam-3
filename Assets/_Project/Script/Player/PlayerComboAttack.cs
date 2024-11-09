@@ -39,7 +39,7 @@ public class PlayerComboAttack : MonoBehaviour
 
     [Header("Attack 3")]
     [SerializeField] private GameObject attack3_Object;
-    [SerializeField] private float attack3_TimeBetweenSendSliceDescease = 1f;
+    [SerializeField] private float attack3_TimeBetweenSendSliceDesceasePercent = 1f;
     [SerializeField] private float attack3_SliceCountIncrease = 1f;
     [SerializeField] private float attack3_Distance = 1f;
     [SerializeField] private float attack3_MoveSpeed = 10f;
@@ -62,17 +62,21 @@ public class PlayerComboAttack : MonoBehaviour
 
     private float attack1_StartScaleX;
     private float attack1_StartScaleY;
+    private Vector3 attack1TargetPosition;
     private float attack2_StartScaleX;
     private float attack2_StartScaleY;
+    private Vector3 attack2InitialOffset;
+    private float attack2StartAngleZ = 0f;
+
     private float attackPressTime = 0f;
     private bool isLongPress = false;
     private int inputBuffered = 0;
-    private Vector3 attack1TargetPosition;
-    private float attack2StartAngleZ = 0f;
-    private Vector3 attack2InitialOffset;
+    private bool attackPressed;
+    private bool attackPreparation = false;
+
+    private float defaultValue = 1f;
     private float lastClickTime = 0f;
     private int comboStep = 0;
-    private bool attackPressed;
 
     [Title("ReadonlyParametrs")]
     [ReadOnly] public bool attacking = false;
@@ -98,17 +102,29 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Update()
     {
-        if (attackInput.action.WasPressedThisFrame() && !PlayerParry.instance.isParryState)
+        if (attackInput.action.WasPressedThisFrame() && !isLongPress)
         {
-            attackPressed = true;
             attackPressTime = Time.time;
+            attackPreparation = true;
+        }
+
+
+        if (attackInput.action.WasReleasedThisFrame() && !PlayerParry.instance.isParryState && Time.time - attackPressTime < longPressThreshold)
+        {
+            if (attackPressed) inputBuffered++;
+            else attackPressed = true;
+            attackPreparation = false;
         }
 
         if (attackInput.action.IsPressed())
         {
-            if (Time.time - attackPressTime >= longPressThreshold)
+            if (Time.time - attackPressTime >= longPressThreshold && attackPreparation)
             {
                 isLongPress = true;
+                attackPreparation = false;
+
+                if (attackPressed) inputBuffered++;
+                else attackPressed = true;
             }
         }
     }
@@ -117,20 +133,20 @@ public class PlayerComboAttack : MonoBehaviour
     {
         isAttacking = ChechIfIsAttacking();
 
-        if (attackPressed && !PlayerParry.instance.isParryState)
+        if (!isAttacking && attackPressed && !PlayerParry.instance.isParryState)
         {
             attackPressed = false;
-
             ProcessAttackInput(isLongPress);
             isLongPress = false;
         }
-
-        if (!isAttacking && inputBuffered > 0)
+        else if (!isAttacking && inputBuffered > 0 && !PlayerParry.instance.isParryState)
         {
             inputBuffered--;
             ProcessAttackInput(isLongPress);
             isLongPress = false;
         }
+
+        if (Time.time - lastClickTime > timeBetweenAttacksInCombo && comboStep != 0) ResetCombo();
     }
 
     private void Initialise1Attack()
@@ -175,11 +191,11 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void ProcessAttackInput(bool _isLongPress)
     {
-        if ((Time.time - lastClickTime <= timeBetweenAttacksInCombo && comboStep != 0) || comboStep == 0)
+        if (comboStep < 4)
         {
             comboStep++;
         }
-        else if (Time.time - lastClickTime > timeBetweenAttacksInCombo && comboStep != 0)
+        else
         {
             comboStep = 1;
             inputBuffered = 0;
@@ -223,14 +239,14 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Attack1(int _comboStep, bool _isLongPress)
     {
-        float parryValue = 1;
-        if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter();
+        float parryValue = 0;
+        if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter() + defaultValue;
         else Debug.Log("NormalAttack1");
 
         GameObject attack = attacksList[_comboStep - 1];
 
         attack.GetComponent<Attack>().SetDamage(attacks_Damage[0] + attack1_DamageIncrease * parryValue);
-        attack.transform.localScale = new Vector3(attack1_StartScaleX * attack1_ScaleXIncrease * parryValue, attack1_StartScaleY * attack1_ScaleYIncrease * parryValue, 1);
+        attack.transform.localScale = new Vector3(attack1_StartScaleX + attack1_ScaleXIncrease * parryValue, attack1_StartScaleY + attack1_ScaleYIncrease * parryValue, 1);
 
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorPosition.z = transform.position.z; 
@@ -267,14 +283,14 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Attack2(int _comboStep, bool _isLongPress)
     {
-        float parryValue = 1;
-        if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter();
+        float parryValue = 0;
+        if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter() + defaultValue;
         else Debug.Log("NormalAttack2");
 
         GameObject attack = attacksList[_comboStep - 1];
 
-        attack.GetComponentInChildren<Attack>().SetDamage(attacks_Damage[1] + attack1_DamageIncrease * parryValue);
-        attack.transform.localScale = new Vector3(attack2_StartScaleX * attack2_ScaleXIncrease * parryValue, attack2_StartScaleY * attack2_ScaleYIncrease * parryValue, 1);
+        attack.GetComponentInChildren<Attack>().SetDamage(attacks_Damage[1] + attack2_DamageIncrease * parryValue);
+        attack.transform.localScale = new Vector3(attack2_StartScaleX + attack2_ScaleXIncrease * parryValue, attack2_StartScaleY + attack2_ScaleYIncrease * parryValue, 1);
 
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorPosition.z = transform.position.z;
@@ -321,8 +337,8 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Attack3(int _comboStep, bool _isLongPress)
     {
-        float parryValue = 1;
-        if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter();
+        float parryValue = 0;
+        if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter() + defaultValue;
         else Debug.Log("NormalAttack3");
 
         GameObject attack = attacksList[_comboStep - 1];
@@ -342,6 +358,7 @@ public class PlayerComboAttack : MonoBehaviour
 
     private IEnumerator SendAttack3Slices(int _comboStep, float parryValue)
     {
+        Debug.Log(attack3_StartSliceCount + parryValue * attack3_SliceCountIncrease);
         for (int i = 0; i < attack3_StartSliceCount + parryValue * attack3_SliceCountIncrease; i++)
         {
             attack3SliceList[i].SetActive(true);
@@ -349,15 +366,17 @@ public class PlayerComboAttack : MonoBehaviour
             attack3SliceList[i].transform.position += attack3SliceList[i].transform.right * randomOffset;
 
             Vector3 attack3TargetPosition = attack3SliceList[i].transform.position + attack3SliceList[i].transform.up * attack3_MoveDistance;
-            StartCoroutine(MoveAttack3Forward(attack3SliceList[i], attack3TargetPosition, i == attack3SliceList.Count - 1 || i + 1 == attack3_MaxSliceCount, parryValue));
+            StartCoroutine(MoveAttack3Forward(attack3SliceList[i], attack3TargetPosition, i >= attack3_StartSliceCount + parryValue * attack3_SliceCountIncrease - 1 || i + 1 == attack3_MaxSliceCount, parryValue));
 
             attack3Release.Play2D();
             Instantiate(attackReleaseVFX, gameObject.transform.position, attack3SliceList[i].transform.rotation);
 
             float elapsed = 0f;
-            while (elapsed < attack3_TimeBetweenSendSlice - parryValue * attack3_TimeBetweenSendSliceDescease)
+            float percent = parryValue * (1 - attack3_TimeBetweenSendSliceDesceasePercent);
+            float timeBetweenSendSlice = attack3_TimeBetweenSendSlice * (1 - percent);
+            while (elapsed < timeBetweenSendSlice)
             {
-                if (GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState || i + 1 == attack3_MaxSliceCount)
+                if (GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState || i + 1 >= attack3_MaxSliceCount)
                 {
                     yield break;
                 }
@@ -366,7 +385,6 @@ public class PlayerComboAttack : MonoBehaviour
             }
         }
     }
-
 
     private IEnumerator MoveAttack3Forward(GameObject attack, Vector3 attack3TargetPosition, bool isLast, float parryValue)
     {
@@ -389,6 +407,7 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void ResetCombo()
     {
+        Debug.Log("ResetCombo");
         comboStep = 0;
         inputBuffered = 0;
     }
