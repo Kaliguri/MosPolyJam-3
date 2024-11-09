@@ -41,8 +41,8 @@ public class PlayerMovement : MonoBehaviour
     {
         ReadInputActions();
 
-        if (GetComponent<PlayerComboAttack>().isAttacking) moveSpeed = currentSpeed;
-        else moveSpeed = 0f;
+        if (GetComponent<PlayerComboAttack>().isAttacking) moveSpeed = 0f;
+        else moveSpeed = currentSpeed;
 
 
         Move();

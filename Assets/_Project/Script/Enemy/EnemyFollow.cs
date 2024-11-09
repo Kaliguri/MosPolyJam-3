@@ -19,17 +19,20 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] bool hasKickback = true;
     [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;       
 
-    private float lastShotTime = 0f;                 
+    private float lastShotTime = 0f;
+    public bool attackPrepared = false;
+    private Animator animator => GetComponent<Animator>();
 
     private void Start()
     {
         player = FindFirstObjectByType<PlayerMovement>().gameObject.transform;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         FollowPlayer();
         RotateTowardsPlayer();
+        if (attackPrepared) ShootAtPlayer();
     }
 
     void FollowPlayer()
@@ -42,12 +45,39 @@ public class EnemyFollow : MonoBehaviour
         }
         else
         {
-            ShootAtPlayer();
+            StartShootingAtPlayer();
             if (distance < minDistance)
             {
                 MoveAwayFromPlayer();
             }
         }
+    }
+
+    private void StartShootingAtPlayer()
+    {
+        if (Time.time - lastShotTime >= fireRate)
+        {
+            animator.SetBool("isPreparingAttack", true);
+        }
+    }
+
+
+    private void ShootAtPlayer()
+    {
+        Vector2 direction = (player.position - transform.position).normalized;
+
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        bullet.transform.right = direction;
+
+        if (hasKickback)
+        {
+            Vector2 recoilDirection = -direction * recoilForce;
+            transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + recoilDirection, recoilForce);
+        }
+
+        lastShotTime = Time.time;
+        animator.SetBool("isPreparingAttack", false);
+        attackPrepared = false;
     }
 
     void RotateTowardsPlayer()
@@ -58,26 +88,6 @@ public class EnemyFollow : MonoBehaviour
         
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
-
-    private void ShootAtPlayer()
-    {
-        if (Time.time - lastShotTime >= fireRate)
-        {
-            Vector2 direction = (player.position - transform.position).normalized;
-
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-            bullet.transform.right = direction;
-
-            if (hasKickback)
-            {
-                Vector2 recoilDirection = -direction * recoilForce;
-                transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + recoilDirection, recoilForce);
-            }
-
-            lastShotTime = Time.time;
-        }
-    }
-
     void MoveTowardsPlayer()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
