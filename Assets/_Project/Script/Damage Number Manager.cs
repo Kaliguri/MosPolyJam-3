@@ -12,6 +12,8 @@ public class DamageNumberManager : MonoBehaviour
     [SerializeField] GameObject prefabParentObject;
     [SerializeField] List<DamageNumber> prefabsList = new();
 
+    private DamageNumber damageNumber;
+
 
     public static DamageNumberManager instance = null;
     void Awake()
@@ -31,8 +33,10 @@ public class DamageNumberManager : MonoBehaviour
 
         if (prefabsList.Count >= prefabID)
         {
-
-        DamageNumber damageNumber = prefabsList[prefabID].Spawn(newPosition: position, newNumber: number, followedTransform: parent.transform);
+        
+        if (parent is not null)           {damageNumber = prefabsList[prefabID].Spawn(newPosition: position, newNumber: number, followedTransform: parent.transform);}
+        else                              {damageNumber = prefabsList[prefabID].Spawn(newPosition: position, newNumber: number);}
+        
         damageNumber.transform.localScale *= scale;
 
         if (leftText != "") 
