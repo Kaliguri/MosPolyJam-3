@@ -23,10 +23,6 @@ public class EnemyFollow : MonoBehaviour
     private float lastShotTime = 0f;
     private Animator animator => GetComponentInChildren<Animator>();
 
-    void Awake()
-    {
-        AnimatorExtension.AttackPrepared.AddListener(ShootAtplayerTransform);
-    }
     private void Start()
     {
         playerTransform = FindFirstObjectByType<PlayerTag>().gameObject.transform;

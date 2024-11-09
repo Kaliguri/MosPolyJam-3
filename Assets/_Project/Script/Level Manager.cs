@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] ParticleSystem spawnVFX;
 
     public static LevelManager instance = null;
-    [ShowInInspector] private int currentWaveNumber = -1;
+    [ReadOnly] private int currentWaveNumber = -1;
     [ReadOnly] public bool InTheArena = false;
     void Awake()
     {

@@ -3640,6 +3640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalDB: {fileID: 11400000, guid: a708df5653a853d478b22bc430f63c16, type: 2}
   DB: {fileID: 0}
+  restartInput: {fileID: -3380527278683656883, guid: 4ab7b14a89ef0524e933f56df52e65a8, type: 3}
 --- !u!4 &1184037164
 Transform:
   m_ObjectHideFlags: 0
@@ -3704,6 +3705,7 @@ MonoBehaviour:
       - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
       - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
   spawnVFX: {fileID: 7838741906297169001, guid: bf3db642b6692e6488392dde7ad4a66c, type: 3}
+  InTheArena: 0
 --- !u!1 &1186713957
 GameObject:
   m_ObjectHideFlags: 0
@@ -15865,11 +15867,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1430568954386592046, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1430568954386592046, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1478348906049212081, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
       propertyPath: m_Color.b
@@ -15965,11 +15967,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7253985801313055621, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7253985801313055621, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15981,37 +15983,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2675498784270905477, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
   m_PrefabInstance: {fileID: 1433272535}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1442752626
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1442752627}
-  m_Layer: 7
-  m_Name: FirePoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1442752627
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442752626}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.73, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1451881269
 GameObject:
   m_ObjectHideFlags: 8
@@ -27526,6 +27497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackInput: {fileID: -8794716681231253964, guid: 4ab7b14a89ef0524e933f56df52e65a8, type: 3}
   timeBetweenAttacksInCombo: 0.5
+  longPressThreshold: 0.5
   attacksList:
   - {fileID: 662587701}
   - {fileID: 1458021742}
@@ -27598,6 +27570,8 @@ MonoBehaviour:
   maxOrbitRadius: 2
   orbitSpeed: 100
   moveToCenterSpeed: 5
+  regularSpherePoints: 1
+  perfectSpherePoints: 3
 --- !u!1 &2114912635
 GameObject:
   m_ObjectHideFlags: 0
@@ -29759,4 +29733,3 @@ SceneRoots:
   - {fileID: 1978043344}
   - {fileID: 1882689854}
   - {fileID: 486062007}
-  - {fileID: 1442752627}

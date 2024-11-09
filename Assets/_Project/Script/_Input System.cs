@@ -127,6 +127,15 @@ public partial class @_InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe94be1d-c08e-41e8-86d9-0e4112d3a10f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -138,6 +147,17 @@ public partial class @_InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Mouse and Keyboard"",
                     ""action"": ""EscMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b185faf-008a-4cf8-b390-114ae3d60e28"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Mouse and Keyboard"",
+                    ""action"": ""Restart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -218,6 +238,7 @@ public partial class @_InputSystem: IInputActionCollection2, IDisposable
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_EscMenu = m_Menu.FindAction("EscMenu", throwIfNotFound: true);
+        m_Menu_Restart = m_Menu.FindAction("Restart", throwIfNotFound: true);
         // Combat
         m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
         m_Combat_Attack = m_Combat.FindAction("Attack", throwIfNotFound: true);
@@ -345,11 +366,13 @@ public partial class @_InputSystem: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Menu;
     private List<IMenuActions> m_MenuActionsCallbackInterfaces = new List<IMenuActions>();
     private readonly InputAction m_Menu_EscMenu;
+    private readonly InputAction m_Menu_Restart;
     public struct MenuActions
     {
         private @_InputSystem m_Wrapper;
         public MenuActions(@_InputSystem wrapper) { m_Wrapper = wrapper; }
         public InputAction @EscMenu => m_Wrapper.m_Menu_EscMenu;
+        public InputAction @Restart => m_Wrapper.m_Menu_Restart;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -362,6 +385,9 @@ public partial class @_InputSystem: IInputActionCollection2, IDisposable
             @EscMenu.started += instance.OnEscMenu;
             @EscMenu.performed += instance.OnEscMenu;
             @EscMenu.canceled += instance.OnEscMenu;
+            @Restart.started += instance.OnRestart;
+            @Restart.performed += instance.OnRestart;
+            @Restart.canceled += instance.OnRestart;
         }
 
         private void UnregisterCallbacks(IMenuActions instance)
@@ -369,6 +395,9 @@ public partial class @_InputSystem: IInputActionCollection2, IDisposable
             @EscMenu.started -= instance.OnEscMenu;
             @EscMenu.performed -= instance.OnEscMenu;
             @EscMenu.canceled -= instance.OnEscMenu;
+            @Restart.started -= instance.OnRestart;
+            @Restart.performed -= instance.OnRestart;
+            @Restart.canceled -= instance.OnRestart;
         }
 
         public void RemoveCallbacks(IMenuActions instance)
@@ -457,6 +486,7 @@ public partial class @_InputSystem: IInputActionCollection2, IDisposable
     public interface IMenuActions
     {
         void OnEscMenu(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
     }
     public interface ICombatActions
     {

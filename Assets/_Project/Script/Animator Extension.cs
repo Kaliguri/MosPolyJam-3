@@ -6,8 +6,7 @@ public class AnimatorExtension : MonoBehaviour
 {
     [ReadOnly] public bool attackPrepared = false;
 
-    public static UnityEvent AttackPrepared = new();
-    public void SendAttackPrepared() {  AttackPrepared.Invoke(); }
+    public void SendAttackPrepared() {  GetComponentInParent<EnemyFollow>().ShootAtplayerTransform(); }
 
     private void FixedUpdate()
     {
