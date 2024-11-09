@@ -1,16 +1,176 @@
+using Sirenix.OdinInspector;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSphereManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] GameObject spherePrefab;
+    [SerializeField] GameObject perfectSpherePrefab;
+    [SerializeField] int sphereCount = 10;
+    [SerializeField] float maxOrbitRadius = 2f;
+    [SerializeField] float orbitSpeed = 30f;
+    [SerializeField] float moveToCenterSpeed = 5f;
+
+    private List<GameObject> sphereList = new List<GameObject>();
+    private List<GameObject> perfectSphereList = new List<GameObject>();
+    private GameObject player;
+    private float orbitRadius = 0f;
+
+    public static PlayerSphereManager instance = null;
+
+    private void Awake()
     {
-        
+        if (instance == null) { instance = this; }
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        player = FindFirstObjectByType<PlayerTag>().gameObject;
+        orbitRadius = maxOrbitRadius;
+
+        for (int i = 0; i < sphereCount; i++)
+        {
+            GameObject sphere = Instantiate(spherePrefab, player.transform.position, Quaternion.identity);
+            sphere.SetActive(false);
+            sphereList.Add(sphere);
+
+            GameObject perfectSphere = Instantiate(perfectSpherePrefab, player.transform.position, Quaternion.identity);
+            perfectSphere.SetActive(false);
+            perfectSphereList.Add(perfectSphere);
+        }
+    }
+
+    [Button("ActivateSphere")]
+    public void ActivateSphere(bool isPerfectParry)
+    {
+        int activeSphereCount = 0;
+
+        foreach (var sphereList in new List<List<GameObject>> { sphereList, perfectSphereList })
+        {
+            foreach (GameObject sphere in sphereList)
+            {
+                if (sphere.activeSelf)
+                    activeSphereCount++;
+            }
+        }
+
+        if (activeSphereCount < sphereCount)
+        {
+            List<GameObject> targetList = isPerfectParry ? perfectSphereList : sphereList;
+
+            foreach (GameObject sphere in targetList)
+            {
+                if (!sphere.activeSelf)
+                {
+                    sphere.transform.position = player.transform.position;
+                    sphere.SetActive(true);
+                    ArrangeSpheresInCircle();
+                    break;
+                }
+            }
+        }
+    }
+
+    [Button("PullSpheresToCenter")]
+    public void PullSpheresToCenter()
+    {
+        StartCoroutine(MoveSpheresToCenterCoroutine());
+    }
+
+    private IEnumerator MoveSpheresToCenterCoroutine()
+    {
+        bool allReachedCenter = false;
+
+        while (!allReachedCenter)
+        {
+            allReachedCenter = true;
+
+            foreach (var sphereList in new List<List<GameObject>> { sphereList, perfectSphereList })
+            {
+                foreach (GameObject sphere in sphereList)
+                {
+                    if (sphere.activeSelf)
+                    {
+                        sphere.transform.position = Vector3.MoveTowards(sphere.transform.position, player.transform.position, moveToCenterSpeed * Time.deltaTime);
+
+                        if (Vector3.Distance(sphere.transform.position, player.transform.position) > 0.1f)
+                        {
+                            allReachedCenter = false;
+                        }
+                        else
+                        {
+                            sphere.SetActive(false);
+                        }
+                    }
+                }
+            }
+
+            orbitRadius = Mathf.Lerp(maxOrbitRadius, 0f, 1 - Mathf.Min(1, Vector3.Distance(sphereList[0].transform.position, player.transform.position) / maxOrbitRadius));
+
+            yield return null;
+        }
+
+        orbitRadius = maxOrbitRadius;
+    }
+
+    private void ArrangeSpheresInCircle()
+    {
+        int activeSphereCount = 0;
+
+        foreach (var sphereList in new List<List<GameObject>> { sphereList, perfectSphereList })
+        {
+            foreach (GameObject sphere in sphereList)
+            {
+                if (sphere.activeSelf)
+                    activeSphereCount++;
+            }
+        }
+
+        float angleStep = 360f / activeSphereCount;
+        float angle = 0f;
+
+        foreach (var sphereList in new List<List<GameObject>> { sphereList, perfectSphereList })
+        {
+            foreach (GameObject sphere in sphereList)
+            {
+                if (sphere.activeSelf)
+                {
+                    Vector3 offset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0) * orbitRadius;
+                    sphere.transform.position = player.transform.position + offset;
+                    angle += angleStep;
+                }
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        int activeSphereCount = 0;
+
+        foreach (var sphereList in new List<List<GameObject>> { sphereList, perfectSphereList })
+        {
+            foreach (GameObject sphere in sphereList)
+            {
+                if (sphere.activeSelf)
+                    activeSphereCount++;
+            }
+        }
+
+        float angleStep = 360f / activeSphereCount;
+        float angle = Time.time * orbitSpeed;
+
+        foreach (var sphereList in new List<List<GameObject>> { sphereList, perfectSphereList })
+        {
+            foreach (GameObject sphere in sphereList)
+            {
+                if (sphere.activeSelf)
+                {
+                    Vector3 offset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0) * orbitRadius;
+                    sphere.transform.position = player.transform.position + offset;
+                    angle += angleStep;
+                }
+            }
+        }
     }
 }

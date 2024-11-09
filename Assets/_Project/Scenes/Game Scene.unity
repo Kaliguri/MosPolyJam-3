@@ -3635,6 +3635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e09b0cf61475694f9548d818acd9ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageResistOnParry: 0.4
 --- !u!114 &1184037166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15734,11 +15735,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1430568954386592046, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1430568954386592046, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1478348906049212081, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
       propertyPath: m_Color.b
@@ -15834,11 +15835,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7253985801313055621, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7253985801313055621, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27098,6 +27099,7 @@ GameObject:
   - component: {fileID: 2102705456}
   - component: {fileID: 2102705458}
   - component: {fileID: 2102705457}
+  - component: {fileID: 2102705459}
   - component: {fileID: 2102705449}
   - component: {fileID: 2102705451}
   - component: {fileID: 2102705452}
@@ -27414,6 +27416,24 @@ MonoBehaviour:
   perfectParryTime: 0.3
   parryTime: 0
   isParryState: 0
+--- !u!114 &2102705459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102705446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb435e95a10d7d41961348ebdb6d2e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spherePrefab: {fileID: 3152679303049616010, guid: a509abe9e9810e841a572da6080a253e, type: 3}
+  perfectSpherePrefab: {fileID: 3321826984099432400, guid: b4926de3934199948ad47b72788ad5f6, type: 3}
+  sphereCount: 5
+  maxOrbitRadius: 2
+  orbitSpeed: 100
+  moveToCenterSpeed: 5
 --- !u!1 &2114912635
 GameObject:
   m_ObjectHideFlags: 0
