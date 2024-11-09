@@ -14,6 +14,7 @@ public class PlayerComboAttack : MonoBehaviour
 
     [Title("Combo Settings")]
     [SerializeField] float timeBetweenAttacksInCombo = 0.3f;
+    [SerializeField] float longPressThreshold = 0.5f;
 
     [Title("AttacksGameObjects")]
     [SerializeField] List<GameObject> attacksList = new();
@@ -47,6 +48,10 @@ public class PlayerComboAttack : MonoBehaviour
     [Title("VFX")]
     [SerializeField] ParticleSystem attackReleaseVFX;
 
+
+
+    private float attackPressTime = 0f;
+    private bool isLongPress = false;
     private int inputBuffered = 0;
     private Vector3 attack1TargetPosition;
     private float attack2StartAngleZ = 0f;
@@ -78,6 +83,15 @@ public class PlayerComboAttack : MonoBehaviour
         if (attackInput.action.WasPressedThisFrame() && !PlayerParry.instance.isParryState)
         {
             attackPressed = true;
+            attackPressTime = Time.time;
+        }
+
+        if (attackInput.action.IsPressed())
+        {
+            if (Time.time - attackPressTime >= longPressThreshold && !isLongPress)
+            {
+                isLongPress = true;
+            }
         }
     }
 
@@ -89,20 +103,15 @@ public class PlayerComboAttack : MonoBehaviour
         {
             attackPressed = false;
 
-            if (isAttacking)
-            {
-                inputBuffered++;
-            }
-            else
-            {
-                ProcessAttackInput();
-            }
+            ProcessAttackInput(isLongPress);
+            isLongPress = false;
         }
 
         if (!isAttacking && inputBuffered > 0)
         {
             inputBuffered--;
-            ProcessAttackInput();
+            ProcessAttackInput(isLongPress);
+            isLongPress = false;
         }
     }
 
@@ -134,7 +143,7 @@ public class PlayerComboAttack : MonoBehaviour
         }
     }
 
-    private void ProcessAttackInput()
+    private void ProcessAttackInput(bool _isLongPress)
     {
         if ((Time.time - lastClickTime <= timeBetweenAttacksInCombo && comboStep != 0) || comboStep == 0)
         {
@@ -147,7 +156,7 @@ public class PlayerComboAttack : MonoBehaviour
         }
 
         attacking = true;
-        PerformComboAttack(comboStep);
+        PerformComboAttack(comboStep, _isLongPress);
         lastClickTime = Time.time;
     }
 
@@ -161,18 +170,21 @@ public class PlayerComboAttack : MonoBehaviour
         return false;
     }
 
-    private void PerformComboAttack(int _comboStep)
+    private void PerformComboAttack(int _comboStep, bool _isLongPress)
     {
         switch (_comboStep)
         {
             case 1:
-                Attack1(_comboStep);
+                Attack1(_comboStep, _isLongPress);
+                if (_isLongPress) ResetCombo();
                 break;
             case 2:
-                Attack2(_comboStep);
+                Attack2(_comboStep, _isLongPress);
+                if (_isLongPress) ResetCombo();
                 break;
             case 3:
-                Attack3(_comboStep);
+                Attack3(_comboStep, _isLongPress);
+                if (_isLongPress) ResetCombo();
                 break;
             default:
                 ResetCombo();
@@ -180,8 +192,11 @@ public class PlayerComboAttack : MonoBehaviour
         }
     }
 
-    private void Attack1(int _comboStep)
+    private void Attack1(int _comboStep, bool _isLongPress)
     {
+        float parryValue = 1;
+        if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter();
+
         GameObject attack = attacksList[_comboStep - 1];
 
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -199,11 +214,11 @@ public class PlayerComboAttack : MonoBehaviour
 
         attack1TargetPosition = attack.transform.position + attack.transform.up * attack1_MoveDistance;
 
-        StartCoroutine(MoveAttack1Forward(attack));
+        StartCoroutine(MoveAttack1Forward(attack, parryValue));
 
     }
 
-    private IEnumerator MoveAttack1Forward(GameObject attack)
+    private IEnumerator MoveAttack1Forward(GameObject attack, float parryValue)
     {
         while (Vector3.Distance(attack.transform.position, attack1TargetPosition) > 0.1f)
         {
@@ -218,8 +233,11 @@ public class PlayerComboAttack : MonoBehaviour
     }
 
 
-    private void Attack2(int _comboStep)
+    private void Attack2(int _comboStep, bool _isLongPress)
     {
+        float parryValue = 1;
+        if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter();
+
         GameObject attack = attacksList[_comboStep - 1];
 
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -238,10 +256,10 @@ public class PlayerComboAttack : MonoBehaviour
         attack2StartAngleZ = attack.transform.rotation.eulerAngles.z;
         attack2InitialOffset = attack.transform.position - transform.position;
 
-        StartCoroutine(SwingAttack2Sword(attack));
+        StartCoroutine(SwingAttack2Sword(attack, parryValue));
     }
 
-    private IEnumerator SwingAttack2Sword(GameObject attack)
+    private IEnumerator SwingAttack2Sword(GameObject attack, float parryValue)
     {
         float startAngle = attack2StartAngleZ;
         float endAngle = attack2StartAngleZ + 2 * attack2_Angle;
@@ -265,8 +283,11 @@ public class PlayerComboAttack : MonoBehaviour
         attack.SetActive(false);
     }
 
-    private void Attack3(int _comboStep)
+    private void Attack3(int _comboStep, bool _isLongPress)
     {
+        float parryValue = 1;
+        if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter();
+
         GameObject attack = attacksList[_comboStep - 1];
 
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -279,10 +300,10 @@ public class PlayerComboAttack : MonoBehaviour
 
         attack.SetActive(true);
 
-        StartCoroutine(SendAttack3Slices(_comboStep));
+        StartCoroutine(SendAttack3Slices(_comboStep, parryValue));
     }
 
-    private IEnumerator SendAttack3Slices(int _comboStep)
+    private IEnumerator SendAttack3Slices(int _comboStep, float parryValue)
     {
         for (int i = 0; i < attack3SliceList.Count; i++)
         {
@@ -291,7 +312,7 @@ public class PlayerComboAttack : MonoBehaviour
             attack3SliceList[i].transform.position += attack3SliceList[i].transform.right * randomOffset;
 
             Vector3 attack3TargetPosition = attack3SliceList[i].transform.position + attack3SliceList[i].transform.up * attack3_MoveDistance;
-            StartCoroutine(MoveAttack3Forward(attack3SliceList[i], attack3TargetPosition, i == attack3SliceList.Count - 1));
+            StartCoroutine(MoveAttack3Forward(attack3SliceList[i], attack3TargetPosition, i == attack3SliceList.Count - 1, parryValue));
 
             attack3Release.Play2D();
             Instantiate(attackReleaseVFX, gameObject.transform.position, attack3SliceList[i].transform.rotation);
@@ -310,7 +331,7 @@ public class PlayerComboAttack : MonoBehaviour
     }
 
 
-    private IEnumerator MoveAttack3Forward(GameObject attack, Vector3 attack3TargetPosition, bool isLast)
+    private IEnumerator MoveAttack3Forward(GameObject attack, Vector3 attack3TargetPosition, bool isLast, float parryValue)
     {
         while (Vector3.Distance(attack.transform.position, attack3TargetPosition) > 0.1f)
         {
@@ -332,5 +353,6 @@ public class PlayerComboAttack : MonoBehaviour
     private void ResetCombo()
     {
         comboStep = 0;
+        inputBuffered = 0;
     }
 }

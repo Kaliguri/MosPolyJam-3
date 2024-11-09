@@ -18,16 +18,10 @@ public class CombatMethods : MonoBehaviour
             float _damage = damage;
             if (PlayerParry.instance.isParryState)
             {
-                if (PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime)
-                {
-                    _damage = 0f;
-                    PlayerParry.instance.ParryCast(true);
-                }
-                else
-                {
-                    _damage *= damageResistOnParry;
-                    PlayerParry.instance.ParryCast(false);
-                }
+                _damage = PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime ? 0f : _damage * damageResistOnParry;
+
+                PlayerParry.instance.ParryCast(PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime);
+                PlayerSphereManager.instance.ActivateSphere(PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime);
             }
 
             DamageNumberManager.instance.SpawnDamageText(gameObject, targetType.transform.position, _damage);
