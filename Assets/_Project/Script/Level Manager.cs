@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
@@ -13,29 +14,37 @@ public class LevelManager : MonoBehaviour
     [SerializeField] ParticleSystem spawnVFX;
 
     public static LevelManager instance = null;
-    [ReadOnly] private int currentWaveNumber = -1;
     [ReadOnly] public bool InTheArena = false;
+    [ReadOnly] public int CurrentArenaID = -1;
+    [ReadOnly] private int currentWaveNumber = -1;
+    [ReadOnly] private int currentEnemyNumber = 0;
+
+
+    public static UnityEvent EnemyDeath = new();
+    public static void SendEnemyDeath() {  EnemyDeath.Invoke(); }
+
     void Awake()
     {
         instance = this;
+        EnemyDeath.AddListener(WaveStateCheck);
     }
-    public void BattleStateUpdate(int arenaID, bool isStart)
+    public void StartArena(int arenaId)
     {
-
-        if (isStart)
+        if (arenaId > CurrentArenaID)
         {
+            CurrentArenaID ++;
             InTheArena = true;
-            SetActiveForListGameObjects(arenaList[arenaID].DisableGameObjectsListForStartCombat, false); 
-            SpawnWave(arenaID);
-        }
-
-        else
-        {
-            SetActiveForListGameObjects(arenaList[arenaID].EnableGameObjectsListAfterCombat, true); 
-            currentWaveNumber = -1;
-            InTheArena = false;
+            SetActiveForListGameObjects(arenaList[CurrentArenaID].DisableGameObjectsListForStartCombat, false); 
+            SpawnWave();
         }
         
+    }
+
+    void FinishArena()
+    {
+        SetActiveForListGameObjects(arenaList[CurrentArenaID].EnableGameObjectsListAfterCombat, true); 
+        currentWaveNumber = -1;
+        InTheArena = false;
     }
 
     void SetActiveForListGameObjects(List<GameObject> gameObjectsList, bool activeValue)
@@ -46,39 +55,49 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void SpawnWave(int arenaID)
+    void SpawnWave()
     {
         currentWaveNumber++;
 
-        var availableWave = arenaList[arenaID].WaveCombat;
+        var availableWave = arenaList[CurrentArenaID].WaveCombat;
         var waveNumber = UnityEngine.Random.Range(0, availableWave.Count);
         var wave = availableWave[waveNumber];
 
+        currentEnemyNumber = wave.EnemyList.Count;
+
         foreach (var enemy in wave.EnemyList)
         {
-            var areaList = arenaList[arenaID].SpawnAreaListCombat;
+            var areaList = arenaList[CurrentArenaID].SpawnAreaListCombat;
             var areaNumber = UnityEngine.Random.Range(0, areaList.Count);
             var area = areaList[areaNumber];
             var spawnPosition = GetRandomPointInBox(area);
 
             Instantiate(spawnVFX, spawnPosition, quaternion.identity);
             Instantiate(enemy, spawnPosition, quaternion.identity);
-
-
         }
 
     }
 
-    public void EndWave(int arenaID)
+    void WaveStateCheck()
     {
-        if (arenaList[arenaID].combatCount == currentWaveNumber)
+        currentEnemyNumber --;
+
+        if (currentEnemyNumber == 0)
         {
-            BattleStateUpdate(arenaID, false);
+            EndWave();
+        }
+    }
+
+    public void EndWave()
+    {
+        if (arenaList[CurrentArenaID].combatCount == currentWaveNumber)
+        {
+            FinishArena();
         }
 
         else
         {
-            SpawnWave(arenaID);
+            SpawnWave();
         }
 
     }
@@ -93,6 +112,7 @@ public class LevelManager : MonoBehaviour
 
         return new Vector2(randomX, randomY);
     }
+
 
 
 

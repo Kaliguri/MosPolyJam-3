@@ -9,7 +9,7 @@ public class ArenaTrigger : MonoBehaviour
         if (collider2D.gameObject.GetComponent<PlayerTag>() != null)
         if (!LevelManager.instance.InTheArena)
         {
-            LevelManager.instance.BattleStateUpdate(arenaId, true);
+            LevelManager.instance.StartArena(arenaId);
         }
     }
 }
