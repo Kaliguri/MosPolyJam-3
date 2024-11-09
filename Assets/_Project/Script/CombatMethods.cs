@@ -49,6 +49,9 @@ public class CombatMethods : MonoBehaviour
             DamageNumberManager.instance.SpawnDamageText(gameObject, targetType.transform.position, damage);
 
             targetType.GetComponent<HPController>().RecieveDamage(damage);
+
+            targetType.GetComponentInChildren<Animator>().SetBool("isStaned", true);
+            targetType.GetComponent<EnemyFollow>().StartStan();
         }
     }
 }

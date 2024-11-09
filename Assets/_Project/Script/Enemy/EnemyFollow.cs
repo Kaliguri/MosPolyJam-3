@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyFollow : MonoBehaviour
 {
     [Title("Follow Settings")]
+    [SerializeField] float stanTime = 1f;
     [SerializeField] float enemyMoveSpeed = 3f;
     //[SerializeField] float rotationSpeed = 100f;
     [SerializeField] float minDistanceFromPlayer = 2f;
@@ -32,9 +33,9 @@ public class EnemyFollow : MonoBehaviour
     private void Start()
     {
         playerTransform = FindFirstObjectByType<PlayerTag>().gameObject.transform;
-        bulletPrefab.GetComponent<EnemyBullet>().damage = damage;
-        bulletPrefab.GetComponent<BulletMovement>().moveSpeed = bulletMoveSpeed;
-        bulletPrefab.GetComponent<BulletMovement>().maxDistance = bulletMaxDistance;
+        bulletPrefab.GetComponentInChildren<Attack>().SetDamage(damage);
+        bulletPrefab.GetComponentInChildren<BulletMovement>().moveSpeed = bulletMoveSpeed;
+        bulletPrefab.GetComponentInChildren<BulletMovement>().maxDistance = bulletMaxDistance;
     }
 
     private void FixedUpdate()
@@ -59,6 +60,16 @@ public class EnemyFollow : MonoBehaviour
                 MoveAwayFromplayerTransform();
             }
         }
+    }
+
+    public void StartStan()
+    {
+        Invoke(nameof(StopStan), stanTime);
+    }
+
+    private void StopStan()
+    {
+        animator.SetBool("isStaned", false);
     }
 
     private void StartShootingAtplayerTransform()
