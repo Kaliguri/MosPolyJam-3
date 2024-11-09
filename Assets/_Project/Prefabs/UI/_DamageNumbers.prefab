@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   permanent: 0
-  lifetime: 2
+  lifetime: 0.5
   unscaledTime: 0
   enable3DGame: 0
   faceCameraView: 1
@@ -540,9 +540,9 @@ MonoBehaviour:
     fromNumber: 10
     toNumber: 100
   durationFadeIn: 0.2
-  enableOffsetFadeIn: 1
+  enableOffsetFadeIn: 0
   offsetFadeIn: {x: 0.5, y: 0}
-  enableScaleFadeIn: 1
+  enableScaleFadeIn: 0
   scaleFadeIn: {x: 2, y: 2}
   enableCrossScaleFadeIn: 0
   crossScaleFadeIn: {x: 1, y: 1.5}
@@ -550,10 +550,10 @@ MonoBehaviour:
   shakeOffsetFadeIn: {x: 0, y: 1.5}
   shakeFrequencyFadeIn: 4
   durationFadeOut: 0.2
-  enableOffsetFadeOut: 1
+  enableOffsetFadeOut: 0
   offsetFadeOut: {x: 0.5, y: 0}
   enableScaleFadeOut: 0
-  scaleFadeOut: {x: 2, y: 2}
+  scaleFadeOut: {x: 0.4, y: 0.4}
   enableCrossScaleFadeOut: 0
   crossScaleFadeOut: {x: 1, y: 1.5}
   enableShakeFadeOut: 0

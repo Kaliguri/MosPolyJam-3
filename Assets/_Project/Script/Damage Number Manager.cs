@@ -25,14 +25,14 @@ public class DamageNumberManager : MonoBehaviour
         prefabParentObject.SetActive(false);
     }
 
-    IEnumerator TextSpawn(int prefabID, Vector3 position, string leftText = "", string rightText = "", float number = 0, float scale = 1f, bool IsOnlyText = false, float delay = 0f)
+    IEnumerator TextSpawn(int prefabID, Vector3 position, string leftText = "", string rightText = "", float number = 0, float scale = 1f, GameObject parent = null, bool IsOnlyText = false, float delay = 0f)
     {
         yield return new WaitForSeconds(delay);
 
         if (prefabsList.Count >= prefabID)
         {
 
-        DamageNumber damageNumber = prefabsList[prefabID].Spawn(newPosition: position, newNumber: number);
+        DamageNumber damageNumber = prefabsList[prefabID].Spawn(newPosition: position, newNumber: number, followedTransform: parent.transform);
         damageNumber.transform.localScale *= scale;
 
         if (leftText != "") 
@@ -69,9 +69,9 @@ public class DamageNumberManager : MonoBehaviour
     }
 
 
-    public void SpawnDamageText(Vector3 position, float textNumber, float scale = 1f, float delay = 0f)
+    public void SpawnDamageText(GameObject parent, Vector3 position, float textNumber, float scale = 1f, float delay = 0f)
     {
-        StartCoroutine(TextSpawn(0, position, number: textNumber, scale: scale, delay: delay));
+        StartCoroutine(TextSpawn(0, position, number: textNumber, scale: scale, delay: delay, parent: parent));
     }
     public void SpawnShieldChangeText(Vector3 position, float textNumber, float scale = 1f, float delay = 0f)
     {   

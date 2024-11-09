@@ -13,18 +13,19 @@ public class HPController : MonoBehaviour
         {
             if (!gameObject.GetComponent<PlayerMovement>().isDashing)
             { 
-                RecieveDamage(collision.gameObject.GetComponent<EnemyBullet>().GetDamage());
+                ApplayDamage(collision.transform.position, collision.gameObject.GetComponent<EnemyBullet>().GetDamage());
                 Destroy(collision.gameObject);
             }
         }
         else if (gameObject.GetComponent<EnemyFollow>() != null && collision.gameObject.GetComponent<PlayerAttack>() != null)
         {
-            RecieveDamage(collision.gameObject.GetComponent<PlayerAttack>().GetDamage());
+            ApplayDamage(collision.transform.position, collision.gameObject.GetComponent<PlayerAttack>().GetDamage());
         }
     }
 
-    private void RecieveDamage(float damage)
+    private void ApplayDamage(Vector2 collisionTransform, float damage)
     {
+        DamageNumberManager.instance.SpawnDamageText(gameObject, collisionTransform, damage);
         currentHP -= damage;
         if (currentHP <= 0) { Death(); }
     }
