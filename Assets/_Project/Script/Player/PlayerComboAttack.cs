@@ -20,27 +20,27 @@ public class PlayerComboAttack : MonoBehaviour
     [SerializeField] List<GameObject> attacksList = new();
 
     [Title("Attack Parameters")]
-    [Header("Attack 1")]
     [SerializeField] private List<float> attacks_Damage = new List<float> { 10f, 20f, 30f };
-    [SerializeField] private float attack1_DamageIncrease = 1f;
-    [SerializeField] private float attack1_ScaleYIncrease = 1f;
-    [SerializeField] private float attack1_ScaleXIncrease = 1f;
+    [Header("Attack 1")]
     [SerializeField] private float attack1_Distance = 1f;
     [SerializeField] private float attack1_MoveDistance = 5f;
     [SerializeField] private float attack1_MoveSpeed = 10f;
+    [Header("Attack 1 Increases")]
+    [SerializeField] private float attack1_DamageIncrease = 1f;
+    [SerializeField] private float attack1_ScaleYIncrease = 1f;
+    [SerializeField] private float attack1_ScaleXIncrease = 1f;
 
     [Header("Attack 2")]
+    [SerializeField] private float attack2_MoveSpeed = 10f;
+    [SerializeField] private float attack2_StartAngle = 30f;
+    [Header("Attack 2 Increases")]
     [SerializeField] private float attack2_DamageIncrease = 1f;
     [SerializeField] private float attack2_ScaleXIncrease = 1f;
     [SerializeField] private float attack2_ScaleYIncrease = 1f;
     [SerializeField] private float attack2_AngleIncrease = 1f;
-    [SerializeField] private float attack2_MoveSpeed = 10f;
-    [SerializeField] private float attack2_StartAngle = 30f;
 
     [Header("Attack 3")]
     [SerializeField] private GameObject attack3_Object;
-    [SerializeField] private float attack3_TimeBetweenSendSliceDesceasePercent = 1f;
-    [SerializeField] private float attack3_SliceCountIncrease = 1f;
     [SerializeField] private float attack3_Distance = 1f;
     [SerializeField] private float attack3_MoveSpeed = 10f;
     [SerializeField] private float attack3_MoveDistance = 2f;
@@ -48,6 +48,9 @@ public class PlayerComboAttack : MonoBehaviour
     [SerializeField] private int attack3_StartSliceCount = 5;
     [SerializeField] private int attack3_MaxSliceCount = 50;
     [SerializeField] private float attack3_MaxOffset = 0.5f;
+    [Header("Attack 3 Increases")]
+    [SerializeField] private float attack3_TimeBetweenSendSliceDesceasePercent = 1f;
+    [SerializeField] private float attack3_SliceCountIncrease = 1f;
 
     [Title("Sounds")]
     [SerializeField] SoundEvent attack1Release;
