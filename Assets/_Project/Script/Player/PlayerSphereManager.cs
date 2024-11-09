@@ -116,8 +116,6 @@ public class PlayerSphereManager : MonoBehaviour
                 {
                     if (sphere.activeSelf)
                     {
-                        sphere.transform.position = Vector3.MoveTowards(sphere.transform.position, player.transform.position, moveToCenterSpeed * Time.deltaTime);
-
                         if (Vector3.Distance(sphere.transform.position, player.transform.position) > 0.1f)
                         {
                             allReachedCenter = false;
@@ -130,7 +128,9 @@ public class PlayerSphereManager : MonoBehaviour
                 }
             }
 
-            orbitRadius = Mathf.Lerp(maxOrbitRadius, 0f, 1 - Mathf.Min(1, Vector3.Distance(sphereList[0].transform.position, player.transform.position) / maxOrbitRadius));
+            orbitRadius = Mathf.Max(0, orbitRadius - moveToCenterSpeed * Time.deltaTime);
+
+            Debug.Log(orbitRadius);
 
             yield return null;
         }
