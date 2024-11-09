@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    [Title("Damage")]
-    [SerializeField] float damage = 5f;
+    [HideInInspector] public float damage = 5f;
 
     public float GetDamage()
     {

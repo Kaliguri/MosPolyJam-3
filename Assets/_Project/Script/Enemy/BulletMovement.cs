@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
 {
-    [Header("Bullet Settings")]
-    [SerializeField] private float moveSpeed = 10f;
-    [SerializeField] private float maxDistance = 10f;
+    [HideInInspector] public float moveSpeed = 10f;
+    [HideInInspector] public float maxDistance = 10f;
 
     private Vector3 startPosition;
 

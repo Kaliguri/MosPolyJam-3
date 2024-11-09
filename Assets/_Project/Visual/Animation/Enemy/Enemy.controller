@@ -42,9 +42,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -2779327924819400669}
     m_Position: {x: 200, y: 220, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 6347306780815328360}
-    m_Position: {x: 235, y: 285, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -65,6 +62,12 @@ AnimatorController:
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isPreparingAttack
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: isStaned
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -93,6 +96,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: isPreparingAttack
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isStaned
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6628774300932450307}
@@ -155,7 +161,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e79da1bc5a7d1e14fa94e5e6522f5373, type: 2}
+  m_Motion: {fileID: 7400000, guid: 931e739b5ae65f540aac0809500522dc, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -168,7 +174,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isStaned
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2779327924819400669}
   m_Solo: 0

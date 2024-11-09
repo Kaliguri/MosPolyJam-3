@@ -1,14 +1,20 @@
 using Sirenix.OdinInspector;
 using System;
+using TMPro;
 using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour
 {
     [Title("Follow Settings")]
-    [SerializeField] float moveSpeed = 3f;
+    [SerializeField] float enemyMoveSpeed = 3f;
     //[SerializeField] float rotationSpeed = 100f;
-    [SerializeField] float minDistance = 2f;
-    [SerializeField] float maxDistance = 5f;
+    [SerializeField] float minDistanceFromPlayer = 2f;
+    [SerializeField] float maxDistanceFromPlayer = 5f;
+
+    [Title("Bullet Settings")]
+    [SerializeField] private float bulletMoveSpeed = 10f;
+    [SerializeField] private float bulletMaxDistance = 10f;
+    [SerializeField] float damage = 5f;
 
     [Title("Target")]
     [SerializeField] Transform playerTransform;
@@ -16,9 +22,9 @@ public class EnemyFollow : MonoBehaviour
     [Title("Projectile Settings")]
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform firePoint;
-    [SerializeField] float fireRate = 1f;            
+    [SerializeField] float timeBetweenShoot = 1f;            
     [SerializeField] bool hasKickback = true;
-    [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;       
+    [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;
 
     private float lastShotTime = 0f;
     private Animator animator => GetComponentInChildren<Animator>();
@@ -26,6 +32,9 @@ public class EnemyFollow : MonoBehaviour
     private void Start()
     {
         playerTransform = FindFirstObjectByType<PlayerTag>().gameObject.transform;
+        bulletPrefab.GetComponent<EnemyBullet>().damage = damage;
+        bulletPrefab.GetComponent<BulletMovement>().moveSpeed = bulletMoveSpeed;
+        bulletPrefab.GetComponent<BulletMovement>().maxDistance = bulletMaxDistance;
     }
 
     private void FixedUpdate()
@@ -38,14 +47,14 @@ public class EnemyFollow : MonoBehaviour
     {
         float distance = Vector2.Distance(transform.position, playerTransform.position);
 
-        if (distance > maxDistance)
+        if (distance > maxDistanceFromPlayer)
         {
             MoveTowardsplayerTransform();
         }
         else
         {
             StartShootingAtplayerTransform();
-            if (distance < minDistance)
+            if (distance < minDistanceFromPlayer)
             {
                 MoveAwayFromplayerTransform();
             }
@@ -54,7 +63,7 @@ public class EnemyFollow : MonoBehaviour
 
     private void StartShootingAtplayerTransform()
     {
-        if (Time.time - lastShotTime >= fireRate)
+        if (Time.time - lastShotTime >= timeBetweenShoot)
         {
             animator.SetBool("isPreparingAttack", true);
         }
@@ -64,14 +73,21 @@ public class EnemyFollow : MonoBehaviour
     public void ShootAtplayerTransform()
     {
         Vector2 direction = (playerTransform.position - transform.position).normalized;
-        Debug.Log("SpawnSpear");
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         bullet.transform.up = direction;
 
         if (hasKickback)
         {
-            Vector2 recoilDirection = -direction * recoilForce;
-            transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + recoilDirection, recoilForce);
+            Vector2 recoilDirection = -direction.normalized * recoilForce;
+            Vector2 targetPosition = (Vector2)transform.position + recoilDirection;
+
+            if (TryGetComponent<Rigidbody2D>(out var rb))
+            {
+                if (!Physics2D.OverlapPoint(targetPosition))
+                {
+                    rb.MovePosition(targetPosition);
+                }
+            }
         }
 
         lastShotTime = Time.time;
@@ -99,12 +115,12 @@ public class EnemyFollow : MonoBehaviour
     void MoveTowardsplayerTransform()
     {
         Vector2 direction = (-transform.position + playerTransform.position).normalized;
-        transform.position = Vector2.MoveTowards(transform.position, transform.position + (Vector3)direction, moveSpeed * Time.fixedDeltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, transform.position + (Vector3)direction, enemyMoveSpeed * Time.fixedDeltaTime);
     }
 
     void MoveAwayFromplayerTransform()
     {
         Vector2 direction = (transform.position - playerTransform.position).normalized;
-        transform.position = Vector2.MoveTowards(transform.position, transform.position + (Vector3)direction, moveSpeed * Time.fixedDeltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, transform.position + (Vector3)direction, enemyMoveSpeed * Time.fixedDeltaTime);
     }
 }
