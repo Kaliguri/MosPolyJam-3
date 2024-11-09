@@ -7,8 +7,9 @@ public class ArenaTrigger : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider2D)
     {
         if (collider2D.gameObject.GetComponent<PlayerTag>() != null)
+        if (!LevelManager.instance.InTheArena)
         {
-            LevelManager.instance.BattleStateUpate(arenaId, true);
+            LevelManager.instance.BattleStateUpdate(arenaId, true);
         }
     }
 }

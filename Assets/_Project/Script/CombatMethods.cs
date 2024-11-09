@@ -11,8 +11,11 @@ public class CombatMethods : MonoBehaviour
         if (instance == null) { instance = this; }
     }
 
-    public void ApplayDamage(float damage, GameObject targetType)
+    public void ApplayDamage(float damage, Collider2D collisionTargetType)
     {
+        var targetType = collisionTargetType.gameObject;
+        var contact = collisionTargetType.ClosestPoint(transform.position);
+
         if (targetType.GetComponent<PlayerTag>() != null)
         {
             float _damage = damage;
@@ -20,7 +23,7 @@ public class CombatMethods : MonoBehaviour
             {
                 _damage = PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime ? 0f : _damage * damageResistOnParry;
 
-                PlayerParry.instance.ParryCast(PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime);
+                PlayerParry.instance.ParryCast(PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime, contact);
                 PlayerSphereManager.instance.ActivateSphere(PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime);
             }
 

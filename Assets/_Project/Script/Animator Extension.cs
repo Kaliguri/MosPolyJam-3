@@ -1,12 +1,12 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class AnimatorExtension : MonoBehaviour
 {
-    public bool attackPrepared = false;
+    [ReadOnly] public bool attackPrepared = false;
 
-    public static UnityEvent AttackPrepared = new();
-    public void SendAttackPrepared() {  AttackPrepared.Invoke(); }
+    public void SendAttackPrepared() {  GetComponentInParent<EnemyFollow>().ShootAtplayerTransform(); }
 
     private void FixedUpdate()
     {

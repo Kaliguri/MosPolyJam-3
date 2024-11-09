@@ -1,11 +1,16 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [Title ("DataBase")]
     [SerializeField] DB originalDB;
     [ReadOnly] public DB DB;
+
+    [Title ("Inputs")]
+    [SerializeField] InputActionReference restartInput;
 
 
     static public GameManager instance;
@@ -16,14 +21,13 @@ public class GameManager : MonoBehaviour
         DB = Instantiate(originalDB);
     }
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        if (restartInput.action.IsPressed()) Restart();
+    }
+
+    void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
