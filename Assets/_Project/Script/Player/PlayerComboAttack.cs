@@ -106,7 +106,7 @@ public class PlayerComboAttack : MonoBehaviour
 
         if (attackInput.action.IsPressed())
         {
-            if (Time.time - attackPressTime >= longPressThreshold && !isLongPress)
+            if (Time.time - attackPressTime >= longPressThreshold)
             {
                 isLongPress = true;
             }
@@ -115,24 +115,21 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!attackInput.action.IsPressed())
+        isAttacking = ChechIfIsAttacking();
+
+        if (attackPressed && !PlayerParry.instance.isParryState)
         {
-            isAttacking = ChechIfIsAttacking();
+            attackPressed = false;
 
-            if (attackPressed && !PlayerParry.instance.isParryState)
-            {
-                attackPressed = false;
+            ProcessAttackInput(isLongPress);
+            isLongPress = false;
+        }
 
-                ProcessAttackInput(isLongPress);
-                isLongPress = false;
-            }
-
-            if (!isAttacking && inputBuffered > 0)
-            {
-                inputBuffered--;
-                ProcessAttackInput(isLongPress);
-                isLongPress = false;
-            }
+        if (!isAttacking && inputBuffered > 0)
+        {
+            inputBuffered--;
+            ProcessAttackInput(isLongPress);
+            isLongPress = false;
         }
     }
 
@@ -272,10 +269,11 @@ public class PlayerComboAttack : MonoBehaviour
     {
         float parryValue = 1;
         if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter();
+        else Debug.Log("NormalAttack2");
 
         GameObject attack = attacksList[_comboStep - 1];
 
-        attack.GetComponent<Attack>().SetDamage(attacks_Damage[1] + attack1_DamageIncrease * parryValue);
+        attack.GetComponentInChildren<Attack>().SetDamage(attacks_Damage[1] + attack1_DamageIncrease * parryValue);
         attack.transform.localScale = new Vector3(attack2_StartScaleX * attack2_ScaleXIncrease * parryValue, attack2_StartScaleY * attack2_ScaleYIncrease * parryValue, 1);
 
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -325,6 +323,7 @@ public class PlayerComboAttack : MonoBehaviour
     {
         float parryValue = 1;
         if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter();
+        else Debug.Log("NormalAttack3");
 
         GameObject attack = attacksList[_comboStep - 1];
 
