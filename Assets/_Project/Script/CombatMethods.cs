@@ -13,11 +13,13 @@ public class CombatMethods : MonoBehaviour
         if (instance == null) { instance = this; }
     }
 
-    public void ApplayDamage(float value, GameObject targetType)
+    public void ApplayDamage(float damage, GameObject targetType)
     {
-        targetType.GetComponent<HPController>().RecieveDamage(value);
+        DamageNumberManager.instance.SpawnDamageText(gameObject, targetType.transform.position, damage);
 
-        if (targetType.GetComponent<PlayerMovement>() != null)
+        targetType.GetComponent<HPController>().RecieveDamage(damage);
+
+        if (targetType.GetComponent<PlayerTag>() != null)
         {
             /*FeelFeedbacksManager.instance.TakeDamage.PlayFeedbacks();
 

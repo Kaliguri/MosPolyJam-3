@@ -26,7 +26,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] TrailRenderer trailRenderer;
 
     [SerializeField] SoundEvent dashSound;
+    [SerializeField] LayerMask platformLayerMask;
 
+    private Vector3 lastPlatformPosition;
 
     private Rigidbody2D rb2D => GetComponent<Rigidbody2D>();
     private Animator animator => GetComponent<Animator>();
@@ -39,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        CheckIfOutsidePlatform();
+
         ReadInputActions();
 
         if (GetComponent<PlayerComboAttack>().isAttacking) moveSpeed = 0f;
@@ -80,6 +84,35 @@ public class PlayerMovement : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
+    }
+
+    void CheckIfOutsidePlatform()
+    {
+        bool isOnPlatform = Physics2D.OverlapPoint(transform.position, platformLayerMask);
+
+        if (isOnPlatform)
+        {
+            lastPlatformPosition = transform.position;
+        }
+        else
+        {
+            HandleFallOffPlatform();
+        }
+    }
+
+    void HandleFallOffPlatform()
+    {
+        /*rb2D.linearVelocity = Vector2.zero;
+        canDash = false;
+        moveVector2 = Vector2.zero;
+
+        animator.SetTrigger("FallOff");
+
+        //GetComponent<PlayerHealth>().TakeDamage(10);
+
+        transform.position = lastPlatformPosition;
+
+        canDash = true;*/
     }
 
     IEnumerator Dash()

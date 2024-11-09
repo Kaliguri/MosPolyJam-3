@@ -3106,7 +3106,7 @@ GameObject:
   - component: {fileID: 1348769770}
   - component: {fileID: 1348769772}
   - component: {fileID: 1348769771}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Arena
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24693,6 +24693,7 @@ GameObject:
   - component: {fileID: 2102705447}
   - component: {fileID: 2102705455}
   - component: {fileID: 2102705456}
+  - component: {fileID: 2102705457}
   - component: {fileID: 2102705449}
   - component: {fileID: 2102705451}
   - component: {fileID: 2102705452}
@@ -24800,6 +24801,9 @@ MonoBehaviour:
   dashInput: {fileID: -106870424074364867, guid: 4ab7b14a89ef0524e933f56df52e65a8, type: 3}
   trailRenderer: {fileID: 2102705453}
   dashSound: {fileID: 11400000, guid: 15e31a4b6cd5d0a4aa710a19c613fdc2, type: 2}
+  platformLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
   isDashing: 0
 --- !u!50 &2102705451
 Rigidbody2D:
@@ -25056,6 +25060,18 @@ MonoBehaviour:
   attackReleaseVFX: {fileID: 3876152785130454950, guid: 6b26c89e8e1553a46939d7d05c0cdc6e, type: 3}
   attacking: 1
   isAttacking: 1
+--- !u!114 &2102705457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102705446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c22bc64ec6ad054bb2906b08ac7b903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2114912635
 GameObject:
   m_ObjectHideFlags: 0
