@@ -33,9 +33,9 @@ public class CombatMethods : MonoBehaviour
             {
                 DamageNumberManager.instance.SpawnDamageText(gameObject, targetType.transform.position, _damage);
 
-                if (!PlayerParry.instance.isParryState) targetType.GetComponent<HPController>().RecieveDamage(_damage);
+                targetType.GetComponent<HPController>().RecieveDamage(_damage);
 
-                FeelFeedbacksManager.instance.TakeDamage.PlayFeedbacks();
+                if (!PlayerParry.instance.isParryState)FeelFeedbacksManager.instance.TakeDamage.PlayFeedbacks();
                 if (targetType.GetComponent<HPController>().maxHP * FeelFeedbacksManager.instance.HPPercenForLowHP / 100 > targetType.GetComponent<HPController>().currentHP) FeelFeedbacksManager.instance.ActiveLowHPImage();
             }
 
