@@ -14,29 +14,56 @@ public class TrainingManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI tooltipHeader;
     [SerializeField] TextMeshProUGUI tooltipText;
 
-    [ReadOnly] int currentText = -1;
+    [ReadOnly] int currentMission = -1;
 
-    public static UnityEvent TrainingPartComplete = new();
-    public static void SendTrainingPartComplete() {  TrainingPartComplete.Invoke(); }
+    public static UnityEvent<int> TrainingMissionComplete = new();
+    public static void SendTrainingMissionComplete(int missionID) {  TrainingMissionComplete.Invoke(missionID); }
 
     static public TrainingManager instance;
     void Awake()
     {
         instance = this;
-        TrainingPartComplete.AddListener(NextPart);
+        TrainingMissionComplete.AddListener(NextPart);
     }
 
     void Start()
     {
-        NextPart();
+        NextPart(-1);
     }
 
-    public void NextPart()
+    public void NextPart(int missionID)
     {
-        currentText++;
+        if (currentMission == missionID)
+        {
+            currentMission++;
+            //tooltipHeader.text = trainingTextList[currentMission].Header;
+            tooltipText.text = trainingTextList[currentMission].Text;
 
-        //tooltipHeader.text = trainingTextList[currentText].Header;
-        tooltipText.text = trainingTextList[currentText].Text;
+            if      (missionID == 1) IslandActive();
+            else if (missionID == 2) AttackActive();
+            else if (missionID == 3) ParryActive();
+            else if (missionID == 4) SpecialAttackActive();
+        }
+
+    }
+
+    void IslandActive()
+    {
+        
+    }
+
+    void AttackActive()
+    {
+
+    }
+
+    void ParryActive()
+    {
+
+    }
+
+    void SpecialAttackActive()
+    {
 
     }
 

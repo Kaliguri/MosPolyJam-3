@@ -53,7 +53,9 @@ public class PlayerMovement : MonoBehaviour
 
         RotateCharacter();
 
-        if (dashInput.action.IsPressed() & canDash) StartCoroutine(Dash());
+        if (dashInput.action.IsPressed() & canDash) 
+        if (Mathf.Abs(rb2D.linearVelocity.x) + Mathf.Abs(rb2D.linearVelocityY) != 0)
+        StartCoroutine(Dash());
     }
 
     void Start()
@@ -119,6 +121,8 @@ public class PlayerMovement : MonoBehaviour
     {
         //Debug.Log("Dash");
 
+        TrainingManager.SendTrainingMissionComplete(0);
+
         canDash = false;
         isDashing = true;
         GetComponent<Collider2D>().enabled = false; 
@@ -137,6 +141,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
 
         canDash = true;
+
 
     }
 }
