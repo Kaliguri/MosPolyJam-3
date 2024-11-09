@@ -170,9 +170,9 @@ MonoBehaviour:
   attack1_Distance: 1
   attack1_MoveDistance: 2
   attack1_MoveSpeed: 40
-  attack1_DamageIncrease: 1
-  attack1_ScaleYIncrease: 1
-  attack1_ScaleXIncrease: 1
+  attack1_DamageIncrease: 20
+  attack1_ScaleYIncrease: 0.4
+  attack1_ScaleXIncrease: 0.05
   attack2_MoveSpeed: 35
   attack2_StartAngle: 30
   attack2_DamageIncrease: 1
@@ -183,8 +183,8 @@ MonoBehaviour:
   attack3_Distance: 1
   attack3_MoveSpeed: 25
   attack3_MoveDistance: 2
-  attack3_TimeBetweenSendSlice: 0.2
-  attack3_StartSliceCount: 3
+  attack3_TimeBetweenSendSlice: 0.1
+  attack3_StartSliceCount: 5
   attack3_MaxSliceCount: 50
   attack3_MaxOffset: 0.7
   attack3_TimeBetweenSendSliceDesceasePercent: 0.9
