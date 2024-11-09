@@ -41,11 +41,11 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        CheckIfOutsidePlatform();
+        //CheckIfOutsidePlatform();
 
         ReadInputActions();
 
-        if (GetComponent<PlayerComboAttack>().isAttacking) moveSpeed = 0f;
+        if (GetComponent<PlayerComboAttack>().isAttacking || PlayerParry.instance.isParryState) moveSpeed = 0f;
         else moveSpeed = currentSpeed;
 
 

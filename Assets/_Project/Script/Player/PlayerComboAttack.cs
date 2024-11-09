@@ -75,7 +75,7 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Update()
     {
-        if (attackInput.action.WasPressedThisFrame())
+        if (attackInput.action.WasPressedThisFrame() && !PlayerParry.instance.isParryState)
         {
             attackPressed = true;
         }
@@ -85,7 +85,7 @@ public class PlayerComboAttack : MonoBehaviour
     {
         isAttacking = ChechIfIsAttacking();
 
-        if (attackPressed)
+        if (attackPressed && !PlayerParry.instance.isParryState)
         {
             attackPressed = false;
 
@@ -122,13 +122,13 @@ public class PlayerComboAttack : MonoBehaviour
     {
         for (int i = 0; i < attacksList.Count; i++)
         {
-            if (i == 0) attacksList[i].GetComponent<PlayerAttack>().SetDamage(attacks_Damage[i]);
-            else if (i == 1) attacksList[i].GetComponentInChildren<PlayerAttack>().SetDamage(attacks_Damage[i]);
+            if (i == 0) attacksList[i].GetComponent<Attack>().SetDamage(attacks_Damage[i]);
+            else if (i == 1) attacksList[i].GetComponentInChildren<Attack>().SetDamage(attacks_Damage[i]);
             else
             {
                 for (int j = 0; j < attack3SliceList.Count; j++)
                 {
-                    attack3SliceList[j].GetComponent<PlayerAttack>().SetDamage(attacks_Damage[i]);
+                    attack3SliceList[j].GetComponent<Attack>().SetDamage(attacks_Damage[i]);
                 }
             }
         }
@@ -207,7 +207,7 @@ public class PlayerComboAttack : MonoBehaviour
     {
         while (Vector3.Distance(attack.transform.position, attack1TargetPosition) > 0.1f)
         {
-            if (GetComponent<PlayerMovement>().isDashing) break;
+            if (GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState) break;
             attack.transform.position = Vector3.MoveTowards(attack.transform.position, attack1TargetPosition, attack1_MoveSpeed * Time.deltaTime);
             yield return null;
         }
@@ -250,7 +250,7 @@ public class PlayerComboAttack : MonoBehaviour
 
         while (elapsedTime < Mathf.Abs(endAngle - startAngle) / (attack2_MoveSpeed * 30))
         {
-            if (GetComponent<PlayerMovement>().isDashing) break;
+            if (GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState) break;
             float currentAngle = Mathf.Lerp(startAngle, endAngle, elapsedTime * (attack2_MoveSpeed * 30) / Mathf.Abs(endAngle - startAngle));
 
             attack.transform.position = transform.position + attack2InitialOffset;
@@ -299,7 +299,7 @@ public class PlayerComboAttack : MonoBehaviour
             float elapsed = 0f;
             while (elapsed < attack3_TimeBetweenSendSlice)
             {
-                if (GetComponent<PlayerMovement>().isDashing)
+                if (GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState)
                 {
                     yield break;
                 }
@@ -314,7 +314,7 @@ public class PlayerComboAttack : MonoBehaviour
     {
         while (Vector3.Distance(attack.transform.position, attack3TargetPosition) > 0.1f)
         {
-            if (GetComponent<PlayerMovement>().isDashing) break;
+            if (GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState) break;
             attack.transform.position = Vector3.MoveTowards(attack.transform.position, attack3TargetPosition, attack3_MoveSpeed * Time.deltaTime);
             yield return null;
         }
@@ -322,7 +322,7 @@ public class PlayerComboAttack : MonoBehaviour
         attack.SetActive(false);
         attack.transform.localPosition = new Vector2(0, 0);
 
-        if (isLast || GetComponent<PlayerMovement>().isDashing) 
+        if (isLast || GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState) 
         {
             lastClickTime = Time.time;
             attack.transform.parent.gameObject.SetActive(false); 

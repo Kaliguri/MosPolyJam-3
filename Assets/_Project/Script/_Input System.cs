@@ -144,13 +144,22 @@ public partial class @_InputSystem: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Attack"",
+            ""name"": ""Combat"",
             ""id"": ""485dbc6c-41fe-4b8e-915c-e49a5d77fd8a"",
             ""actions"": [
                 {
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""f7ddbf8a-ce7c-4682-b635-80b6a7b2710c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Parry"",
+                    ""type"": ""Button"",
+                    ""id"": ""280c8181-9df6-4fea-9015-67d3c0cd8e59"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -166,6 +175,17 @@ public partial class @_InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Mouse and Keyboard"",
                     ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""68c6bc6b-57d8-402e-8542-fa474f5212f0"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Parry"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -198,16 +218,17 @@ public partial class @_InputSystem: IInputActionCollection2, IDisposable
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_EscMenu = m_Menu.FindAction("EscMenu", throwIfNotFound: true);
-        // Attack
-        m_Attack = asset.FindActionMap("Attack", throwIfNotFound: true);
-        m_Attack_Attack = m_Attack.FindAction("Attack", throwIfNotFound: true);
+        // Combat
+        m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
+        m_Combat_Attack = m_Combat.FindAction("Attack", throwIfNotFound: true);
+        m_Combat_Parry = m_Combat.FindAction("Parry", throwIfNotFound: true);
     }
 
     ~@_InputSystem()
     {
         UnityEngine.Debug.Assert(!m_Movement.enabled, "This will cause a leak and performance issues, _InputSystem.Movement.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Menu.enabled, "This will cause a leak and performance issues, _InputSystem.Menu.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_Attack.enabled, "This will cause a leak and performance issues, _InputSystem.Attack.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Combat.enabled, "This will cause a leak and performance issues, _InputSystem.Combat.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -366,51 +387,59 @@ public partial class @_InputSystem: IInputActionCollection2, IDisposable
     }
     public MenuActions @Menu => new MenuActions(this);
 
-    // Attack
-    private readonly InputActionMap m_Attack;
-    private List<IAttackActions> m_AttackActionsCallbackInterfaces = new List<IAttackActions>();
-    private readonly InputAction m_Attack_Attack;
-    public struct AttackActions
+    // Combat
+    private readonly InputActionMap m_Combat;
+    private List<ICombatActions> m_CombatActionsCallbackInterfaces = new List<ICombatActions>();
+    private readonly InputAction m_Combat_Attack;
+    private readonly InputAction m_Combat_Parry;
+    public struct CombatActions
     {
         private @_InputSystem m_Wrapper;
-        public AttackActions(@_InputSystem wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Attack => m_Wrapper.m_Attack_Attack;
-        public InputActionMap Get() { return m_Wrapper.m_Attack; }
+        public CombatActions(@_InputSystem wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Attack => m_Wrapper.m_Combat_Attack;
+        public InputAction @Parry => m_Wrapper.m_Combat_Parry;
+        public InputActionMap Get() { return m_Wrapper.m_Combat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(AttackActions set) { return set.Get(); }
-        public void AddCallbacks(IAttackActions instance)
+        public static implicit operator InputActionMap(CombatActions set) { return set.Get(); }
+        public void AddCallbacks(ICombatActions instance)
         {
-            if (instance == null || m_Wrapper.m_AttackActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_AttackActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_CombatActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CombatActionsCallbackInterfaces.Add(instance);
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
+            @Parry.started += instance.OnParry;
+            @Parry.performed += instance.OnParry;
+            @Parry.canceled += instance.OnParry;
         }
 
-        private void UnregisterCallbacks(IAttackActions instance)
+        private void UnregisterCallbacks(ICombatActions instance)
         {
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
+            @Parry.started -= instance.OnParry;
+            @Parry.performed -= instance.OnParry;
+            @Parry.canceled -= instance.OnParry;
         }
 
-        public void RemoveCallbacks(IAttackActions instance)
+        public void RemoveCallbacks(ICombatActions instance)
         {
-            if (m_Wrapper.m_AttackActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_CombatActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IAttackActions instance)
+        public void SetCallbacks(ICombatActions instance)
         {
-            foreach (var item in m_Wrapper.m_AttackActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_CombatActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_AttackActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_CombatActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public AttackActions @Attack => new AttackActions(this);
+    public CombatActions @Combat => new CombatActions(this);
     private int m_MouseandKeyboardSchemeIndex = -1;
     public InputControlScheme MouseandKeyboardScheme
     {
@@ -429,8 +458,9 @@ public partial class @_InputSystem: IInputActionCollection2, IDisposable
     {
         void OnEscMenu(InputAction.CallbackContext context);
     }
-    public interface IAttackActions
+    public interface ICombatActions
     {
         void OnAttack(InputAction.CallbackContext context);
+        void OnParry(InputAction.CallbackContext context);
     }
 }

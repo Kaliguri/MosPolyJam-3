@@ -1,7 +1,11 @@
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+public class Attack : MonoBehaviour
 {
+    [SerializeField] bool isPlayerAttack = true;
+
+    private ParticleSystem hitVFX;
+
     private float damage = 10f;
 
     private void OnEnable()
@@ -11,10 +15,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<EnemyTag>() != null)
-        {
-            CombatMethods.instance.ApplayDamage(damage, collision.gameObject);
-        }
+        CombatMethods.instance.ApplayDamage(damage, collision.gameObject);
+        if (!isPlayerAttack && collision.gameObject.GetComponent<PlayerTag>() != null) { Destroy(gameObject); }
     }
 
     public float GetDamage()

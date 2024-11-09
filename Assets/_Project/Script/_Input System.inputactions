@@ -122,13 +122,22 @@
             ]
         },
         {
-            "name": "Attack",
+            "name": "Combat",
             "id": "485dbc6c-41fe-4b8e-915c-e49a5d77fd8a",
             "actions": [
                 {
                     "name": "Attack",
                     "type": "Button",
                     "id": "f7ddbf8a-ce7c-4682-b635-80b6a7b2710c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Parry",
+                    "type": "Button",
+                    "id": "280c8181-9df6-4fea-9015-67d3c0cd8e59",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -144,6 +153,17 @@
                     "processors": "",
                     "groups": ";Mouse and Keyboard",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68c6bc6b-57d8-402e-8542-fa474f5212f0",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Parry",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
