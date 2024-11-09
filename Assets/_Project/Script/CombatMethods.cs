@@ -27,14 +27,21 @@ public class CombatMethods : MonoBehaviour
                 PlayerSphereManager.instance.ActivateSphere(PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime);
             }
 
-            DamageNumberManager.instance.SpawnDamageText(gameObject, targetType.transform.position, _damage);
+            
 
             if (_damage > 0) 
             {
-                targetType.GetComponent<HPController>().RecieveDamage(_damage);
+                DamageNumberManager.instance.SpawnDamageText(gameObject, targetType.transform.position, _damage);
+
+                if (!PlayerParry.instance.isParryState) targetType.GetComponent<HPController>().RecieveDamage(_damage);
 
                 FeelFeedbacksManager.instance.TakeDamage.PlayFeedbacks();
                 if (targetType.GetComponent<HPController>().maxHP * FeelFeedbacksManager.instance.HPPercenForLowHP / 100 > targetType.GetComponent<HPController>().currentHP) FeelFeedbacksManager.instance.ActiveLowHPImage();
+            }
+
+            else
+            {
+                DamageNumberManager.instance.SpawnParryText(gameObject, targetType.transform.position);
             }
         }
         else if (targetType.GetComponent<EnemyTag>() != null)

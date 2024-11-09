@@ -12,6 +12,10 @@ public class DamageNumberManager : MonoBehaviour
     [SerializeField] GameObject prefabParentObject;
     [SerializeField] List<DamageNumber> prefabsList = new();
 
+    [Title("Other")]
+
+    [SerializeField] List<string> parryTextList;
+
     private DamageNumber damageNumber;
 
 
@@ -77,17 +81,9 @@ public class DamageNumberManager : MonoBehaviour
     {
         StartCoroutine(TextSpawn(0, position, number: textNumber, scale: scale, delay: delay, parent: parent));
     }
-    public void SpawnShieldChangeText(Vector3 position, float textNumber, float scale = 1f, float delay = 0f)
-    {   
-        Debug.Log(textNumber + " " + PlusOrMinus(textNumber));
-        StartCoroutine(TextSpawn(1, position, leftText: PlusOrMinus(textNumber),  number: textNumber, scale: scale, delay: delay));
-    }
-    public void SpawnHealText(Vector3 position, float textNumber, float scale = 1f, float delay = 0f)
+    public void SpawnParryText(GameObject parent, Vector3 position, float scale = 1f, float delay = 0f)
     {
-        StartCoroutine(TextSpawn(2, position, number: textNumber, scale: scale, delay: delay));
-    }
-    public void SpawnInfoText(Vector3 position, string textNumber, float scale = 1f, float delay = 0f)
-    {
-        StartCoroutine(TextSpawn(4, position, leftText: textNumber, scale: scale, delay: delay, IsOnlyText: true));
+        string leftText = parryTextList[Random.Range(0, parryTextList.Count)];
+        StartCoroutine(TextSpawn(1, position, leftText, scale: scale, delay: delay, IsOnlyText: true, parent: parent));
     }
 }
