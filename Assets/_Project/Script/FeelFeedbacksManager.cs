@@ -17,13 +17,18 @@ public class FeelFeedbacksManager : MonoBehaviour
     public MMF_Player SlowMo;
 
     [Header("UI")]
-    public MMF_Player TooltipTextDisappear;
+    [Header("Tooltip")]
     public MMF_Player TooltipTextAppear;
+    public MMF_Player TooltipTextDisappear;
+
+    [Header("CinematicLines")]
+    public MMF_Player CinematicLinesAppear;
+    public MMF_Player CinematicLinesDisappear;
 
 
     [Title("GameObjects Reference")]
     [SerializeField] GameObject LowHPImage;
-    [SerializeField] GameObject CinematicLines;
+    [SerializeField] List<GameObject> CinematicLines;
 
 
     [Title("Settings")]
@@ -44,17 +49,6 @@ public class FeelFeedbacksManager : MonoBehaviour
     public void DeactiveLowHPImage()
     {
         LowHPImage.SetActive(false);
-    }
-
-    public void ActiveCinematicLines()
-    {
-        CinematicLines.SetActive(true);
-    }
-
-    public void DeactiveCinvematicLines()
-    {
-        CinematicLines.SetActive(false);
-
     }
 
     public IEnumerator PlayWithDelay(MMF_Player mmf, float delay)

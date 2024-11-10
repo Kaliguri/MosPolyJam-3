@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float fallDamage = 5f;
 
     [Header("Move")]
-    [SerializeField] float moveSpeed = 5f;
+    public float moveSpeed = 5f;
 
     [Header("Dash")]
     [SerializeField] float dashPower;

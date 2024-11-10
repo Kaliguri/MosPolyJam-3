@@ -22,6 +22,8 @@ public class TrainingManager : MonoBehaviour
 
     [Title("Settings")]
     [SerializeField] float timeBetweenTextAnimations = 0.5f;
+    [SerializeField] float timeBetweenInSwordAnimation = 2f;
+
 
 
     [Title("Read Only")]
@@ -60,8 +62,8 @@ public class TrainingManager : MonoBehaviour
 
 
             if      (missionID == 1) IslandActive();
-            else if (missionID == 2) AttackActive();
-            else if (missionID == 3) ParryActive();
+            else if (missionID == 2) StartCoroutine(AttackActive());
+            else if (missionID == 3) StartCoroutine(ParryActive());
             else if (missionID == 4) SpecialAttackActive();
         }
 
@@ -72,14 +74,29 @@ public class TrainingManager : MonoBehaviour
         TrainingIsland1.SetActive(true);
     }
 
-    void AttackActive()
+    IEnumerator AttackActive()
     {
-        TrainingIsland2.SetActive(false);
+        tooltipHeader.gameObject.SetActive(false);
+        tooltipText.gameObject.SetActive(false);
+
+        FeelFeedbacksManager.instance.CinematicLinesAppear.PlayFeedbacks();
+        GameManager.instance.InputSetActive(false);
+
+        yield return new WaitForSeconds(timeBetweenInSwordAnimation);
+
+        FeelFeedbacksManager.instance.CinematicLinesDisappear.PlayFeedbacks();
+        GameManager.instance.InputSetActive(true);
+
+        tooltipHeader.gameObject.SetActive(true);
+        tooltipText.gameObject.SetActive(true);
+        FeelFeedbacksManager.instance.TooltipTextAppear.PlayFeedbacks();
+        
     }
 
-    void ParryActive()
+    IEnumerator ParryActive()
     {
 
+        yield return new WaitForSeconds(timeBetweenInSwordAnimation);
     }
 
     void SpecialAttackActive()
