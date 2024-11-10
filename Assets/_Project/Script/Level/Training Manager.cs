@@ -22,14 +22,17 @@ public class TrainingManager : MonoBehaviour
 
     [Title("Other")]
     [SerializeField] SwordRewardAnimation Sword; 
+    [SerializeField] GameObject dummyTriangle; 
+
 
 
     [Title("Settings")]
     [SerializeField] float timeBetweenTextAnimations = 0.5f;
-    [SerializeField] float timeBetweenInSwordAnimation = 2f;
+    [SerializeField] float timeBeforeSwordAnimation = 1.5f;
+    [SerializeField] float timeBetweenInSwordAnimation = 4f;
 
     [Title("Read Only")]
-    [ReadOnly] [SerializeField] int currentMission = -1;
+    [ReadOnly] public int currentMission = -1;
 
     static public TrainingManager instance;
     void Awake()
@@ -84,6 +87,7 @@ public class TrainingManager : MonoBehaviour
         FeelFeedbacksManager.instance.CinematicLinesAppear.PlayFeedbacks();
         GameManager.instance.InputSetActive(false);
 
+        Sword.waitTime = timeBeforeSwordAnimation;
         Sword.StartAnimation();
 
         yield return new WaitForSeconds(timeBetweenInSwordAnimation);
@@ -94,6 +98,8 @@ public class TrainingManager : MonoBehaviour
         tooltipHeader.gameObject.SetActive(true);
         tooltipText.gameObject.SetActive(true);
         FeelFeedbacksManager.instance.TooltipTextAppear.PlayFeedbacks();
+
+        dummyTriangle.SetActive(true);
         
     }
 

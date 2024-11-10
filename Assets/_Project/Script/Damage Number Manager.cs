@@ -12,9 +12,16 @@ public class DamageNumberManager : MonoBehaviour
     [SerializeField] GameObject prefabParentObject;
     [SerializeField] List<DamageNumber> prefabsList = new();
 
-    [Title("Other")]
-
+    [Title("Text Lists")]
     [SerializeField] List<string> parryTextList;
+    [SerializeField] List<string> noDeathTextList;
+    [SerializeField] List<string> FallTrainingTextList;
+
+    [Title ("Other")]
+
+    [ReadOnly] [SerializeField] int failTextCount = 0;
+
+
 
     private DamageNumber damageNumber;
 
@@ -85,5 +92,21 @@ public class DamageNumberManager : MonoBehaviour
     {
         string leftText = parryTextList[Random.Range(0, parryTextList.Count)];
         StartCoroutine(TextSpawn(1, position, leftText, scale: scale, delay: delay, IsOnlyText: true, parent: parent));
+    }
+
+    public void SpawnLegendNeverDieText(GameObject parent, Vector3 position, float scale = 1f, float delay = 0f)
+    {
+        string leftText = noDeathTextList[Random.Range(0, noDeathTextList.Count)];
+        StartCoroutine(TextSpawn(2, position, leftText, scale: scale, delay: delay, IsOnlyText: true));
+    }
+
+    public void SpawnFallInTrainingText(Vector3 position, float scale = 1f, float delay = 0f)
+    {
+        if (failTextCount <=  FallTrainingTextList.Count - 1)
+        {  
+            string leftText = FallTrainingTextList[failTextCount];
+            StartCoroutine(TextSpawn(3, position, leftText, scale: scale, delay: delay, IsOnlyText: true));
+            failTextCount ++;
+        }
     }
 }

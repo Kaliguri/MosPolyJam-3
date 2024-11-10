@@ -117,18 +117,27 @@ public class PlayerMovement : MonoBehaviour
 
     public void StopFalling()
     {
+        if (GameManager.instance.IsTraining) 
+       {
+            if (TrainingManager.instance.currentMission == 2)
+            {
+                DamageNumberManager.instance.SpawnFallInTrainingText(gameObject.transform.position);
+            }
+            StartCoroutine(TrainingManager.instance.NextPart(1));
+       }
+       
         transform.position = lastPlatformPosition;
         animator.SetBool("isFalling", false);
         isFalling = false;
 
-       if (TrainingManager.instance != null) StartCoroutine(TrainingManager.instance.NextPart(1));
+       
     }
 
     IEnumerator Dash()
     {
         //Debug.Log("Dash");
 
-        if (TrainingManager.instance != null) StartCoroutine(TrainingManager.instance.NextPart(0));
+        if (GameManager.instance.IsTraining) StartCoroutine(TrainingManager.instance.NextPart(0));
 
         canDash = false;
         isDashing = true;

@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Title ("Settings")]
+
+    public bool IsTraining = false;
+
     [Title ("DataBase")]
     [SerializeField] DB originalDB;
     [ReadOnly] public DB DB;

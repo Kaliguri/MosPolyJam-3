@@ -5,6 +5,7 @@ using UnityEngine;
 public class SwordRewardAnimation : MonoBehaviour
 {
     [Title("Settings")]
+    public float waitTime = 1.5f;
     [SerializeField] float speed = 5f;  // Скорость движения к цели
     [SerializeField] float fadeDuration = 2f; // Время, за которое объект исчезнет
 
@@ -15,6 +16,7 @@ public class SwordRewardAnimation : MonoBehaviour
 
     private IEnumerator MoveAndFadeCoroutine()
     {
+        yield return new WaitForSeconds(waitTime);
         var player = FindFirstObjectByType<PlayerTag>().gameObject;  
         // Пока не достигли цели
         while (Vector3.Distance(transform.position, player.transform.position) > 0.1f)
