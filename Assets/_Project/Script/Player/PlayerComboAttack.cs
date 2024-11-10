@@ -300,6 +300,10 @@ public class PlayerComboAttack : MonoBehaviour
         float parryValue = 0;
         if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter() + defaultValue;
 
+        if (parryValue > 0) 
+        if (GameManager.instance.IsTraining) TrainingManager.instance.SpecialCheck();
+
+
         GameObject attack = attacksList[_comboStep - 1];
 
         var attackComponent = attack.GetComponent<Attack>() ?? attack.GetComponentInChildren<Attack>();
@@ -348,6 +352,9 @@ public class PlayerComboAttack : MonoBehaviour
         Debug.Log("Attack2");
         float parryValue = 0;
         if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter() + defaultValue;
+
+        if (parryValue > 0) 
+        if (GameManager.instance.IsTraining) TrainingManager.instance.SpecialCheck();
 
         GameObject attack = attacksList[_comboStep - 1];
 
@@ -405,6 +412,9 @@ public class PlayerComboAttack : MonoBehaviour
     {
         float parryValue = 0;
         if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter() + defaultValue;
+
+        if (parryValue > 0) 
+        if (GameManager.instance.IsTraining) TrainingManager.instance.SpecialCheck();
 
         GameObject attack = attacksList[_comboStep - 1];
 

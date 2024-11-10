@@ -25,6 +25,8 @@ public class CombatMethods : MonoBehaviour
 
                 PlayerParry.instance.ParryCast(PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime, contact);
                 PlayerSphereManager.instance.ActivateSphere(PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime);
+
+                if (GameManager.instance.IsTraining) TrainingManager.instance.ParryCheck();
             }
 
             

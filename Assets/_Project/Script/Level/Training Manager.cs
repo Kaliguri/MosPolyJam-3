@@ -21,10 +21,27 @@ public class TrainingManager : MonoBehaviour
     [SerializeField] GameObject TrainingIsland1;
     [SerializeField] GameObject TrainingIsland2;
 
-    [Title("For Sword Animation")]
+    [Title("For Sword & Attack Mission")]
     [SerializeField] SwordRewardAnimation Sword; 
-    [SerializeField] GameObject dummyTriangle; 
+    [SerializeField] GameObject dummyAttack; 
     [SerializeField] CinemachineCamera swordCinemachine; 
+
+    [Title("For Parry Mission")]
+    [SerializeField] GameObject dummyParry;
+    [ReadOnly] [SerializeField] int parryCount = 0; 
+
+    [Title("For Special Attack Mission")]
+    [SerializeField] GameObject dummySpecial;
+
+    [Title("VFX")]
+    [SerializeField] ParticleSystem spawnVFX;
+    [SerializeField] float timeBetweenVFXandSpawn = 1.5f;
+
+    [Title("Enemy")]
+    [SerializeField] GameObject bodyRush;
+    [SerializeField] GameObject javelinThrower;
+    [SerializeField] GameObject spiningSword;
+    [SerializeField] GameObject pikeman;
 
 
 
@@ -82,6 +99,14 @@ public class TrainingManager : MonoBehaviour
             else if (missionID == 2) StartCoroutine(AttackActive());
             else if (missionID == 3) ParryActive();
             else if (missionID == 4) SpecialAttackActive();
+            else if (missionID == 5) StartCoroutine(SpawnEnemy(bodyRush));
+            else if (missionID == 6) StartCoroutine(SpawnEnemy(javelinThrower));
+            else if (missionID == 7) StartCoroutine(SpawnEnemy(spiningSword));
+            else if (missionID == 8) StartCoroutine(SpawnEnemy(pikeman));
+            else if (missionID == 9) CardSelect();
+
+
+
         }
 
     }
@@ -112,7 +137,7 @@ public class TrainingManager : MonoBehaviour
         tooltipText.gameObject.SetActive(true);
         FeelFeedbacksManager.instance.TooltipTextAppear.PlayFeedbacks();
 
-        dummyTriangle.SetActive(true);
+        StartCoroutine(SpawnEnemy(dummyAttack));
         swordCinemachine.Priority = 4;
 
         
@@ -120,12 +145,47 @@ public class TrainingManager : MonoBehaviour
 
     void ParryActive()
     {
+        StartCoroutine(SpawnEnemy(dummyParry));
+    }
 
+    public void ParryCheck()
+    {
+        parryCount ++;
+
+        if (parryCount == 3)
+
+        {
+            Destroy(dummyParry);
+            NextPart(4);
+        }
+        
     }
 
     void SpecialAttackActive()
     {
+        StartCoroutine(SpawnEnemy(dummySpecial));
+    }
 
+    public void SpecialCheck()
+    {
+        Destroy(dummySpecial);
+        NextPart(5);
+    }
+
+
+    void CardSelect()
+    {
+
+    }
+
+    IEnumerator SpawnEnemy(GameObject enemy)
+    {
+        Instantiate(spawnVFX, enemy.transform.position, Quaternion.identity);
+
+        yield return new WaitForSeconds(timeBetweenVFXandSpawn);
+
+        enemy.SetActive(true);
+        
     }
 
 }
