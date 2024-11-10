@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using TMPro;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,9 +21,11 @@ public class TrainingManager : MonoBehaviour
     [SerializeField] GameObject TrainingIsland1;
     [SerializeField] GameObject TrainingIsland2;
 
-    [Title("Other")]
+    [Title("For Sword Animation")]
     [SerializeField] SwordRewardAnimation Sword; 
     [SerializeField] GameObject dummyTriangle; 
+    [SerializeField] CinemachineCamera swordCinemachine; 
+
 
 
 
@@ -56,6 +59,7 @@ public class TrainingManager : MonoBehaviour
     {
         if (currentMission == missionID)
         {
+            Debug.Log("NextPart?");
             currentMission++;
             //tooltipHeader.text = trainingTextList[currentMission].Header;
             if (missionID != -1) { FeelFeedbacksManager.instance.TooltipTextDisappear.PlayFeedbacks(); }
@@ -68,7 +72,7 @@ public class TrainingManager : MonoBehaviour
 
             if      (missionID == 1) IslandActive();
             else if (missionID == 2) StartCoroutine(AttackActive());
-            else if (missionID == 3) StartCoroutine(ParryActive());
+            else if (missionID == 3) ParryActive();
             else if (missionID == 4) SpecialAttackActive();
         }
 
@@ -81,6 +85,7 @@ public class TrainingManager : MonoBehaviour
 
     IEnumerator AttackActive()
     {
+        swordCinemachine.Priority = 6;
         tooltipHeader.gameObject.SetActive(false);
         tooltipText.gameObject.SetActive(false);
 
@@ -100,13 +105,14 @@ public class TrainingManager : MonoBehaviour
         FeelFeedbacksManager.instance.TooltipTextAppear.PlayFeedbacks();
 
         dummyTriangle.SetActive(true);
+        swordCinemachine.Priority = 4;
+
         
     }
 
-    IEnumerator ParryActive()
+    void ParryActive()
     {
 
-        yield return new WaitForSeconds(timeBetweenInSwordAnimation);
     }
 
     void SpecialAttackActive()

@@ -23,6 +23,9 @@ public class HPController : MonoBehaviour
         {
             Destroy(gameObject);
             LevelManager.SendEnemyDeath();
+
+            if (GameManager.instance.IsTraining) StartCoroutine(TrainingManager.instance.NextPart(3));
+
         }
         else 
         { 
