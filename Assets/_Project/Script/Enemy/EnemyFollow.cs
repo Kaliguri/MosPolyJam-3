@@ -90,7 +90,7 @@ public class EnemyFollow : MonoBehaviour
 
     public void Die()
     {
-        Destroy(gameObject);
+        CombatMethods.instance.ApplayDamage(999f, GetComponent<Collider2D>(), gameObject);
     }
 
     public bool CanTeleport()
