@@ -9,6 +9,8 @@ using UnityEngine.WSA;
 public class PlayerMovement : MonoBehaviour
 {
     [Title("Settings")]
+    [SerializeField] float fallDamage = 5f;
+
     [Header("Move")]
     [SerializeField] float moveSpeed = 5f;
 
@@ -94,6 +96,8 @@ public class PlayerMovement : MonoBehaviour
     {
         foreach (Tilemap tilemap in TileMapController.instance.tilemapList)
         {
+            if (!tilemap.gameObject.transform.parent.gameObject.activeSelf) continue;
+
             Vector3Int tile = tilemap.WorldToCell(transform.position);
             if (tilemap.HasTile(tile)) return;
         }
@@ -104,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
     void HandleFallOffPlatform()
     {
         animator.SetBool("isFalling", true);
+        CombatMethods.instance.ApplayDamage(fallDamage, GetComponent<Collider2D>(), gameObject);
         isFalling = true;
     }
 
