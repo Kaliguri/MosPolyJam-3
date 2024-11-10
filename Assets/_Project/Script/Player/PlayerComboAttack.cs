@@ -136,7 +136,12 @@ public class PlayerComboAttack : MonoBehaviour
 
         if (attackInput.action.IsPressed())
         {
-            if (Time.time - attackPressTime >= longPressThreshold && attackPreparation)
+            if (PlayerParry.instance.isParryState)
+            {
+                progressBar.SetActive(false);
+                attackPreparation = false;
+            }
+            else if (Time.time - attackPressTime >= longPressThreshold && attackPreparation)
             {
                 if (canSpesialAttack) isLongPress = true;
                 attackPreparation = false;
