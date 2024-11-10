@@ -136,6 +136,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d89419137d7dae345aaa07f781fc4196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1785370863604044686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7279085208001455162}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7279085208001455162
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785370863604044686}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.289, y: 0.133, z: -0.011666623}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7040921140157568356}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8285791383877950042
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7040921140157568356
 Transform:
   m_ObjectHideFlags: 0
@@ -171,6 +202,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5747232673390923786}
+  - {fileID: 7279085208001455162}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7600810865474003720
@@ -188,19 +220,21 @@ MonoBehaviour:
   stanTime: 1
   enemyMoveSpeed: 3
   teleportCooldown: 2
-  minDistanceFromPlayer: 2
-  maxDistanceFromPlayer: 5
-  bulletMoveSpeed: 10
-  bulletMaxDistance: 10
-  damage: 5
-  playerTransform: {fileID: 0}
-  enemyType: 1
+  minDistanceFromPlayer: 10
+  maxDistanceFromPlayer: 17
+  attackRangeDistance: 20
+  enemyType: 2
   timeBetweenAttack: 1
-  bulletPrefab: {fileID: 3679453656010216842, guid: f73dd22500bd47d429440398e8d875f7, type: 3}
-  firePoint: {fileID: 7040921140157568356}
-  timeBetweenAttackSlice: 1
+  dashForce: 5
+  dashTime: 5
+  bodyDamage: 5
+  attackPrefab: {fileID: 3679453656010216842, guid: f73dd22500bd47d429440398e8d875f7, type: 3}
+  bulletMoveSpeed: 40
+  bulletMaxDistance: 20
+  bulletDamage: 5
+  firePoint: {fileID: 7279085208001455162}
   hasKickback: 1
-  recoilForce: 0.5
+  recoilForce: 2
   lastShotTime: 0
 --- !u!114 &3459875139246170286
 MonoBehaviour:
