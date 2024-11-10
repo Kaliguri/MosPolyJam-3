@@ -6,15 +6,20 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerComboAttack : MonoBehaviour
 {
     [Title("Inputs")]
     [SerializeField] InputActionReference attackInput;
 
+    [Title("Progreess Bar")]
+    [SerializeField] GameObject progressBar;
+
     [Title("Combo Settings")]
     [SerializeField] float timeBetweenAttacksInCombo = 0.3f;
     [SerializeField] float longPressThreshold = 0.5f;
+    [SerializeField] public bool canSpesialAttack = true;
 
     [Title("AttacksGameObjects")]
     [SerializeField] List<GameObject> attacksList = new();
@@ -111,6 +116,7 @@ public class PlayerComboAttack : MonoBehaviour
         {
             attackPressTime = Time.time;
             attackPreparation = true;
+            if (canSpesialAttack) progressBar.SetActive(true);
         }
 
 
@@ -120,17 +126,24 @@ public class PlayerComboAttack : MonoBehaviour
             if (attackPressed) inputBuffered++;
             else attackPressed = true;
             attackPreparation = false;
+            progressBar.SetActive(false);
         }
 
         if (attackInput.action.IsPressed())
         {
             if (Time.time - attackPressTime >= longPressThreshold && attackPreparation)
             {
-                isLongPress = true;
+                if (canSpesialAttack) isLongPress = true;
                 attackPreparation = false;
 
                 if (attackPressed) inputBuffered++;
                 else attackPressed = true;
+
+                progressBar.SetActive(false);
+            }
+            else if (canSpesialAttack)
+            {
+                progressBar.GetComponentInChildren<ProgressBarTag>().gameObject.GetComponent<Image>().fillAmount = (Time.time - attackPressTime) / longPressThreshold;
             }
         }
     }

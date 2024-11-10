@@ -50,8 +50,15 @@ public class CombatMethods : MonoBehaviour
 
             targetType.GetComponent<HPController>().RecieveDamage(damage);
 
-            targetType.GetComponentInChildren<Animator>().SetBool("isStaned", true);
-            targetType.GetComponent<EnemyFollow>().StartStan();
+            Animator animator = targetType.GetComponentInChildren<Animator>();
+            if (animator != null)
+            {
+                animator.SetBool("isStaned", true);
+            }
+            if (targetType.TryGetComponent<EnemyFollow>(out var enemyFollow))
+            {
+                enemyFollow.StartStan();
+            }
         }
     }
 }
