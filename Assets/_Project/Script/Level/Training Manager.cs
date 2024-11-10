@@ -37,6 +37,7 @@ public class TrainingManager : MonoBehaviour
     [Title("Read Only")]
     [ReadOnly] public int currentMission = -1;
 
+
     static public TrainingManager instance;
     void Awake()
     {
@@ -60,15 +61,19 @@ public class TrainingManager : MonoBehaviour
         if (currentMission == missionID)
         {
             currentMission++;
-            //tooltipHeader.text = trainingTextList[currentMission].Header;
+
             if (missionID != -1) { FeelFeedbacksManager.instance.TooltipTextDisappear.PlayFeedbacks(); }
 
-            yield return new WaitForSeconds(timeBetweenTextAnimations);
+            Debug.Log("Before: " + currentMission);
+            yield return new WaitForSecondsRealtime(timeBetweenTextAnimations);
+            Debug.Log("After: " + currentMission +"?");
+
+
             
             tooltipText.text = trainingTextList[currentMission].Text;
-            if (missionID != 3) {FeelFeedbacksManager.instance.TooltipTextAppear.PlayFeedbacks(); }
 
-            Debug.Log("NextPart:" + missionID);
+            if (missionID != 3) {FeelFeedbacksManager.instance.TooltipTextAppear.PlayFeedbacks(); }
+            
 
             if      (missionID == 1) IslandActive();
             else if (missionID == 2) StartCoroutine(AttackActive());
