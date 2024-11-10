@@ -273,6 +273,7 @@ MonoBehaviour:
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  isFalling: 0
   isDashing: 0
 --- !u!50 &8013471745487366516
 Rigidbody2D:
@@ -464,6 +465,7 @@ GameObject:
   - component: {fileID: 5674039697546235680}
   - component: {fileID: 3882027172856586464}
   - component: {fileID: 7597239795813535509}
+  - component: {fileID: 8484761947502809944}
   m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
@@ -564,6 +566,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8484761947502809944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4210121150116374040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33f320a4a8f46340a22d40a5b973cae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPrepared: 0
 --- !u!1001 &7420788556776920149
 PrefabInstance:
   m_ObjectHideFlags: 0

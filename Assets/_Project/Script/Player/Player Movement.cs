@@ -39,13 +39,14 @@ public class PlayerMovement : MonoBehaviour
     private float currentSpeed = 0f;
 
     private bool canDash = true;
+    [ReadOnly] public bool isFalling = false;
     [ReadOnly] public bool isDashing = false;
 
     void FixedUpdate()
     {
         ReadInputActions();
 
-        if (GetComponent<PlayerComboAttack>().isAttacking || PlayerParry.instance.isParryState) moveSpeed = 0f;
+        if (GetComponent<PlayerComboAttack>().isAttacking || PlayerParry.instance.isParryState || isFalling) moveSpeed = 0f;
         else moveSpeed = currentSpeed;
 
 
@@ -102,7 +103,15 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleFallOffPlatform()
     {
-        Debug.Log("YouFall");
+        animator.SetBool("isFalling", true);
+        isFalling = true;
+    }
+
+    public void StopFalling()
+    {
+        transform.position = lastPlatformPosition;
+        animator.SetBool("isFalling", false);
+        isFalling = false;
     }
 
     IEnumerator Dash()
