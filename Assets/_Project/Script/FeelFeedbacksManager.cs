@@ -10,15 +10,16 @@ public class FeelFeedbacksManager : MonoBehaviour
     [Header("General")]
     public MMF_Player TakeDamage;
 
-    [Header("Fade")]
-    public MMF_Player FadeIn;
-    public MMF_Player FadeOut;
-
     [Header("CameraShaking")]
     public List<MMF_Player> CameraShakingList;
 
     [Header("Slow-mo")]
     public MMF_Player SlowMo;
+
+    [Header("UI")]
+    public MMF_Player TooltipTextDisappear;
+    public MMF_Player TooltipTextAppear;
+
 
     [Title("GameObjects Reference")]
     [SerializeField] GameObject LowHPImage;

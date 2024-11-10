@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -19,19 +20,18 @@ public class TrainingManager : MonoBehaviour
     [SerializeField] GameObject TrainingIsland1;
     [SerializeField] GameObject TrainingIsland2;
 
+    [Title("Settings")]
+    [SerializeField] float timeBetweenTextAnimations = 0.5f;
+
 
 
 
     [ReadOnly] int currentMission = -1;
 
-    public static UnityEvent<int> TrainingMissionComplete = new();
-    public static void SendTrainingMissionComplete(int missionID) {  TrainingMissionComplete.Invoke(missionID); }
-
     static public TrainingManager instance;
     void Awake()
     {
         instance = this;
-        TrainingMissionComplete.AddListener(NextPart);
     }
 
     void Start()
@@ -39,13 +39,19 @@ public class TrainingManager : MonoBehaviour
         NextPart(-1);
     }
 
-    public void NextPart(int missionID)
+    public IEnumerator NextPart(int missionID)
     {
         if (currentMission == missionID)
         {
             currentMission++;
             //tooltipHeader.text = trainingTextList[currentMission].Header;
+            FeelFeedbacksManager.instance.TooltipTextDisappear.PlayFeedbacks();
+
+            yield return new WaitForSeconds(timeBetweenTextAnimations);
+            
             tooltipText.text = trainingTextList[currentMission].Text;
+            FeelFeedbacksManager.instance.TooltipTextAppear.PlayFeedbacks();
+
 
             if      (missionID == 1) IslandActive();
             else if (missionID == 2) AttackActive();

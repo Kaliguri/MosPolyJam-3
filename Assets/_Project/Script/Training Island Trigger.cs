@@ -6,7 +6,7 @@ public class TrainingIslandTrigger : MonoBehaviour
     {
         if (colider2D.gameObject.GetComponent<PlayerTag>() is not null)
         {
-            TrainingManager.instance.NextPart(2);
+            StartCoroutine(TrainingManager.instance.NextPart(2));
         }
     }
 }

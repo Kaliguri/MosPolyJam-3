@@ -118,14 +118,14 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isFalling", false);
         isFalling = false;
 
-        TrainingManager.instance.NextPart(1);
+       StartCoroutine(TrainingManager.instance.NextPart(1));
     }
 
     IEnumerator Dash()
     {
         //Debug.Log("Dash");
 
-        TrainingManager.SendTrainingMissionComplete(0);
+        StartCoroutine(TrainingManager.instance.NextPart(0));
 
         lastPlatformPosition = transform.position;
         canDash = false;
