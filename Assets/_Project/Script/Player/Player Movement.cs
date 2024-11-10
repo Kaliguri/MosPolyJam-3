@@ -120,14 +120,14 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isFalling", false);
         isFalling = false;
 
-       StartCoroutine(TrainingManager.instance.NextPart(1));
+       if (TrainingManager.instance != null) StartCoroutine(TrainingManager.instance.NextPart(1));
     }
 
     IEnumerator Dash()
     {
         //Debug.Log("Dash");
 
-        StartCoroutine(TrainingManager.instance.NextPart(0));
+        if (TrainingManager.instance != null) StartCoroutine(TrainingManager.instance.NextPart(0));
 
         canDash = false;
         isDashing = true;
