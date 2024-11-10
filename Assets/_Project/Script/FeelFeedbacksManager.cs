@@ -22,6 +22,8 @@ public class FeelFeedbacksManager : MonoBehaviour
 
     [Title("GameObjects Reference")]
     [SerializeField] GameObject LowHPImage;
+    [SerializeField] GameObject CinematicLines;
+
 
     [Title("Settings")]
     public float HPPercenForLowHP = 30f;
@@ -41,6 +43,17 @@ public class FeelFeedbacksManager : MonoBehaviour
     public void DeactiveLowHPImage()
     {
         LowHPImage.SetActive(false);
+    }
+
+    public void ActiveCinematicLines()
+    {
+        CinematicLines.SetActive(true);
+    }
+
+    public void DeactiveCinvematicLines()
+    {
+        CinematicLines.SetActive(false);
+
     }
 
     public IEnumerator PlayWithDelay(MMF_Player mmf, float delay)

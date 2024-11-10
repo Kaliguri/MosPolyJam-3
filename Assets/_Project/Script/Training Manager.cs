@@ -11,8 +11,16 @@ public class TrainingManager : MonoBehaviour
     public List<TrainingText> trainingTextList;
 
     [Title("GameObject Reference")]
+    [Title("Tooltip")]
     [SerializeField] TextMeshProUGUI tooltipHeader;
     [SerializeField] TextMeshProUGUI tooltipText;
+
+    [Title("Islands")]
+    [SerializeField] GameObject TrainingIsland1;
+    [SerializeField] GameObject TrainingIsland2;
+
+
+
 
     [ReadOnly] int currentMission = -1;
 
@@ -49,12 +57,12 @@ public class TrainingManager : MonoBehaviour
 
     void IslandActive()
     {
-        
+        TrainingIsland1.SetActive(true);
     }
 
     void AttackActive()
     {
-
+        TrainingIsland2.SetActive(false);
     }
 
     void ParryActive()
