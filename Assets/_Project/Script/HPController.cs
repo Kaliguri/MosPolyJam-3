@@ -27,11 +27,11 @@ public class HPController : MonoBehaviour
             if (GameManager.instance.IsTraining) 
             {
                 TrainingManager.instance.NextPart(3);
-                TrainingManager.instance.NextPart(6);
-                TrainingManager.instance.NextPart(7);
-                TrainingManager.instance.NextPart(8);
+                
                 TrainingManager.instance.NextPart(9);
-
+                TrainingManager.instance.NextPart(8);
+                TrainingManager.instance.NextPart(7);
+                TrainingManager.instance.NextPart(6);
             }
 
         }
