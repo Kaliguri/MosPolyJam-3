@@ -13563,6 +13563,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1358716572 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5278077516533335559, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
+  m_PrefabInstance: {fileID: 7979538208719544128}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1397807827
 GameObject:
   m_ObjectHideFlags: 0
@@ -25699,6 +25704,14 @@ PrefabInstance:
     - target: {fileID: 938250733020375463, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516890279868477300, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
+      propertyPath: progressBar
+      value: 
+      objectReference: {fileID: 1358716572}
+    - target: {fileID: 2516890279868477300, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
+      propertyPath: timeProgressBarApears
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2516890279868477300, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
       propertyPath: 'attacksList.Array.data[0]'
