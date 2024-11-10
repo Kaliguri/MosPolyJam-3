@@ -29,7 +29,7 @@ public class EnemyFollow : MonoBehaviour
     [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;
     private Animator animator => GetComponentInChildren<Animator>();
 
-    private float lastShotTime = 0f;
+    [HideInInspector] public float lastShotTime = 0f;
     private float lastTeleportTime = -Mathf.Infinity;
     private EnemyTeleporter currentTeleportCollider;
 
