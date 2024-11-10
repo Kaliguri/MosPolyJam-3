@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8625173934272949791}
   - component: {fileID: 2340962937367036627}
   - component: {fileID: 8682963369388046316}
-  - component: {fileID: 7995585282308656760}
+  - component: {fileID: 8138471750689952694}
   m_Layer: 7
   m_Name: BodyRush (chield)
   m_TagString: Untagged
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33f320a4a8f46340a22d40a5b973cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7995585282308656760
+--- !u!114 &8138471750689952694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,20 +186,20 @@ MonoBehaviour:
   stanTime: 1
   enemyMoveSpeed: 3
   teleportCooldown: 2
-  minDistanceFromPlayer: 2
-  maxDistanceFromPlayer: 5
+  minDistanceFromPlayer: 50
+  maxDistanceFromPlayer: 0
+  attackRangeDistance: 5
   playerTransform: {fileID: 0}
   enemyType: 1
   timeBetweenAttack: 1
-  bulletPrefab: {fileID: 3679453656010216842, guid: f73dd22500bd47d429440398e8d875f7, type: 3}
-  firePoint: {fileID: 7040921140157568356}
-  bodyDamage: 5
-  hasKickback: 1
-  bulletDamage: 5
-  damageDashSpeed: 2
+  attackPrefab: {fileID: 9122516903216107812, guid: 2cbfec9f3e1b37f41bc26c2a30739157, type: 3}
   bulletMoveSpeed: 10
-  timeBetweenAttackSlice: 1
   bulletMaxDistance: 10
+  bulletDamage: 5
+  bodyDamage: 5
+  dashSpeed: 5
+  firePoint: {fileID: 7040921140157568356}
+  hasKickback: 1
   recoilForce: 0.5
   lastShotTime: 0
 --- !u!114 &3459875139246170286

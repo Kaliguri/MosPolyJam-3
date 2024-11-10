@@ -12,19 +12,24 @@ public class EnemyFollow : MonoBehaviour
     //[SerializeField] float rotationSpeed = 100f;
     [SerializeField] float minDistanceFromPlayer = 2f;
     [SerializeField] float maxDistanceFromPlayer = 5f;
-
-    [Title("Bullet Settings")]
-    [SerializeField] private float bulletMoveSpeed = 10f;
-    [SerializeField] private float bulletMaxDistance = 10f;
-    [SerializeField] float damage = 5f;
+    [SerializeField] float attackRangeDistance = 5f;
 
     [Title("Target")]
     [SerializeField] Transform playerTransform;
 
-    [Title("Projectile Settings")]
-    [SerializeField] GameObject bulletPrefab;
-    [SerializeField] Transform firePoint;
-    [SerializeField] float timeBetweenShoot = 1f;            
+    [Title("Enemy Settings")]
+    [SerializeField] EnemyType enemyType = EnemyType.BodyRush;
+
+    [Title("Attack Settings")]
+    [SerializeField] float timeBetweenAttack = 1f;            
+    [SerializeField] GameObject attackPrefab;
+    [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] private float bulletMoveSpeed = 10f;
+    [HideIf("@enemyType == EnemyType.BodyRush")][SerializeField] private float bulletMaxDistance = 10f;
+    [HideIf("@enemyType == EnemyType.BodyRush")][SerializeField] float bulletDamage = 5f;
+    [HideIf("@enemyType == EnemyType.BodyRush")][SerializeField] float dashForce = 5f;
+    [HideIf("@enemyType != EnemyType.BodyRush")][SerializeField] float bodyDamage = 5f;
+    [HideIf("@enemyType != EnemyType.BodyRush")][SerializeField] float dashSpeed = 5f;
+    [HideIf("@enemyType == EnemyType.BodyRush")][SerializeField] Transform firePoint;
     [SerializeField] bool hasKickback = true;
     [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;
     private Animator animator => GetComponentInChildren<Animator>();
@@ -33,20 +38,30 @@ public class EnemyFollow : MonoBehaviour
     private float lastTeleportTime = -Mathf.Infinity;
     private EnemyTeleporter currentTeleportCollider;
 
+    private enum EnemyType
+    {
+        BodyRush = 1,
+        RangeSpear = 2,
+        SpiningSword = 4,
+        MeleeSpear = 5
+    }
+
     private void Start()
     {
         playerTransform = FindFirstObjectByType<PlayerTag>().gameObject.transform;
-        var attackComponent = bulletPrefab.GetComponent<Attack>() ?? bulletPrefab.GetComponentInChildren<Attack>();
+        var attackComponent = attackPrefab.GetComponent<Attack>() ?? attackPrefab.GetComponentInChildren<Attack>();
         if (attackComponent != null)
         {
-            attackComponent.SetDamage(damage);
+            attackComponent.SetDamage(enemyType == EnemyType.BodyRush ? bodyDamage : bulletDamage);
         }
-        var bulletMovement = bulletPrefab.GetComponent<BulletMovement>() ?? bulletPrefab.GetComponentInChildren<BulletMovement>();
+        var bulletMovement = attackPrefab.GetComponent<BulletMovement>() ?? attackPrefab.GetComponentInChildren<BulletMovement>();
         if (bulletMovement != null)
         {
             bulletMovement.moveSpeed = bulletMoveSpeed;
             bulletMovement.maxDistance = bulletMaxDistance;
         }
+
+        InstantiateAttack();
     }
 
     private void FixedUpdate()
@@ -59,6 +74,19 @@ public class EnemyFollow : MonoBehaviour
             Vector2 targetPosition = currentTeleportCollider.linkedTeleport.GetNearestPoint(transform.position);
             TeleportTo(targetPosition);
             SetTeleportCooldown(teleportCooldown);
+        }
+    }
+
+    private void InstantiateAttack()
+    {
+        switch ((int)enemyType)
+        {
+            case 1:
+                if (GetComponentInChildren<EnemyAttack1>() != null) { GetComponentInChildren<EnemyAttack1>().Inisialise(bodyDamage, dashSpeed, attackPrefab, playerTransform, dashForce); }
+                break;
+            case 2:
+                if (GetComponentInChildren<EnemyAttack2>() != null) { GetComponentInChildren<EnemyAttack2>().Inisialise(playerTransform, attackPrefab, firePoint, hasKickback, recoilForce, animator); }
+                break;
         }
     }
 
@@ -98,12 +126,13 @@ public class EnemyFollow : MonoBehaviour
         }
         else
         {
-            StartShootingAtplayerTransform();
             if (distance < minDistanceFromPlayer)
             {
                 MoveAwayFromPlayer();
             }
         }
+        if (attackRangeDistance >= distance && Time.time - lastShotTime >= timeBetweenAttack)
+            StartShootingAtplayerTransform();
     }
 
     public void StartStan()
@@ -118,35 +147,20 @@ public class EnemyFollow : MonoBehaviour
 
     private void StartShootingAtplayerTransform()
     {
-        if (Time.time - lastShotTime >= timeBetweenShoot)
-        {
-            animator.SetBool("isPreparingAttack", true);
-        }
+        animator.SetBool("isPreparingAttack", true);
     }
 
-
-    public void ShootAtplayerTransform()
+    public void Attack()
     {
-        Vector2 direction = (playerTransform.position - transform.position).normalized;
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        bullet.transform.up = direction;
-
-        if (hasKickback)
+        switch ((int)enemyType)
         {
-            Vector2 recoilDirection = -direction.normalized * recoilForce;
-            Vector2 targetPosition = (Vector2)transform.position + recoilDirection;
-
-            if (TryGetComponent<Rigidbody2D>(out var rb))
-            {
-                if (!Physics2D.OverlapPoint(targetPosition))
-                {
-                    rb.MovePosition(targetPosition);
-                }
-            }
+            case 1:
+                if (GetComponentInChildren<EnemyAttack1>() != null) { GetComponentInChildren<EnemyAttack1>().Attack1DashToPlayer(); }
+                break;
+            case 2:
+                if (GetComponentInChildren<EnemyAttack2>() != null) { GetComponentInChildren<EnemyAttack2>().Attack2ShootAtPlayerTransform(); }
+                break;
         }
-
-        lastShotTime = Time.time;
-        animator.SetBool("isPreparingAttack", false);
     }
 
     void RotateTowardsplayerTransform()
@@ -154,8 +168,8 @@ public class EnemyFollow : MonoBehaviour
         Vector2 direction = (playerTransform.position - transform.position).normalized;
          
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-        
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        if (Vector2.Distance(transform.position, playerTransform.position) > 0.05f) transform.rotation = Quaternion.Euler(0, 0, angle);
 
 
         /*float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
@@ -170,7 +184,7 @@ public class EnemyFollow : MonoBehaviour
     void MoveTowardsPlayer()
     {
         Vector2 direction = (playerTransform.position - transform.position).normalized;
-        transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + direction, enemyMoveSpeed * Time.fixedDeltaTime);
+        if (Vector2.Distance(transform.position, playerTransform.position) > 0.05f) transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + direction, enemyMoveSpeed * Time.fixedDeltaTime);
     }
 
     void MoveAwayFromPlayer()

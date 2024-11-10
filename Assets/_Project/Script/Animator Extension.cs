@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class AnimatorExtension : MonoBehaviour
 {
-    public void SendAttackPrepared() {  GetComponentInParent<EnemyFollow>().ShootAtplayerTransform(); }
+    public void SendAttackPrepared() {  GetComponentInParent<EnemyFollow>().Attack(); }
 
     public void SendStopFalling() { GetComponentInParent<PlayerMovement>().StopFalling(); }
 

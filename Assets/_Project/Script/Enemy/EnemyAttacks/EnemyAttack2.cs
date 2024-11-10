@@ -9,7 +9,7 @@ public class EnemyAttack2 : MonoBehaviour
     private float recoilForce;
     private Animator animator;
 
-    public void Instantiate(Transform playerTransform, GameObject bulletPrefab, Transform firePoint, bool hasKickback, float recoilForce, Animator animator)
+    public void Inisialise(Transform playerTransform, GameObject bulletPrefab, Transform firePoint, bool hasKickback, float recoilForce, Animator animator)
     {
         this.playerTransform = playerTransform;
         this.bulletPrefab = bulletPrefab;

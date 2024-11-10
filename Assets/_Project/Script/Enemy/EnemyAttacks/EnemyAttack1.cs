@@ -4,36 +4,50 @@ using UnityEngine;
 public class EnemyAttack1 : MonoBehaviour
 {
     private float bodyDamage;
-    private float damageDashSpeed;
+    private float dashSpeed;
+    private float dashForce;
     private GameObject bodyAura;
+    private GameObject attackAura;
+    private Transform playerTransform;
 
-    public void Instantiate(float bodyDamage, float damageDashSpeed, GameObject bodyAura)
+    public void Inisialise(float bodyDamage, float dashSpeed, GameObject bodyAura, Transform playerTransform, float dashForce)
     {
         this.bodyDamage = bodyDamage;
-        this.damageDashSpeed = damageDashSpeed;
-
-        this.bodyAura = Instantiate(bodyAura);
-        this.bodyAura.SetActive(false);
+        this.dashSpeed = dashSpeed;
+        this.playerTransform = playerTransform;
+        this.bodyAura = bodyAura;
+        this.dashForce = dashForce;
     }
 
     private void FixedUpdate()
     {
-        if (bodyAura != null)
+        if (attackAura != null)
         {
-            bodyAura.transform.position = transform.parent.position;
-            bodyAura.transform.rotation = transform.parent.rotation;
+            attackAura.transform.position = transform.parent.position;
+            attackAura.transform.rotation = transform.parent.rotation;
         }
     }
 
     public void Attack1DashToPlayer()
     {
-        bodyAura.SetActive(true);
-        StartCoroutine(DashToPlayer());
+        if (attackAura != null) Destroy(attackAura);
+        attackAura = Instantiate(bodyAura,transform.parent.position, transform.parent.rotation);
+        DashToPlayer();
     }
 
-    private IEnumerator DashToPlayer()
+    private void DashToPlayer()
     {
-        yield return new WaitForSeconds(1f);
-        bodyAura.SetActive(false);
+        Vector2 direction = (playerTransform.position - transform.position).normalized;
+
+        Vector2 recoilDirection = direction * dashForce;
+        Vector2 targetPosition = (Vector2)transform.position + recoilDirection.normalized;
+
+        if (TryGetComponent<Rigidbody2D>(out var rb))
+        {
+            if (!Physics2D.OverlapPoint(targetPosition))
+            {
+                rb.MovePosition(targetPosition);
+            }
+        }
     }
 }
