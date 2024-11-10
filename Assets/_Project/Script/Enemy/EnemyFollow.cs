@@ -58,14 +58,14 @@ public class EnemyFollow : MonoBehaviour
 
         if (distance > maxDistanceFromPlayer)
         {
-            MoveTowardsplayerTransform();
+            MoveTowardsPlayer();
         }
         else
         {
             StartShootingAtplayerTransform();
             if (distance < minDistanceFromPlayer)
             {
-                MoveAwayFromplayerTransform();
+                MoveAwayFromPlayer();
             }
         }
     }
@@ -131,15 +131,15 @@ public class EnemyFollow : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, newAngle);*/
     }
 
-    void MoveTowardsplayerTransform()
+    void MoveTowardsPlayer()
     {
-        Vector2 direction = (-transform.position + playerTransform.position).normalized;
-        transform.position = Vector2.MoveTowards(transform.position, transform.position + (Vector3)direction, enemyMoveSpeed * Time.fixedDeltaTime);
+        Vector2 direction = (playerTransform.position - transform.position).normalized;
+        transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + direction, enemyMoveSpeed * Time.fixedDeltaTime);
     }
 
-    void MoveAwayFromplayerTransform()
+    void MoveAwayFromPlayer()
     {
         Vector2 direction = (transform.position - playerTransform.position).normalized;
-        transform.position = Vector2.MoveTowards(transform.position, transform.position + (Vector3)direction, enemyMoveSpeed * Time.fixedDeltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + direction, enemyMoveSpeed * Time.fixedDeltaTime);
     }
 }

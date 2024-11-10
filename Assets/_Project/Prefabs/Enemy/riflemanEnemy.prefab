@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8625173934272949791}
   - component: {fileID: 2340962937367036627}
   - component: {fileID: 8682963369388046316}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: riflemanEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 4650242962856728999}
   - component: {fileID: 1263469719975811841}
   - component: {fileID: 5062915408580035249}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: riflemanEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ MonoBehaviour:
   firePoint: {fileID: 7040921140157568356}
   timeBetweenShoot: 1
   hasKickback: 1
-  recoilForce: 2
+  recoilForce: 0.5
 --- !u!114 &3459875139246170286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +227,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
