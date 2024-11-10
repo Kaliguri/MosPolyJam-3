@@ -10,7 +10,6 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("enter");
         if ((collision.gameObject.GetComponent<EnemyTag>() == null && collision.gameObject.GetComponent<PlayerTag>() != null && !isPlayerAttack) ||
             (collision.gameObject.GetComponent<PlayerTag>() == null && collision.gameObject.GetComponent<EnemyTag>() != null && isPlayerAttack)) CombatMethods.instance.ApplayDamage(damage, collision, gameObject);
         if (!isPlayerAttack && collision.gameObject.GetComponent<PlayerTag>() != null && collision.gameObject.GetComponent<EnemyTag>() == null) { Destroy(gameObject); }

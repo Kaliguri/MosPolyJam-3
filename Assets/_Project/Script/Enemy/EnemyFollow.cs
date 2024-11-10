@@ -14,27 +14,25 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] float maxDistanceFromPlayer = 5f;
     [SerializeField] float attackRangeDistance = 5f;
 
-    [Title("Target")]
-    [SerializeField] Transform playerTransform;
-
     [Title("Enemy Settings")]
     [SerializeField] EnemyType enemyType = EnemyType.BodyRush;
 
     [Title("Attack Settings")]
-    [SerializeField] float timeBetweenAttack = 1f;            
-    [SerializeField] GameObject attackPrefab;
+    [SerializeField] float timeBetweenAttack = 1f;
+    [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float dashForce = 5f;
+    [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float dashTime = 5f;
+    [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float bodyDamage = 5f;
+    [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] GameObject attackPrefab;
     [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] private float bulletMoveSpeed = 10f;
-    [HideIf("@enemyType == EnemyType.BodyRush")][SerializeField] private float bulletMaxDistance = 10f;
-    [HideIf("@enemyType == EnemyType.BodyRush")][SerializeField] float bulletDamage = 5f;
-    [HideIf("@enemyType == EnemyType.BodyRush")][SerializeField] float dashForce = 5f;
-    [HideIf("@enemyType != EnemyType.BodyRush")][SerializeField] float bodyDamage = 5f;
-    [HideIf("@enemyType != EnemyType.BodyRush")][SerializeField] float dashSpeed = 5f;
-    [HideIf("@enemyType == EnemyType.BodyRush")][SerializeField] Transform firePoint;
+    [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] private float bulletMaxDistance = 10f;
+    [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] float bulletDamage = 5f;
+    [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] Transform firePoint;
     [SerializeField] bool hasKickback = true;
     [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;
     private Animator animator => GetComponentInChildren<Animator>();
 
     [HideInInspector] public float lastShotTime = 0f;
+    private Transform playerTransform;
     private float lastTeleportTime = -Mathf.Infinity;
     private EnemyTeleporter currentTeleportCollider;
 
@@ -82,12 +80,17 @@ public class EnemyFollow : MonoBehaviour
         switch ((int)enemyType)
         {
             case 1:
-                if (GetComponentInChildren<EnemyAttack1>() != null) { GetComponentInChildren<EnemyAttack1>().Inisialise(bodyDamage, dashSpeed, attackPrefab, playerTransform, dashForce); }
+                if (GetComponentInChildren<EnemyAttack1>() != null) { GetComponentInChildren<EnemyAttack1>().Inisialise(playerTransform, dashForce, dashTime, animator, bodyDamage); }
                 break;
             case 2:
                 if (GetComponentInChildren<EnemyAttack2>() != null) { GetComponentInChildren<EnemyAttack2>().Inisialise(playerTransform, attackPrefab, firePoint, hasKickback, recoilForce, animator); }
                 break;
         }
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 
     public bool CanTeleport()

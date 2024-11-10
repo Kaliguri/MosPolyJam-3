@@ -1,53 +1,69 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class EnemyAttack1 : MonoBehaviour
 {
-    private float bodyDamage;
-    private float dashSpeed;
+    private float dashTime;
     private float dashForce;
-    private GameObject bodyAura;
-    private GameObject attackAura;
+    private float bodyDamage;
+    private Animator animator;
     private Transform playerTransform;
+    private Rigidbody2D rb2D => GetComponentInParent<Rigidbody2D>();
 
-    public void Inisialise(float bodyDamage, float dashSpeed, GameObject bodyAura, Transform playerTransform, float dashForce)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        this.bodyDamage = bodyDamage;
-        this.dashSpeed = dashSpeed;
-        this.playerTransform = playerTransform;
-        this.bodyAura = bodyAura;
-        this.dashForce = dashForce;
+        if (collision.gameObject.GetComponent<EnemyTag>() == null && collision.gameObject.GetComponent<PlayerTag>() != null) CombatMethods.instance.ApplayDamage(bodyDamage, collision, gameObject);
     }
 
-    private void FixedUpdate()
+    public void Inisialise(Transform playerTransform, float dashForce, float dashTime, Animator animator, float bodyDamage)
     {
-        if (attackAura != null)
+        this.playerTransform = playerTransform;
+        this.dashForce = dashForce;
+        this.dashTime = dashTime;
+        this.animator = animator;
+        this.bodyDamage = bodyDamage;
+        GetComponent<Collider2D>().enabled = false;
+    }
+
+    void CheckIfOutsidePlatform()
+    {
+        foreach (Tilemap tilemap in TileMapController.instance.tilemapList)
         {
-            attackAura.transform.position = transform.parent.position;
-            attackAura.transform.rotation = transform.parent.rotation;
+            if (!tilemap.gameObject.transform.parent.gameObject.activeSelf) continue;
+
+            Vector3Int tile = tilemap.WorldToCell(transform.position);
+            if (tilemap.HasTile(tile)) return;
         }
+
+        HandleFallOffPlatform();
+    }
+
+    void HandleFallOffPlatform()
+    {
+        animator.SetBool("isFalling", true);
     }
 
     public void Attack1DashToPlayer()
     {
-        if (attackAura != null) Destroy(attackAura);
-        attackAura = Instantiate(bodyAura,transform.parent.position, transform.parent.rotation);
-        DashToPlayer();
+        StartCoroutine(DashToPlayer());
     }
 
-    private void DashToPlayer()
+    private IEnumerator DashToPlayer()
     {
         Vector2 direction = (playerTransform.position - transform.position).normalized;
+        GetComponentInParent<Collider2D>().enabled = false;
+        GetComponent<Collider2D>().enabled = true;
+        rb2D.linearVelocity = direction * dashForce;
 
-        Vector2 recoilDirection = direction * dashForce;
-        Vector2 targetPosition = (Vector2)transform.position + recoilDirection.normalized;
+        //trailRenderer.emitting = true;
+        //dashSound.Play2D();
+        //Instantiate(dashParticle, transform.position, transform.rotation);
 
-        if (TryGetComponent<Rigidbody2D>(out var rb))
-        {
-            if (!Physics2D.OverlapPoint(targetPosition))
-            {
-                rb.MovePosition(targetPosition);
-            }
-        }
+        yield return new WaitForSeconds(dashTime);
+        rb2D.linearVelocity = new Vector3 (0, 0, 0);
+        GetComponentInParent<Collider2D>().enabled = true;
+        GetComponent<Collider2D>().enabled = false;
+        CheckIfOutsidePlatform();
     }
 }
