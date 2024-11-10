@@ -20,11 +20,13 @@ public class TrainingManager : MonoBehaviour
     [SerializeField] GameObject TrainingIsland1;
     [SerializeField] GameObject TrainingIsland2;
 
+    [Title("Other")]
+    [SerializeField] GameObject Sword; 
+
+
     [Title("Settings")]
     [SerializeField] float timeBetweenTextAnimations = 0.5f;
     [SerializeField] float timeBetweenInSwordAnimation = 2f;
-
-
 
     [Title("Read Only")]
     [ReadOnly] [SerializeField] int currentMission = -1;
