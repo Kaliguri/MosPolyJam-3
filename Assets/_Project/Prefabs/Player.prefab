@@ -164,19 +164,19 @@ MonoBehaviour:
   - {fileID: 0}
   attacks_Damage:
   - 10
-  - 15
+  - 25
   - 5
   attack1_Distance: 1
   attack1_MoveDistance: 2
   attack1_MoveSpeed: 40
-  attack1_DamageIncrease: 20
-  attack1_ScaleYIncrease: 0.4
-  attack1_ScaleXIncrease: 0.05
-  attack2_MoveSpeed: 35
-  attack2_StartAngle: 30
-  attack2_DamageIncrease: 1
-  attack2_ScaleXIncrease: 1
-  attack2_ScaleYIncrease: 1
+  attack1_DamageIncrease: 10
+  attack1_ScaleYIncrease: 0.2
+  attack1_ScaleXIncrease: 0.02
+  attack2_MoveSpeed: 20
+  attack2_StartAngle: 60
+  attack2_DamageIncrease: 15
+  attack2_ScaleXIncrease: 0.2
+  attack2_ScaleYIncrease: 0.2
   attack2_AngleIncrease: 5
   attack3_Object: {fileID: 8137713491115293191, guid: bcb055436faff60499ae96468b371231, type: 3}
   attack3_Distance: 1
@@ -186,14 +186,14 @@ MonoBehaviour:
   attack3_StartSliceCount: 5
   attack3_MaxSliceCount: 50
   attack3_MaxOffset: 0.7
-  attack3_TimeBetweenSendSliceDesceasePercent: 0.9
-  attack3_SliceCountIncrease: 1
+  attack3_TimeBetweenSendSliceDesceasePercent: 0.91
+  attack3_SliceCountIncrease: 5
   attack1Release: {fileID: 11400000, guid: b5526f3f535cb9b4882d40d1b5f6ce1d, type: 2}
   attack2Release: {fileID: 11400000, guid: b5526f3f535cb9b4882d40d1b5f6ce1d, type: 2}
   attack3Release: {fileID: 11400000, guid: b5526f3f535cb9b4882d40d1b5f6ce1d, type: 2}
   attackReleaseVFX: {fileID: 3876152785130454950, guid: 6b26c89e8e1553a46939d7d05c0cdc6e, type: 3}
   attacking: 1
-  isAttacking: 1
+  isAttacking: 0
 --- !u!114 &4476481295237582955
 MonoBehaviour:
   m_ObjectHideFlags: 0

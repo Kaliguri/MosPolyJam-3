@@ -260,7 +260,7 @@ public class PlayerComboAttack : MonoBehaviour
 
         attack.SetActive(true);
         attack1Release.Play2D();
-        Instantiate(attackReleaseVFX, gameObject.transform.position, attack.transform.rotation);
+        //Instantiate(attackReleaseVFX, gameObject.transform.position, attack.transform.rotation);
         
 
         attack1TargetPosition = attack.transform.position + attack.transform.up * attack1_MoveDistance;
@@ -303,7 +303,7 @@ public class PlayerComboAttack : MonoBehaviour
 
         attack.SetActive(true);
         attack2Release.Play2D();
-        Instantiate(attackReleaseVFX, gameObject.transform.position, attack.transform.rotation);
+        //Instantiate(attackReleaseVFX, gameObject.transform.position, attack.transform.rotation);
 
         attack.transform.rotation = Quaternion.Euler(0, 0, attack.transform.rotation.eulerAngles.z - (attack2_StartAngle + parryValue * attack2_AngleIncrease));
         attack2StartAngleZ = attack.transform.rotation.eulerAngles.z;
@@ -369,7 +369,7 @@ public class PlayerComboAttack : MonoBehaviour
             StartCoroutine(MoveAttack3Forward(attack3SliceList[i], attack3TargetPosition, i >= attack3_StartSliceCount + parryValue * attack3_SliceCountIncrease - 1 || i + 1 == attack3_MaxSliceCount, parryValue));
 
             attack3Release.Play2D();
-            Instantiate(attackReleaseVFX, gameObject.transform.position, attack3SliceList[i].transform.rotation);
+            //Instantiate(attackReleaseVFX, gameObject.transform.position, attack3SliceList[i].transform.rotation);
 
             float elapsed = 0f;
             float percent = parryValue * (1 - attack3_TimeBetweenSendSliceDesceasePercent);
