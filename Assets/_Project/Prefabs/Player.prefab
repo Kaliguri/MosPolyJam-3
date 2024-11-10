@@ -159,7 +159,7 @@ MonoBehaviour:
   progressBar: {fileID: 0}
   timeProgressBarApears: 0.05
   timeBetweenAttacksInCombo: 0.5
-  longPressThreshold: 0.3
+  longPressThreshold: 0.8
   canSpesialAttack: 1
   attacksList:
   - {fileID: 0}
