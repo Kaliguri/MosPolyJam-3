@@ -257,7 +257,11 @@ public class PlayerComboAttack : MonoBehaviour
 
         GameObject attack = attacksList[_comboStep - 1];
 
-        attack.GetComponent<Attack>().SetDamage(attacks_Damage[0] + attack1_DamageIncrease * parryValue);
+        var attackComponent = attack.GetComponent<Attack>() ?? attack.GetComponentInChildren<Attack>();
+        if (attackComponent != null)
+        {
+            attackComponent.SetDamage(attacks_Damage[0] + attack1_DamageIncrease * parryValue);
+        }
         attack.transform.localScale = new Vector3(attack1_StartScaleX + attack1_ScaleXIncrease * parryValue, attack1_StartScaleY + attack1_ScaleYIncrease * parryValue, 1);
 
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -300,7 +304,11 @@ public class PlayerComboAttack : MonoBehaviour
 
         GameObject attack = attacksList[_comboStep - 1];
 
-        attack.GetComponentInChildren<Attack>().SetDamage(attacks_Damage[1] + attack2_DamageIncrease * parryValue);
+        var attackComponent = attack.GetComponent<Attack>() ?? attack.GetComponentInChildren<Attack>();
+        if (attackComponent != null)
+        {
+            attackComponent.SetDamage(attacks_Damage[1] + attack2_DamageIncrease * parryValue);
+        }
         attack.transform.localScale = new Vector3(attack2_StartScaleX + attack2_ScaleXIncrease * parryValue, attack2_StartScaleY + attack2_ScaleYIncrease * parryValue, 1);
 
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
