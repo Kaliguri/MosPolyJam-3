@@ -9,6 +9,8 @@ public class EnemyAttack1 : MonoBehaviour
     private float bodyDamage;
     private Animator animator;
     private Transform playerTransform;
+    private Collider2D parentCollider;
+
     private Rigidbody2D rb2D => GetComponentInParent<Rigidbody2D>();
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -16,13 +18,14 @@ public class EnemyAttack1 : MonoBehaviour
         if (collision.gameObject.GetComponent<EnemyTag>() == null && collision.gameObject.GetComponent<PlayerTag>() != null) CombatMethods.instance.ApplayDamage(bodyDamage, collision, gameObject);
     }
 
-    public void Inisialise(Transform playerTransform, float dashForce, float dashTime, Animator animator, float bodyDamage)
+    public void Inisialise(Transform playerTransform, float dashForce, float dashTime, Animator animator, float bodyDamage, Collider2D parentCollider)
     {
         this.playerTransform = playerTransform;
         this.dashForce = dashForce;
         this.dashTime = dashTime;
         this.animator = animator;
         this.bodyDamage = bodyDamage;
+        this.parentCollider = parentCollider;
         GetComponent<Collider2D>().enabled = false;
     }
 
@@ -52,7 +55,7 @@ public class EnemyAttack1 : MonoBehaviour
     private IEnumerator DashToPlayer()
     {
         Vector2 direction = (playerTransform.position - transform.position).normalized;
-        GetComponentInParent<Collider2D>().enabled = false;
+        parentCollider.enabled = false;
         GetComponent<Collider2D>().enabled = true;
         rb2D.linearVelocity = direction * dashForce;
 
@@ -62,7 +65,7 @@ public class EnemyAttack1 : MonoBehaviour
 
         yield return new WaitForSeconds(dashTime);
         rb2D.linearVelocity = new Vector3 (0, 0, 0);
-        GetComponentInParent<Collider2D>().enabled = true;
+        parentCollider.enabled = true;
         GetComponent<Collider2D>().enabled = false;
         CheckIfOutsidePlatform();
     }

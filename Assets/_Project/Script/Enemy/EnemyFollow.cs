@@ -80,7 +80,7 @@ public class EnemyFollow : MonoBehaviour
         switch ((int)enemyType)
         {
             case 1:
-                if (GetComponentInChildren<EnemyAttack1>() != null) { GetComponentInChildren<EnemyAttack1>().Inisialise(playerTransform, dashForce, dashTime, animator, bodyDamage); }
+                if (GetComponentInChildren<EnemyAttack1>() != null) { GetComponentInChildren<EnemyAttack1>().Inisialise(playerTransform, dashForce, dashTime, animator, bodyDamage, GetComponent<Collider2D>()); }
                 break;
             case 2:
                 if (GetComponentInChildren<EnemyAttack2>() != null) { GetComponentInChildren<EnemyAttack2>().Inisialise(playerTransform, attackPrefab, firePoint, hasKickback, recoilForce, animator); }
