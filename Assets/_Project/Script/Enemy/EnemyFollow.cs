@@ -56,7 +56,7 @@ public class EnemyFollow : MonoBehaviour
 
         if (currentTeleportCollider != null && CanTeleport())
         {
-            Vector2 targetPosition = currentTeleportCollider.linkedTeleport.GetNearestPoint(PlayerParry.instance.gameObject.transform.position);
+            Vector2 targetPosition = currentTeleportCollider.linkedTeleport.GetNearestPoint(transform.position);
             TeleportTo(targetPosition);
             SetTeleportCooldown(teleportCooldown);
         }
