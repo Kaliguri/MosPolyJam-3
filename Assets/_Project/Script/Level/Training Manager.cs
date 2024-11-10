@@ -21,7 +21,7 @@ public class TrainingManager : MonoBehaviour
     [SerializeField] GameObject TrainingIsland2;
 
     [Title("Other")]
-    [SerializeField] GameObject Sword; 
+    [SerializeField] SwordRewardAnimation Sword; 
 
 
     [Title("Settings")]
@@ -83,6 +83,8 @@ public class TrainingManager : MonoBehaviour
 
         FeelFeedbacksManager.instance.CinematicLinesAppear.PlayFeedbacks();
         GameManager.instance.InputSetActive(false);
+
+        Sword.StartAnimation();
 
         yield return new WaitForSeconds(timeBetweenInSwordAnimation);
 
