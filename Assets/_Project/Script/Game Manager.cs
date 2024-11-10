@@ -35,10 +35,10 @@ public class GameManager : MonoBehaviour
     {
         var player = FindFirstObjectByType<PlayerTag>().gameObject;
 
-        player.GetComponent<PlayerMovement>().enabled = activeValue;
+        //player.GetComponent<PlayerMovement>().enabled = activeValue;
         player.GetComponent<PlayerComboAttack>().enabled = activeValue;
         player.GetComponent<PlayerParry>().enabled = activeValue;
 
-        player.GetComponent<PlayerMovement>().moveSpeed = 0;
+        player.GetComponent<PlayerMovement>().canMove = activeValue;
     }
 }

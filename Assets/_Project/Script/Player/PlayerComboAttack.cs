@@ -102,6 +102,8 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Start()
     {
+        progressBar.SetActive(false);
+
         Initialise1Attack();
 
         Initialise2Attack();
@@ -117,7 +119,6 @@ public class PlayerComboAttack : MonoBehaviour
         {
             attackPressTime = Time.time;
             attackPreparation = true;
-            if (canSpesialAttack) progressBar.SetActive(true);
         }
 
 
@@ -144,9 +145,11 @@ public class PlayerComboAttack : MonoBehaviour
             }
             else if (canSpesialAttack && timeProgressBarApears < Time.time - attackPressTime)
             {
+                if (canSpesialAttack) UpdateProgressBar();
                 progressBar.GetComponentInChildren<ProgressBarTag>().gameObject.GetComponent<Image>().fillAmount = (Time.time - attackPressTime) / longPressThreshold;
             }
         }
+        else progressBar.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -167,6 +170,19 @@ public class PlayerComboAttack : MonoBehaviour
         }
 
         if (Time.time - lastClickTime > timeBetweenAttacksInCombo && comboStep != 0) ResetCombo();
+    }
+
+    private void UpdateProgressBar()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        mousePosition.z = 0;
+
+        progressBar.transform.position = mousePosition;
+
+        progressBar.SetActive(true);
     }
 
     private void Initialise1Attack()

@@ -7,7 +7,7 @@ public class FollowCursor : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Vector3 mousePosition = Input.mousePosition;
 

@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canDash = true;
     [ReadOnly] public bool isFalling = false;
     [ReadOnly] public bool isDashing = false;
+    [ReadOnly] public bool canMove = true;
 
     void FixedUpdate()
     {
@@ -50,13 +51,13 @@ public class PlayerMovement : MonoBehaviour
 
         ReadInputActions();
 
-        if (GetComponent<PlayerComboAttack>().isAttacking || PlayerParry.instance.isParryState || isFalling) moveSpeed = 0f;
+        if (GetComponent<PlayerComboAttack>().isAttacking || PlayerParry.instance.isParryState || isFalling || !canMove) moveSpeed = 0f;
         else moveSpeed = currentSpeed;
 
 
         Move();
 
-        RotateCharacter();
+        if (!PlayerParry.instance.isParryState && canMove) RotateCharacter();
 
         if (dashInput.action.IsPressed() & canDash) 
         if (Mathf.Abs(rb2D.linearVelocity.x) + Mathf.Abs(rb2D.linearVelocityY) != 0)

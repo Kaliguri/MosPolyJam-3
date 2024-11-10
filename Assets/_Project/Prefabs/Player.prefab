@@ -156,8 +156,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackInput: {fileID: -8794716681231253964, guid: 4ab7b14a89ef0524e933f56df52e65a8, type: 3}
+  progressBar: {fileID: 0}
+  timeProgressBarApears: 0.05
   timeBetweenAttacksInCombo: 0.5
   longPressThreshold: 0.3
+  canSpesialAttack: 1
   attacksList:
   - {fileID: 0}
   - {fileID: 0}
@@ -276,6 +279,7 @@ MonoBehaviour:
     m_Bits: 8
   isFalling: 0
   isDashing: 0
+  canMove: 1
 --- !u!50 &8013471745487366516
 Rigidbody2D:
   serializedVersion: 5

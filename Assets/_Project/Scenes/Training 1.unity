@@ -10609,6 +10609,7 @@ MonoBehaviour:
   tooltipText: {fileID: 1057154911}
   TrainingIsland1: {fileID: 41771656}
   TrainingIsland2: {fileID: 1840556807}
+  Sword: {fileID: 0}
   timeBetweenTextAnimations: 0.5
   timeBetweenInSwordAnimation: 2
   currentMission: -1
