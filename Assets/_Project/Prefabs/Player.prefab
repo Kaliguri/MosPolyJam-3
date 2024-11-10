@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccd25feea5ff52448ca0fbf2afe4f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallDamage: 25
   moveSpeed: 10
   dashPower: 200
   dashTime: 0.1

@@ -117,6 +117,8 @@ public class PlayerMovement : MonoBehaviour
         transform.position = lastPlatformPosition;
         animator.SetBool("isFalling", false);
         isFalling = false;
+
+        TrainingManager.instance.NextPart(1);
     }
 
     IEnumerator Dash()

@@ -25701,26 +25701,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2516890279868477300, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
-      propertyPath: attack1_Distance
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2516890279868477300, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
-      propertyPath: attack3_Distance
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2516890279868477300, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
-      propertyPath: attack1_MoveDistance
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2516890279868477300, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
-      propertyPath: attack3_MoveDistance
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2516890279868477300, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
-      propertyPath: attack1_ScaleYIncrease
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2516890279868477300, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
       propertyPath: 'attacksList.Array.data[0]'
       value: 
       objectReference: {fileID: 662587701}
@@ -25732,14 +25712,6 @@ PrefabInstance:
       propertyPath: 'attacksList.Array.data[2]'
       value: 
       objectReference: {fileID: 984442281}
-    - target: {fileID: 2516890279868477300, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
-      propertyPath: 'attacks_Damage.Array.data[0]'
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2516890279868477300, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
-      propertyPath: 'attacks_Damage.Array.data[2]'
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 3136455059462191640, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
       propertyPath: m_Name
       value: Player
