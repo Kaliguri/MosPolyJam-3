@@ -8,6 +8,7 @@ public class EnemyFollow : MonoBehaviour
     [Title("Follow Settings")]
     [SerializeField] float stanTime = 1f;
     [SerializeField] float enemyMoveSpeed = 3f;
+    [SerializeField] float teleportCooldown = 2f;
     //[SerializeField] float rotationSpeed = 100f;
     [SerializeField] float minDistanceFromPlayer = 2f;
     [SerializeField] float maxDistanceFromPlayer = 5f;
@@ -26,9 +27,11 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] float timeBetweenShoot = 1f;            
     [SerializeField] bool hasKickback = true;
     [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;
+    private Animator animator => GetComponentInChildren<Animator>();
 
     private float lastShotTime = 0f;
-    private Animator animator => GetComponentInChildren<Animator>();
+    private float lastTeleportTime = -Mathf.Infinity;
+    private EnemyTeleporter currentTeleportCollider;
 
     private void Start()
     {
@@ -50,6 +53,39 @@ public class EnemyFollow : MonoBehaviour
     {
         FollowplayerTransform();
         RotateTowardsplayerTransform();
+
+        if (currentTeleportCollider != null && CanTeleport())
+        {
+            Vector2 targetPosition = currentTeleportCollider.linkedTeleport.GetNearestPoint(PlayerParry.instance.gameObject.transform.position);
+            TeleportTo(targetPosition);
+            SetTeleportCooldown(teleportCooldown);
+        }
+    }
+
+    public bool CanTeleport()
+    {
+        return Time.time >= lastTeleportTime + teleportCooldown;
+    }
+
+    public void SetTeleportCooldown(float cooldown)
+    {
+        lastTeleportTime = Time.time;
+        teleportCooldown = cooldown;
+    }
+
+    public void TeleportTo(Vector2 position)
+    {
+        transform.position = position;
+    }
+
+    public void SetCurrentTeleport(EnemyTeleporter collider)
+    {
+        currentTeleportCollider = collider;
+    }
+
+    public void ClearCurrentTeleport()
+    {
+        currentTeleportCollider = null;
     }
 
     void FollowplayerTransform()

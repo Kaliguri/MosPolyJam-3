@@ -46,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!isFalling) CheckIfOutsidePlatform();
+
         ReadInputActions();
 
         if (GetComponent<PlayerComboAttack>().isAttacking || PlayerParry.instance.isParryState || isFalling) moveSpeed = 0f;
@@ -99,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
             if (!tilemap.gameObject.transform.parent.gameObject.activeSelf) continue;
 
             Vector3Int tile = tilemap.WorldToCell(transform.position);
-            if (tilemap.HasTile(tile)) return;
+            if (tilemap.HasTile(tile)) return; 
         }
 
         HandleFallOffPlatform();
@@ -107,9 +109,9 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleFallOffPlatform()
     {
+        isFalling = true;
         animator.SetBool("isFalling", true);
         CombatMethods.instance.ApplayDamage(fallDamage, GetComponent<Collider2D>(), gameObject);
-        isFalling = true;
     }
 
     public void StopFalling()
@@ -127,9 +129,9 @@ public class PlayerMovement : MonoBehaviour
 
         StartCoroutine(TrainingManager.instance.NextPart(0));
 
-        lastPlatformPosition = transform.position;
         canDash = false;
         isDashing = true;
+        lastPlatformPosition = transform.position;
         GetComponent<Collider2D>().enabled = false; 
         trailRenderer.emitting = true;
 
@@ -139,7 +141,6 @@ public class PlayerMovement : MonoBehaviour
 
         yield return new WaitForSeconds(dashTime);
 
-        CheckIfOutsidePlatform();
         isDashing = false;
         GetComponent<Collider2D>().enabled = true;
         trailRenderer.emitting = false;
