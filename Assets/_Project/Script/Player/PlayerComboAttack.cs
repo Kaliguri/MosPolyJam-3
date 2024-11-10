@@ -119,6 +119,9 @@ public class PlayerComboAttack : MonoBehaviour
         {
             attackPressTime = Time.time;
             attackPreparation = true;
+
+            if (Time.time - lastClickTime > timeBetweenAttacksInCombo && comboStep != 0) ResetCombo();
+            lastClickTime = Time.time;
         }
 
 
@@ -168,8 +171,6 @@ public class PlayerComboAttack : MonoBehaviour
             ProcessAttackInput(isLongPress);
             isLongPress = false;
         }
-
-        if (Time.time - lastClickTime > timeBetweenAttacksInCombo && comboStep != 0) ResetCombo();
     }
 
     private void UpdateProgressBar()
@@ -251,7 +252,6 @@ public class PlayerComboAttack : MonoBehaviour
 
         attacking = true;
         PerformComboAttack(comboStep, _isLongPress);
-        lastClickTime = Time.time;
     }
 
     private bool ChechIfIsAttacking()

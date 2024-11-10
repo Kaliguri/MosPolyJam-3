@@ -21,7 +21,7 @@ public class EnemyAttack2 : MonoBehaviour
 
     public void Attack2ShootAtPlayerTransform()
     {
-        Vector2 direction = (playerTransform.position - transform.position).normalized;
+        Vector2 direction = (playerTransform.position - firePoint.position).normalized;
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         bullet.transform.up = direction;
 
