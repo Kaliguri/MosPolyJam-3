@@ -163,14 +163,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   attacks_Damage:
-  - 10
+  - 12
   - 25
-  - 5
-  attack1_Distance: 1
-  attack1_MoveDistance: 2
+  - 7
+  attack1_Distance: 0.5
+  attack1_MoveDistance: 1.5
   attack1_MoveSpeed: 40
   attack1_DamageIncrease: 10
-  attack1_ScaleYIncrease: 0.2
+  attack1_ScaleYIncrease: 1
   attack1_ScaleXIncrease: 0.02
   attack2_MoveSpeed: 20
   attack2_StartAngle: 60
@@ -179,9 +179,9 @@ MonoBehaviour:
   attack2_ScaleYIncrease: 0.2
   attack2_AngleIncrease: 5
   attack3_Object: {fileID: 8137713491115293191, guid: bcb055436faff60499ae96468b371231, type: 3}
-  attack3_Distance: 1
+  attack3_Distance: 0.5
   attack3_MoveSpeed: 25
-  attack3_MoveDistance: 2
+  attack3_MoveDistance: 1.5
   attack3_TimeBetweenSendSlice: 0.1
   attack3_StartSliceCount: 5
   attack3_MaxSliceCount: 50
@@ -578,7 +578,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33f320a4a8f46340a22d40a5b973cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPrepared: 0
 --- !u!1001 &7420788556776920149
 PrefabInstance:
   m_ObjectHideFlags: 0
