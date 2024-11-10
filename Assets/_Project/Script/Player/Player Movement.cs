@@ -94,6 +94,8 @@ public class PlayerMovement : MonoBehaviour
     {
         foreach (Tilemap tilemap in TileMapController.instance.tilemapList)
         {
+            if (!tilemap.gameObject.transform.parent.gameObject.activeSelf) continue;
+
             Vector3Int tile = tilemap.WorldToCell(transform.position);
             if (tilemap.HasTile(tile)) return;
         }
