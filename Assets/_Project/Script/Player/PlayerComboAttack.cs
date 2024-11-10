@@ -180,13 +180,23 @@ public class PlayerComboAttack : MonoBehaviour
     {
         for (int i = 0; i < attacksList.Count; i++)
         {
-            if (i == 0) attacksList[i].GetComponent<Attack>().SetDamage(attacks_Damage[i]);
-            else if (i == 1) attacksList[i].GetComponentInChildren<Attack>().SetDamage(attacks_Damage[i]);
-            else
+            if (i < 2)
+            {
+                var attackComponent = attacksList[i].GetComponent<Attack>() ?? attacksList[i].GetComponentInChildren<Attack>();
+                if (attackComponent != null)
+                {
+                    attackComponent.SetDamage(attacks_Damage[i]);
+                }
+            }
+            else if (i == 2)
             {
                 for (int j = 0; j < attack3SliceList.Count; j++)
                 {
-                    attack3SliceList[j].GetComponent<Attack>().SetDamage(attacks_Damage[i]);
+                    var attackComponent = attack3SliceList[j].GetComponent<Attack>() ?? attack3SliceList[j].GetComponentInChildren<Attack>();
+                    if (attackComponent != null)
+                    {
+                        attackComponent.SetDamage(attacks_Damage[i]);
+                    }
                 }
             }
         }

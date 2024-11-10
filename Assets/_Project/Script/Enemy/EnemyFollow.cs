@@ -33,9 +33,17 @@ public class EnemyFollow : MonoBehaviour
     private void Start()
     {
         playerTransform = FindFirstObjectByType<PlayerTag>().gameObject.transform;
-        bulletPrefab.GetComponentInChildren<Attack>().SetDamage(damage);
-        bulletPrefab.GetComponentInChildren<BulletMovement>().moveSpeed = bulletMoveSpeed;
-        bulletPrefab.GetComponentInChildren<BulletMovement>().maxDistance = bulletMaxDistance;
+        var attackComponent = bulletPrefab.GetComponent<Attack>() ?? bulletPrefab.GetComponentInChildren<Attack>();
+        if (attackComponent != null)
+        {
+            attackComponent.SetDamage(damage);
+        }
+        var bulletMovement = bulletPrefab.GetComponent<BulletMovement>() ?? bulletPrefab.GetComponentInChildren<BulletMovement>();
+        if (bulletMovement != null)
+        {
+            bulletMovement.moveSpeed = bulletMoveSpeed;
+            bulletMovement.maxDistance = bulletMaxDistance;
+        }
     }
 
     private void FixedUpdate()
