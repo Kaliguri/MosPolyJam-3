@@ -81,6 +81,8 @@ public class PlayerComboAttack : MonoBehaviour
     private float lastClickTime = 0f;
     private int comboStep = 0;
 
+    private Animator animator => GetComponentInChildren<Animator>();
+
     [Title("ReadonlyParametrs")]
     [ReadOnly] public bool attacking = false;
     [ReadOnly] public bool isAttacking = true;
@@ -114,6 +116,7 @@ public class PlayerComboAttack : MonoBehaviour
 
         if (attackInput.action.WasReleasedThisFrame() && !PlayerParry.instance.isParryState && Time.time - attackPressTime < longPressThreshold)
         {
+            if (comboStep > 1) Debug.Log("Releases");
             if (attackPressed) inputBuffered++;
             else attackPressed = true;
             attackPreparation = false;
@@ -204,6 +207,8 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void ProcessAttackInput(bool _isLongPress)
     {
+        if (comboStep == 0) animator.SetInteger("attackNumber", comboStep + 1);
+
         if (comboStep < 4)
         {
             comboStep++;
@@ -226,6 +231,16 @@ public class PlayerComboAttack : MonoBehaviour
             if (attacksList[i].activeSelf == true) return true;
         }
         return false;
+    }
+
+    public void CheckAttack()
+    {
+        if (comboStep > 1) Debug.Log("CheckAttack");
+        if (attackPressed || inputBuffered > 0)
+        {
+            animator.SetInteger("attackNumber", comboStep + 1);
+        }
+        else animator.SetInteger("attackNumber", 0);
     }
 
     private void PerformComboAttack(int _comboStep, bool _isLongPress)
@@ -299,6 +314,8 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Attack2(int _comboStep, bool _isLongPress)
     {
+
+        Debug.Log("Attack2");
         float parryValue = 0;
         if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter() + defaultValue;
 
@@ -426,6 +443,7 @@ public class PlayerComboAttack : MonoBehaviour
     private void ResetCombo()
     {
         //Debug.Log("ResetCombo");
+        animator.SetInteger("attackNumber", 0);
         comboStep = 0;
         inputBuffered = 0;
     }

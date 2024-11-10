@@ -8,4 +8,5 @@ public class AnimatorExtension : MonoBehaviour
 
     public void SendStopFalling() { GetComponentInParent<PlayerMovement>().StopFalling(); }
 
+    public void SendCheckAttack() { GetComponentInParent<PlayerComboAttack>().CheckAttack(); }
 }
