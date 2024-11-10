@@ -53,10 +53,15 @@ public class TrainingManager : MonoBehaviour
     {
         tooltipHeader.gameObject.SetActive(true);
         tooltipText.gameObject.SetActive(true);
-        StartCoroutine(NextPart(-1));
+        NextPart(-1);
     }
 
-    public IEnumerator NextPart(int missionID)
+    public void NextPart(int missionID)
+    {
+        StartCoroutine(OriginalNextPart(missionID));
+    }
+
+    public IEnumerator OriginalNextPart(int missionID)
     {
         if (currentMission == missionID)
         {
@@ -67,12 +72,10 @@ public class TrainingManager : MonoBehaviour
             Debug.Log("Before: " + currentMission);
             yield return new WaitForSecondsRealtime(timeBetweenTextAnimations);
             Debug.Log("After: " + currentMission +"?");
-
-
             
             tooltipText.text = trainingTextList[currentMission].Text;
 
-            if (missionID != 3) {FeelFeedbacksManager.instance.TooltipTextAppear.PlayFeedbacks(); }
+            {FeelFeedbacksManager.instance.TooltipTextAppear.PlayFeedbacks(); }
             
 
             if      (missionID == 1) IslandActive();

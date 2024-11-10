@@ -123,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 DamageNumberManager.instance.SpawnFallInTrainingText(gameObject.transform.position);
             }
-            StartCoroutine(TrainingManager.instance.NextPart(1));
+            TrainingManager.instance.NextPart(1);
        }
        
         transform.position = lastPlatformPosition;
@@ -137,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Debug.Log("Dash");
 
-        if (GameManager.instance.IsTraining) StartCoroutine(TrainingManager.instance.NextPart(0));
+        if (GameManager.instance.IsTraining) TrainingManager.instance.NextPart(0);
 
         canDash = false;
         isDashing = true;
