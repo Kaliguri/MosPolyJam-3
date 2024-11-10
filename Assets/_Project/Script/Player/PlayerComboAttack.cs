@@ -112,7 +112,7 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Update()
     {
-        if (attackInput.action.WasPressedThisFrame() && !isLongPress)
+        if (attackInput.action.WasPressedThisFrame() && !isLongPress && !PlayerParry.instance.isParryState)
         {
             attackPressTime = Time.time;
             attackPreparation = true;
