@@ -24,9 +24,8 @@ public class TrainingManager : MonoBehaviour
     [SerializeField] float timeBetweenTextAnimations = 0.5f;
 
 
-
-
-    [ReadOnly] int currentMission = -1;
+    [Title("Read Only")]
+    [ReadOnly] [SerializeField] int currentMission = -1;
 
     static public TrainingManager instance;
     void Awake()
@@ -36,7 +35,14 @@ public class TrainingManager : MonoBehaviour
 
     void Start()
     {
-        NextPart(-1);
+        TooltipStart();
+    }
+
+    void TooltipStart()
+    {
+        tooltipHeader.gameObject.SetActive(true);
+        tooltipText.gameObject.SetActive(true);
+        StartCoroutine(NextPart(-1));
     }
 
     public IEnumerator NextPart(int missionID)
@@ -45,7 +51,7 @@ public class TrainingManager : MonoBehaviour
         {
             currentMission++;
             //tooltipHeader.text = trainingTextList[currentMission].Header;
-            FeelFeedbacksManager.instance.TooltipTextDisappear.PlayFeedbacks();
+            if (missionID != -1) { FeelFeedbacksManager.instance.TooltipTextDisappear.PlayFeedbacks(); }
 
             yield return new WaitForSeconds(timeBetweenTextAnimations);
             
