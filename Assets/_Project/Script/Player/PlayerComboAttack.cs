@@ -15,6 +15,7 @@ public class PlayerComboAttack : MonoBehaviour
 
     [Title("Progreess Bar")]
     [SerializeField] GameObject progressBar;
+    [SerializeField] float timeProgressBarApears = 0.15f;
 
     [Title("Combo Settings")]
     [SerializeField] float timeBetweenAttacksInCombo = 0.3f;
@@ -141,7 +142,7 @@ public class PlayerComboAttack : MonoBehaviour
 
                 progressBar.SetActive(false);
             }
-            else if (canSpesialAttack)
+            else if (canSpesialAttack && timeProgressBarApears < Time.time - attackPressTime)
             {
                 progressBar.GetComponentInChildren<ProgressBarTag>().gameObject.GetComponent<Image>().fillAmount = (Time.time - attackPressTime) / longPressThreshold;
             }
