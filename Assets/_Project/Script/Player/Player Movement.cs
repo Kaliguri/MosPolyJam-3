@@ -9,6 +9,8 @@ using UnityEngine.WSA;
 public class PlayerMovement : MonoBehaviour
 {
     [Title("Settings")]
+    [SerializeField] float fallDamage = 5f;
+
     [Header("Move")]
     [SerializeField] float moveSpeed = 5f;
 
@@ -106,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
     void HandleFallOffPlatform()
     {
         animator.SetBool("isFalling", true);
+        CombatMethods.instance.ApplayDamage(fallDamage, GetComponent<Collider2D>(), gameObject);
         isFalling = true;
     }
 
