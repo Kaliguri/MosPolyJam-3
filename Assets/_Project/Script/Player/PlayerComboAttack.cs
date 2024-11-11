@@ -461,7 +461,7 @@ public class PlayerComboAttack : MonoBehaviour
             float timeBetweenSendSlice = attack3_TimeBetweenSendSlice * (1 - percent);
             while (elapsed < timeBetweenSendSlice)
             {
-                if (GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState || i + 1 >= attack3_MaxSliceCount || isCursed)
+                if (GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState || i + 1 >= attack3_MaxSliceCount)
                 {
                     yield break;
                 }
@@ -483,7 +483,7 @@ public class PlayerComboAttack : MonoBehaviour
         attack.SetActive(false);
         attack.transform.localPosition = new Vector2(0, 0);
 
-        if (isLast || GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState || isCursed) 
+        if (isLast || GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState) 
         {
             lastClickTime = Time.time;
             for (int i = 0; i < attack3SliceList.Count; i++)
