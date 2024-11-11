@@ -25,8 +25,10 @@ public class PlayerParry : MonoBehaviour
     [SerializeField] Color NormalColor;
 
     [Title("VFX")]
-    [SerializeField] ParticleSystem normalParryVFX;
-    [SerializeField] ParticleSystem perfectParryVFX;
+    [SerializeField] ParticleSystem normalParryVFXinHit;
+    [SerializeField] ParticleSystem perfectParryVFXinHit;
+    [SerializeField] Animator parryAnimator;
+
 
 
     [Title("SFX")]
@@ -86,12 +88,13 @@ public class PlayerParry : MonoBehaviour
     {
         if (isPerfectParry)
         { 
-            Instantiate(perfectParryVFX, parryPosition, quaternion.identity);
+            Instantiate(perfectParryVFXinHit, parryPosition, quaternion.identity);
+            parryAnimator.Play("Perfect Parry");
         }
 
         else
         {
-            Instantiate(normalParryVFX, parryPosition, quaternion.identity);
+            Instantiate(normalParryVFXinHit, parryPosition, quaternion.identity);
         }
     }
 

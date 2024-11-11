@@ -56,6 +56,8 @@ public class TrainingManager : MonoBehaviour
 
 
     [Title("Settings")]
+
+    [SerializeField] bool haveStartBlock = true;
     [SerializeField] float timeBetweenTextAnimations = 0.5f;
     [SerializeField] float timeBeforeSwordAnimation = 1.5f;
     [SerializeField] float timeBetweenInSwordAnimation = 4f;
@@ -73,7 +75,8 @@ public class TrainingManager : MonoBehaviour
     void Start()
     {
         TooltipStart();
-        StartBlocking();
+        
+        if (haveStartBlock) StartBlocking();
     }
 
     void TooltipStart()
