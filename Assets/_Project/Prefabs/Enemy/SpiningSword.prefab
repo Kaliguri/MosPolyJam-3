@@ -263,8 +263,8 @@ Transform:
   m_GameObject: {fileID: 6081303189940135272}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.55, z: 0}
-  m_LocalScale: {x: 0.3, y: 1.5, z: 1}
+  m_LocalPosition: {x: -0, y: 1.719, z: 0}
+  m_LocalScale: {x: 0.22479, y: 1.65045, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5766747703530173615}
@@ -314,7 +314,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.6084906, b: 0.6084906, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -438,22 +438,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a544d545b62784640a2f11e64d322459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stanTime: 1
-  enemyMoveSpeed: 3
+  stanTime: 0.2
+  enemyMoveSpeed: 1.5
   teleportCooldown: 2
   blinkTime: 0.1
   attackRangeDistance: 5
   BlinkMaterial: {fileID: 2100000, guid: afec6107ac78fcb4ab70bdb7186b51a2, type: 2}
   minDistanceFromPlayer: 1
-  maxDistanceFromPlayer: 2
+  maxDistanceFromPlayer: 3
   enemyType: 3
-  timeBetweenAttack: 1
-  bodyDamage: 10
+  timeBetweenAttack: 4
+  bodyDamage: 6
   attackDashForce: 50
   attackDashTime: 0.1
   extraDashForce: 30
   extraDashTime: 0.1
   extraDashCooldown: 5
+  animationAttackSpeedMultiplier: 1.5
   firePoint: {fileID: 7040921140157568356}
   bulletDamage: 5
   attackPrefab: {fileID: 9122516903216107812, guid: 2cbfec9f3e1b37f41bc26c2a30739157, type: 3}
@@ -461,13 +462,12 @@ MonoBehaviour:
   bulletMaxDistance: 10
   hasKickback: 1
   recoilForce: 0.5
-  animationAttackSpeedMultiplier: 1.5
   curseTime: 2
   timeBeforeCurse: 2
-  swordDamage: 5
+  swordDamage: 6
   swordRotationSpeed: 30
-  swordSpeedMultiplayer: 1.1
-  maxCanBlockPlayerAttackCount: 5
+  swordSpeedMultiplayer: 1.15
+  maxCanBlockPlayerAttackCount: 6
   maxSwordCanSurviveParryCount: 5
   spearCount: 3
   timeBetweenSpearSend: 0.5

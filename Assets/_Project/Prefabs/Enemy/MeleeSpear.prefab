@@ -199,8 +199,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.23, y: 5.84, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5747232673390923786}
   - {fileID: 8000722777185324287}
@@ -218,30 +218,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a544d545b62784640a2f11e64d322459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stanTime: 1
-  enemyMoveSpeed: 3
+  stanTime: 0.3
+  enemyMoveSpeed: 2
   teleportCooldown: 2
-  blinkTime: 0.1
+  blinkTime: 0.3
   attackRangeDistance: 10
   BlinkMaterial: {fileID: 2100000, guid: afec6107ac78fcb4ab70bdb7186b51a2, type: 2}
-  minDistanceFromPlayer: 10
-  maxDistanceFromPlayer: 17
+  minDistanceFromPlayer: 2
+  maxDistanceFromPlayer: 4
   enemyType: 4
-  timeBetweenAttack: 1
+  timeBetweenAttack: 3
   bodyDamage: 5
   attackDashForce: 5
   attackDashTime: 5
   extraDashForce: 50
   extraDashTime: 0.1
   extraDashCooldown: 2
+  animationAttackSpeedMultiplier: 1.5
   firePoint: {fileID: 8000722777185324287}
-  bulletDamage: 5
+  bulletDamage: 9
   attackPrefab: {fileID: 3679453656010216842, guid: f73dd22500bd47d429440398e8d875f7, type: 3}
   bulletMoveSpeed: 10
   bulletMaxDistance: 10
   hasKickback: 1
   recoilForce: 0.5
-  animationAttackSpeedMultiplier: 1.5
   curseTime: 2
   timeBeforeCurse: 2
   swordDamage: 5
@@ -250,7 +250,7 @@ MonoBehaviour:
   maxCanBlockPlayerAttackCount: 5
   maxSwordCanSurviveParryCount: 5
   spearCount: 3
-  timeBetweenSpearSend: 0.5
+  timeBetweenSpearSend: 0.35
   damageMinimumToHurt: 100
   lastShotTime: 0
 --- !u!114 &3459875139246170286

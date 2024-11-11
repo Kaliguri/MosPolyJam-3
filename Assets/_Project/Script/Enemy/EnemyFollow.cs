@@ -29,6 +29,7 @@ public class EnemyFollow : MonoBehaviour
     [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashForce = 50f;
     [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashTime = 0.1f;
     [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashCooldown = 2f;
+    [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float animationAttackSpeedMultiplier = 1.5f;
     [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] Transform firePoint;
     [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] float bulletDamage = 5f;
     [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] GameObject attackPrefab;
@@ -36,7 +37,6 @@ public class EnemyFollow : MonoBehaviour
     [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] float bulletMaxDistance = 10f;
     [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] bool hasKickback = true;
     [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;
-    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float animationAttackSpeedMultiplier = 1.5f;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float curseTime = 2f;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float timeBeforeCurse = 2f;
     [HideIf("@enemyType != EnemyType.SpiningSword")] [SerializeField] float swordDamage = 5f;

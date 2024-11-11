@@ -19615,6 +19615,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1434049298}
     - target: {fileID: 2516890279868477300, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
+      propertyPath: attack3Release
+      value: 
+      objectReference: {fileID: 11400000, guid: 84641540c5092014a90c4f6ca7290858, type: 2}
+    - target: {fileID: 2516890279868477300, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
       propertyPath: 'attacksList.Array.data[0]'
       value: 
       objectReference: {fileID: 662587701}

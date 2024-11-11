@@ -218,8 +218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a544d545b62784640a2f11e64d322459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stanTime: 1
-  enemyMoveSpeed: 3
+  stanTime: 0.2
+  enemyMoveSpeed: 1.2
   teleportCooldown: 2
   blinkTime: 0.1
   attackRangeDistance: 10
@@ -227,21 +227,21 @@ MonoBehaviour:
   minDistanceFromPlayer: 10
   maxDistanceFromPlayer: 17
   enemyType: 2
-  timeBetweenAttack: 1
+  timeBetweenAttack: 1.5
   bodyDamage: 5
   attackDashForce: 5
   attackDashTime: 5
   extraDashForce: 50
   extraDashTime: 0.1
   extraDashCooldown: 2
+  animationAttackSpeedMultiplier: 1.5
   firePoint: {fileID: 7279085208001455162}
-  bulletDamage: 5
+  bulletDamage: 15
   attackPrefab: {fileID: 3679453656010216842, guid: f73dd22500bd47d429440398e8d875f7, type: 3}
   bulletMoveSpeed: 40
   bulletMaxDistance: 20
   hasKickback: 1
   recoilForce: 2
-  animationAttackSpeedMultiplier: 1.5
   curseTime: 2
   timeBeforeCurse: 1
   swordDamage: 5

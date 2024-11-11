@@ -366,22 +366,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a544d545b62784640a2f11e64d322459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stanTime: 1
+  stanTime: 0.2
   enemyMoveSpeed: 3
   teleportCooldown: 2
   blinkTime: 0.1
-  attackRangeDistance: 5
+  attackRangeDistance: 9
   BlinkMaterial: {fileID: 2100000, guid: afec6107ac78fcb4ab70bdb7186b51a2, type: 2}
-  minDistanceFromPlayer: 50
-  maxDistanceFromPlayer: 0
+  minDistanceFromPlayer: 4
+  maxDistanceFromPlayer: 8
   enemyType: 1
-  timeBetweenAttack: 1
-  bodyDamage: 10
-  attackDashForce: 50
+  timeBetweenAttack: 4
+  bodyDamage: 6
+  attackDashForce: 80
   attackDashTime: 0.1
-  extraDashForce: 30
+  extraDashForce: 40
   extraDashTime: 0.1
-  extraDashCooldown: 5
+  extraDashCooldown: 4
+  animationAttackSpeedMultiplier: 1.5
   firePoint: {fileID: 7040921140157568356}
   bulletDamage: 5
   attackPrefab: {fileID: 3679453656010216842, guid: f73dd22500bd47d429440398e8d875f7, type: 3}
@@ -389,7 +390,6 @@ MonoBehaviour:
   bulletMaxDistance: 10
   hasKickback: 1
   recoilForce: 0.5
-  animationAttackSpeedMultiplier: 1.5
   curseTime: 2
   timeBeforeCurse: 2
   swordDamage: 5
