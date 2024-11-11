@@ -237,7 +237,7 @@ MonoBehaviour:
   animationAttackSpeedMultiplier: 1.5
   firePoint: {fileID: 8000722777185324287}
   bulletDamage: 9
-  attackPrefab: {fileID: 3679453656010216842, guid: f73dd22500bd47d429440398e8d875f7, type: 3}
+  attackPrefab: {fileID: 3679453656010216842, guid: 6793841624c0f1648b8e82f915796850, type: 3}
   bulletMoveSpeed: 30
   bulletMaxDistance: 5
   hasKickback: 1

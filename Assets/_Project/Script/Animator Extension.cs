@@ -10,7 +10,12 @@ public class AnimatorExtension : MonoBehaviour
 
     public void SendAttack2Preparing() 
     {
-        var enemyAttack2 = transform.parent.gameObject.GetComponentInChildren<EnemyAttack2>();
+        var enemyAttack = transform.parent.gameObject.GetComponentInChildren<EnemyAttack2>();
+        if (enemyAttack != null)
+        {
+            enemyAttack.PrepareAttack2();
+        }
+        var enemyAttack2 = transform.parent.gameObject.GetComponentInChildren<EnemyAttack4>();
         if (enemyAttack2 != null)
         {
             enemyAttack2.PrepareAttack2();
