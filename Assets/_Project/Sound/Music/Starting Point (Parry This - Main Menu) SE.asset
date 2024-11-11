@@ -27,6 +27,24 @@ MonoBehaviour:
       - delay: 0
         volumeRatio: 1
         volumeDecibel: 0
+      - delay: 0
+        volumeRatio: 1
+        volumeDecibel: 0
+      - delay: 0
+        volumeRatio: 1
+        volumeDecibel: 0
+      - delay: 0
+        volumeRatio: 1
+        volumeDecibel: 0
+      - delay: 0
+        volumeRatio: 1
+        volumeDecibel: 0
+      - delay: 0
+        volumeRatio: 1
+        volumeDecibel: 0
+      - delay: 0
+        volumeRatio: 1
+        volumeDecibel: 0
       foundReferences: []
       disableEnable: 0
       muteEnable: 0
@@ -227,4 +245,10 @@ MonoBehaviour:
         soundEvent:
         - {fileID: 0}
     soundContainers:
+    - {fileID: 11400000, guid: b1f6ffb39d948c0498014f1d4df21ed6, type: 2}
+    - {fileID: 11400000, guid: b1f6ffb39d948c0498014f1d4df21ed6, type: 2}
+    - {fileID: 11400000, guid: b1f6ffb39d948c0498014f1d4df21ed6, type: 2}
+    - {fileID: 11400000, guid: b1f6ffb39d948c0498014f1d4df21ed6, type: 2}
+    - {fileID: 11400000, guid: b1f6ffb39d948c0498014f1d4df21ed6, type: 2}
+    - {fileID: 11400000, guid: b1f6ffb39d948c0498014f1d4df21ed6, type: 2}
     - {fileID: 11400000, guid: b1f6ffb39d948c0498014f1d4df21ed6, type: 2}
