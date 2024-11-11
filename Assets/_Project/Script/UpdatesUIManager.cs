@@ -12,6 +12,12 @@ public class UpdatesUIManager : MonoBehaviour
     [ReadOnly] [SerializeField] List<UpdateData> updateDataList = new(3);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    static public UpdatesUIManager instance;
+    void Awake()
+    {
+        instance = this;
+    }
+
     void OnEnable()
     {
         DataTransfer();
@@ -84,6 +90,8 @@ public class UpdatesUIManager : MonoBehaviour
     void OffUI()
     {
         gameObject.SetActive(false);
+
+        if (GameManager.instance.IsTraining) TrainingManager.instance.CardSelect2();
     }
 
 }
