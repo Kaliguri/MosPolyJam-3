@@ -221,9 +221,11 @@ MonoBehaviour:
   stanTime: 1
   enemyMoveSpeed: 3
   teleportCooldown: 2
-  minDistanceFromPlayer: 2
-  maxDistanceFromPlayer: 5
-  attackRangeDistance: 5
+  blinkTime: 0.1
+  attackRangeDistance: 10
+  BlinkMaterial: {fileID: 2100000, guid: afec6107ac78fcb4ab70bdb7186b51a2, type: 2}
+  minDistanceFromPlayer: 10
+  maxDistanceFromPlayer: 17
   enemyType: 4
   timeBetweenAttack: 1
   bodyDamage: 5

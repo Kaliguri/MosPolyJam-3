@@ -137,6 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4710cb3e1b52d4187f3f480f23fce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxPlayerAttackParryCount: 1
+  playerAttackParryCount: 0
 --- !u!60 &1916731220469654337
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -233,8 +235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordDamage: 10
-  maxPlayerAttackParryCount: 1
-  playerAttackParryCount: 0
 --- !u!1 &6081303189940135272
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,9 +441,11 @@ MonoBehaviour:
   stanTime: 1
   enemyMoveSpeed: 3
   teleportCooldown: 2
+  blinkTime: 0.1
+  attackRangeDistance: 5
+  BlinkMaterial: {fileID: 2100000, guid: afec6107ac78fcb4ab70bdb7186b51a2, type: 2}
   minDistanceFromPlayer: 1
   maxDistanceFromPlayer: 2
-  attackRangeDistance: 5
   enemyType: 3
   timeBetweenAttack: 1
   bodyDamage: 10
@@ -452,21 +454,24 @@ MonoBehaviour:
   extraDashForce: 30
   extraDashTime: 0.1
   extraDashCooldown: 5
-  bulletDamage: 5
   firePoint: {fileID: 7040921140157568356}
+  bulletDamage: 5
   attackPrefab: {fileID: 9122516903216107812, guid: 2cbfec9f3e1b37f41bc26c2a30739157, type: 3}
   bulletMoveSpeed: 10
   bulletMaxDistance: 10
-  animationAttackSpeedMultiplier: 1.5
   hasKickback: 1
   recoilForce: 0.5
+  animationAttackSpeedMultiplier: 1.5
   curseTime: 2
   timeBeforeCurse: 2
   swordDamage: 5
   swordRotationSpeed: 30
   swordSpeedMultiplayer: 1.1
+  maxCanBlockPlayerAttackCount: 5
   maxSwordCanSurviveParryCount: 5
-  maxPlayerAttackParryCount: 3
+  spearCount: 3
+  timeBetweenSpearSend: 0.5
+  damageMinimumToHurt: 100
   lastShotTime: 0
 --- !u!114 &3459875139246170286
 MonoBehaviour:

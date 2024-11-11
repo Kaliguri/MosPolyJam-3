@@ -369,9 +369,11 @@ MonoBehaviour:
   stanTime: 1
   enemyMoveSpeed: 3
   teleportCooldown: 2
+  blinkTime: 0.1
+  attackRangeDistance: 5
+  BlinkMaterial: {fileID: 2100000, guid: afec6107ac78fcb4ab70bdb7186b51a2, type: 2}
   minDistanceFromPlayer: 50
   maxDistanceFromPlayer: 0
-  attackRangeDistance: 5
   enemyType: 1
   timeBetweenAttack: 1
   bodyDamage: 10
@@ -385,11 +387,19 @@ MonoBehaviour:
   attackPrefab: {fileID: 3679453656010216842, guid: f73dd22500bd47d429440398e8d875f7, type: 3}
   bulletMoveSpeed: 10
   bulletMaxDistance: 10
-  animationAttackSpeedMultiplier: 1.5
   hasKickback: 1
   recoilForce: 0.5
+  animationAttackSpeedMultiplier: 1.5
   curseTime: 2
   timeBeforeCurse: 2
+  swordDamage: 5
+  swordRotationSpeed: 5
+  swordSpeedMultiplayer: 1.25
+  maxCanBlockPlayerAttackCount: 5
+  maxSwordCanSurviveParryCount: 5
+  spearCount: 3
+  timeBetweenSpearSend: 0.5
+  damageMinimumToHurt: 100
   lastShotTime: 0
 --- !u!114 &3459875139246170286
 MonoBehaviour:
