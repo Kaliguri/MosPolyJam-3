@@ -8854,7 +8854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.28627452, g: 0.5137255, b: 0.9960785, a: 0.078431375}
+  m_Color: {r: 0.21176471, g: 0.9764706, b: 1, a: 0.078431375}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8936,7 +8936,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4790415665155710147, guid: ce5d3b490aa1dce42a822a995012f26c, type: 3}
+  m_Sprite: {fileID: -4457850898058260020, guid: 5b19c25d80de16e44bf9a5e36d099cad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9431,7 +9431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7465677150384152762
 RectTransform:
   m_ObjectHideFlags: 0
