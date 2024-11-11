@@ -93,7 +93,7 @@ public class PlayerComboAttack : MonoBehaviour
     [Title("ReadonlyParametrs")]
     [ReadOnly] public bool attacking = false;
     [ReadOnly] public bool isCursed = false;
-    [ReadOnly] public bool isAttacking = true;
+    [ReadOnly] public bool isAttacking = false;
     [ReadOnly] private List<GameObject> attack3SliceList = new();
 
     static public PlayerComboAttack instance;
@@ -160,7 +160,11 @@ public class PlayerComboAttack : MonoBehaviour
             }
             else progressBar.SetActive(false);
         }
-        else progressBar.SetActive(false);
+        else
+        {
+            attackPreparation = false;
+            progressBar.SetActive(false); 
+        }
     }
 
     private void FixedUpdate()

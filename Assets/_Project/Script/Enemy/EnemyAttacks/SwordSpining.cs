@@ -42,6 +42,10 @@ public class SwordSpining : MonoBehaviour
             swordRotationSpeed *= -swordSpeedMultiplayer;
             parryCount++;
         }
-        else Destroy(gameObject);
+        else 
+        {
+            GetComponentInParent<EnemyFollow>().isAttacking = false;
+            Destroy(gameObject); 
+        }
     }
 }

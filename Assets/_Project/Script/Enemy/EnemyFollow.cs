@@ -182,7 +182,7 @@ public class EnemyFollow : MonoBehaviour
             MoveAwayFromPlayer();
         }
         if (attackRangeDistance >= distance && Time.time - lastShotTime >= timeBetweenAttack && !isAttacking)
-            { StartShootingAtplayerTransform(); Debug.Log(Time.time - lastShotTime); Debug.Log(Time.time); Debug.Log(lastShotTime); }
+            { StartShootingAtplayerTransform(); }
     }
 
     public void StartStan()
