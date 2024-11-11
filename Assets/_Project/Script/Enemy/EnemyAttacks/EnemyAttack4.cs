@@ -17,6 +17,7 @@ public class EnemyAttack4 : MonoBehaviour
     private Coroutine coroutine;
 
     public float damageMinimumToHurt;
+    public bool hasShield = true;
 
     public void Inisialise(Transform playerTransform, GameObject bulletPrefab, Transform firePoint, bool hasKickback, float recoilForce, Animator animator, int spearCount, float damageMinimumToHurt, float timeBetweenSpearSend)
     {
@@ -96,5 +97,15 @@ public class EnemyAttack4 : MonoBehaviour
     {
         if (coroutine != null) StopCoroutine(coroutine);
         Destroy(bullet);
+    }
+
+    public void BreakShield()
+    {
+        if (hasShield)
+        {
+            hasShield = false;
+            Debug.Log("Break Shield!");
+            GetComponentInParent<EnemyFollow>(); //EnemyFollow
+        }
     }
 }

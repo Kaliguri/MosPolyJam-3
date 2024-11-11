@@ -80,4 +80,14 @@ public class EnemyAttack3 : MonoBehaviour
 
         CheckIfOutsidePlatform();
     }
+
+    public void BlockAttack()
+    {
+        playerAttackParryCount++;
+        if (playerAttackParryCount == maxPlayerAttackParryCount)
+        {
+            Debug.Log("Can No Longer Block Attacks");
+            GetComponentInParent<EnemyFollow>(); //EnemyFollow
+        }
+    }
 }

@@ -55,10 +55,27 @@ public class CombatMethods : MonoBehaviour
                     animator.SetBool("isStaned", true);
                 }
             }
-
             else
             {
                 DamageNumberManager.instance.SpawnDamageText(gameObject, targetType.transform.position, 0);
+                var enemyAttack3 = targetType.GetComponentInChildren<EnemyAttack3>();
+                var enemyAttack4 = targetType.GetComponentInChildren<EnemyAttack4>();
+                if (enemyAttack3 != null)
+                {
+                    Debug.Log("third enemy get 0 damage");
+                    if (targetType.TryGetComponent<EnemyFollow>(out var enemyFollow))
+                    {
+
+                    }
+                }
+                else if (enemyAttack4 != null)
+                {
+                    Debug.Log("fourth enemy get 0 damage");
+                    if (targetType.TryGetComponent<EnemyFollow>(out var enemyFollow))
+                    {
+
+                    }
+                }
             }
         }
     }
@@ -113,14 +130,15 @@ public class CombatMethods : MonoBehaviour
         {
             if (enemyAttack3.playerAttackParryCount < enemyAttack3.maxPlayerAttackParryCount && damage != 999f)
             {
-                enemyAttack3.playerAttackParryCount++;
+                enemyAttack3.BlockAttack();
                 return true;
             }
         }
         else if (enemyAttack4 != null)
         {
-            if (damage <= enemyAttack4.damageMinimumToHurt)
+            if (damage <= enemyAttack4.damageMinimumToHurt && enemyAttack4.hasShield)
             {
+                enemyAttack4.BreakShield();
                 return true;
             }
         }
