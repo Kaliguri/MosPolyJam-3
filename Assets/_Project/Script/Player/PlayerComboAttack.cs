@@ -66,6 +66,8 @@ public class PlayerComboAttack : MonoBehaviour
 
     [Title("VFX")]
     [SerializeField] ParticleSystem attackReleaseVFX;
+    [SerializeField] GameObject curseObject;
+
 
     public bool canAttack = true;
 
@@ -505,9 +507,11 @@ public class PlayerComboAttack : MonoBehaviour
         yield return new WaitForSeconds(timeBeforeCurse);
         Debug.Log("BecameCursed");
         isCursed = true;
+        curseObject.SetActive(true);
 
         yield return new WaitForSeconds(curseTime);
         Debug.Log("Cured");
+        curseObject.SetActive(false);
         isCursed = false;
     }
 
