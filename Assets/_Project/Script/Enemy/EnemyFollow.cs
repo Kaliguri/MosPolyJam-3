@@ -25,18 +25,21 @@ public class EnemyFollow : MonoBehaviour
     [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashForce = 50f;
     [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashTime = 0.1f;
     [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashCooldown = 2f;
-    [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] GameObject attackPrefab;
-    [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] private float bulletMoveSpeed = 10f;
-    [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] private float bulletMaxDistance = 10f;
-    [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] float bulletDamage = 5f;
-    [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] Transform firePoint;
-    [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] bool hasKickback = true;
-    [HideIf("@enemyType == EnemyType.BodyRush")][EnableIf("hasKickback")][SerializeField] float recoilForce = 0.5f;
+    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] Transform firePoint;
+    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float bulletDamage = 5f;
+    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] GameObject attackPrefab;
+    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float bulletMoveSpeed = 10f;
+    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float bulletMaxDistance = 10f;
+    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] bool hasKickback = true;
+    [HideIf("@enemyType != EnemyType.RangeSpear")] [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;
+    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float curseTime = 2f;
+    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float timeBeforeCurse = 2f;
 
     private Animator animator => GetComponentInChildren<Animator>();
     private TrailRenderer trailRenderer => GetComponent<TrailRenderer>();
 
     [HideInInspector] public float lastShotTime = 0f;
+    private bool isStaned = false;
     private Transform playerTransform;
     private float lastTeleportTime = -Mathf.Infinity;
     private EnemyTeleporter currentTeleportCollider;
@@ -69,7 +72,7 @@ public class EnemyFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        FollowplayerTransform();
+        if (!isStaned) FollowplayerTransform();
         RotateTowardsplayerTransform();
 
         if (currentTeleportCollider != null && CanTeleport())
@@ -90,7 +93,7 @@ public class EnemyFollow : MonoBehaviour
                 if (GetComponentInChildren<EnemyBecomeInvinsible>() != null) { GetComponentInChildren<EnemyBecomeInvinsible>().Inisialise(playerTransform, extraDashForce, extraDashTime, extraDashCooldown, animator, GetComponent<Collider2D>()); }
                 break;
             case 2:
-                if (GetComponentInChildren<EnemyAttack2>() != null) { GetComponentInChildren<EnemyAttack2>().Inisialise(playerTransform, attackPrefab, firePoint, hasKickback, recoilForce, animator); }
+                if (GetComponentInChildren<EnemyAttack2>() != null) { GetComponentInChildren<EnemyAttack2>().Inisialise(playerTransform, attackPrefab, firePoint, hasKickback, recoilForce, animator, curseTime, timeBeforeCurse); }
                 break;
         }
     }
@@ -102,7 +105,7 @@ public class EnemyFollow : MonoBehaviour
 
     private bool CanTeleport()
     {
-        return Time.time >= lastTeleportTime + teleportCooldown;
+        return Time.time >= lastTeleportTime + teleportCooldown && !isStaned;
     }
 
     public void SetTeleportCooldown(float cooldown)
@@ -153,11 +156,13 @@ public class EnemyFollow : MonoBehaviour
 
     public void StartStan()
     {
+        isStaned = true;
         Invoke(nameof(StopStan), stanTime);
     }
 
     private void StopStan()
     {
+        isStaned = false;
         animator.SetBool("isStaned", false);
     }
 

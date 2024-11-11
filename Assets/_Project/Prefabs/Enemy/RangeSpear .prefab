@@ -232,13 +232,15 @@ MonoBehaviour:
   extraDashForce: 50
   extraDashTime: 0.1
   extraDashCooldown: 2
+  firePoint: {fileID: 7279085208001455162}
+  bulletDamage: 5
   attackPrefab: {fileID: 3679453656010216842, guid: f73dd22500bd47d429440398e8d875f7, type: 3}
   bulletMoveSpeed: 40
   bulletMaxDistance: 20
-  bulletDamage: 5
-  firePoint: {fileID: 7279085208001455162}
   hasKickback: 1
   recoilForce: 2
+  curseTime: 2
+  timeBeforeCurse: 1
   lastShotTime: 0
 --- !u!114 &3459875139246170286
 MonoBehaviour:

@@ -91,6 +91,7 @@ public class PlayerComboAttack : MonoBehaviour
 
     [Title("ReadonlyParametrs")]
     [ReadOnly] public bool attacking = false;
+    [ReadOnly] public bool isCursed = false;
     [ReadOnly] public bool isAttacking = true;
     [ReadOnly] private List<GameObject> attack3SliceList = new();
 
@@ -115,7 +116,7 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Update()
     {
-        if (attackInput.action.WasPressedThisFrame() && !isLongPress && !PlayerParry.instance.isParryState)
+        if (attackInput.action.WasPressedThisFrame() && !isLongPress && !PlayerParry.instance.isParryState && !isCursed)
         {
             attackPressTime = Time.time;
             attackPreparation = true;
@@ -125,7 +126,7 @@ public class PlayerComboAttack : MonoBehaviour
         }
 
 
-        if (attackInput.action.WasReleasedThisFrame() && !PlayerParry.instance.isParryState && Time.time - attackPressTime < longPressThreshold)
+        if (attackInput.action.WasReleasedThisFrame() && !PlayerParry.instance.isParryState && !isCursed && Time.time - attackPressTime < longPressThreshold)
         {
             if (comboStep > 1) Debug.Log("Releases");
             if (attackPressed) inputBuffered++;
@@ -136,7 +137,7 @@ public class PlayerComboAttack : MonoBehaviour
 
         if (attackInput.action.IsPressed())
         {
-            if (PlayerParry.instance.isParryState)
+            if (PlayerParry.instance.isParryState || isCursed)
             {
                 progressBar.SetActive(false);
                 attackPreparation = false;
@@ -483,6 +484,22 @@ public class PlayerComboAttack : MonoBehaviour
             lastClickTime = Time.time;
             attack.transform.parent.gameObject.SetActive(false); 
         }
+    }
+
+    public void BecomeCursed(float timeBeforeCurse, float curseTime)
+    {
+        StartCoroutine(Cursed(timeBeforeCurse, curseTime));
+    }
+
+    public IEnumerator Cursed(float timeBeforeCurse, float curseTime)
+    {
+        yield return new WaitForSeconds(timeBeforeCurse);
+        Debug.Log("BecameCursed");
+        isCursed = true;
+
+        yield return new WaitForSeconds(curseTime);
+        Debug.Log("BecameCured");
+        isCursed = false;
     }
 
     private void ResetCombo()

@@ -19,7 +19,7 @@ public class HPController : MonoBehaviour
 
     private void Death()
     {
-        if (gameObject.GetComponent<PlayerMovement>() == null) 
+        if (gameObject.GetComponent<PlayerTag>() == null) 
         {
             Destroy(gameObject);
             LevelManager.SendEnemyDeath();

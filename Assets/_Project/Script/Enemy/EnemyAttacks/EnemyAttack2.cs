@@ -5,11 +5,18 @@ public class EnemyAttack2 : MonoBehaviour
     private Transform playerTransform;
     private GameObject bulletPrefab;
     private Transform firePoint;
+    private float curseTime;
+    private float timeBeforeCurse;
     private bool hasKickback;
     private float recoilForce;
     private Animator animator;
 
-    public void Inisialise(Transform playerTransform, GameObject bulletPrefab, Transform firePoint, bool hasKickback, float recoilForce, Animator animator)
+    private void OnDestroy()
+    {
+        playerTransform.gameObject.GetComponent<PlayerComboAttack>().BecomeCursed(timeBeforeCurse, curseTime);
+    }
+
+    public void Inisialise(Transform playerTransform, GameObject bulletPrefab, Transform firePoint, bool hasKickback, float recoilForce, Animator animator, float curseTime, float timeBeforeCurse)
     {
         this.playerTransform = playerTransform;
         this.bulletPrefab = bulletPrefab;
@@ -17,6 +24,8 @@ public class EnemyAttack2 : MonoBehaviour
         this.hasKickback = hasKickback;
         this.recoilForce = recoilForce;
         this.animator = animator;
+        this.curseTime = curseTime;
+        this.timeBeforeCurse = timeBeforeCurse;
     }
 
     public void Attack2ShootAtPlayerTransform()

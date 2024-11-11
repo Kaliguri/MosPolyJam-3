@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
         ReadInputActions();
 
-        if (GetComponent<PlayerComboAttack>().isAttacking || PlayerParry.instance.isParryState || isFalling || !canMove) moveSpeed = 0f;
+        if (GetComponent<PlayerComboAttack>().isAttacking || PlayerParry.instance.isParryState || isFalling || !canMove || PlayerComboAttack.instance.isCursed) moveSpeed = 0f;
         else moveSpeed = currentSpeed;
 
 
