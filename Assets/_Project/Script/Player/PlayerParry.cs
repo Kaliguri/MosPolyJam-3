@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using Sonity;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -29,9 +30,11 @@ public class PlayerParry : MonoBehaviour
     [SerializeField] ParticleSystem perfectParryVFXinHit;
     [SerializeField] Animator parryAnimator;
 
-
-
     [Title("SFX")]
+
+    [SerializeField] SoundEvent normalParrySFX;
+    [SerializeField] SoundEvent perfectParrySFX;
+
 
 
     public bool canParry = true;
@@ -90,11 +93,14 @@ public class PlayerParry : MonoBehaviour
         { 
             Instantiate(perfectParryVFXinHit, parryPosition, quaternion.identity);
             parryAnimator.Play("Perfect Parry");
+            perfectParrySFX.Play2D();
         }
 
         else
         {
             Instantiate(normalParryVFXinHit, parryPosition, quaternion.identity);
+            perfectParrySFX.Play2D();
+
         }
     }
 

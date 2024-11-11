@@ -435,6 +435,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangeSpear  (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10458,11 +10462,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75b2f1f131dd1a4b943ed9d2c06fb2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &568043467 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5674039697546235680, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
-  m_PrefabInstance: {fileID: 1358631822555390045}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &596534324
 GameObject:
   m_ObjectHideFlags: 8
@@ -11595,7 +11594,7 @@ MonoBehaviour:
   javelinThrower: {fileID: 746752313}
   spiningSword: {fileID: 2041889854}
   pikeman: {fileID: 2022599710}
-  haveStartBlock: 0
+  haveStartBlock: 1
   timeBetweenTextAnimations: 0.5
   timeBeforeSwordAnimation: 1.5
   timeBetweenInSwordAnimation: 7
@@ -11620,6 +11619,10 @@ PrefabInstance:
       propertyPath: IsMainManu
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7627618344186484367, guid: a89ab3fa6a917e14d9e12bc5bbd7d1cc, type: 3}
+      propertyPath: trainingMusic
+      value: 
+      objectReference: {fileID: 11400000, guid: 9cfe7d5400ed25d4bacedd962b2c873e, type: 2}
     - target: {fileID: 8400680056827678101, guid: a89ab3fa6a917e14d9e12bc5bbd7d1cc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -14923,116 +14926,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3513249883139597974, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
   m_PrefabInstance: {fileID: 7979538208719544128}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1261086166
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1261086167}
-  - component: {fileID: 1261086169}
-  - component: {fileID: 1261086168}
-  m_Layer: 6
-  m_Name: Parry Effect (Shield)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1261086167
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261086166}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7867825, y: 0.7867825, z: 0.7867825}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 568043467}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1261086168
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261086166}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5cebe9da42492fd4ead321398f8cec80, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!212 &1261086169
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261086166}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 20
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.6650944, g: 0.99000275, b: 1, a: 0}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &1267621623
 GameObject:
   m_ObjectHideFlags: 0
@@ -19738,27 +19631,20 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4476481295237582955, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
-      propertyPath: parryAnimator
+      propertyPath: normalParrySFX
       value: 
-      objectReference: {fileID: 1261086168}
+      objectReference: {fileID: 11400000, guid: 5dbd2cb7066a45b429c80decb0d98c7e, type: 2}
     - target: {fileID: 4476481295237582955, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
-      propertyPath: perfectParryTime
-      value: 0.35
+      propertyPath: perfectParrySFX
+      value: 
+      objectReference: {fileID: 11400000, guid: 5dbd2cb7066a45b429c80decb0d98c7e, type: 2}
+    - target: {fileID: 5380112190753381239, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
+      propertyPath: fallDamage
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 4476481295237582955, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
-      propertyPath: normalParryVFXinHit
-      value: 
-      objectReference: {fileID: 1343478609204220344, guid: ff643b9add0ce494cae071ab3a3eb578, type: 3}
-    - target: {fileID: 4476481295237582955, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
-      propertyPath: perfectParryVFXinHit
-      value: 
-      objectReference: {fileID: 6774245622844870213, guid: 735fec390e0e8cb479c2fc86112d6b68, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5674039697546235680, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1261086167}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e1bd666b3744fb46a0cadd556c93f56, type: 3}
 --- !u!1001 &3111187667702991211
