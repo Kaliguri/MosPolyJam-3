@@ -193,13 +193,13 @@ public class TrainingManager : MonoBehaviour
 
     void SpecialAttackActive()
     {
-        FindFirstObjectByType<PlayerComboAttack>().canSpesialAttack = false;
-        StartCoroutine(SpawnEnemy(dummySpecial));
+        FindFirstObjectByType<PlayerComboAttack>().canSpesialAttack = true;
+        //StartCoroutine(SpawnEnemy(dummySpecial));
     }
 
     public void SpecialCheck()
     {
-        Destroy(dummySpecial);
+        //Destroy(dummySpecial);
         NextPart(5);
     }
 
