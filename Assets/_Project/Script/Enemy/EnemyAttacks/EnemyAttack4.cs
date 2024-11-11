@@ -39,10 +39,13 @@ public class EnemyAttack4 : MonoBehaviour
 
     private IEnumerator ShootAtPlayer()
     {
-        bullet.GetComponentInChildren<Collider2D>().enabled = true;
-        bullet.GetComponentInChildren<BulletMovement>().enabled = true;
-        bullet.GetComponentInChildren<SpearAttack2>().enabled = false;
-        bullet.GetComponentInChildren<Animator>().enabled = false;
+        if (bullet != null)
+        {
+            bullet.GetComponentInChildren<SpearAttack2>().enabled = false;
+            bullet.GetComponentInChildren<Animator>().enabled = false;
+            bullet.GetComponentInChildren<Collider2D>().enabled = true;
+            bullet.GetComponentInChildren<BulletMovement>().enabled = true;
+        }
         yield return new WaitForSeconds(timeBetweenSpearSend);
 
         GetComponentInParent<EnemyFollow>().isAttacking = true;
@@ -51,13 +54,13 @@ public class EnemyAttack4 : MonoBehaviour
             Vector2 direction = (playerTransform.position - firePoint.position).normalized;
             GameObject _bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
             _bullet.transform.up = direction;
-            _bullet.GetComponentInChildren<Collider2D>().enabled = true;
-            _bullet.GetComponentInChildren<BulletMovement>().enabled = true;
             _bullet.GetComponentInChildren<SpearAttack2>().enabled = false;
             _bullet.GetComponentInChildren<Animator>().enabled = false;
             Color newColor = _bullet.GetComponentInChildren<SpriteRenderer>().color;
             newColor.a = 1f;
             _bullet.GetComponentInChildren<SpriteRenderer>().color = newColor;
+            _bullet.GetComponentInChildren<Collider2D>().enabled = true;
+            _bullet.GetComponentInChildren<BulletMovement>().enabled = true;
 
             if (hasKickback)
             {

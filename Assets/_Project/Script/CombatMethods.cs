@@ -37,7 +37,7 @@ public class CombatMethods : MonoBehaviour
         }
         else if (targetType.GetComponent<EnemyTag>() != null)
         {
-            if (!IsAttackBlocked(targetType, damage))
+            if (!IsAttackBlocked(targetType, damage, contact))
             {
                 DamageNumberManager.instance.SpawnDamageText(gameObject, targetType.transform.position, damage);
 
@@ -116,7 +116,7 @@ public class CombatMethods : MonoBehaviour
         return _damage;
     }
 
-    private bool IsAttackBlocked(GameObject targetType, float damage)
+    private bool IsAttackBlocked(GameObject targetType, float damage, Vector2 contact)
     {
         var enemyAttack2 = targetType.GetComponentInChildren<EnemyBecomeInvinsible>();
         var enemyAttack3 = targetType.GetComponentInChildren<EnemyAttack3>();
@@ -138,8 +138,13 @@ public class CombatMethods : MonoBehaviour
         {
             if (damage <= enemyAttack4.damageMinimumToHurt && enemyAttack4.hasShield)
             {
-                enemyAttack4.BreakShield();
+                targetType.GetComponentInChildren<ShieldMovement>().SetTargetPoint(contact, true);
                 return true;
+            }
+            else if (enemyAttack4.hasShield)
+            {
+                targetType.GetComponentInChildren<ShieldMovement>().SetTargetPoint(contact, false);
+                enemyAttack4.BreakShield();
             }
         }
 
