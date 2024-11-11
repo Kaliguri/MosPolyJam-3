@@ -18,20 +18,7 @@ public class CombatMethods : MonoBehaviour
 
         if (targetType.GetComponent<PlayerTag>() != null)
         {
-            float _damage = damage;
-            if (PlayerParry.instance.isParryState)
-            {
-                _damage = PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime ? 0f : _damage * damageResistOnParry;
-
-                PlayerParry.instance.ParryCast(PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime, contact);
-                PlayerSphereManager.instance.ActivateSphere(PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime);
-
-                if (GameManager.instance.IsTraining) TrainingManager.instance.ParryCheck();
-
-                if (attackingType.GetComponentInChildren<SwordSpining>() != null) attackingType.GetComponent<SwordSpining>().ParryedAttack();
-            }
-
-            
+            float _damage = CalculateDamage(damage, contact, attackingType);
 
             if (_damage > 0) 
             {
@@ -50,16 +37,7 @@ public class CombatMethods : MonoBehaviour
         }
         else if (targetType.GetComponent<EnemyTag>() != null)
         {
-            bool isBlocked = false;
-            if (targetType.GetComponentInChildren<EnemyAttack3>() != null)
-            {
-                if (targetType.GetComponentInChildren<EnemyAttack3>().playerAttackParryCount < targetType.GetComponentInChildren<EnemyAttack3>().maxPlayerAttackParryCount)
-                {
-                    isBlocked = true;
-                    targetType.GetComponentInChildren<EnemyAttack3>().playerAttackParryCount++;
-                }
-            }
-            if (!isBlocked)
+            if (!IsAttackBlocked(targetType, damage))
             {
                 DamageNumberManager.instance.SpawnDamageText(gameObject, targetType.transform.position, damage);
 
@@ -77,4 +55,54 @@ public class CombatMethods : MonoBehaviour
             }
         }
     }
+
+    private float CalculateDamage(float damage, Vector2 contact, GameObject attackingType)
+    {
+        float _damage = damage;
+
+        if (PlayerParry.instance.isParryState)
+        {
+            _damage = PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime ? 0f : _damage * damageResistOnParry;
+
+            PlayerParry.instance.ParryCast(PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime, contact);
+            PlayerSphereManager.instance.ActivateSphere(PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime);
+
+            if (GameManager.instance.IsTraining)
+            {
+                TrainingManager.instance.ParryCheck();
+            }
+
+            if (attackingType.GetComponentInChildren<SwordSpining>() != null)
+            {
+                attackingType.GetComponent<SwordSpining>().ParryedAttack();
+            }
+        }
+
+        return _damage;
+    }
+
+    private bool IsAttackBlocked(GameObject targetType, float damage)
+    {
+        var enemyAttack3 = targetType.GetComponentInChildren<EnemyAttack3>();
+        var enemyAttack4 = targetType.GetComponentInChildren<EnemyAttack4>();
+
+        if (enemyAttack3 != null)
+        {
+            if (enemyAttack3.playerAttackParryCount < enemyAttack3.maxPlayerAttackParryCount)
+            {
+                enemyAttack3.playerAttackParryCount++;
+                return true;
+            }
+        }
+        else if (enemyAttack4 != null)
+        {
+            if (damage <= enemyAttack4.damageMinimumToHurt)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

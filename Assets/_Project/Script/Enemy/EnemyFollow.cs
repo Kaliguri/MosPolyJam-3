@@ -26,21 +26,24 @@ public class EnemyFollow : MonoBehaviour
     [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashForce = 50f;
     [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashTime = 0.1f;
     [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashCooldown = 2f;
-    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float bulletDamage = 5f;
-    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] Transform firePoint;
-    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] GameObject attackPrefab;
-    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float bulletMoveSpeed = 10f;
-    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float bulletMaxDistance = 10f;
+    [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] Transform firePoint;
+    [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] float bulletDamage = 5f;
+    [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] GameObject attackPrefab;
+    [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] float bulletMoveSpeed = 10f;
+    [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] float bulletMaxDistance = 10f;
+    [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] bool hasKickback = true;
+    [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float animationAttackSpeedMultiplier = 1.5f;
-    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] bool hasKickback = true;
-    [HideIf("@enemyType != EnemyType.RangeSpear")] [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float curseTime = 2f;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float timeBeforeCurse = 2f;
     [HideIf("@enemyType != EnemyType.SpiningSword")] [SerializeField] float swordDamage = 5f;
-    [HideIf("@enemyType != EnemyType.SpiningSword")][SerializeField] float swordRotationSpeed = 5f;
-    [HideIf("@enemyType != EnemyType.SpiningSword")][SerializeField] float swordSpeedMultiplayer = 1.25f;
-    [HideIf("@enemyType != EnemyType.SpiningSword")][SerializeField] int maxSwordCanSurviveParryCount = 5;
-    [HideIf("@enemyType != EnemyType.SpiningSword")][SerializeField] int maxPlayerAttackParryCount = 5;
+    [HideIf("@enemyType != EnemyType.SpiningSword")] [SerializeField] float swordRotationSpeed = 5f;
+    [HideIf("@enemyType != EnemyType.SpiningSword")] [SerializeField] float swordSpeedMultiplayer = 1.25f;
+    [HideIf("@enemyType != EnemyType.SpiningSword")] [SerializeField] int maxCanBlockPlayerAttackCount = 5;
+    [HideIf("@enemyType != EnemyType.SpiningSword")] [SerializeField] int maxSwordCanSurviveParryCount = 5;
+    [HideIf("@enemyType != EnemyType.MeleeSpear")] [SerializeField] int spearCount = 3;
+    [HideIf("@enemyType != EnemyType.MeleeSpear")] [SerializeField] float timeBetweenSpearSend = 0.5f;
+    [HideIf("@enemyType != EnemyType.MeleeSpear")] [SerializeField] float damageMinimumToHurt = 100f;
 
     private Animator animator => GetComponentInChildren<Animator>();
     private TrailRenderer trailRenderer => GetComponent<TrailRenderer>();
@@ -78,6 +81,7 @@ public class EnemyFollow : MonoBehaviour
         }
     }
 
+    [Button("Instantiate Attack")]
     private void InstantiateAttack()
     {
         if (attackPrefab != null) 
@@ -105,8 +109,11 @@ public class EnemyFollow : MonoBehaviour
                 if (GetComponentInChildren<EnemyAttack2>() != null) { GetComponentInChildren<EnemyAttack2>().Inisialise(playerTransform, attackPrefab, firePoint, hasKickback, recoilForce, animator, curseTime, timeBeforeCurse); }
                 break;
             case 3:
-                if (GetComponentInChildren<EnemyAttack3>() != null) { GetComponentInChildren<EnemyAttack3>().Inisialise(playerTransform, attackDashForce, attackDashTime, animator, bodyDamage, GetComponent<PolygonCollider2D>(), maxPlayerAttackParryCount); }
+                if (GetComponentInChildren<EnemyAttack3>() != null) { GetComponentInChildren<EnemyAttack3>().Inisialise(playerTransform, attackDashForce, attackDashTime, animator, bodyDamage, GetComponent<PolygonCollider2D>(), maxCanBlockPlayerAttackCount); }
                 if (GetComponentInChildren<SwordSpining>() != null) { GetComponentInChildren<SwordSpining>().Inisialise(swordRotationSpeed, swordSpeedMultiplayer, maxSwordCanSurviveParryCount, swordDamage, animator); }
+                break;
+            case 4:
+                if (GetComponentInChildren<EnemyAttack4>() != null) { GetComponentInChildren<EnemyAttack4>().Inisialise(playerTransform, attackPrefab, firePoint, hasKickback, recoilForce, animator, spearCount, damageMinimumToHurt, timeBetweenSpearSend); }
                 break;
         }
     }
@@ -204,6 +211,9 @@ public class EnemyFollow : MonoBehaviour
                 break;
             case 3:
                 if (GetComponentInChildren<EnemyAttack3>() != null) { GetComponentInChildren<EnemyAttack3>().Attack3DashToPlayer(); }
+                break;
+            case 4:
+                if (GetComponentInChildren<EnemyAttack4>() != null) { GetComponentInChildren<EnemyAttack4>().Attack4ShootAtPlayerTransform(); }
                 break;
         }
     }

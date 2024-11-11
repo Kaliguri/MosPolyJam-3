@@ -369,7 +369,7 @@ public class PlayerComboAttack : MonoBehaviour
         {
             attackComponent.SetDamage(attacks_Damage[1] + attack2_DamageIncrease * parryValue);
         }
-        attack.transform.localScale = new Vector3(attack2_StartScaleX + attack2_ScaleXIncrease * parryValue, attack2_StartScaleY + attack2_ScaleYIncrease * parryValue, 1);
+        attack.GetComponentInChildren<Attack>().gameObject.transform.localScale = new Vector3(attack2_StartScaleX + attack2_ScaleXIncrease * parryValue, attack2_StartScaleY + attack2_ScaleYIncrease * parryValue, 1);
 
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorPosition.z = transform.position.z;
