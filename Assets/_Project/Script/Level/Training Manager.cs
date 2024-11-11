@@ -73,6 +73,7 @@ public class TrainingManager : MonoBehaviour
     void Start()
     {
         TooltipStart();
+        StartBlocking();
     }
 
     void TooltipStart()
@@ -80,6 +81,18 @@ public class TrainingManager : MonoBehaviour
         tooltipHeader.gameObject.SetActive(true);
         tooltipText.gameObject.SetActive(true);
         NextPart(-1);
+    }
+
+    void StartBlocking()
+    {
+        var player = FindFirstObjectByType<PlayerTag>().gameObject;
+
+        player.GetComponent<PlayerComboAttack>().canAttack = false;
+        player.GetComponent<PlayerComboAttack>().canSpesialAttack = false;
+
+        player.GetComponent<PlayerParry>().canParry = false;
+
+
     }
 
     public void NextPart(int missionID)
@@ -95,9 +108,9 @@ public class TrainingManager : MonoBehaviour
 
             if (missionID != -1) { FeelFeedbacksManager.instance.TooltipTextDisappear.PlayFeedbacks(); }
 
-            Debug.Log("Before: " + currentMission);
+            //Debug.Log("Before: " + currentMission);
             yield return new WaitForSecondsRealtime(timeBetweenTextAnimations);
-            Debug.Log("After: " + currentMission +"?");
+            //Debug.Log("After: " + currentMission +"?");
             
             tooltipText.text = trainingTextList[currentMission].Text;
 
@@ -142,6 +155,8 @@ public class TrainingManager : MonoBehaviour
         yield return new WaitForSeconds(timeBetweenInSwordAnimation);
 
         FeelFeedbacksManager.instance.CinematicLinesDisappear.PlayFeedbacks();
+
+        FindFirstObjectByType<PlayerComboAttack>().canAttack = true;
         GameManager.instance.InputSetActive(true);
 
         tooltipHeader.gameObject.SetActive(true);
@@ -156,6 +171,7 @@ public class TrainingManager : MonoBehaviour
 
     void ParryActive()
     {
+        FindFirstObjectByType<PlayerParry>().canParry = true;
         StartCoroutine(SpawnEnemy(dummyParry));
     }
 
@@ -174,6 +190,7 @@ public class TrainingManager : MonoBehaviour
 
     void SpecialAttackActive()
     {
+        FindFirstObjectByType<PlayerComboAttack>().canSpesialAttack = false;
         StartCoroutine(SpawnEnemy(dummySpecial));
     }
 
