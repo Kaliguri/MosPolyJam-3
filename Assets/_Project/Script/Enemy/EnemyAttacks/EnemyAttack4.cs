@@ -60,6 +60,6 @@ public class EnemyAttack4 : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenSpearSend);
         }
         GetComponentInParent<EnemyFollow>().isAttacking = false;
-        GetComponentInParent<EnemyFollow>().lastShotTime = Time.time;
+        GetComponentInParent<EnemyFollow>().SetLastShotTime();
     }
 }

@@ -71,7 +71,7 @@ public class EnemyAttack1 : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         trailRenderer.emitting = false;
 
-        GetComponentInParent<EnemyFollow>().lastShotTime = Time.time;
+        GetComponentInParent<EnemyFollow>().SetLastShotTime();
 
         CheckIfOutsidePlatform();
     }

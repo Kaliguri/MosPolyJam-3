@@ -51,7 +51,7 @@ public class EnemyAttack2 : MonoBehaviour
             }
         }
 
-        GetComponentInParent<EnemyFollow>().lastShotTime = Time.time;
+        GetComponentInParent<EnemyFollow>().SetLastShotTime();
         animator.SetBool("isPreparingAttack", false);
         GetComponentInParent<EnemyFollow>().isAttacking = false;
     }

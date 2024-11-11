@@ -53,7 +53,7 @@ public class EnemyFollow : MonoBehaviour
     private Animator animator => GetComponentInChildren<Animator>();
     private TrailRenderer trailRenderer => GetComponent<TrailRenderer>();
 
-    [HideInInspector] public float lastShotTime = -Mathf.Infinity;
+    private float lastShotTime = -Mathf.Infinity;
     public bool isAttacking = false;
     private bool isStaned = false;
     private Transform playerTransform => PlayerComboAttack.instance.gameObject.transform;
@@ -182,12 +182,13 @@ public class EnemyFollow : MonoBehaviour
             MoveAwayFromPlayer();
         }
         if (attackRangeDistance >= distance && Time.time - lastShotTime >= timeBetweenAttack && !isAttacking)
-            StartShootingAtplayerTransform();
+            { StartShootingAtplayerTransform(); Debug.Log(Time.time - lastShotTime); Debug.Log(Time.time); Debug.Log(lastShotTime); }
     }
 
     public void StartStan()
     {
         isStaned = true;
+        isAttacking = false;
         var enemyAttack2 = GetComponentInChildren<EnemyAttack2>();
         if (enemyAttack2 != null)
         {
@@ -204,6 +205,7 @@ public class EnemyFollow : MonoBehaviour
 
     private void StartShootingAtplayerTransform()
     {
+        isAttacking = true;
         if (GetComponentInChildren<SwordSpining>() == null) animator.SetBool("isPreparingAttack", true);
         if (GetComponentInChildren<EnemyBecomeInvinsible>() != null && GetComponentInChildren<EnemyBecomeInvinsible>().isEnhancement)
         {
@@ -273,5 +275,10 @@ public class EnemyFollow : MonoBehaviour
     private void StopBlink()
     {
         spriteRenderer.material = StandartMaterial;
+    }
+
+    public void SetLastShotTime()
+    {
+        GetComponentInParent<EnemyFollow>().lastShotTime = Time.time;
     }
 }
