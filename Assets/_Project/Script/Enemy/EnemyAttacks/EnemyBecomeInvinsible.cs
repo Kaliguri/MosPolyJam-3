@@ -39,7 +39,6 @@ public class EnemyBecomeInvinsible : MonoBehaviour
         Vector2 direction = (playerTransform.position - transform.position).normalized;
         Vector2 directionLeft = new Vector2(-direction.y, direction.x);
         parentCollider.enabled = false;
-        GetComponent<Collider2D>().enabled = false;
         rb2D.linearVelocity = directionLeft * dashForce;
 
         trailRenderer.emitting = true;
@@ -47,6 +46,8 @@ public class EnemyBecomeInvinsible : MonoBehaviour
         //Instantiate(dashParticle, transform.position, transform.rotation);
 
         yield return new WaitForSeconds(dashTime);
+
+        GetComponent<Collider2D>().enabled = false;
         trailRenderer.emitting = false;
         rb2D.linearVelocity = new Vector3(0, 0, 0);
         parentCollider.enabled = true;

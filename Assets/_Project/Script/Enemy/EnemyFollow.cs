@@ -5,18 +5,21 @@ using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour
 {
-    [Title("Follow Settings")]
+    #region Enemy Settings
+    [Title("Enemy Settings")]
     [SerializeField] float stanTime = 1f;
     [SerializeField] float enemyMoveSpeed = 3f;
     [SerializeField] float teleportCooldown = 2f;
+    [SerializeField] float blinkTime = 0.5f;
     //[SerializeField] float rotationSpeed = 100f;
+    [SerializeField] float attackRangeDistance = 5f;
+    [SerializeField] private Material BlinkMaterial;
     [SerializeField] float minDistanceFromPlayer = 2f;
     [SerializeField] float maxDistanceFromPlayer = 5f;
-    [SerializeField] float attackRangeDistance = 5f;
-
-    [Title("Enemy Settings")]
     [SerializeField] EnemyType enemyType = EnemyType.BodyRush;
+    #endregion
 
+    #region Attack Settings
     [Title("Attack Settings")]
     [SerializeField] float timeBetweenAttack = 1f;
     //[HideIfGroup("@enemyType != EnemyType.BodyRush && enemyType != EnemyType.SpiningSword")]
@@ -44,6 +47,7 @@ public class EnemyFollow : MonoBehaviour
     [HideIf("@enemyType != EnemyType.MeleeSpear")] [SerializeField] int spearCount = 3;
     [HideIf("@enemyType != EnemyType.MeleeSpear")] [SerializeField] float timeBetweenSpearSend = 0.5f;
     [HideIf("@enemyType != EnemyType.MeleeSpear")] [SerializeField] float damageMinimumToHurt = 100f;
+    #endregion
 
     private Animator animator => GetComponentInChildren<Animator>();
     private TrailRenderer trailRenderer => GetComponent<TrailRenderer>();
@@ -53,6 +57,8 @@ public class EnemyFollow : MonoBehaviour
     private Transform playerTransform => PlayerComboAttack.instance.gameObject.transform;
     private float lastTeleportTime = -Mathf.Infinity;
     private EnemyTeleporter currentTeleportCollider;
+    private SpriteRenderer spriteRenderer => GetComponentInChildren<SpriteRenderer>();
+    private Material StandartMaterial;
 
     private enum EnemyType
     {
@@ -65,6 +71,7 @@ public class EnemyFollow : MonoBehaviour
     private void Start()
     {
         InstantiateAttack();
+        InstantiaateMaterials();
     }
 
     private void FixedUpdate()
@@ -116,6 +123,11 @@ public class EnemyFollow : MonoBehaviour
                 if (GetComponentInChildren<EnemyAttack4>() != null) { GetComponentInChildren<EnemyAttack4>().Inisialise(playerTransform, attackPrefab, firePoint, hasKickback, recoilForce, animator, spearCount, damageMinimumToHurt, timeBetweenSpearSend); }
                 break;
         }
+    }
+
+    private void InstantiaateMaterials()
+    {
+        StandartMaterial = spriteRenderer.material;
     }
 
     public void Die()
@@ -218,7 +230,7 @@ public class EnemyFollow : MonoBehaviour
         }
     }
 
-    void RotateTowardsplayerTransform()
+    private void RotateTowardsplayerTransform()
     {
         Vector2 direction = (playerTransform.position - transform.position).normalized;
          
@@ -236,15 +248,26 @@ public class EnemyFollow : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, newAngle);*/
     }
 
-    void MoveTowardsPlayer()
+    private void MoveTowardsPlayer()
     {
         Vector2 direction = (playerTransform.position - transform.position).normalized;
         if (Vector2.Distance(transform.position, playerTransform.position) > 0.05f) transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + direction, enemyMoveSpeed * Time.fixedDeltaTime);
     }
 
-    void MoveAwayFromPlayer()
+    private void MoveAwayFromPlayer()
     {
         Vector2 direction = (transform.position - playerTransform.position).normalized;
         transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + direction, enemyMoveSpeed * Time.fixedDeltaTime);
+    }
+
+    public void GetHit()
+    {
+        spriteRenderer.material = BlinkMaterial;
+        Invoke(nameof(StopBlink), blinkTime);
+    }
+
+    private void StopBlink()
+    {
+        spriteRenderer.material = StandartMaterial;
     }
 }

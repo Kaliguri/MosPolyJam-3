@@ -43,14 +43,16 @@ public class CombatMethods : MonoBehaviour
 
                 targetType.GetComponent<HPController>().RecieveDamage(damage);
 
+                if (targetType.TryGetComponent<EnemyFollow>(out var enemyFollow))
+                {
+                    enemyFollow.GetHit();
+                    enemyFollow.StartStan();
+                }
+
                 Animator animator = targetType.GetComponentInChildren<Animator>();
                 if (animator != null)
                 {
                     animator.SetBool("isStaned", true);
-                }
-                if (targetType.TryGetComponent<EnemyFollow>(out var enemyFollow))
-                {
-                    enemyFollow.StartStan();
                 }
             }
         }
@@ -83,10 +85,15 @@ public class CombatMethods : MonoBehaviour
 
     private bool IsAttackBlocked(GameObject targetType, float damage)
     {
+        var enemyAttack2 = targetType.GetComponentInChildren<EnemyBecomeInvinsible>();
         var enemyAttack3 = targetType.GetComponentInChildren<EnemyAttack3>();
         var enemyAttack4 = targetType.GetComponentInChildren<EnemyAttack4>();
 
-        if (enemyAttack3 != null)
+        if (enemyAttack2 != null)
+        {
+            if (enemyAttack2.gameObject.GetComponent<Collider2D>().enabled && damage != 999f) return true;
+        }
+        else if (enemyAttack3 != null)
         {
             if (enemyAttack3.playerAttackParryCount < enemyAttack3.maxPlayerAttackParryCount)
             {
@@ -104,5 +111,4 @@ public class CombatMethods : MonoBehaviour
 
         return false;
     }
-
 }
