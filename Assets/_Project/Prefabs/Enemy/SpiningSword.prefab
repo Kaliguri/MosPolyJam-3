@@ -442,6 +442,8 @@ MonoBehaviour:
   enemyMoveSpeed: 1.5
   teleportCooldown: 2
   blinkTime: 0.1
+  healBubleCount: 5
+  healBuble: {fileID: 8624802602072797256, guid: 399007dea3462324f96ef55581a72fa3, type: 3}
   attackRangeDistance: 5
   BlinkMaterial: {fileID: 2100000, guid: afec6107ac78fcb4ab70bdb7186b51a2, type: 2}
   minDistanceFromPlayer: 1
@@ -462,6 +464,7 @@ MonoBehaviour:
   bulletMaxDistance: 10
   hasKickback: 1
   recoilForce: 0.5
+  isCursing: 1
   curseTime: 2
   timeBeforeCurse: 2
   swordDamage: 6
@@ -472,7 +475,7 @@ MonoBehaviour:
   spearCount: 3
   timeBetweenSpearSend: 0.5
   damageMinimumToHurt: 100
-  lastShotTime: 0
+  isAttacking: 0
 --- !u!114 &3459875139246170286
 MonoBehaviour:
   m_ObjectHideFlags: 0

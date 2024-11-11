@@ -58,6 +58,12 @@ public class CombatMethods : MonoBehaviour
         }
     }
 
+    public void ApplayHeal(float heal, Collider2D collisionTargetType)
+    {
+        var targetType = collisionTargetType.gameObject;
+        targetType.GetComponent<HPController>().GetHeal(heal);
+    }
+
     private float CalculateDamage(float damage, Vector2 contact, GameObject attackingType)
     {
         float _damage = damage;

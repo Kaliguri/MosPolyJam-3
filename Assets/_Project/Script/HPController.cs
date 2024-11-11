@@ -17,6 +17,12 @@ public class HPController : MonoBehaviour
         if (currentHP <= 0) { Death(); }
     }
 
+    public void GetHeal(float heal)
+    {
+        currentHP += heal;
+        if (currentHP > maxHP) { currentHP = maxHP; }
+    }
+
     private void Death()
     {
         if (gameObject.GetComponent<PlayerTag>() == null) 

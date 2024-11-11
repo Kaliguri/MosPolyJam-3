@@ -11,6 +11,8 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] float enemyMoveSpeed = 3f;
     [SerializeField] float teleportCooldown = 2f;
     [SerializeField] float blinkTime = 0.5f;
+    [SerializeField] int healBubleCount = 5;
+    [SerializeField] GameObject healBuble;
     //[SerializeField] float rotationSpeed = 100f;
     [SerializeField] float attackRangeDistance = 5f;
     [SerializeField] private Material BlinkMaterial;
@@ -68,6 +70,11 @@ public class EnemyFollow : MonoBehaviour
         RangeSpear = 2,
         SpiningSword = 3,
         MeleeSpear = 4
+    }
+
+    private void OnDestroy()
+    {
+        for (int i = 0; i < healBubleCount; i++) Instantiate(healBuble, transform.position, Quaternion.identity);
     }
 
     private void Start()
