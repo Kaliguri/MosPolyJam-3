@@ -41,7 +41,7 @@ public class EnemyFollow : MonoBehaviour
 
     [HideInInspector] public float lastShotTime = 0f;
     private bool isStaned = false;
-    private Transform playerTransform;
+    private Transform playerTransform => PlayerComboAttack.instance.gameObject.transform;
     private float lastTeleportTime = -Mathf.Infinity;
     private EnemyTeleporter currentTeleportCollider;
 
@@ -55,19 +55,6 @@ public class EnemyFollow : MonoBehaviour
 
     private void Start()
     {
-        playerTransform = FindFirstObjectByType<PlayerTag>().gameObject.transform;
-        var attackComponent = attackPrefab.GetComponent<Attack>() ?? attackPrefab.GetComponentInChildren<Attack>();
-        if (attackComponent != null)
-        {
-            attackComponent.SetDamage(enemyType == EnemyType.BodyRush ? bodyDamage : bulletDamage);
-        }
-        var bulletMovement = attackPrefab.GetComponent<BulletMovement>() ?? attackPrefab.GetComponentInChildren<BulletMovement>();
-        if (bulletMovement != null)
-        {
-            bulletMovement.moveSpeed = bulletMoveSpeed;
-            bulletMovement.maxDistance = bulletMaxDistance;
-        }
-
         InstantiateAttack();
     }
 
@@ -87,11 +74,26 @@ public class EnemyFollow : MonoBehaviour
 
     private void InstantiateAttack()
     {
+        if (attackPrefab != null) 
+        {
+            var attackComponent = attackPrefab.GetComponent<Attack>() ?? attackPrefab.GetComponentInChildren<Attack>();
+            if (attackComponent != null)
+            {
+                attackComponent.SetDamage(enemyType == EnemyType.BodyRush ? bodyDamage : bulletDamage);
+            }
+            var bulletMovement = attackPrefab.GetComponent<BulletMovement>() ?? attackPrefab.GetComponentInChildren<BulletMovement>();
+            if (bulletMovement != null)
+            {
+                bulletMovement.moveSpeed = bulletMoveSpeed;
+                bulletMovement.maxDistance = bulletMaxDistance;
+            }
+        }
+
         switch ((int)enemyType)
         {
             case 1:
-                if (GetComponentInChildren<EnemyAttack1>() != null) { GetComponentInChildren<EnemyAttack1>().Inisialise(playerTransform, attackDashForce, attackDashTime, animator, bodyDamage, GetComponent<Collider2D>()); }
-                if (GetComponentInChildren<EnemyBecomeInvinsible>() != null) { GetComponentInChildren<EnemyBecomeInvinsible>().Inisialise(playerTransform, extraDashForce, extraDashTime, extraDashCooldown, animator, GetComponent<Collider2D>()); }
+                if (GetComponentInChildren<EnemyAttack1>() != null) { GetComponentInChildren<EnemyAttack1>().Inisialise(attackDashForce, attackDashTime, animator, bodyDamage, GetComponent<PolygonCollider2D>()); }
+                if (GetComponentInChildren<EnemyBecomeInvinsible>() != null) { GetComponentInChildren<EnemyBecomeInvinsible>().Inisialise(playerTransform, extraDashForce, extraDashTime, extraDashCooldown, animator, GetComponent<PolygonCollider2D>()); }
                 break;
             case 2:
                 if (GetComponentInChildren<EnemyAttack2>() != null) { GetComponentInChildren<EnemyAttack2>().Inisialise(playerTransform, attackPrefab, firePoint, hasKickback, recoilForce, animator, curseTime, timeBeforeCurse); }

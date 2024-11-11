@@ -8,7 +8,7 @@ public class EnemyAttack1 : MonoBehaviour
     private float dashForce;
     private float bodyDamage;
     private Animator animator;
-    private Transform playerTransform;
+    private Transform playerTransform => PlayerComboAttack.instance.gameObject.transform;
     private Collider2D parentCollider;
 
     private Rigidbody2D rb2D => GetComponentInParent<Rigidbody2D>();
@@ -19,9 +19,8 @@ public class EnemyAttack1 : MonoBehaviour
         if (collision.gameObject.GetComponent<EnemyTag>() == null && collision.gameObject.GetComponent<PlayerTag>() != null) CombatMethods.instance.ApplayDamage(bodyDamage, collision, gameObject);
     }
 
-    public void Inisialise(Transform playerTransform, float dashForce, float dashTime, Animator animator, float bodyDamage, Collider2D parentCollider)
+    public void Inisialise(float dashForce, float dashTime, Animator animator, float bodyDamage, Collider2D parentCollider)
     {
-        this.playerTransform = playerTransform;
         this.dashForce = dashForce;
         this.dashTime = dashTime;
         this.animator = animator;

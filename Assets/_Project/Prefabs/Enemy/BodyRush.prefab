@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52dfef2b36fbc8245bc0039eaede7e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnhancement: 0
 --- !u!1 &2610632370227987488
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3173f9186c07f1d43b5d62290ebfefdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnhancement: 0
 --- !u!1 &8285791383877950042
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,13 +380,16 @@ MonoBehaviour:
   extraDashForce: 30
   extraDashTime: 0.1
   extraDashCooldown: 5
-  attackPrefab: {fileID: 9122516903216107812, guid: 2cbfec9f3e1b37f41bc26c2a30739157, type: 3}
+  firePoint: {fileID: 7040921140157568356}
+  bulletDamage: 5
+  attackPrefab: {fileID: 3679453656010216842, guid: f73dd22500bd47d429440398e8d875f7, type: 3}
   bulletMoveSpeed: 10
   bulletMaxDistance: 10
-  bulletDamage: 5
-  firePoint: {fileID: 7040921140157568356}
+  animationAttackSpeedMultiplier: 1.5
   hasKickback: 1
   recoilForce: 0.5
+  curseTime: 2
+  timeBeforeCurse: 2
   lastShotTime: 0
 --- !u!114 &3459875139246170286
 MonoBehaviour:
