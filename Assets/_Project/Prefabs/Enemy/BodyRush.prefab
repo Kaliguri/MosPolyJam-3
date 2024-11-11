@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 8987009220890114746}
   - component: {fileID: 2203699520266867168}
   - component: {fileID: 4036732899702580334}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: InvinsibleAura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -390,6 +390,7 @@ MonoBehaviour:
   bulletMaxDistance: 10
   hasKickback: 1
   recoilForce: 0.5
+  isCursing: 1
   curseTime: 2
   timeBeforeCurse: 2
   swordDamage: 5
@@ -401,6 +402,7 @@ MonoBehaviour:
   timeBetweenSpearSend: 0.5
   damageMinimumToHurt: 100
   lastShotTime: 0
+  isAttacking: 0
 --- !u!114 &3459875139246170286
 MonoBehaviour:
   m_ObjectHideFlags: 0

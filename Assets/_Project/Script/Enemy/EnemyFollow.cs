@@ -173,11 +173,11 @@ public class EnemyFollow : MonoBehaviour
     {
         float distance = Vector2.Distance(transform.position, playerTransform.position);
 
-        if (distance > maxDistanceFromPlayer)
+        if (distance >= maxDistanceFromPlayer)
         {
             MoveTowardsPlayer();
         }
-        else if (distance < minDistanceFromPlayer)
+        else if (distance <= minDistanceFromPlayer)
         {
             MoveAwayFromPlayer();
         }
@@ -192,7 +192,7 @@ public class EnemyFollow : MonoBehaviour
         var enemyAttack2 = GetComponentInChildren<EnemyAttack2>();
         if (enemyAttack2 != null)
         {
-            enemyAttack2.StopAttack2();
+            enemyAttack2.StopAttack();
         }
         Invoke(nameof(StopStan), stanTime);
     }

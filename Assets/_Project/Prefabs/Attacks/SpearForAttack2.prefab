@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 444451789995544046}
   - component: {fileID: 156405169116821617}
   - component: {fileID: 8750274171663447734}
+  - component: {fileID: 7851312168776682115}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -195,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeForPreparation: 1.5
+  enemyParent: {fileID: 0}
 --- !u!114 &8750274171663447734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,3 +211,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   maxDistance: 10
+--- !u!95 &7851312168776682115
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7438477997356048142}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d8f5b9d7168136346986baf5bd9001fd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

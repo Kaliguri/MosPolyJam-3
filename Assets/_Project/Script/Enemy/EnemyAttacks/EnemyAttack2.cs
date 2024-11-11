@@ -36,6 +36,8 @@ public class EnemyAttack2 : MonoBehaviour
         Vector2 direction = (playerTransform.position - bullet.transform.position).normalized;
         bullet.GetComponentInChildren<Collider2D>().enabled = true;
         bullet.GetComponentInChildren<BulletMovement>().enabled = true;
+        bullet.GetComponentInChildren<SpearAttack2>().enabled = false;
+        bullet.GetComponentInChildren<Animator>().enabled = false;
 
         if (hasKickback)
         {
@@ -67,7 +69,7 @@ public class EnemyAttack2 : MonoBehaviour
         bullet.GetComponentInChildren<SpriteRenderer>().color = newColor;
     }
 
-    public void StopAttack2()
+    public void StopAttack()
     {
         Destroy(bullet);
     }
