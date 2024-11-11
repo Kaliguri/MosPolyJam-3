@@ -37,6 +37,7 @@ public class EnemyFollow : MonoBehaviour
     [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] bool hasKickback = true;
     [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float animationAttackSpeedMultiplier = 1.5f;
+    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] bool isCursing = true;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float curseTime = 2f;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float timeBeforeCurse = 2f;
     [HideIf("@enemyType != EnemyType.SpiningSword")] [SerializeField] float swordDamage = 5f;
@@ -113,7 +114,7 @@ public class EnemyFollow : MonoBehaviour
                 if (GetComponentInChildren<EnemyBecomeInvinsible>() != null) { GetComponentInChildren<EnemyBecomeInvinsible>().Inisialise(playerTransform, extraDashForce, extraDashTime, extraDashCooldown, animator, GetComponent<PolygonCollider2D>()); }
                 break;
             case 2:
-                if (GetComponentInChildren<EnemyAttack2>() != null) { GetComponentInChildren<EnemyAttack2>().Inisialise(playerTransform, attackPrefab, firePoint, hasKickback, recoilForce, animator, curseTime, timeBeforeCurse); }
+                if (GetComponentInChildren<EnemyAttack2>() != null) { GetComponentInChildren<EnemyAttack2>().Inisialise(playerTransform, attackPrefab, firePoint, hasKickback, recoilForce, animator, curseTime, timeBeforeCurse, isCursing); }
                 break;
             case 3:
                 if (GetComponentInChildren<EnemyAttack3>() != null) { GetComponentInChildren<EnemyAttack3>().Inisialise(playerTransform, attackDashForce, attackDashTime, animator, bodyDamage, GetComponent<PolygonCollider2D>(), maxCanBlockPlayerAttackCount); }
@@ -175,12 +176,9 @@ public class EnemyFollow : MonoBehaviour
         {
             MoveTowardsPlayer();
         }
-        else
+        else if (distance < minDistanceFromPlayer)
         {
-            if (distance < minDistanceFromPlayer)
-            {
-                MoveAwayFromPlayer();
-            }
+            MoveAwayFromPlayer();
         }
         if (attackRangeDistance >= distance && Time.time - lastShotTime >= timeBetweenAttack)
             StartShootingAtplayerTransform();
@@ -189,6 +187,11 @@ public class EnemyFollow : MonoBehaviour
     public void StartStan()
     {
         isStaned = true;
+        var enemyAttack2 = transform.parent.gameObject.GetComponentInChildren<EnemyAttack2>();
+        if (enemyAttack2 != null)
+        {
+            enemyAttack2.StopAttack2();
+        }
         Invoke(nameof(StopStan), stanTime);
     }
 

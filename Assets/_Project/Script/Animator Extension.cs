@@ -8,6 +8,15 @@ public class AnimatorExtension : MonoBehaviour
 
     public void SendAttackPrepared() {  GetComponentInParent<EnemyFollow>().Attack(); }
 
+    public void SendAttack2Preparing() 
+    {
+        var enemyAttack2 = transform.parent.gameObject.GetComponentInChildren<EnemyAttack2>();
+        if (enemyAttack2 != null)
+        {
+            enemyAttack2.PrepareAttack2();
+        }
+    }
+
     public void ChangeBoolIsFalling() { animator.SetBool("isFalling", false); }
 
     public void SendDie() {  GetComponentInParent<EnemyFollow>().Die(); }
