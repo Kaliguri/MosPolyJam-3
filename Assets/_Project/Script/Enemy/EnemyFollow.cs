@@ -13,6 +13,7 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] float blinkTime = 0.5f;
     [SerializeField] int healBubleCount = 5;
     [SerializeField] GameObject healBuble;
+    [SerializeField] private Animator animator;
     //[SerializeField] float rotationSpeed = 100f;
     [SerializeField] float attackRangeDistance = 5f;
     [SerializeField] private Material BlinkMaterial;
@@ -52,7 +53,6 @@ public class EnemyFollow : MonoBehaviour
     [HideIf("@enemyType != EnemyType.MeleeSpear")] [SerializeField] float damageMinimumToHurt = 100f;
     #endregion
 
-    private Animator animator => GetComponentInChildren<Animator>();
     private TrailRenderer trailRenderer => GetComponent<TrailRenderer>();
 
     private float lastShotTime = -Mathf.Infinity;
@@ -74,7 +74,13 @@ public class EnemyFollow : MonoBehaviour
 
     private void OnDestroy()
     {
-        for (int i = 0; i < healBubleCount; i++) Instantiate(healBuble, transform.position, Quaternion.identity);
+        if (Application.isPlaying && !Application.isEditor)
+        {
+            for (int i = 0; i < healBubleCount; i++)
+            {
+                Instantiate(healBuble, transform.position, Quaternion.identity);
+            }
+        }
     }
 
     private void Start()

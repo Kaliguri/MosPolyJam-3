@@ -15,7 +15,7 @@ public class EnemyAttack2 : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (isCursing) playerTransform.gameObject.GetComponent<PlayerComboAttack>().BecomeCursed(timeBeforeCurse, curseTime);
+        if (Application.isPlaying && !Application.isEditor && isCursing) playerTransform.gameObject.GetComponent<PlayerComboAttack>().BecomeCursed(timeBeforeCurse, curseTime);
     }
 
     public void Inisialise(Transform playerTransform, GameObject bulletPrefab, Transform firePoint, bool hasKickback, float recoilForce, Animator animator, float curseTime, float timeBeforeCurse, bool isCursing)

@@ -399,6 +399,7 @@ MonoBehaviour:
   blinkTime: 0.1
   healBubleCount: 3
   healBuble: {fileID: 8624802602072797256, guid: 399007dea3462324f96ef55581a72fa3, type: 3}
+  animator: {fileID: 2340962937367036627}
   attackRangeDistance: 10
   BlinkMaterial: {fileID: 2100000, guid: afec6107ac78fcb4ab70bdb7186b51a2, type: 2}
   minDistanceFromPlayer: 8

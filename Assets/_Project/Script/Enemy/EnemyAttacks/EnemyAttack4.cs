@@ -82,7 +82,9 @@ public class EnemyAttack4 : MonoBehaviour
     public void PrepareAttack2()
     {
         GetComponentInParent<EnemyFollow>().isAttacking = true;
+        Vector2 direction = (playerTransform.position - firePoint.position).normalized;
         bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        bullet.transform.up = direction;
         bullet.GetComponentInChildren<SpearAttack2>().enemyParent = transform.parent.gameObject;
         bullet.GetComponentInChildren<Collider2D>().enabled = false;
         Color newColor = bullet.GetComponentInChildren<SpriteRenderer>().color;

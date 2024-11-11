@@ -9,7 +9,7 @@ public class BulletMovement : MonoBehaviour
 
     void Start()
     {
-        startPosition = transform.position;
+        startPosition = transform.parent.position;
     }
 
     void Update()
@@ -19,7 +19,7 @@ public class BulletMovement : MonoBehaviour
 
     void MoveBullet()
     {
-        transform.Translate(moveSpeed * Time.deltaTime * Vector3.up);
+        transform.parent.Translate(moveSpeed * Time.deltaTime * Vector3.up);
 
         float distanceTraveled = Vector3.Distance(startPosition, transform.position);
         if (distanceTraveled >= maxDistance)
