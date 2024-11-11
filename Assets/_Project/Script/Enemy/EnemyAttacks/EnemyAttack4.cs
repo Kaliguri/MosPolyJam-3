@@ -75,8 +75,8 @@ public class EnemyAttack4 : MonoBehaviour
             animator.SetBool("isPreparingAttack", false);
             yield return new WaitForSeconds(timeBetweenSpearSend);
         }
-        GetComponentInParent<EnemyFollow>().isAttacking = false;
         GetComponentInParent<EnemyFollow>().SetLastShotTime();
+        GetComponentInParent<EnemyFollow>().isAttacking = false;
     }
 
     public void PrepareAttack2()

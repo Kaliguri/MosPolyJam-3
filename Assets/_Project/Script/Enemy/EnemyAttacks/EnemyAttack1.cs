@@ -65,13 +65,13 @@ public class EnemyAttack1 : MonoBehaviour
         //Instantiate(dashParticle, transform.position, transform.rotation);
 
         yield return new WaitForSeconds(dashTime);
-        GetComponentInParent<EnemyFollow>().isAttacking = false;
         rb2D.linearVelocity = new Vector3 (0, 0, 0);
         parentCollider.enabled = true;
         GetComponent<Collider2D>().enabled = false;
         trailRenderer.emitting = false;
 
         GetComponentInParent<EnemyFollow>().SetLastShotTime();
+        GetComponentInParent<EnemyFollow>().isAttacking = false;
 
         CheckIfOutsidePlatform();
     }
