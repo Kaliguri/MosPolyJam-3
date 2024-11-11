@@ -213,7 +213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8002218880551739243
 Transform:
   m_ObjectHideFlags: 0
@@ -395,6 +395,7 @@ MonoBehaviour:
   attack3Release: {fileID: 11400000, guid: 84641540c5092014a90c4f6ca7290858, type: 2}
   attackReleaseVFX: {fileID: 3876152785130454950, guid: 6b26c89e8e1553a46939d7d05c0cdc6e, type: 3}
   curseObject: {fileID: 1767122407274023603}
+  curseVFX: {fileID: 5848130276229455497, guid: 6a5185ef3df50a147af6e3e2f6bdd975, type: 3}
   canAttack: 1
   attacking: 1
   isCursed: 0
@@ -976,9 +977,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 21
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.21176471, g: 0.9764706, b: 1, a: 0.15686275}
+  m_Color: {r: 0.84705883, g: 0, b: 1, a: 0.15686275}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
