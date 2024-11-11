@@ -2,8 +2,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class EnemyAttack1 : MonoBehaviour
+public class EnemyAttack3 : MonoBehaviour
 {
+    public bool isEnhancement = false;
+
     private float dashTime;
     private float dashForce;
     private float bodyDamage;
@@ -65,7 +67,7 @@ public class EnemyAttack1 : MonoBehaviour
         //Instantiate(dashParticle, transform.position, transform.rotation);
 
         yield return new WaitForSeconds(dashTime);
-        rb2D.linearVelocity = new Vector3 (0, 0, 0);
+        rb2D.linearVelocity = new Vector3(0, 0, 0);
         parentCollider.enabled = true;
         GetComponent<Collider2D>().enabled = false;
         trailRenderer.emitting = false;

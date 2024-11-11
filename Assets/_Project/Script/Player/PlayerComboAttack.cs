@@ -83,6 +83,7 @@ public class PlayerComboAttack : MonoBehaviour
     private bool attackPressed;
     private bool attackPreparation = false;
 
+    private Coroutine curse;
     private float defaultValue = 1f;
     private float lastClickTime = 0f;
     private int comboStep = 0;
@@ -488,7 +489,8 @@ public class PlayerComboAttack : MonoBehaviour
 
     public void BecomeCursed(float timeBeforeCurse, float curseTime)
     {
-        StartCoroutine(Cursed(timeBeforeCurse, curseTime));
+        if (curse != null) StopCoroutine(curse);
+        curse = StartCoroutine(Cursed(timeBeforeCurse, curseTime));
     }
 
     public IEnumerator Cursed(float timeBeforeCurse, float curseTime)

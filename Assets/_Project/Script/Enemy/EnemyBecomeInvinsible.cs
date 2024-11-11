@@ -4,6 +4,8 @@ using UnityEngine.Tilemaps;
 
 public class EnemyBecomeInvinsible : MonoBehaviour
 {
+    public bool isEnhancement = false;
+
     private float dashTime;
     private float dashForce;
     private float dashCooldown;
@@ -32,6 +34,7 @@ public class EnemyBecomeInvinsible : MonoBehaviour
 
     private IEnumerator DashRightFromPlayer()
     {
+        isEnhancement = true;
         Invoke(nameof(CanDashAgain), dashCooldown);
         Vector2 direction = (playerTransform.position - transform.position).normalized;
         Vector2 directionLeft = new Vector2(-direction.y, direction.x);

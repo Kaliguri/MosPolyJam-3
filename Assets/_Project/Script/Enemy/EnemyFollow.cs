@@ -30,6 +30,7 @@ public class EnemyFollow : MonoBehaviour
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] GameObject attackPrefab;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float bulletMoveSpeed = 10f;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float bulletMaxDistance = 10f;
+    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float animationAttackSpeedMultiplier = 1.5f;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] bool hasKickback = true;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float curseTime = 2f;
@@ -169,6 +170,14 @@ public class EnemyFollow : MonoBehaviour
     private void StartShootingAtplayerTransform()
     {
         animator.SetBool("isPreparingAttack", true);
+        if (GetComponentInChildren<EnemyBecomeInvinsible>() != null && GetComponentInChildren<EnemyBecomeInvinsible>().isEnhancement)
+        {
+            animator.speed = animationAttackSpeedMultiplier;
+        }
+        else
+        {
+            animator.speed = 1f;
+        }
     }
 
     public void Attack()
