@@ -55,6 +55,11 @@ public class CombatMethods : MonoBehaviour
                     animator.SetBool("isStaned", true);
                 }
             }
+
+            else
+            {
+                DamageNumberManager.instance.SpawnDamageText(gameObject, targetType.transform.position, 0);
+            }
         }
     }
 

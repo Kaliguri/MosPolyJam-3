@@ -22,6 +22,7 @@ public class TrainingManager : MonoBehaviour
     [SerializeField] GameObject TrainingIsland2;
 
     [Title("For Sword & Attack Mission")]
+    [SerializeField] GameObject islandObject;
     [SerializeField] SwordRewardAnimation Sword; 
     [SerializeField] GameObject dummyAttack; 
     [SerializeField] CinemachineCamera swordCinemachine; 
@@ -157,6 +158,8 @@ public class TrainingManager : MonoBehaviour
 
         Sword.waitTime = timeBeforeSwordAnimation;
         Sword.StartAnimation();
+
+        islandObject.SetActive(false);
 
         yield return new WaitForSeconds(timeBetweenInSwordAnimation);
 

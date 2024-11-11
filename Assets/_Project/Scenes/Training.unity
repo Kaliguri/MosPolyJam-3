@@ -11808,6 +11808,7 @@ MonoBehaviour:
   tooltipText: {fileID: 1057154911}
   TrainingIsland1: {fileID: 41771656}
   TrainingIsland2: {fileID: 1840556807}
+  islandObject: {fileID: 1840556807}
   Sword: {fileID: 1799617570}
   dummyAttack: {fileID: 176941170}
   swordCinemachine: {fileID: 2112833222}
@@ -20074,10 +20075,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2021177341400582526, guid: 4102090bb0a526f4391c39d618b44c0e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4102090bb0a526f4391c39d618b44c0e, type: 3}
 --- !u!4 &2121912635 stripped
 Transform:
@@ -20900,16 +20898,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3489066617088042686, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
       insertIndex: 1
       addedObject: {fileID: 2121912635}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2741450812985807258, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6242702026788608926, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 8081498531437926524, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
 --- !u!4 &8682731764680403016 stripped
 Transform:
