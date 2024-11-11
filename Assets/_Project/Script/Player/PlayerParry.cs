@@ -31,6 +31,9 @@ public class PlayerParry : MonoBehaviour
 
     [Title("SFX")]
 
+
+    public bool canParry = true;
+
     public static PlayerParry instance = null;
 
     private void Awake()
@@ -43,7 +46,8 @@ public class PlayerParry : MonoBehaviour
 
     private void Update()
     {
-        if (parryInput.action.WasPressedThisFrame())        ParryActivate();
+        if (parryInput.action.WasPressedThisFrame() && canParry)        ParryActivate();
+        else if (!canParry && isParryState) ParryDeactivate();
         else if (parryInput.action.WasReleasedThisFrame())  ParryDeactivate();
     }
 

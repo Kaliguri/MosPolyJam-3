@@ -12,6 +12,7 @@ public class EnemyAttack3 : MonoBehaviour
     private Animator animator;
     private Transform playerTransform;
     private Collider2D parentCollider;
+    private GameObject sword => transform.parent.gameObject.GetComponentInChildren<SwordSpining>().gameObject;
 
     private Rigidbody2D rb2D => GetComponentInParent<Rigidbody2D>();
     private TrailRenderer trailRenderer => GetComponentInParent<TrailRenderer>();
@@ -50,9 +51,9 @@ public class EnemyAttack3 : MonoBehaviour
         animator.SetBool("isFalling", true);
     }
 
-    public void Attack1DashToPlayer()
+    public void Attack3DashToPlayer()
     {
-        StartCoroutine(DashToPlayer());
+        if (sword != null) StartCoroutine(DashToPlayer());
     }
 
     private IEnumerator DashToPlayer()

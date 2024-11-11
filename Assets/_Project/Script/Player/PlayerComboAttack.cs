@@ -67,7 +67,7 @@ public class PlayerComboAttack : MonoBehaviour
     [Title("VFX")]
     [SerializeField] ParticleSystem attackReleaseVFX;
 
-
+    public bool canAttack = true;
 
     private float attack1_StartScaleX;
     private float attack1_StartScaleY;
@@ -117,7 +117,7 @@ public class PlayerComboAttack : MonoBehaviour
 
     private void Update()
     {
-        if (attackInput.action.WasPressedThisFrame() && !isLongPress && !PlayerParry.instance.isParryState && !isCursed)
+        if (attackInput.action.WasPressedThisFrame() && !isLongPress && !PlayerParry.instance.isParryState && !isCursed && canAttack)
         {
             attackPressTime = Time.time;
             attackPreparation = true;
@@ -127,7 +127,7 @@ public class PlayerComboAttack : MonoBehaviour
         }
 
 
-        if (attackInput.action.WasReleasedThisFrame() && !PlayerParry.instance.isParryState && !isCursed && Time.time - attackPressTime < longPressThreshold)
+        if (attackInput.action.WasReleasedThisFrame() && !PlayerParry.instance.isParryState && !isCursed && Time.time - attackPressTime < longPressThreshold && canAttack)
         {
             if (comboStep > 1) Debug.Log("Releases");
             if (attackPressed) inputBuffered++;
@@ -138,7 +138,7 @@ public class PlayerComboAttack : MonoBehaviour
 
         if (attackInput.action.IsPressed())
         {
-            if (PlayerParry.instance.isParryState || isCursed)
+            if (PlayerParry.instance.isParryState || isCursed || !canAttack)
             {
                 progressBar.SetActive(false);
                 attackPreparation = false;
