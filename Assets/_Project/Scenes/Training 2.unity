@@ -20307,6 +20307,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2121654846}
+    - target: {fileID: 1078334520349270362, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1304977012591745914, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -20419,7 +20423,8 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1313133309}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5467715176192045313, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

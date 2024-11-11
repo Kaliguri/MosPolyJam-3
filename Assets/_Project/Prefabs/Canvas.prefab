@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6027032090725212190}
   - component: {fileID: 8350962984088004171}
-  - component: {fileID: 5467715176192045313}
   m_Layer: 5
   m_Name: Update UI
   m_TagString: Untagged
@@ -58,29 +57,6 @@ MonoBehaviour:
   - {fileID: 1455896583449029374}
   - {fileID: 2021788631385312561}
   updateDataList: []
---- !u!223 &5467715176192045313
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341927042939823341}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: -1539614807
-  m_SortingOrder: 4
-  m_TargetDisplay: 0
 --- !u!1 &815839419938392411
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +201,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -1539614807
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!114 &4316026863450316861
 MonoBehaviour:
