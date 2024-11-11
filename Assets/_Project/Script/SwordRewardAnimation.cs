@@ -9,6 +9,11 @@ public class SwordRewardAnimation : MonoBehaviour
     [SerializeField] float speed = 5f;  // Скорость движения к цели
     [SerializeField] float fadeDuration = 2f; // Время, за которое объект исчезнет
 
+    [SerializeField] ParticleSystem particle1;
+    //[SerializeField] ParticleSystem particle2;
+
+
+
     public void StartAnimation()
     {
         StartCoroutine(MoveAndFadeCoroutine());     
@@ -17,6 +22,8 @@ public class SwordRewardAnimation : MonoBehaviour
     private IEnumerator MoveAndFadeCoroutine()
     {
         yield return new WaitForSeconds(waitTime);
+
+
         var player = FindFirstObjectByType<PlayerTag>().gameObject;  
         // Пока не достигли цели
         while (Vector3.Distance(transform.position, player.transform.position) > 0.1f)
@@ -31,6 +38,10 @@ public class SwordRewardAnimation : MonoBehaviour
         float fadeTimer = 0f;
         Color initialColor = spriteRenderer.color;
 
+        particle1.gameObject.SetActive(true);
+        //particle2.gameObject.SetActive(true);
+
+
         while (fadeTimer < fadeDuration)
         {
             fadeTimer += Time.deltaTime;
@@ -38,9 +49,6 @@ public class SwordRewardAnimation : MonoBehaviour
             spriteRenderer.color = new Color(initialColor.r, initialColor.g, initialColor.b, alpha);
             yield return null;
         }
-
-        // Удаляем объект после полного затухания
-        Destroy(gameObject);
     }
 
 }
