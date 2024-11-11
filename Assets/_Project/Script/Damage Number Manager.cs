@@ -109,4 +109,9 @@ public class DamageNumberManager : MonoBehaviour
             failTextCount ++;
         }
     }
+    
+    public void SpawnHealText(GameObject parent, Vector3 position, float textNumber, float scale = 1f, float delay = 0f)
+    {
+        StartCoroutine(TextSpawn(4, position, number: textNumber, scale: scale, delay: delay, parent: parent));
+    }
 }
