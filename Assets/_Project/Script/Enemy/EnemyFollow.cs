@@ -39,7 +39,8 @@ public class EnemyFollow : MonoBehaviour
     [HideIf("@enemyType != EnemyType.SpiningSword")] [SerializeField] float swordDamage = 5f;
     [HideIf("@enemyType != EnemyType.SpiningSword")][SerializeField] float swordRotationSpeed = 5f;
     [HideIf("@enemyType != EnemyType.SpiningSword")][SerializeField] float swordSpeedMultiplayer = 1.25f;
-    [HideIf("@enemyType != EnemyType.SpiningSword")][SerializeField] int maxParryCount = 5;
+    [HideIf("@enemyType != EnemyType.SpiningSword")][SerializeField] int maxSwordCanSurviveParryCount = 5;
+    [HideIf("@enemyType != EnemyType.SpiningSword")][SerializeField] int maxPlayerAttackParryCount = 5;
 
     private Animator animator => GetComponentInChildren<Animator>();
     private TrailRenderer trailRenderer => GetComponent<TrailRenderer>();
@@ -54,8 +55,8 @@ public class EnemyFollow : MonoBehaviour
     {
         BodyRush = 1,
         RangeSpear = 2,
-        SpiningSword = 4,
-        MeleeSpear = 5
+        SpiningSword = 3,
+        MeleeSpear = 4
     }
 
     private void Start()
@@ -105,7 +106,7 @@ public class EnemyFollow : MonoBehaviour
                 break;
             case 3:
                 if (GetComponentInChildren<EnemyAttack3>() != null) { GetComponentInChildren<EnemyAttack3>().Inisialise(playerTransform, attackDashForce, attackDashTime, animator, bodyDamage, GetComponent<PolygonCollider2D>()); }
-                if (GetComponentInChildren<SwordSpining>() != null) { GetComponentInChildren<SwordSpining>().Inisialise(swordRotationSpeed, swordSpeedMultiplayer, maxParryCount, swordDamage); }
+                if (GetComponentInChildren<SwordSpining>() != null) { GetComponentInChildren<SwordSpining>().Inisialise(swordRotationSpeed, swordSpeedMultiplayer, maxSwordCanSurviveParryCount, swordDamage, maxPlayerAttackParryCount, animator); Debug.Log("Inishialise Sword"); }
                 break;
         }
     }
@@ -180,7 +181,7 @@ public class EnemyFollow : MonoBehaviour
 
     private void StartShootingAtplayerTransform()
     {
-        animator.SetBool("isPreparingAttack", true);
+        if (GetComponentInChildren<SwordSpining>() == null) animator.SetBool("isPreparingAttack", true);
         if (GetComponentInChildren<EnemyBecomeInvinsible>() != null && GetComponentInChildren<EnemyBecomeInvinsible>().isEnhancement)
         {
             animator.speed = animationAttackSpeedMultiplier;

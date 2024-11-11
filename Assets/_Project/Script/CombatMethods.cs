@@ -27,6 +27,8 @@ public class CombatMethods : MonoBehaviour
                 PlayerSphereManager.instance.ActivateSphere(PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime);
 
                 if (GameManager.instance.IsTraining) TrainingManager.instance.ParryCheck();
+
+                if (attackingType.GetComponentInChildren<SwordSpining>() != null) attackingType.GetComponentInChildren<SwordSpining>().ParryedAttack();
             }
 
             
@@ -48,18 +50,30 @@ public class CombatMethods : MonoBehaviour
         }
         else if (targetType.GetComponent<EnemyTag>() != null)
         {
-            DamageNumberManager.instance.SpawnDamageText(gameObject, targetType.transform.position, damage);
-
-            targetType.GetComponent<HPController>().RecieveDamage(damage);
-
-            Animator animator = targetType.GetComponentInChildren<Animator>();
-            if (animator != null)
+            bool isBlocked = false;
+            if (targetType.GetComponent<EnemyTag>().gameObject.GetComponentInChildren<SwordSpining>() != null)
             {
-                animator.SetBool("isStaned", true);
+                if (targetType.GetComponent<EnemyTag>().gameObject.GetComponentInChildren<SwordSpining>().playerAttackParryCount < targetType.GetComponent<EnemyTag>().gameObject.GetComponentInChildren<SwordSpining>().maxPlayerAttackParryCount)
+                {
+                    isBlocked = true;
+                    targetType.GetComponent<EnemyTag>().gameObject.GetComponentInChildren<SwordSpining>().playerAttackParryCount++;
+                }
             }
-            if (targetType.TryGetComponent<EnemyFollow>(out var enemyFollow))
+            if (!isBlocked)
             {
-                enemyFollow.StartStan();
+                DamageNumberManager.instance.SpawnDamageText(gameObject, targetType.transform.position, damage);
+
+                targetType.GetComponent<HPController>().RecieveDamage(damage);
+
+                Animator animator = targetType.GetComponentInChildren<Animator>();
+                if (animator != null)
+                {
+                    animator.SetBool("isStaned", true);
+                }
+                if (targetType.TryGetComponent<EnemyFollow>(out var enemyFollow))
+                {
+                    enemyFollow.StartStan();
+                }
             }
         }
     }

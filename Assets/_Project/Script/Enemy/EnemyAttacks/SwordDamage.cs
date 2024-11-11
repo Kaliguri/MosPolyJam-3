@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class SwordDamage : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private float swordDamage => GetComponentInParent<SwordSpining>().swordDamage;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.GetComponent<EnemyTag>() == null && collision.gameObject.GetComponent<PlayerTag>() != null) CombatMethods.instance.ApplayDamage(swordDamage, collision, gameObject);
     }
 }

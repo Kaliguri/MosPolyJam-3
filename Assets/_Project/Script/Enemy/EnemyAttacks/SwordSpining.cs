@@ -1,25 +1,43 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SwordSpining : MonoBehaviour
 {
-    private float swordRotationSpeed = 0f;
+    private float currentZRotation = 0f;
+    private float swordRotationSpeed = 5f;
     private float swordSpeedMultiplayer = 1f;
-    private float swordDamage = 10f;
+    public float swordDamage = 10f;
     private int maxParryCount = 10;
-    public int parryCount = 0;
+    private int parryCount = 0;
+    public int maxPlayerAttackParryCount = 1;
+    public int playerAttackParryCount = 0;
+    private Animator animator;
 
-    public void Inisialise(float swordRotationSpeed, float swordSpeedMultiplayer, int maxParryCount, float swordDamage)
+    public void Inisialise(float swordRotationSpeed, float swordSpeedMultiplayer, int maxParryCount, float swordDamage, int maxPlayerAttackParryCount, Animator animator)
     {
         this.swordRotationSpeed = swordRotationSpeed;
         this.swordSpeedMultiplayer = swordSpeedMultiplayer;
         this.maxParryCount = maxParryCount;
         this.swordDamage = swordDamage;
+        this.maxPlayerAttackParryCount = maxPlayerAttackParryCount;
+        this.animator = animator;
+        Debug.Log(animator);
     }
 
     private void FixedUpdate()
     {
-        transform.Rotate(0f, 0f, swordRotationSpeed * Time.fixedDeltaTime);
+        if (animator != null && !animator.GetBool("isStaned"))
+        {
+            currentZRotation += 10 * swordRotationSpeed * Time.fixedDeltaTime;
+
+            float parentZRotation = transform.parent ? transform.parent.rotation.eulerAngles.z : 0f;
+            float targetZRotation = currentZRotation - parentZRotation;
+
+            transform.localRotation = Quaternion.Euler(0f, 0f, targetZRotation);
+        }
     }
+
+
 
     public void ParryedAttack()
     {
