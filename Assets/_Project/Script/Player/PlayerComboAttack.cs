@@ -451,7 +451,7 @@ public class PlayerComboAttack : MonoBehaviour
             attack3SliceList[i].transform.position += attack3SliceList[i].transform.right * randomOffset;
 
             Vector3 attack3TargetPosition = attack3SliceList[i].transform.position + attack3SliceList[i].transform.up * attack3_MoveDistance;
-            StartCoroutine(MoveAttack3Forward(attack3SliceList[i], attack3TargetPosition, i >= attack3_StartSliceCount + parryValue * attack3_SliceCountIncrease - 1 || i + 1 == attack3_MaxSliceCount, parryValue));
+            StartCoroutine(MoveAttack3Forward(attack3SliceList[i], attack3TargetPosition, i >= attack3_StartSliceCount + parryValue * attack3_SliceCountIncrease - 1 || i + 1 == attack3_MaxSliceCount || isCursed, parryValue));
 
             attack3Release.Play2D();
             //Instantiate(attackReleaseVFX, gameObject.transform.position, attack3SliceList[i].transform.rotation);
@@ -461,7 +461,7 @@ public class PlayerComboAttack : MonoBehaviour
             float timeBetweenSendSlice = attack3_TimeBetweenSendSlice * (1 - percent);
             while (elapsed < timeBetweenSendSlice)
             {
-                if (GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState || i + 1 >= attack3_MaxSliceCount)
+                if (GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState || i + 1 >= attack3_MaxSliceCount || isCursed)
                 {
                     yield break;
                 }
@@ -483,10 +483,27 @@ public class PlayerComboAttack : MonoBehaviour
         attack.SetActive(false);
         attack.transform.localPosition = new Vector2(0, 0);
 
-        if (isLast || GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState) 
+        if (isLast || GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState || isCursed) 
         {
             lastClickTime = Time.time;
+            for (int i = 0; i < attack3SliceList.Count; i++)
+            {
+                attack3SliceList[i].SetActive(false);
+            }
             attack.transform.parent.gameObject.SetActive(false); 
+        }
+        else
+        {
+            bool isActive = false;
+            for (int i = 0; i < attack3SliceList.Count; i++)
+            {
+                if (attack3SliceList[i].activeSelf) 
+                {
+                    isActive = true;
+                    break;
+                }
+            }
+            if (!isActive) attack.transform.parent.gameObject.SetActive(false);
         }
     }
 
