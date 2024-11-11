@@ -648,3 +648,9 @@ MonoBehaviour:
         m_RotationOrder: 4
     audioClips:
     - {fileID: 8300000, guid: 8092c3c093169454a87fa961ca472271, type: 3}
+    - {fileID: 8300000, guid: 8092c3c093169454a87fa961ca472271, type: 3}
+    - {fileID: 8300000, guid: 8092c3c093169454a87fa961ca472271, type: 3}
+    - {fileID: 8300000, guid: 8092c3c093169454a87fa961ca472271, type: 3}
+    - {fileID: 8300000, guid: 8092c3c093169454a87fa961ca472271, type: 3}
+    - {fileID: 8300000, guid: 8092c3c093169454a87fa961ca472271, type: 3}
+    - {fileID: 8300000, guid: 8092c3c093169454a87fa961ca472271, type: 3}
