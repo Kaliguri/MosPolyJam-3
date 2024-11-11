@@ -221,7 +221,7 @@ MonoBehaviour:
   minRandomRadiusSpawnDistance: 0.5
   maxRandomRadiusSpawnDistance: 2
   speed: 5
-  heal: 5
+  heal: 4
   waitTimeAtRandomTarget: 1
 --- !u!58 &2111415000713283050
 CircleCollider2D:
