@@ -33,6 +33,15 @@ public class TrainingManager : MonoBehaviour
     [Title("For Special Attack Mission")]
     [SerializeField] GameObject dummySpecial;
 
+    [Title("For Update Card Mission")]
+    [SerializeField] UpdatesUIManager updatesUI;
+    [SerializeField] float timeWaitingBeforeCardSelect = 8f;
+    [SerializeField] float timeWaitingBeforeEnemySpawn = 3f;
+    [SerializeField] List<GameObject> enemyCardMission;
+    [ReadOnly] [SerializeField] int enemyDie;
+
+
+
     [Title("VFX")]
     [SerializeField] ParticleSystem spawnVFX;
     [SerializeField] float timeBetweenVFXandSpawn = 1.5f;
@@ -102,8 +111,10 @@ public class TrainingManager : MonoBehaviour
             else if (missionID == 5) StartCoroutine(SpawnEnemy(bodyRush));
             else if (missionID == 6) StartCoroutine(SpawnEnemy(javelinThrower));
             else if (missionID == 7) StartCoroutine(SpawnEnemy(spiningSword));
-            else if (missionID == 8) StartCoroutine(SpawnEnemy(pikeman));
-            else if (missionID == 9) CardSelect();
+            else if (missionID == 8) StartCoroutine(CardSelect());
+            else if (missionID == 9) StartCoroutine(SpawnEnemy(pikeman));
+            else if (missionID == 10) TrainingEnd();
+
 
 
 
@@ -173,9 +184,36 @@ public class TrainingManager : MonoBehaviour
     }
 
 
-    void CardSelect()
+    IEnumerator CardSelect()
     {
+        yield return new WaitForSeconds(timeWaitingBeforeCardSelect);
+        Debug.Log("UI?");
+        updatesUI.gameObject.SetActive(true);
+    }
 
+    public void CardSelect2()
+    {
+        StartCoroutine(CardSelect3());
+    }
+    public IEnumerator CardSelect3()
+    {
+        yield return new WaitForSeconds(timeWaitingBeforeEnemySpawn);
+
+        foreach (GameObject enemy in enemyCardMission)
+        {
+            SpawnEnemy(enemy);
+            Debug.Log("GO?");
+        }
+    }
+
+    public void EnemyCheckCardSelect()
+    {
+        enemyDie++;
+
+        if (enemyDie == 6)
+        {
+            NextPart(9);
+        }
     }
 
     IEnumerator SpawnEnemy(GameObject enemy)
@@ -186,6 +224,11 @@ public class TrainingManager : MonoBehaviour
 
         enemy.SetActive(true);
         
+    }
+
+    void TrainingEnd()
+    {
+
     }
 
 }

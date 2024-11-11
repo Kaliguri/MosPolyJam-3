@@ -28,7 +28,8 @@ public class HPController : MonoBehaviour
             {
                 TrainingManager.instance.NextPart(3);
                 
-                TrainingManager.instance.NextPart(9);
+                TrainingManager.instance.NextPart(10);
+                TrainingManager.instance.EnemyCheckCardSelect();
                 TrainingManager.instance.NextPart(8);
                 TrainingManager.instance.NextPart(7);
                 TrainingManager.instance.NextPart(6);
