@@ -53,10 +53,12 @@ public class EnemyAttack2 : MonoBehaviour
 
         GetComponentInParent<EnemyFollow>().lastShotTime = Time.time;
         animator.SetBool("isPreparingAttack", false);
+        GetComponentInParent<EnemyFollow>().isAttacking = false;
     }
 
     public void PrepareAttack2()
     {
+        GetComponentInParent<EnemyFollow>().isAttacking = true;
         bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         bullet.GetComponentInChildren<SpearAttack2>().enemyParent = transform.parent.gameObject;
         bullet.GetComponentInChildren<Collider2D>().enabled = false;

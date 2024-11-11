@@ -59,6 +59,7 @@ public class EnemyAttack3 : MonoBehaviour
 
     private IEnumerator DashToPlayer()
     {
+        GetComponentInParent<EnemyFollow>().isAttacking = true;
         Vector2 direction = (playerTransform.position - transform.position).normalized;
         parentCollider.enabled = false;
         GetComponent<Collider2D>().enabled = true;
@@ -69,10 +70,13 @@ public class EnemyAttack3 : MonoBehaviour
         //Instantiate(dashParticle, transform.position, transform.rotation);
 
         yield return new WaitForSeconds(dashTime);
+        GetComponentInParent<EnemyFollow>().isAttacking = false;
         rb2D.linearVelocity = new Vector3(0, 0, 0);
         parentCollider.enabled = true;
         GetComponent<Collider2D>().enabled = false;
         trailRenderer.emitting = false;
+
+        GetComponentInParent<EnemyFollow>().lastShotTime = Time.time;
 
         CheckIfOutsidePlatform();
     }

@@ -95,7 +95,7 @@ public class CombatMethods : MonoBehaviour
         }
         else if (enemyAttack3 != null)
         {
-            if (enemyAttack3.playerAttackParryCount < enemyAttack3.maxPlayerAttackParryCount)
+            if (enemyAttack3.playerAttackParryCount < enemyAttack3.maxPlayerAttackParryCount && damage != 999f)
             {
                 enemyAttack3.playerAttackParryCount++;
                 return true;

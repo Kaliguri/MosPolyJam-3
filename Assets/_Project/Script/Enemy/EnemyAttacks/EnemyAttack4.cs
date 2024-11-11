@@ -35,6 +35,7 @@ public class EnemyAttack4 : MonoBehaviour
 
     private IEnumerator ShootAtPlayer()
     {
+        GetComponentInParent<EnemyFollow>().isAttacking = true;
         for (int i = 0; i < spearCount; i++)
         {
             Vector2 direction = (playerTransform.position - firePoint.position).normalized;
@@ -55,9 +56,10 @@ public class EnemyAttack4 : MonoBehaviour
                 }
             }
 
-            GetComponentInParent<EnemyFollow>().lastShotTime = Time.time;
             animator.SetBool("isPreparingAttack", false);
             yield return new WaitForSeconds(timeBetweenSpearSend);
         }
+        GetComponentInParent<EnemyFollow>().isAttacking = false;
+        GetComponentInParent<EnemyFollow>().lastShotTime = Time.time;
     }
 }

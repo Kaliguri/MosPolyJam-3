@@ -37,7 +37,6 @@ public class EnemyFollow : MonoBehaviour
     [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] float bulletMaxDistance = 10f;
     [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] bool hasKickback = true;
     [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;
-    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float animationAttackSpeedMultiplier = 1.5f;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] bool isCursing = true;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float curseTime = 2f;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float timeBeforeCurse = 2f;
@@ -54,7 +53,8 @@ public class EnemyFollow : MonoBehaviour
     private Animator animator => GetComponentInChildren<Animator>();
     private TrailRenderer trailRenderer => GetComponent<TrailRenderer>();
 
-    [HideInInspector] public float lastShotTime = 0f;
+    [HideInInspector] public float lastShotTime = -Mathf.Infinity;
+    public bool isAttacking = false;
     private bool isStaned = false;
     private Transform playerTransform => PlayerComboAttack.instance.gameObject.transform;
     private float lastTeleportTime = -Mathf.Infinity;
@@ -181,14 +181,14 @@ public class EnemyFollow : MonoBehaviour
         {
             MoveAwayFromPlayer();
         }
-        if (attackRangeDistance >= distance && Time.time - lastShotTime >= timeBetweenAttack)
+        if (attackRangeDistance >= distance && Time.time - lastShotTime >= timeBetweenAttack && !isAttacking)
             StartShootingAtplayerTransform();
     }
 
     public void StartStan()
     {
         isStaned = true;
-        var enemyAttack2 = transform.parent.gameObject.GetComponentInChildren<EnemyAttack2>();
+        var enemyAttack2 = GetComponentInChildren<EnemyAttack2>();
         if (enemyAttack2 != null)
         {
             enemyAttack2.StopAttack2();

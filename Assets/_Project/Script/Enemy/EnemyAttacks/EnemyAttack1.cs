@@ -16,7 +16,7 @@ public class EnemyAttack1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<EnemyTag>() == null && collision.gameObject.GetComponent<PlayerTag>() != null) CombatMethods.instance.ApplayDamage(bodyDamage, collision, gameObject);
+        if (collision.gameObject.GetComponent<EnemyTag>() == null && collision.gameObject.GetComponent<PlayerTag>() != null) { CombatMethods.instance.ApplayDamage(bodyDamage, collision, gameObject); GetComponent<Collider2D>().enabled = false; }
     }
 
     public void Inisialise(float dashForce, float dashTime, Animator animator, float bodyDamage, Collider2D parentCollider)
@@ -54,6 +54,7 @@ public class EnemyAttack1 : MonoBehaviour
 
     private IEnumerator DashToPlayer()
     {
+        GetComponentInParent<EnemyFollow>().isAttacking = true;
         Vector2 direction = (playerTransform.position - transform.position).normalized;
         parentCollider.enabled = false;
         GetComponent<Collider2D>().enabled = true;
@@ -64,10 +65,13 @@ public class EnemyAttack1 : MonoBehaviour
         //Instantiate(dashParticle, transform.position, transform.rotation);
 
         yield return new WaitForSeconds(dashTime);
+        GetComponentInParent<EnemyFollow>().isAttacking = false;
         rb2D.linearVelocity = new Vector3 (0, 0, 0);
         parentCollider.enabled = true;
         GetComponent<Collider2D>().enabled = false;
         trailRenderer.emitting = false;
+
+        GetComponentInParent<EnemyFollow>().lastShotTime = Time.time;
 
         CheckIfOutsidePlatform();
     }

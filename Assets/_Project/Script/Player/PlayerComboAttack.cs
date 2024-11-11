@@ -499,7 +499,7 @@ public class PlayerComboAttack : MonoBehaviour
         isCursed = true;
 
         yield return new WaitForSeconds(curseTime);
-        Debug.Log("BecameCured");
+        Debug.Log("Cured");
         isCursed = false;
     }
 
