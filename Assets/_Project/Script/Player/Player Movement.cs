@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
 
         Move();
 
-        if (!PlayerParry.instance.isParryState && canMove) RotateCharacter();
+        if (!PlayerParry.instance.isParryState && canMove && !PlayerComboAttack.instance.isCursed) RotateCharacter();
 
         if (dashInput.action.IsPressed() & canDash) 
         if (Mathf.Abs(rb2D.linearVelocity.x) + Mathf.Abs(rb2D.linearVelocityY) != 0)
