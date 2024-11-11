@@ -58745,6 +58745,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1320178064}
+    - target: {fileID: 3148910633349342440, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 2121654846}
     - target: {fileID: 3380413405053166878, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
       propertyPath: m_LocalPosition.x
       value: -55.67686
