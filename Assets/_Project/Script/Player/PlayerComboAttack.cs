@@ -500,6 +500,7 @@ public class PlayerComboAttack : MonoBehaviour
 
     public void BecomeCursed(float timeBeforeCurse, float curseTime)
     {
+        //Debug.Log("Debug.Log");
         if (curse != null) StopCoroutine(curse);
         curse = StartCoroutine(Cursed(timeBeforeCurse, curseTime));
     }
@@ -507,13 +508,13 @@ public class PlayerComboAttack : MonoBehaviour
     public IEnumerator Cursed(float timeBeforeCurse, float curseTime)
     {
         yield return new WaitForSeconds(timeBeforeCurse);
-        Debug.Log("BecameCursed");
+        //Debug.Log("BecameCursed");
         isCursed = true;
         curseObject.SetActive(true);
         Instantiate(curseVFX, gameObject.transform.position, Quaternion.identity);
 
         yield return new WaitForSeconds(curseTime);
-        Debug.Log("Cured");
+        //Debug.Log("Cured");
         curseObject.SetActive(false);
         isCursed = false;
     }
