@@ -10,13 +10,15 @@ public class EnemyAttack2 : MonoBehaviour
     private bool hasKickback;
     private float recoilForce;
     private Animator animator;
+    private GameObject bullet;
+    private bool isCursing;
 
     private void OnDestroy()
     {
-        playerTransform.gameObject.GetComponent<PlayerComboAttack>().BecomeCursed(timeBeforeCurse, curseTime);
+        if (isCursing) playerTransform.gameObject.GetComponent<PlayerComboAttack>().BecomeCursed(timeBeforeCurse, curseTime);
     }
 
-    public void Inisialise(Transform playerTransform, GameObject bulletPrefab, Transform firePoint, bool hasKickback, float recoilForce, Animator animator, float curseTime, float timeBeforeCurse)
+    public void Inisialise(Transform playerTransform, GameObject bulletPrefab, Transform firePoint, bool hasKickback, float recoilForce, Animator animator, float curseTime, float timeBeforeCurse, bool isCursing)
     {
         this.playerTransform = playerTransform;
         this.bulletPrefab = bulletPrefab;
@@ -26,13 +28,14 @@ public class EnemyAttack2 : MonoBehaviour
         this.animator = animator;
         this.curseTime = curseTime;
         this.timeBeforeCurse = timeBeforeCurse;
+        this.isCursing = isCursing;
     }
 
     public void Attack2ShootAtPlayerTransform()
     {
-        Vector2 direction = (playerTransform.position - firePoint.position).normalized;
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        bullet.transform.up = direction;
+        Vector2 direction = (playerTransform.position - bullet.transform.position).normalized;
+        bullet.GetComponentInChildren<Collider2D>().enabled = true;
+        bullet.GetComponentInChildren<BulletMovement>().enabled = true;
 
         if (hasKickback)
         {
@@ -50,5 +53,20 @@ public class EnemyAttack2 : MonoBehaviour
 
         GetComponentInParent<EnemyFollow>().lastShotTime = Time.time;
         animator.SetBool("isPreparingAttack", false);
+    }
+
+    public void PrepareAttack2()
+    {
+        bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        bullet.GetComponentInChildren<SpearAttack2>().enemyParent = transform.parent.gameObject;
+        bullet.GetComponentInChildren<Collider2D>().enabled = false;
+        Color newColor = bullet.GetComponentInChildren<SpriteRenderer>().color;
+        newColor.a = 0f;
+        bullet.GetComponentInChildren<SpriteRenderer>().color = newColor;
+    }
+
+    public void StopAttack2()
+    {
+        Destroy(bullet);
     }
 }
