@@ -24,7 +24,7 @@ public class BulletMovement : MonoBehaviour
         float distanceTraveled = Vector3.Distance(startPosition, transform.position);
         if (distanceTraveled >= maxDistance)
         {
-            Destroy(gameObject);
+            if (transform.parent != null) Destroy(transform.parent.gameObject); else Destroy(gameObject);
         }
     }
 }

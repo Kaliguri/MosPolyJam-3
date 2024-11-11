@@ -492,19 +492,6 @@ public class PlayerComboAttack : MonoBehaviour
             }
             attack.transform.parent.gameObject.SetActive(false); 
         }
-        else
-        {
-            bool isActive = false;
-            for (int i = 0; i < attack3SliceList.Count; i++)
-            {
-                if (attack3SliceList[i].activeSelf) 
-                {
-                    isActive = true;
-                    break;
-                }
-            }
-            if (!isActive) attack.transform.parent.gameObject.SetActive(false);
-        }
     }
 
     public void BecomeCursed(float timeBeforeCurse, float curseTime)
