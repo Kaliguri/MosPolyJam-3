@@ -250,15 +250,13 @@ public class PlayerComboAttack : MonoBehaviour
         if (comboStep < 4)
         {
             comboStep++;
+            attacking = true;
+            PerformComboAttack(comboStep, _isLongPress);
         }
         else
         {
-            comboStep = 1;
-            inputBuffered = 0;
+            ResetCombo();
         }
-
-        attacking = true;
-        PerformComboAttack(comboStep, _isLongPress);
     }
 
     private bool ChechIfIsAttacking()

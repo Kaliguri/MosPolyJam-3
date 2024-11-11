@@ -19,15 +19,15 @@ public class EnemyFollow : MonoBehaviour
 
     [Title("Attack Settings")]
     [SerializeField] float timeBetweenAttack = 1f;
-    //[HideIfGroup("@enemyType != EnemyType.BodyRush || enemyType != EnemyType.SpiningSword")]
-    [HideIf("@enemyType != EnemyType.BodyRush || enemyType != EnemyType.SpiningSword")] [SerializeField] float bodyDamage = 5f;
-    [HideIf("@enemyType != EnemyType.BodyRush || enemyType != EnemyType.SpiningSword")] [SerializeField] float attackDashForce = 5f;
-    [HideIf("@enemyType != EnemyType.BodyRush || enemyType != EnemyType.SpiningSword")] [SerializeField] float attackDashTime = 5f;
+    //[HideIfGroup("@enemyType != EnemyType.BodyRush && enemyType != EnemyType.SpiningSword")]
+    [HideIf("@enemyType != EnemyType.BodyRush && enemyType != EnemyType.SpiningSword")] [SerializeField] float bodyDamage = 5f;
+    [HideIf("@enemyType != EnemyType.BodyRush && enemyType != EnemyType.SpiningSword")] [SerializeField] float attackDashForce = 5f;
+    [HideIf("@enemyType != EnemyType.BodyRush && enemyType != EnemyType.SpiningSword")] [SerializeField] float attackDashTime = 5f;
     [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashForce = 50f;
     [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashTime = 0.1f;
     [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashCooldown = 2f;
-    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] Transform firePoint;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float bulletDamage = 5f;
+    [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] Transform firePoint;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] GameObject attackPrefab;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float bulletMoveSpeed = 10f;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float bulletMaxDistance = 10f;
@@ -36,6 +36,7 @@ public class EnemyFollow : MonoBehaviour
     [HideIf("@enemyType != EnemyType.RangeSpear")] [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float curseTime = 2f;
     [HideIf("@enemyType != EnemyType.RangeSpear")] [SerializeField] float timeBeforeCurse = 2f;
+    [HideIf("@enemyType != EnemyType.SpiningSword")] [SerializeField] float swordDamage = 5f;
     [HideIf("@enemyType != EnemyType.SpiningSword")][SerializeField] float swordRotationSpeed = 5f;
     [HideIf("@enemyType != EnemyType.SpiningSword")][SerializeField] float swordSpeedMultiplayer = 1.25f;
     [HideIf("@enemyType != EnemyType.SpiningSword")][SerializeField] int maxParryCount = 5;
@@ -104,7 +105,7 @@ public class EnemyFollow : MonoBehaviour
                 break;
             case 3:
                 if (GetComponentInChildren<EnemyAttack3>() != null) { GetComponentInChildren<EnemyAttack3>().Inisialise(playerTransform, attackDashForce, attackDashTime, animator, bodyDamage, GetComponent<PolygonCollider2D>()); }
-                if (GetComponentInChildren<SwordSpining>() != null) { GetComponentInChildren<SwordSpining>().Inisialise(swordRotationSpeed, swordSpeedMultiplayer, maxParryCount); }
+                if (GetComponentInChildren<SwordSpining>() != null) { GetComponentInChildren<SwordSpining>().Inisialise(swordRotationSpeed, swordSpeedMultiplayer, maxParryCount, swordDamage); }
                 break;
         }
     }
