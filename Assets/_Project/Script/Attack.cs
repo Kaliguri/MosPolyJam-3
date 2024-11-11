@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    [SerializeField] bool isPlayerAttack = true;
+    [SerializeField] public bool isPlayerAttack = true;
 
     private ParticleSystem hitVFX;
 

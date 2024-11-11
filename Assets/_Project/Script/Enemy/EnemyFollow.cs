@@ -19,17 +19,22 @@ public class EnemyFollow : MonoBehaviour
 
     [Title("Attack Settings")]
     [SerializeField] float timeBetweenAttack = 1f;
-    [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float dashForce = 5f;
-    [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float dashTime = 5f;
     [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float bodyDamage = 5f;
+    [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float attackDashForce = 5f;
+    [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float attackDashTime = 5f;
+    [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashForce = 50f;
+    [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashTime = 0.1f;
+    [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashCooldown = 2f;
     [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] GameObject attackPrefab;
     [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] private float bulletMoveSpeed = 10f;
     [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] private float bulletMaxDistance = 10f;
     [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] float bulletDamage = 5f;
     [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] Transform firePoint;
-    [SerializeField] bool hasKickback = true;
-    [EnableIf("hasKickback")] [SerializeField] float recoilForce = 0.5f;
+    [HideIf("@enemyType == EnemyType.BodyRush")] [SerializeField] bool hasKickback = true;
+    [HideIf("@enemyType == EnemyType.BodyRush")][EnableIf("hasKickback")][SerializeField] float recoilForce = 0.5f;
+
     private Animator animator => GetComponentInChildren<Animator>();
+    private TrailRenderer trailRenderer => GetComponent<TrailRenderer>();
 
     [HideInInspector] public float lastShotTime = 0f;
     private Transform playerTransform;
@@ -70,6 +75,7 @@ public class EnemyFollow : MonoBehaviour
         if (currentTeleportCollider != null && CanTeleport())
         {
             Vector2 targetPosition = currentTeleportCollider.linkedTeleport.GetNearestPoint(transform.position);
+            trailRenderer.emitting = true;
             TeleportTo(targetPosition);
             SetTeleportCooldown(teleportCooldown);
         }
@@ -80,7 +86,8 @@ public class EnemyFollow : MonoBehaviour
         switch ((int)enemyType)
         {
             case 1:
-                if (GetComponentInChildren<EnemyAttack1>() != null) { GetComponentInChildren<EnemyAttack1>().Inisialise(playerTransform, dashForce, dashTime, animator, bodyDamage, GetComponent<Collider2D>()); }
+                if (GetComponentInChildren<EnemyAttack1>() != null) { GetComponentInChildren<EnemyAttack1>().Inisialise(playerTransform, attackDashForce, attackDashTime, animator, bodyDamage, GetComponent<Collider2D>()); }
+                if (GetComponentInChildren<EnemyBecomeInvinsible>() != null) { GetComponentInChildren<EnemyBecomeInvinsible>().Inisialise(playerTransform, extraDashForce, extraDashTime, extraDashCooldown, animator, GetComponent<Collider2D>()); }
                 break;
             case 2:
                 if (GetComponentInChildren<EnemyAttack2>() != null) { GetComponentInChildren<EnemyAttack2>().Inisialise(playerTransform, attackPrefab, firePoint, hasKickback, recoilForce, animator); }
@@ -93,7 +100,7 @@ public class EnemyFollow : MonoBehaviour
         CombatMethods.instance.ApplayDamage(999f, GetComponent<Collider2D>(), gameObject);
     }
 
-    public bool CanTeleport()
+    private bool CanTeleport()
     {
         return Time.time >= lastTeleportTime + teleportCooldown;
     }
@@ -104,9 +111,15 @@ public class EnemyFollow : MonoBehaviour
         teleportCooldown = cooldown;
     }
 
-    public void TeleportTo(Vector2 position)
+    private void TeleportTo(Vector2 position)
     {
         transform.position = position;
+        Invoke(nameof(StopTrail), 0.5f);
+    }
+
+    private void StopTrail()
+    {
+        trailRenderer.emitting = false;
     }
 
     public void SetCurrentTeleport(EnemyTeleporter collider)
@@ -119,7 +132,7 @@ public class EnemyFollow : MonoBehaviour
         currentTeleportCollider = null;
     }
 
-    void FollowplayerTransform()
+    private void FollowplayerTransform()
     {
         float distance = Vector2.Distance(transform.position, playerTransform.position);
 

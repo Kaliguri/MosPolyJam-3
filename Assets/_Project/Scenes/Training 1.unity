@@ -10388,7 +10388,7 @@ MonoBehaviour:
     \u0437\u0430\u0434\u0430\u043D\u0438\u0435:\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8cdf7ba8bcf26584bb17b726645db1cc, type: 2}
-  m_sharedMaterial: {fileID: -587181790207377245, guid: 8cdf7ba8bcf26584bb17b726645db1cc, type: 2}
+  m_sharedMaterial: {fileID: 1569530901957318057, guid: 8cdf7ba8bcf26584bb17b726645db1cc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10610,8 +10610,17 @@ MonoBehaviour:
   TrainingIsland1: {fileID: 41771656}
   TrainingIsland2: {fileID: 1840556807}
   Sword: {fileID: 0}
-  dummyTriangle: {fileID: 0}
+  dummyAttack: {fileID: 0}
   swordCinemachine: {fileID: 0}
+  dummyParry: {fileID: 0}
+  parryCount: 0
+  dummySpecial: {fileID: 0}
+  spawnVFX: {fileID: 0}
+  timeBetweenVFXandSpawn: 1.5
+  bodyRush: {fileID: 0}
+  javelinThrower: {fileID: 0}
+  spiningSword: {fileID: 0}
+  pikeman: {fileID: 0}
   timeBetweenTextAnimations: 0.5
   timeBeforeSwordAnimation: 1.5
   timeBetweenInSwordAnimation: 2
@@ -14144,7 +14153,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8cdf7ba8bcf26584bb17b726645db1cc, type: 2}
-  m_sharedMaterial: {fileID: -587181790207377245, guid: 8cdf7ba8bcf26584bb17b726645db1cc, type: 2}
+  m_sharedMaterial: {fileID: 1569530901957318057, guid: 8cdf7ba8bcf26584bb17b726645db1cc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

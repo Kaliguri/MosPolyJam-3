@@ -4,6 +4,8 @@ using UnityEngine.Tilemaps;
 
 public class EnemyAttack1 : MonoBehaviour
 {
+    public bool isEnhancement = false;
+
     private float dashTime;
     private float dashForce;
     private float bodyDamage;
@@ -12,6 +14,7 @@ public class EnemyAttack1 : MonoBehaviour
     private Collider2D parentCollider;
 
     private Rigidbody2D rb2D => GetComponentInParent<Rigidbody2D>();
+    private TrailRenderer trailRenderer => GetComponentInParent<TrailRenderer>();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -59,7 +62,7 @@ public class EnemyAttack1 : MonoBehaviour
         GetComponent<Collider2D>().enabled = true;
         rb2D.linearVelocity = direction * dashForce;
 
-        //trailRenderer.emitting = true;
+        trailRenderer.emitting = true;
         //dashSound.Play2D();
         //Instantiate(dashParticle, transform.position, transform.rotation);
 
@@ -67,6 +70,8 @@ public class EnemyAttack1 : MonoBehaviour
         rb2D.linearVelocity = new Vector3 (0, 0, 0);
         parentCollider.enabled = true;
         GetComponent<Collider2D>().enabled = false;
+        trailRenderer.emitting = false;
+
         CheckIfOutsidePlatform();
     }
 }
