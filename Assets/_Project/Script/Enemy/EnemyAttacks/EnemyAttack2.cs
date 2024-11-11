@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyAttack2 : MonoBehaviour
 {
+    [SerializeField] ParticleSystem cursedApplayVFX;
     private Transform playerTransform;
     private GameObject bulletPrefab;
     private Transform firePoint;
@@ -15,7 +16,11 @@ public class EnemyAttack2 : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (Application.isPlaying && isCursing) playerTransform.gameObject.GetComponent<PlayerComboAttack>().BecomeCursed(timeBeforeCurse, curseTime);
+        if (Application.isPlaying && isCursing) 
+        {
+            Instantiate(cursedApplayVFX, gameObject.transform.position, Quaternion.identity);
+            playerTransform.gameObject.GetComponent<PlayerComboAttack>().BecomeCursed(timeBeforeCurse, curseTime);
+        }
     }
 
     public void Inisialise(Transform playerTransform, GameObject bulletPrefab, Transform firePoint, bool hasKickback, float recoilForce, Animator animator, float curseTime, float timeBeforeCurse, bool isCursing)
