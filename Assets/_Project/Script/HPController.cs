@@ -48,6 +48,7 @@ public class HPController : MonoBehaviour
             {
                 DamageNumberManager.instance.SpawnLegendNeverDieText(gameObject, gameObject.transform.position);
                 currentHP = maxHP;
+                FeelFeedbacksManager.instance.DeactiveLowHPImage();
             }
             else
             {

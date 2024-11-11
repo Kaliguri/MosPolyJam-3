@@ -251,6 +251,7 @@ public class TrainingManager : MonoBehaviour
 
     void TrainingEnd()
     {
+        FeelFeedbacksManager.instance.DeactiveLowHPImage();
         CompleteUI.SetActive(true);
 
     }

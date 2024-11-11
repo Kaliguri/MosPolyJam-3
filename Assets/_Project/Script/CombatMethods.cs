@@ -62,6 +62,11 @@ public class CombatMethods : MonoBehaviour
     {
         var targetType = collisionTargetType.gameObject;
         targetType.GetComponent<HPController>().GetHeal(heal);
+        
+        DamageNumberManager.instance.SpawnHealText(gameObject, targetType.transform.position, heal);
+
+        if (targetType.GetComponent<HPController>().maxHP * FeelFeedbacksManager.instance.HPPercenForLowHP / 100 <= targetType.GetComponent<HPController>().currentHP) FeelFeedbacksManager.instance.DeactiveLowHPImage();
+
     }
 
     private float CalculateDamage(float damage, Vector2 contact, GameObject attackingType)
