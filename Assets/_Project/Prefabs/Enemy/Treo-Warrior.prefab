@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMinimumToHurt: 0
+  hasShield: 1
 --- !u!1 &2567305341113988511
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +149,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2018779573582884667}
   - component: {fileID: 2812592496835821450}
-  - component: {fileID: 7115801340198329802}
   - component: {fileID: 341266661215565640}
   m_Layer: 0
   m_Name: Shield
@@ -227,28 +227,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7115801340198329802
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2567305341113988511}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 530907e4445428845a7e8ac2351d6923, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!96 &341266661215565640
 TrailRenderer:
   serializedVersion: 3
@@ -635,7 +613,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3942892186838828551}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 530907e4445428845a7e8ac2351d6923, type: 2}
   m_CullingMode: 0
