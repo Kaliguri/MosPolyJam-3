@@ -20,6 +20,7 @@ public class UpdatesUIManager : MonoBehaviour
 
     void OnEnable()
     {
+        //Time.timeScale = 0f;
         DataTransfer();
         StartCardAnimation();
     }
@@ -90,6 +91,7 @@ public class UpdatesUIManager : MonoBehaviour
     void OffUI()
     {
         gameObject.SetActive(false);
+        //Time.timeScale = 1f;
 
         if (GameManager.instance.IsTraining) TrainingManager.instance.CardSelect2();
     }

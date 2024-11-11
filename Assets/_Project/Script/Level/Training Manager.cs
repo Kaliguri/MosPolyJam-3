@@ -40,6 +40,9 @@ public class TrainingManager : MonoBehaviour
     [SerializeField] List<GameObject> enemyCardMission;
     [ReadOnly] [SerializeField] int enemyDie;
 
+    [Title("For Training Complete")]
+    [SerializeField] GameObject CompleteUI;
+
 
 
     [Title("VFX")]
@@ -221,8 +224,8 @@ public class TrainingManager : MonoBehaviour
 
         foreach (GameObject enemy in enemyCardMission)
         {
-            SpawnEnemy(enemy);
-            Debug.Log("GO?");
+            StartCoroutine(SpawnEnemy(enemy));
+            //Debug.Log("GO?");
         }
     }
 
@@ -248,6 +251,7 @@ public class TrainingManager : MonoBehaviour
 
     void TrainingEnd()
     {
+        CompleteUI.SetActive(true);
 
     }
 

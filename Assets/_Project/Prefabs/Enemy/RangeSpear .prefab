@@ -188,7 +188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7040921140157568356
 Transform:
   m_ObjectHideFlags: 0
@@ -237,11 +237,12 @@ MonoBehaviour:
   animationAttackSpeedMultiplier: 1.5
   firePoint: {fileID: 7279085208001455162}
   bulletDamage: 15
-  attackPrefab: {fileID: 3679453656010216842, guid: f73dd22500bd47d429440398e8d875f7, type: 3}
+  attackPrefab: {fileID: 3679453656010216842, guid: 6793841624c0f1648b8e82f915796850, type: 3}
   bulletMoveSpeed: 40
   bulletMaxDistance: 20
   hasKickback: 1
   recoilForce: 2
+  isCursing: 1
   curseTime: 2
   timeBeforeCurse: 1
   swordDamage: 5
