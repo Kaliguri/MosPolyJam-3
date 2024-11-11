@@ -11230,6 +11230,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7600810865474003720, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+      propertyPath: maxDistanceFromPlayer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600810865474003720, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+      propertyPath: minDistanceFromPlayer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
       propertyPath: m_Name
       value: 'RangeSpear '
@@ -16154,10 +16162,6 @@ PrefabInstance:
     - target: {fileID: 8285791383877950042, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
       propertyPath: m_Name
       value: MeleeSpear
-      objectReference: {fileID: 0}
-    - target: {fileID: 8285791383877950042, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

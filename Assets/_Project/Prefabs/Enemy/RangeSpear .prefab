@@ -224,8 +224,8 @@ MonoBehaviour:
   blinkTime: 0.1
   attackRangeDistance: 10
   BlinkMaterial: {fileID: 2100000, guid: afec6107ac78fcb4ab70bdb7186b51a2, type: 2}
-  minDistanceFromPlayer: 10
-  maxDistanceFromPlayer: 17
+  minDistanceFromPlayer: 8
+  maxDistanceFromPlayer: 9
   enemyType: 2
   timeBetweenAttack: 1.5
   bodyDamage: 5
@@ -253,7 +253,7 @@ MonoBehaviour:
   spearCount: 3
   timeBetweenSpearSend: 0.5
   damageMinimumToHurt: 100
-  lastShotTime: 0
+  isAttacking: 0
 --- !u!114 &3459875139246170286
 MonoBehaviour:
   m_ObjectHideFlags: 0

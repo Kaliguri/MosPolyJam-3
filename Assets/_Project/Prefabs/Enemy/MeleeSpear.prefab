@@ -188,7 +188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7040921140157568356
 Transform:
   m_ObjectHideFlags: 0
@@ -222,10 +222,10 @@ MonoBehaviour:
   enemyMoveSpeed: 2
   teleportCooldown: 2
   blinkTime: 0.3
-  attackRangeDistance: 10
+  attackRangeDistance: 4
   BlinkMaterial: {fileID: 2100000, guid: afec6107ac78fcb4ab70bdb7186b51a2, type: 2}
   minDistanceFromPlayer: 2
-  maxDistanceFromPlayer: 4
+  maxDistanceFromPlayer: 3
   enemyType: 4
   timeBetweenAttack: 3
   bodyDamage: 5
@@ -238,10 +238,11 @@ MonoBehaviour:
   firePoint: {fileID: 8000722777185324287}
   bulletDamage: 9
   attackPrefab: {fileID: 3679453656010216842, guid: f73dd22500bd47d429440398e8d875f7, type: 3}
-  bulletMoveSpeed: 10
-  bulletMaxDistance: 10
+  bulletMoveSpeed: 30
+  bulletMaxDistance: 5
   hasKickback: 1
   recoilForce: 0.5
+  isCursing: 1
   curseTime: 2
   timeBeforeCurse: 2
   swordDamage: 5
@@ -252,7 +253,7 @@ MonoBehaviour:
   spearCount: 3
   timeBetweenSpearSend: 0.35
   damageMinimumToHurt: 100
-  lastShotTime: 0
+  isAttacking: 0
 --- !u!114 &3459875139246170286
 MonoBehaviour:
   m_ObjectHideFlags: 0
