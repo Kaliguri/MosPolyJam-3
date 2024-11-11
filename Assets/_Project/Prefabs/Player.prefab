@@ -331,6 +331,8 @@ MonoBehaviour:
   normalParryVFXinHit: {fileID: 1343478609204220344, guid: ff643b9add0ce494cae071ab3a3eb578, type: 3}
   perfectParryVFXinHit: {fileID: 6774245622844870213, guid: 735fec390e0e8cb479c2fc86112d6b68, type: 3}
   parryAnimator: {fileID: 9127054607737100433}
+  normalParrySFX: {fileID: 11400000, guid: 5dbd2cb7066a45b429c80decb0d98c7e, type: 2}
+  perfectParrySFX: {fileID: 11400000, guid: 5dbd2cb7066a45b429c80decb0d98c7e, type: 2}
   canParry: 1
 --- !u!114 &730310796637880819
 MonoBehaviour:
