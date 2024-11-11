@@ -303,7 +303,7 @@ MonoBehaviour:
   attack3_SliceCountIncrease: 5
   attack1Release: {fileID: 11400000, guid: b5526f3f535cb9b4882d40d1b5f6ce1d, type: 2}
   attack2Release: {fileID: 11400000, guid: b5526f3f535cb9b4882d40d1b5f6ce1d, type: 2}
-  attack3Release: {fileID: 11400000, guid: b5526f3f535cb9b4882d40d1b5f6ce1d, type: 2}
+  attack3Release: {fileID: 11400000, guid: 84641540c5092014a90c4f6ca7290858, type: 2}
   attackReleaseVFX: {fileID: 3876152785130454950, guid: 6b26c89e8e1553a46939d7d05c0cdc6e, type: 3}
   canAttack: 1
   attacking: 1
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccd25feea5ff52448ca0fbf2afe4f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallDamage: 25
+  fallDamage: 10
   moveSpeed: 10
   dashPower: 200
   dashTime: 0.1
