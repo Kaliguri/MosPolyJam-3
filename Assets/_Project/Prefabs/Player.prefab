@@ -195,7 +195,9 @@ MonoBehaviour:
   attack2Release: {fileID: 11400000, guid: b5526f3f535cb9b4882d40d1b5f6ce1d, type: 2}
   attack3Release: {fileID: 11400000, guid: b5526f3f535cb9b4882d40d1b5f6ce1d, type: 2}
   attackReleaseVFX: {fileID: 3876152785130454950, guid: 6b26c89e8e1553a46939d7d05c0cdc6e, type: 3}
+  canAttack: 1
   attacking: 1
+  isCursed: 0
   isAttacking: 0
 --- !u!114 &4476481295237582955
 MonoBehaviour:
@@ -218,6 +220,7 @@ MonoBehaviour:
   NormalColor: {r: 1, g: 1, b: 1, a: 0.078431375}
   normalParryVFX: {fileID: 1343478609204220344, guid: ff643b9add0ce494cae071ab3a3eb578, type: 3}
   perfectParryVFX: {fileID: 6774245622844870213, guid: 735fec390e0e8cb479c2fc86112d6b68, type: 3}
+  canParry: 1
 --- !u!114 &730310796637880819
 MonoBehaviour:
   m_ObjectHideFlags: 0

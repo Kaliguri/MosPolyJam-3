@@ -28,7 +28,7 @@ public class CombatMethods : MonoBehaviour
 
                 if (GameManager.instance.IsTraining) TrainingManager.instance.ParryCheck();
 
-                if (attackingType.GetComponentInChildren<SwordSpining>() != null) attackingType.GetComponentInChildren<SwordSpining>().ParryedAttack();
+                if (attackingType.GetComponentInChildren<SwordSpining>() != null) attackingType.GetComponent<SwordSpining>().ParryedAttack();
             }
 
             
@@ -51,12 +51,12 @@ public class CombatMethods : MonoBehaviour
         else if (targetType.GetComponent<EnemyTag>() != null)
         {
             bool isBlocked = false;
-            if (targetType.GetComponent<EnemyTag>().gameObject.GetComponentInChildren<SwordSpining>() != null)
+            if (targetType.GetComponentInChildren<EnemyAttack3>() != null)
             {
-                if (targetType.GetComponent<EnemyTag>().gameObject.GetComponentInChildren<SwordSpining>().playerAttackParryCount < targetType.GetComponent<EnemyTag>().gameObject.GetComponentInChildren<SwordSpining>().maxPlayerAttackParryCount)
+                if (targetType.GetComponentInChildren<EnemyAttack3>().playerAttackParryCount < targetType.GetComponentInChildren<EnemyAttack3>().maxPlayerAttackParryCount)
                 {
                     isBlocked = true;
-                    targetType.GetComponent<EnemyTag>().gameObject.GetComponentInChildren<SwordSpining>().playerAttackParryCount++;
+                    targetType.GetComponentInChildren<EnemyAttack3>().playerAttackParryCount++;
                 }
             }
             if (!isBlocked)

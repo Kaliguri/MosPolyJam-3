@@ -9,19 +9,15 @@ public class SwordSpining : MonoBehaviour
     public float swordDamage = 10f;
     private int maxParryCount = 10;
     private int parryCount = 0;
-    public int maxPlayerAttackParryCount = 1;
-    public int playerAttackParryCount = 0;
     private Animator animator;
 
-    public void Inisialise(float swordRotationSpeed, float swordSpeedMultiplayer, int maxParryCount, float swordDamage, int maxPlayerAttackParryCount, Animator animator)
+    public void Inisialise(float swordRotationSpeed, float swordSpeedMultiplayer, int maxParryCount, float swordDamage, Animator animator)
     {
         this.swordRotationSpeed = swordRotationSpeed;
         this.swordSpeedMultiplayer = swordSpeedMultiplayer;
         this.maxParryCount = maxParryCount;
         this.swordDamage = swordDamage;
-        this.maxPlayerAttackParryCount = maxPlayerAttackParryCount;
         this.animator = animator;
-        Debug.Log(animator);
     }
 
     private void FixedUpdate()
@@ -43,7 +39,7 @@ public class SwordSpining : MonoBehaviour
     {
         if (parryCount < maxParryCount)
         {
-            swordRotationSpeed = -swordRotationSpeed * swordSpeedMultiplayer;
+            swordRotationSpeed *= -swordSpeedMultiplayer;
             parryCount++;
         }
         else Destroy(gameObject);

@@ -158,6 +158,7 @@ public class PlayerComboAttack : MonoBehaviour
                 if (canSpesialAttack) UpdateProgressBar();
                 progressBar.GetComponentInChildren<ProgressBarTag>().gameObject.GetComponent<Image>().fillAmount = (Time.time - attackPressTime) / longPressThreshold;
             }
+            else progressBar.SetActive(false);
         }
         else progressBar.SetActive(false);
     }

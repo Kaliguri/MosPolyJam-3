@@ -4,15 +4,15 @@ using UnityEngine.Tilemaps;
 
 public class EnemyAttack3 : MonoBehaviour
 {
-    public bool isEnhancement = false;
-
     private float dashTime;
     private float dashForce;
     private float bodyDamage;
     private Animator animator;
     private Transform playerTransform;
     private Collider2D parentCollider;
-    private GameObject sword => transform.parent.gameObject.GetComponentInChildren<SwordSpining>().gameObject;
+
+    public int maxPlayerAttackParryCount = 1;
+    public int playerAttackParryCount = 0;
 
     private Rigidbody2D rb2D => GetComponentInParent<Rigidbody2D>();
     private TrailRenderer trailRenderer => GetComponentInParent<TrailRenderer>();
@@ -22,7 +22,7 @@ public class EnemyAttack3 : MonoBehaviour
         if (collision.gameObject.GetComponent<EnemyTag>() == null && collision.gameObject.GetComponent<PlayerTag>() != null) CombatMethods.instance.ApplayDamage(bodyDamage, collision, gameObject);
     }
 
-    public void Inisialise(Transform playerTransform, float dashForce, float dashTime, Animator animator, float bodyDamage, Collider2D parentCollider)
+    public void Inisialise(Transform playerTransform, float dashForce, float dashTime, Animator animator, float bodyDamage, Collider2D parentCollider, int maxPlayerAttackParryCount)
     {
         this.playerTransform = playerTransform;
         this.dashForce = dashForce;
@@ -30,6 +30,7 @@ public class EnemyAttack3 : MonoBehaviour
         this.animator = animator;
         this.bodyDamage = bodyDamage;
         this.parentCollider = parentCollider;
+        this.maxPlayerAttackParryCount = maxPlayerAttackParryCount;
         GetComponent<Collider2D>().enabled = false;
     }
 
@@ -53,7 +54,7 @@ public class EnemyAttack3 : MonoBehaviour
 
     public void Attack3DashToPlayer()
     {
-        if (sword != null) StartCoroutine(DashToPlayer());
+        StartCoroutine(DashToPlayer());
     }
 
     private IEnumerator DashToPlayer()

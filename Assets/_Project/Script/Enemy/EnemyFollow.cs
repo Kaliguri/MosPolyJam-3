@@ -105,8 +105,8 @@ public class EnemyFollow : MonoBehaviour
                 if (GetComponentInChildren<EnemyAttack2>() != null) { GetComponentInChildren<EnemyAttack2>().Inisialise(playerTransform, attackPrefab, firePoint, hasKickback, recoilForce, animator, curseTime, timeBeforeCurse); }
                 break;
             case 3:
-                if (GetComponentInChildren<EnemyAttack3>() != null) { GetComponentInChildren<EnemyAttack3>().Inisialise(playerTransform, attackDashForce, attackDashTime, animator, bodyDamage, GetComponent<PolygonCollider2D>()); }
-                if (GetComponentInChildren<SwordSpining>() != null) { GetComponentInChildren<SwordSpining>().Inisialise(swordRotationSpeed, swordSpeedMultiplayer, maxSwordCanSurviveParryCount, swordDamage, maxPlayerAttackParryCount, animator); Debug.Log("Inishialise Sword"); }
+                if (GetComponentInChildren<EnemyAttack3>() != null) { GetComponentInChildren<EnemyAttack3>().Inisialise(playerTransform, attackDashForce, attackDashTime, animator, bodyDamage, GetComponent<PolygonCollider2D>(), maxPlayerAttackParryCount); }
+                if (GetComponentInChildren<SwordSpining>() != null) { GetComponentInChildren<SwordSpining>().Inisialise(swordRotationSpeed, swordSpeedMultiplayer, maxSwordCanSurviveParryCount, swordDamage, animator); }
                 break;
         }
     }

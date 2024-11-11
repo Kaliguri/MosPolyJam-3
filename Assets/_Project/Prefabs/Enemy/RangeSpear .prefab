@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8625173934272949791}
   - component: {fileID: 2340962937367036627}
   - component: {fileID: 8682963369388046316}
-  - component: {fileID: 200927087641647005}
+  - component: {fileID: 6093261010656162355}
   m_Layer: 7
   m_Name: riflemanEnemy
   m_TagString: Untagged
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33f320a4a8f46340a22d40a5b973cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &200927087641647005
+--- !u!114 &6093261010656162355
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,10 +133,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1084616302278081221}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a4710cb3e1b52d4187f3f480f23fce6, type: 3}
+  m_Script: {fileID: 11500000, guid: d89419137d7dae345aaa07f781fc4196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnhancement: 0
 --- !u!1 &1785370863604044686
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,8 +232,8 @@ MonoBehaviour:
   extraDashForce: 50
   extraDashTime: 0.1
   extraDashCooldown: 2
-  firePoint: {fileID: 7279085208001455162}
   bulletDamage: 5
+  firePoint: {fileID: 7279085208001455162}
   attackPrefab: {fileID: 3679453656010216842, guid: f73dd22500bd47d429440398e8d875f7, type: 3}
   bulletMoveSpeed: 40
   bulletMaxDistance: 20
@@ -243,6 +242,11 @@ MonoBehaviour:
   recoilForce: 2
   curseTime: 2
   timeBeforeCurse: 1
+  swordDamage: 5
+  swordRotationSpeed: 5
+  swordSpeedMultiplayer: 1.25
+  maxSwordCanSurviveParryCount: 5
+  maxPlayerAttackParryCount: 5
   lastShotTime: 0
 --- !u!114 &3459875139246170286
 MonoBehaviour:
