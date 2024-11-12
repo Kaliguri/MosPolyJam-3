@@ -79532,6 +79532,10 @@ PrefabInstance:
       value: Level Manager
       objectReference: {fileID: 0}
     - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: cards
+      value: 
+      objectReference: {fileID: 7979538208719544129}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
       propertyPath: CompleteUI
       value: 
       objectReference: {fileID: 758363904}
@@ -79971,6 +79975,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
+--- !u!1 &7979538208719544129 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 341927042939823341, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
+  m_PrefabInstance: {fileID: 7979538208719544128}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8682731764680403015
 PrefabInstance:
   m_ObjectHideFlags: 0
