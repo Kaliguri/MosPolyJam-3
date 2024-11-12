@@ -17,7 +17,12 @@ public class HPController : MonoBehaviour
         currentHP -= damage;
         if (currentHP <= 0) 
         {
-            if (canRespawn) { currentHP = maxHP * 0.5f; canRespawn = false; }
+            if (canRespawn) 
+            {  
+                currentHP = maxHP * 0.5f; canRespawn = false;
+                DamageNumberManager.instance.SpawnLegendNeverDieText(gameObject, gameObject.transform.position);
+            }
+            
             else Death(); 
         }
     }

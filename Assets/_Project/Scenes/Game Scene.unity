@@ -79566,6 +79566,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: arenaList.Array.data[2].WaveCombat.Array.data[1].EnemyList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: arenaList.Array.data[2].WaveCombat.Array.data[2].EnemyList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: arenaList.Array.data[3].WaveCombat.Array.data[0].EnemyList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: arenaList.Array.data[3].WaveCombat.Array.data[2].EnemyList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
       propertyPath: 'arenaList.Array.data[0].EnableGameObjectsListAfterCombat.Array.data[0]'
       value: 
       objectReference: {fileID: 936289113}
@@ -79926,6 +79942,22 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1951123353}
+    - target: {fileID: 1115154119243488126, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
+      propertyPath: 'noDeathTextList.Array.data[0]'
+      value: "\u0413\u0435\u0440\u043E\u0438 \u043D\u0435 \u0443\u043C\u0438\u0440\u0430\u044E\u0442!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115154119243488126, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
+      propertyPath: 'noDeathTextList.Array.data[1]'
+      value: Legend Never Die!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115154119243488126, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
+      propertyPath: 'noDeathTextList.Array.data[2]'
+      value: "\u0415\u0449\u0435 \u0440\u0430\u043D\u043E \u0443\u043C\u0438\u0440\u0430\u0442\u044C!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115154119243488126, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
+      propertyPath: 'noDeathTextList.Array.data[3]'
+      value: "\u0411\u0435\u0441\u0441\u043C\u0435\u0440\u0442\u0438\u0435!"
+      objectReference: {fileID: 0}
     - target: {fileID: 2274795232705723212, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
       propertyPath: m_Mesh
       value: 
