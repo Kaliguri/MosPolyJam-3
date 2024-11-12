@@ -391,6 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 200
   currentHP: 100
+  canRespawn: 0
 --- !u!60 &176941174
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -11249,6 +11250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 1000
   currentHP: 100
+  canRespawn: 0
 --- !u!60 &729168742
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -13,11 +13,17 @@ public class MusicManager : MonoBehaviour
     [SerializeField] bool IsMainManu;
     [SerializeField] bool IsTraining;
     [SerializeField] bool IsGameplay;
+
     void Start()
+    {
+        StartMusic();
+        
+    }
+
+    public void StartMusic()
     {
         if (IsMainManu)      mainMenuMusic.PlayMusic();
         else if (IsTraining) trainingMusic.PlayMusic();
         else if (IsGameplay) gameplayMusic.PlayMusic();
-        
     }
 }
