@@ -133,7 +133,7 @@ public class PlayerComboAttack : MonoBehaviour
 
         if (attackInput.action.WasReleasedThisFrame() && !PlayerParry.instance.isParryState && !isCursed && Time.time - attackPressTime < longPressThreshold && canAttack)
         {
-            if (comboStep > 1) Debug.Log("Releases");
+            //if (comboStep > 1) Debug.Log("Releases");
             if (attackPressed) inputBuffered++;
             else attackPressed = true;
             attackPreparation = false;
@@ -363,7 +363,7 @@ public class PlayerComboAttack : MonoBehaviour
     private void Attack2(int _comboStep, bool _isLongPress)
     {
 
-        Debug.Log("Attack2");
+        //Debug.Log("Attack2");
         float parryValue = 0;
         if (_isLongPress) parryValue += PlayerSphereManager.instance.PullSpheresToCenter() + defaultValue;
 
@@ -461,8 +461,7 @@ public class PlayerComboAttack : MonoBehaviour
             //Instantiate(attackReleaseVFX, gameObject.transform.position, attack3SliceList[i].transform.rotation);
 
             float elapsed = 0f;
-            float percent = parryValue * (1 - attack3_TimeBetweenSendSliceDesceasePercent);
-            float timeBetweenSendSlice = attack3_TimeBetweenSendSlice * (1 - percent);
+            float timeBetweenSendSlice = attack3_TimeBetweenSendSlice * Mathf.Pow(attack3_TimeBetweenSendSliceDesceasePercent, parryValue);
             while (elapsed < timeBetweenSendSlice)
             {
                 if (GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState || i + 1 >= attack3_MaxSliceCount)
