@@ -35,6 +35,10 @@ public class EnemyBecomeInvinsible : MonoBehaviour
     private IEnumerator DashRightFromPlayer()
     {
         isEnhancement = true;
+        GetComponent<Collider2D>().enabled = false;
+
+        parentCollider.gameObject.GetComponentInChildren<EnemyFollow>().gameObject.GetComponentInChildren<DashRightFromPlayer>().SetVisability(false);
+
         Invoke(nameof(CanDashAgain), dashCooldown);
         Vector2 direction = (playerTransform.position - transform.position).normalized;
         Vector2 directionLeft = new Vector2(-direction.y, direction.x);
@@ -47,7 +51,6 @@ public class EnemyBecomeInvinsible : MonoBehaviour
 
         yield return new WaitForSeconds(dashTime);
 
-        GetComponent<Collider2D>().enabled = false;
         trailRenderer.emitting = false;
         rb2D.linearVelocity = new Vector3(0, 0, 0);
         parentCollider.enabled = true;
@@ -58,6 +61,7 @@ public class EnemyBecomeInvinsible : MonoBehaviour
     private void CanDashAgain()
     {
         GetComponent<Collider2D>().enabled = true;
+        parentCollider.gameObject.GetComponentInChildren<EnemyFollow>().gameObject.GetComponentInChildren<DashRightFromPlayer>().SetVisability(true);
     }
 
     void CheckIfOutsidePlatform()
