@@ -99,6 +99,8 @@ public class LevelManager : MonoBehaviour
             Instantiate(enemy, spawnPosition, quaternion.identity);
         }
 
+        availableWave.Remove(wave);
+
     }
 
     void WaveStateCheck()
