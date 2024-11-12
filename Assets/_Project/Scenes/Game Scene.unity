@@ -79566,12 +79566,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: arenaList.Array.data[1].WaveCombat.Array.data[2].EnemyList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: arenaList.Array.data[2].WaveCombat.Array.data[0].EnemyList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
       propertyPath: arenaList.Array.data[2].WaveCombat.Array.data[1].EnemyList.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
       propertyPath: arenaList.Array.data[2].WaveCombat.Array.data[2].EnemyList.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
       propertyPath: arenaList.Array.data[3].WaveCombat.Array.data[0].EnemyList.Array.size
@@ -79613,6 +79621,14 @@ PrefabInstance:
       propertyPath: 'arenaList.Array.data[3].EnableGameObjectsListAfterCombat.Array.data[4]'
       value: 
       objectReference: {fileID: 794651752}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[2].WaveCombat.Array.data[0].EnemyList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8285791383877950042, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: 'arenaList.Array.data[2].WaveCombat.Array.data[2].EnemyList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
     - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
       propertyPath: 'arenaList.Array.data[0].DisableGameObjectsListForStartCombat.Array.data[0]'
       value: 
