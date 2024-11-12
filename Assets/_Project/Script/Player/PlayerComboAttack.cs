@@ -466,6 +466,12 @@ public class PlayerComboAttack : MonoBehaviour
             {
                 if (GetComponent<PlayerMovement>().isDashing || PlayerParry.instance.isParryState || i + 1 >= attack3_MaxSliceCount)
                 {
+                    lastClickTime = Time.time;
+                    for (int j = 0; j < attack3SliceList.Count; j++)
+                    {
+                        attack3SliceList[j].SetActive(false);
+                    }
+                    attacksList[2].SetActive(false);
                     yield break;
                 }
                 elapsed += Time.deltaTime;

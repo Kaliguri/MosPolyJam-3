@@ -48,8 +48,7 @@ MonoBehaviour:
   waitingTimeBeforeWave: 2
   InTheArena: 0
   CurrentArenaID: -1
-  currentWaveNumber: -1
-  currentEnemyNumber: 0
+  CompleteUI: {fileID: 0}
   arenaList:
   - combatCount: 3
     DisableGameObjectsListForStartCombat:
@@ -65,7 +64,6 @@ MonoBehaviour:
       - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
       - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
     - EnemyList:
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
       - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
       - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
     - EnemyList:

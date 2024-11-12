@@ -97,11 +97,11 @@ public class EnemyAttack3 : MonoBehaviour
         playerAttackParryCount++;
         if (playerAttackParryCount == maxPlayerAttackParryCount)
         {
-            Debug.Log("Can No Longer Block Attacks");
+            //Debug.Log("Can No Longer Block Attacks");
             Instantiate(shieldDestroyVFX, gameObject.transform.position, Quaternion.identity);
 
             shieldAnimator.SetTrigger("ShieldDestroy");
-            coreAnimator.SetTrigger("ShieldDestroy");
+            //coreAnimator.SetTrigger("ShieldDestroy");
 
 
         }

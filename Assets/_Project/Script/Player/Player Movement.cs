@@ -59,9 +59,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (!PlayerParry.instance.isParryState && canMove && !PlayerComboAttack.instance.isCursed) RotateCharacter();
 
-        if (dashInput.action.IsPressed() & canDash) 
-        if (Mathf.Abs(rb2D.linearVelocity.x) + Mathf.Abs(rb2D.linearVelocityY) != 0)
-        StartCoroutine(Dash());
+        if (dashInput.action.IsPressed() && canDash && !PlayerComboAttack.instance.isCursed && !isFalling) 
+            //if (Mathf.Abs(rb2D.linearVelocity.x) + Mathf.Abs(rb2D.linearVelocityY) != 0)
+                StartCoroutine(Dash());
     }
 
     void Start()

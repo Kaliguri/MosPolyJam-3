@@ -52,7 +52,7 @@ public class HPController : MonoBehaviour
             }
             else
             {
-                Debug.Log("You Lose!"); 
+                //Debug.Log("You Lose!"); 
             }
         }
     }

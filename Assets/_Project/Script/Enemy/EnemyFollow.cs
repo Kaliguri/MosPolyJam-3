@@ -169,7 +169,7 @@ public class EnemyFollow : MonoBehaviour
 
     private void StopTrail()
     {
-        trailRenderer.emitting = false;
+        if (trailRenderer != null) trailRenderer.emitting = false;
     }
 
     public void SetCurrentTeleport(EnemyTeleporter collider)

@@ -12,12 +12,14 @@ public class LevelManager : MonoBehaviour
     [SerializeField] ParticleSystem spawnVFX;
 
     [Title("Settings")]
-
     [SerializeField] float waitingTimeBeforeWave = 2f;
     [ReadOnly] public bool InTheArena = false;
     [ReadOnly] public int CurrentArenaID = -1;
-    [ReadOnly] [SerializeField] int currentWaveNumber = 1;
-    [ReadOnly] [SerializeField] int currentEnemyNumber = 0;
+    [ReadOnly] [SerializeField] private int currentWaveNumber = 1;
+    [ReadOnly][SerializeField] private int currentEnemyNumber = 0;
+
+    [Title("For Level Complete")]
+    [SerializeField] GameObject CompleteUI;
 
     [Title("Arena")]
     [SerializeField] List<Arena> arenaList;
@@ -49,6 +51,13 @@ public class LevelManager : MonoBehaviour
         SetActiveForListGameObjects(arenaList[CurrentArenaID].EnableGameObjectsListAfterCombat, true); 
         currentWaveNumber = 1;
         InTheArena = false;
+        if (CurrentArenaID == arenaList.Count - 1) LevelEnd();
+
+    }
+
+    void LevelEnd()
+    {
+        CompleteUI.SetActive(true);
     }
 
     void SetActiveForListGameObjects(List<GameObject> gameObjectsList, bool activeValue)
