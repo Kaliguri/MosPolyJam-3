@@ -849,8 +849,8 @@ MonoBehaviour:
   animator: {fileID: 2340962937367036627}
   attackRangeDistance: 10
   BlinkMaterial: {fileID: 2100000, guid: d686318e131d88a49ab8faac7341de46, type: 2}
-  minDistanceFromPlayer: 2
-  maxDistanceFromPlayer: 3
+  minDistanceFromPlayer: 4
+  maxDistanceFromPlayer: 9
   enemyType: 4
   timeBetweenAttack: 3
   bodyDamage: 5
@@ -864,7 +864,7 @@ MonoBehaviour:
   bulletDamage: 9
   attackPrefab: {fileID: 3679453656010216842, guid: 6793841624c0f1648b8e82f915796850, type: 3}
   bulletMoveSpeed: 30
-  bulletMaxDistance: 5
+  bulletMaxDistance: 9
   hasKickback: 1
   recoilForce: 0.5
   isCursing: 1
