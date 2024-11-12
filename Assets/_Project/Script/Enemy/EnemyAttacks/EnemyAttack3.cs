@@ -1,9 +1,20 @@
 using System.Collections;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class EnemyAttack3 : MonoBehaviour
 {
+    [Title("VFX")]
+    public ParticleSystem parryVFX;
+    [SerializeField] ParticleSystem shieldDestroyVFX;
+    [SerializeField] Animator coreAnimator;
+    [SerializeField] Animator shieldAnimator;
+
+
+
+
+
     private float dashTime;
     private float dashForce;
     private float bodyDamage;
@@ -87,7 +98,12 @@ public class EnemyAttack3 : MonoBehaviour
         if (playerAttackParryCount == maxPlayerAttackParryCount)
         {
             Debug.Log("Can No Longer Block Attacks");
-            GetComponentInParent<EnemyFollow>(); //EnemyFollow
+            Instantiate(shieldDestroyVFX, gameObject.transform.position, Quaternion.identity);
+
+            shieldAnimator.SetTrigger("ShieldDestroy");
+            coreAnimator.SetTrigger("ShieldDestroy");
+
+
         }
     }
 }

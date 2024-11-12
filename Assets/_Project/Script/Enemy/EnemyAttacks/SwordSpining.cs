@@ -1,8 +1,12 @@
+using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class SwordSpining : MonoBehaviour
 {
+    [Title("VFX")]
+    [SerializeField] GameObject sword; 
+    [SerializeField] ParticleSystem swordDestroyVFX; 
     private float currentZRotation = 0f;
     private float swordRotationSpeed = 5f;
     private float swordSpeedMultiplayer = 1f;
@@ -47,5 +51,10 @@ public class SwordSpining : MonoBehaviour
             GetComponentInParent<EnemyFollow>().isAttacking = false;
             Destroy(gameObject); 
         }
+    }
+
+    void OnDestroy()
+    {
+        Instantiate(swordDestroyVFX, sword.transform.position, sword.transform.rotation);
     }
 }
