@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stanTime: 0.5
-  enemyMoveSpeed: 1.2
+  enemyMoveSpeed: 1.8
   teleportCooldown: 2
   blinkTime: 0.1
   healBubleCount: 3
@@ -374,6 +374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 90
   currentHP: 100
+  canRespawn: 0
 --- !u!60 &1263469719975811841
 PolygonCollider2D:
   m_ObjectHideFlags: 0
