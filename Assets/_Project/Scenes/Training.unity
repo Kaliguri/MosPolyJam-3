@@ -10864,7 +10864,7 @@ GameObject:
   - component: {fileID: 652574606}
   - component: {fileID: 652574605}
   - component: {fileID: 652574604}
-  - component: {fileID: 652574608}
+  - component: {fileID: 652574611}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -10972,7 +10972,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &652574608
+--- !u!114 &652574611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10981,45 +10981,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 652574603}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51662a222e352d74a8ad12e5843f7501, type: 3}
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChannelMode: 0
-  Channel: 0
-  MMChannelDefinition: {fileID: 0}
-  ZoomTween:
-    MMTweenDefinitionType: 1
-    MMTweenCurve: 4
-    Curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    Initialized: 0
-  TestMode: 0
-  TestFieldOfView: 30
-  TestTransitionDuration: 0.1
-  TestDuration: 0.05
-  TestZoomButton: 0
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 1
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &662587699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11799,17 +11774,22 @@ MonoBehaviour:
   - Text: "\u041F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0439:\n\n<b><color=#FF7777>\u0422\u0420\u0418\u041E-\u0412\u041E\u0418\u041D<color=#FFFFFF></b>\n\n\u0421\u0438\u043B\u044C\u043D\u044B\u0439
       \u043F\u0440\u043E\u0442\u043D\u0438\u043A, \u043F\u0440\u0435\u0434\u043F\u043E\u0447\u0438\u0442\u0430\u044E\u0449\u0438\u0439
       \u0430\u0442\u0430\u043A\u0438 \u0432 \u0431\u043B\u0438\u0436\u043D\u0435\u043C
-      \u0431\u043E\u044E.\n\n\u0411\u043B\u043E\u043A\u0438\u0440\u0443\u0435\u0442
-      \u0432\u0441\u0435 \u0430\u0442\u0430\u043A\u0438, \u043D\u0430\u043D\u043E\u0441\u044F\u0449\u0438\u0435
-      \u043C\u0435\u043D\u044C\u0448\u0435 50 \u0435\u0434. \u0443\u0440\u043E\u043D\u0430.
-      \n\n\u041E\u043D \u043F\u0440\u043E\u0432\u043E\u0434\u0438\u0442 3 \u043F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0435
+      \u0431\u043E\u044E.\n\n\u0418\u043C\u0435\u0435\u0442 \u0449\u0438\u0442, \u043A\u043E\u0442\u043E\u0440\u044B\u0439
+      \u0431\u043B\u043E\u043A\u0438\u0440\u0443\u0435\u0442 \u0432\u0441\u0435 \u0430\u0442\u0430\u043A\u0438.
+      \u0429\u0438\u0442 \u0440\u0430\u0437\u0440\u0443\u0448\u0430\u0435\u0442\u0441\u044F,
+      \u0435\u0441\u043B\u0438 \u043D\u0430\u043D\u0435\u0441\u0442\u0438 \u0431\u043E\u043B\u0435\u0435
+      50 \u0435\u0434. \u0443\u0440\u043E\u043D\u0430 \u0437\u0430 \u0440\u0430\u0437.\n\n\u041E\u043D
+      \u043F\u0440\u043E\u0432\u043E\u0434\u0438\u0442 3 \u0431\u044B\u0441\u0442\u0440\u044B\u0435
+      \u043F\u043E\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0435
       \u0430\u0442\u0430\u043A\u0438.\n\n\u0418\u0445 \u043C\u043E\u0436\u043D\u043E
       \u043F\u0430\u0440\u0438\u0440\u043E\u0432\u0430\u0442\u044C, \u0447\u0442\u043E\u0431\u044B
       \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u043C\u0430\u043A\u0441\u0438\u043C\u0443\u043C
       \u0441\u0444\u0435\u0440 \u0438 \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0442\u044C
-      \u0432 \u043E\u0442\u0432\u0435\u0442!\n\n- \u041F\u043E\u0431\u0435\u0434\u0438
+      \u0432 \u043E\u0442\u0432\u0435\u0442, \u0441\u043B\u043E\u043C\u0438\u0432
+      \u0435\u0433\u043E \u0449\u0438\u0442 \u0443\u0441\u0438\u043B\u0435\u043D\u043D\u043E\u0439
+      \u0430\u0442\u0430\u043A\u043E\u0439!\n\n- \u041F\u043E\u0431\u0435\u0434\u0438
       <b><color=#FF7777>\u0422\u0420\u0418\u041E-\u0412\u041E\u0418\u041D\u0410<color=#FFFFFF></b>"
-  - Text: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 \u043F\u0440\u043E\u0439\u0434\u0435\u043D\u043E?"
+  - Text: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435 \u043F\u0440\u043E\u0439\u0434\u0435\u043D\u043E!"
   tooltipHeader: {fileID: 845296287}
   tooltipText: {fileID: 1057154911}
   TrainingIsland1: {fileID: 41771656}
@@ -20372,7 +20352,8 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1313133309}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2237650123396954412, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

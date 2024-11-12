@@ -104,7 +104,7 @@ namespace MoreMountains.Feedbacks
 				return;
 			}
         
-			_initialColor = BoundImage.color;
+			//_initialColor = BoundImage.color;
 			if (EnableOnPlay)
 			{
 				Turn(true);	

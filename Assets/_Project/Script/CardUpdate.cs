@@ -17,7 +17,7 @@ public class CardUpdate : MonoBehaviour
 	public TextMeshProUGUI nameText;
 	public TextMeshProUGUI descriptionText;
 
-	public Image art;
+	public GameObject mocap;
 
 	public MMF_Player cardFilpFeedback;
 	/// the possible axis on which to flip the double object
@@ -63,7 +63,8 @@ public class CardUpdate : MonoBehaviour
 		nameText.text = updateData.Name;
 		descriptionText.text = updateData.Description;
 
-		art.sprite = updateData.Art;
+		var art = Instantiate(data.Art, mocap.transform.position, Quaternion.identity);
+		art.transform.SetParent(mocap.transform);
 
 	}
 	protected virtual void Start()

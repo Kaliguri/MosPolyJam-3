@@ -8,7 +8,7 @@ public class UpdateData : ScriptableObject
     [TextArea] public string Description;
 
     [Header("Visual")]
-    public Sprite Art;
+    public GameObject Art;
 
     [SerializeReference]
     [Header("Script")]

@@ -55,6 +55,7 @@ public class SwordSpining : MonoBehaviour
 
     void OnDestroy()
     {
+        if (gameObject.scene.isLoaded)
         Instantiate(swordDestroyVFX, sword.transform.position, sword.transform.rotation);
     }
 }

@@ -38,8 +38,8 @@ MonoBehaviour:
     - MoreMountains.Feedbacks.TextMeshPro
     - Sonity.Runtime
     - ShapesEditor
-    - SonityExample
     - Assembly-CSharp
+    - SonityExample
     - MoreMountains.Feedbacks.PostProcessing
     - LeTai.TranslucentImage.Editor
     - Sonity.Editor

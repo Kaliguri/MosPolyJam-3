@@ -10449,6 +10449,63 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &314624463
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7040921140157568356, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19.599789
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.291292
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8285791383877950042, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+      propertyPath: m_Name
+      value: SpiningSword (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 538604edc3928834d89fc3597217ac13, type: 3}
 --- !u!43 &327122841
 Mesh:
   m_ObjectHideFlags: 0
@@ -20460,6 +20517,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 327122841}
+    - target: {fileID: 1547819478772656676, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
+      propertyPath: managedReferences[8206562642263015633].Active
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547819478772656676, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
+      propertyPath: managedReferences[8206562642263015633].TimeScale
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547819478772656676, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
+      propertyPath: managedReferences[8206562642263015633].TimeScaleDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2274795232705723212, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -20607,3 +20676,4 @@ SceneRoots:
   - {fileID: 883672944}
   - {fileID: 26026135}
   - {fileID: 548909913}
+  - {fileID: 314624463}
