@@ -18,6 +18,9 @@ public class LevelManager : MonoBehaviour
     [ReadOnly] [SerializeField] private int currentWaveNumber = 1;
     [ReadOnly][SerializeField] private int currentEnemyNumber = 0;
 
+    [Title("Update Cards")]
+    [SerializeField] GameObject cards;
+
     [Title("For Level Complete")]
     [SerializeField] GameObject CompleteUI;
 
@@ -52,7 +55,12 @@ public class LevelManager : MonoBehaviour
         currentWaveNumber = 1;
         InTheArena = false;
         if (CurrentArenaID == arenaList.Count - 1) LevelEnd();
+        else ShowCards();
+    }
 
+    private void ShowCards()
+    {
+        cards.SetActive(true);
     }
 
     void LevelEnd()
