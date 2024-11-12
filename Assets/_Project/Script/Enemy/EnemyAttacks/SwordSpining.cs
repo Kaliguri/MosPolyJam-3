@@ -26,15 +26,12 @@ public class SwordSpining : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (animator != null && !animator.GetBool("isStaned"))
-        {
-            currentZRotation += 10 * swordRotationSpeed * Time.fixedDeltaTime;
+        currentZRotation += 10 * swordRotationSpeed * Time.fixedDeltaTime;
 
-            float parentZRotation = transform.parent ? transform.parent.rotation.eulerAngles.z : 0f;
-            float targetZRotation = currentZRotation - parentZRotation;
+        float parentZRotation = transform.parent ? transform.parent.rotation.eulerAngles.z : 0f;
+        float targetZRotation = currentZRotation - parentZRotation;
 
-            transform.localRotation = Quaternion.Euler(0f, 0f, targetZRotation);
-        }
+        transform.localRotation = Quaternion.Euler(0f, 0f, targetZRotation);
     }
 
 
