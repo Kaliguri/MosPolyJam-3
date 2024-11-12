@@ -527,12 +527,12 @@ MonoBehaviour:
   stanTime: 1
   enemyMoveSpeed: 0
   teleportCooldown: 2
-  blinkTime: 0.5
+  blinkTime: 0.1
   healBubleCount: 5
   healBuble: {fileID: 0}
   animator: {fileID: 0}
   attackRangeDistance: 5
-  BlinkMaterial: {fileID: 0}
+  BlinkMaterial: {fileID: 2100000, guid: d686318e131d88a49ab8faac7341de46, type: 2}
   minDistanceFromPlayer: 2
   maxDistanceFromPlayer: 5
   enemyType: 1

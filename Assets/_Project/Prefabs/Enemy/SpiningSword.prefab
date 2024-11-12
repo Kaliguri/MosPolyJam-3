@@ -772,7 +772,7 @@ MonoBehaviour:
   healBuble: {fileID: 8624802602072797256, guid: 399007dea3462324f96ef55581a72fa3, type: 3}
   animator: {fileID: 2340962937367036627}
   attackRangeDistance: 5
-  BlinkMaterial: {fileID: 2100000, guid: afec6107ac78fcb4ab70bdb7186b51a2, type: 2}
+  BlinkMaterial: {fileID: 2100000, guid: d686318e131d88a49ab8faac7341de46, type: 2}
   minDistanceFromPlayer: 1
   maxDistanceFromPlayer: 3
   enemyType: 3

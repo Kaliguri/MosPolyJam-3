@@ -231,13 +231,13 @@ public class EnemyFollow : MonoBehaviour
     private void StopStan()
     {
         isStaned = false;
-        animator.SetBool("isStaned", false);
+        if (animator != null) animator.SetBool("isStaned", false);
     }
 
     private void StartShootingAtplayerTransform()
     {
         isAttacking = true;
-        if (GetComponentInChildren<SwordSpining>() == null) animator.SetBool("isPreparingAttack", true);
+        if (GetComponentInChildren<SwordSpining>() == null && animator != null) animator.SetBool("isPreparingAttack", true);
         if (GetComponentInChildren<EnemyBecomeInvinsible>() != null && GetComponentInChildren<EnemyBecomeInvinsible>().isEnhancement)
         {
             animator.speed = animationAttackSpeedMultiplier;
