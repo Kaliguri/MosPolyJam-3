@@ -16,8 +16,8 @@ public class EnemyAttack4 : MonoBehaviour
     private GameObject bullet;
     private Coroutine coroutine;
 
-    public float damageMinimumToHurt;
-    public bool hasShield = true;
+    [ReadOnly] public float damageMinimumToHurt;
+    [ReadOnly] public bool hasShield = true;
 
     public void Inisialise(Transform playerTransform, GameObject bulletPrefab, Transform firePoint, bool hasKickback, float recoilForce, Animator animator, int spearCount, float damageMinimumToHurt, float timeBetweenSpearSend)
     {

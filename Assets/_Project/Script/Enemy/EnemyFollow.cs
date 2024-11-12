@@ -13,7 +13,7 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] float blinkTime = 0.5f;
     [SerializeField] int healBubleCount = 5;
     [SerializeField] GameObject healBuble;
-    [SerializeField] private Animator animator;
+    [SerializeField] public Animator animator;
     //[SerializeField] float rotationSpeed = 100f;
     [SerializeField] float attackRangeDistance = 5f;
     [SerializeField] private Material BlinkMaterial;
@@ -206,6 +206,11 @@ public class EnemyFollow : MonoBehaviour
         if (enemyAttack2 != null)
         {
             enemyAttack2.StopAttack();
+        }
+        var enemyAttack4 = GetComponentInChildren<EnemyAttack4>();
+        if (enemyAttack4 != null)
+        {
+            enemyAttack4.StopAttack();
         }
         Invoke(nameof(StopStan), stanTime);
     }

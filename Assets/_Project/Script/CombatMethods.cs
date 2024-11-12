@@ -49,7 +49,7 @@ public class CombatMethods : MonoBehaviour
                     enemyFollow.StartStan();
                 }
 
-                Animator animator = targetType.GetComponentInChildren<Animator>();
+                Animator animator = targetType.GetComponent<EnemyFollow>().animator;
                 if (animator != null)
                 {
                     animator.SetBool("isStaned", true);
@@ -137,13 +137,19 @@ public class CombatMethods : MonoBehaviour
         {
             if (damage <= enemyAttack4.damageMinimumToHurt && enemyAttack4.hasShield)
             {
-                targetType.GetComponentInChildren<ShieldMovement>().SetTargetPoint(contact, true);
-                return true;
+                if (targetType.GetComponentInChildren<ShieldMovement>() != null)
+                {
+                    targetType.GetComponentInChildren<ShieldMovement>().SetTargetPoint(contact, true);
+                    return true;
+                }
             }
             else if (enemyAttack4.hasShield)
             {
-                targetType.GetComponentInChildren<ShieldMovement>().SetTargetPoint(contact, false);
-                enemyAttack4.BreakShield();
+                if (targetType.GetComponentInChildren<ShieldMovement>() != null)
+                {
+                    targetType.GetComponentInChildren<ShieldMovement>().SetTargetPoint(contact, false);
+                    enemyAttack4.BreakShield();
+                }
             }
         }
 
