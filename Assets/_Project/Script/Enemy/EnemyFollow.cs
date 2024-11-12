@@ -74,7 +74,7 @@ public class EnemyFollow : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (Application.isPlaying)
+        if (gameObject.scene.isLoaded)
         {
             for (int i = 0; i < healBubleCount; i++)
             {

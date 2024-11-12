@@ -20,7 +20,7 @@ public class EnemyAttack2 : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (Application.isPlaying && isCursing) 
+        if (Application.isPlaying && isCursing && gameObject.scene.isLoaded) 
         {
             Instantiate(cursedApplayVFX, curseTriangleObject.transform.position, Quaternion.identity);
 
