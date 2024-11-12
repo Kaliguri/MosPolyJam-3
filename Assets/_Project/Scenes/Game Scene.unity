@@ -79870,6 +79870,14 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4294965558
       objectReference: {fileID: 0}
+    - target: {fileID: 4930803822670830685, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1313133310}
+    - target: {fileID: 4930803822670830685, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Exit
+      objectReference: {fileID: 0}
     - target: {fileID: 6697597470442830120, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
       propertyPath: m_Pivot.x
       value: 0

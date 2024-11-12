@@ -15,8 +15,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] float waitingTimeBeforeWave = 2f;
     [ReadOnly] public bool InTheArena = false;
     [ReadOnly] public int CurrentArenaID = -1;
-    [ReadOnly] [SerializeField] private int currentWaveNumber = 1;
-    [ReadOnly][SerializeField] private int currentEnemyNumber = 0;
+    [ReadOnly] private int currentWaveNumber = 0;
+    [ReadOnly] private int currentEnemyNumber = 0;
 
     [Title("Update Cards")]
     [SerializeField] GameObject cards;
@@ -52,7 +52,7 @@ public class LevelManager : MonoBehaviour
     void FinishArena()
     {
         SetActiveForListGameObjects(arenaList[CurrentArenaID].EnableGameObjectsListAfterCombat, true); 
-        currentWaveNumber = 1;
+        currentWaveNumber = 0;
         InTheArena = false;
         if (CurrentArenaID == arenaList.Count - 1) LevelEnd();
         else ShowCards();
