@@ -37,7 +37,15 @@ public class EnemyBecomeInvinsible : MonoBehaviour
         isEnhancement = true;
         GetComponent<Collider2D>().enabled = false;
 
-        parentCollider.gameObject.GetComponentInChildren<EnemyFollow>().gameObject.GetComponentInChildren<DashRightFromPlayer>().SetVisability(false);
+        var enemyFollow = parentCollider?.gameObject.GetComponentInChildren<EnemyFollow>();
+        if (enemyFollow != null)
+        {
+            var dashRightFromPlayer = enemyFollow.gameObject.GetComponentInChildren<DashRightFromPlayer>();
+            if (dashRightFromPlayer != null)
+            {
+                dashRightFromPlayer.SetVisability(false);
+            }
+        }
 
         Invoke(nameof(CanDashAgain), dashCooldown);
         Vector2 direction = (playerTransform.position - transform.position).normalized;
