@@ -93,7 +93,7 @@ public class LevelManager : MonoBehaviour
             var areaList = arenaList[CurrentArenaID].SpawnAreaListCombat;
             var areaNumber = UnityEngine.Random.Range(0, areaList.Count);
             var area = areaList[areaNumber];
-            var spawnPosition = GetRandomPointInBox(area);
+            var spawnPosition = GetRandomPointInCollider(area);
 
             Instantiate(spawnVFX, spawnPosition, quaternion.identity);
             Instantiate(enemy, spawnPosition, quaternion.identity);
@@ -127,21 +127,22 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    Vector2 GetRandomPointInBox(Collider2D spawnArea)
+    Vector2 GetRandomPointInCollider(Collider2D spawnArea)
     {
-        Bounds bounds = spawnArea.bounds; // Получаем границы Box Collider
+        Bounds bounds = spawnArea.bounds;
+        Vector2 randomPoint;
 
-        // Генерируем случайные координаты внутри границ Box Collider
-        float randomX = UnityEngine.Random.Range(bounds.min.x, bounds.max.x);
-        float randomY = UnityEngine.Random.Range(bounds.min.y, bounds.max.y);
+        // Пытаемся найти точку, пока она не будет внутри коллайдера
+        do
+        {
+            float x = UnityEngine.Random.Range(bounds.min.x, bounds.max.x);
+            float y = UnityEngine.Random.Range(bounds.min.y, bounds.max.y);
+            randomPoint = new Vector2(x, y);
+        }
+        while (!spawnArea.OverlapPoint(randomPoint));
 
-        return new Vector2(randomX, randomY);
+        return randomPoint;
     }
-
-
-
-
-
 }
 
 [Serializable]
