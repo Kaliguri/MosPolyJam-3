@@ -90,6 +90,10 @@ public class UpdatesUIManager : MonoBehaviour
     }
     void OffUI()
     {
+        foreach (var card in cardUpdateList)
+        {
+            Destroy(card.Art);
+        }
         gameObject.SetActive(false);
         //Time.timeScale = 1f;
 

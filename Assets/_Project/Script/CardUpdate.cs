@@ -48,6 +48,8 @@ public class CardUpdate : MonoBehaviour
 	/// whether or not our object is flipped right now 
 	public bool BackVisible = false;
 
+	public GameObject Art;
+
 	protected RectTransform _rectTransform;
 	protected bool _initialized = false;
 
@@ -63,7 +65,7 @@ public class CardUpdate : MonoBehaviour
 		nameText.text = updateData.Name;
 		descriptionText.text = updateData.Description;
 
-		var art = Instantiate(data.Art, mocap.transform.position, Quaternion.identity, mocap.transform);
+		Art = Instantiate(data.Art, mocap.transform.position, Quaternion.identity, mocap.transform);
 
 	}
 	protected virtual void Start()

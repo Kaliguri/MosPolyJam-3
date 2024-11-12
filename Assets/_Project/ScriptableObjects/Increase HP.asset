@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: "\u0421\u0442\u043E\u0439\u043A\u043E\u0441\u0442\u044C"
   Description: "\u0423\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442
     \u043C\u0430\u043A\u0441\u0438\u043C\u0443\u043C HP \u043D\u0430 25%"
-  Art: {fileID: 3837463186438313418, guid: a039a0c05259f2642bba79476952ede5, type: 3}
+  Art: {fileID: 3837463186438313418, guid: e9587b0a08497fe4295d78fbfb3800a5, type: 3}
   UpdateScript:
     rid: 8206562567424573619
   references:
