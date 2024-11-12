@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class EnemyAttack4 : MonoBehaviour
 {
+    [Title("VFX")]
+
+    public ParticleSystem parryVFX;
+    public ParticleSystem shieldDestoyVFX;
+
+
     private Transform playerTransform;
     private GameObject bulletPrefab;
     private Transform firePoint;
@@ -106,7 +112,8 @@ public class EnemyAttack4 : MonoBehaviour
         {
             hasShield = false;
             Debug.Log("Break Shield!");
-            GetComponentInParent<EnemyFollow>(); //EnemyFollow
+            
+            Instantiate(shieldDestoyVFX, gameObject.transform.position, Quaternion.identity);
         }
     }
 }

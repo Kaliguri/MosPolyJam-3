@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using VFavorites.Libs;
 
 public class SpearAttack2 : MonoBehaviour
 {
@@ -16,6 +17,12 @@ public class SpearAttack2 : MonoBehaviour
     {
         if (initialLocalPosition != new Vector3(0, 0, 0))
         {
+            if (enemyParent is null) 
+            { Destroy(enemyParent); }
+
+            else
+            
+            { 
             if (enemyParent.GetComponentInChildren<EnemyAttack2>() != null) 
             {
                 Vector2 direction = (playerTransform.position - transform.position).normalized;
@@ -29,6 +36,7 @@ public class SpearAttack2 : MonoBehaviour
                 transform.up = direction;
                 Vector3 forwardOffset = enemyParent.GetComponent<EnemyFollow>().firePoint.position;
                 transform.position = /*enemyParent.transform.position -*/ forwardOffset;
+            }
             }
         }
     }

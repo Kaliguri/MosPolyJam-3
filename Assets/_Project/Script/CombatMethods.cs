@@ -62,18 +62,17 @@ public class CombatMethods : MonoBehaviour
                 var enemyAttack4 = targetType.GetComponentInChildren<EnemyAttack4>();
                 if (enemyAttack3 != null)
                 {
-                    Debug.Log("third enemy get 0 damage");
+                    //Debug.Log("third enemy get 0 damage");
                     var parryVFX = enemyAttack3.parryVFX;
                     Instantiate(parryVFX, contact, Quaternion.identity);
                     
                 }
                 else if (enemyAttack4 != null)
                 {
-                    Debug.Log("fourth enemy get 0 damage");
-                    if (targetType.TryGetComponent<EnemyFollow>(out var enemyFollow))
-                    {
-
-                    }
+                    //Debug.Log("fourth enemy get 0 damage");
+                    var parryVFX = enemyAttack4.parryVFX;
+                    Instantiate(parryVFX, contact, Quaternion.identity);
+                    
                 }
             }
         }

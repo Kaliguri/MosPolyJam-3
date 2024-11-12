@@ -6,33 +6,24 @@ public class ShieldMovement : MonoBehaviour
     [SerializeField] float shieldSpeed = 10f; 
     [SerializeField] float resetTime = 1f;
     private Vector3 startPosition;
-    private Vector3 targetPosition;
     private Coroutine coroutine;
-    private bool hasTarget = false;
+    private TrailRenderer trailRenderer => GetComponent<TrailRenderer>();
 
     private void Awake()
     {
         startPosition = transform.localPosition;
-        targetPosition = transform.localPosition;
+        //trailRenderer.emitting = false;
+
     }
 
     public void SetTargetPoint(Vector3 targetPoint, bool isBlocked)
     {
-        hasTarget = true;
-        targetPosition = targetPoint;
+        //trailRenderer.emitting = true;
+        transform.position = targetPoint;
+        //trailRenderer.emitting = false;
+
         if (coroutine != null) { StopCoroutine(coroutine); }
         coroutine = StartCoroutine(ResetTargetPosition(isBlocked));
-    }
-
-    private void FixedUpdate()
-    {
-        if (hasTarget) MoveTowards(targetPosition);
-    }
-
-    private void MoveTowards(Vector3 target)
-    {
-        Vector3 direction = (target - transform.position).normalized;
-        transform.position += shieldSpeed * Time.fixedDeltaTime * direction;
     }
 
     private IEnumerator ResetTargetPosition(bool isBlocked)
@@ -42,8 +33,11 @@ public class ShieldMovement : MonoBehaviour
             BreakShield();
         }
         yield return new WaitForSeconds(resetTime);
-        hasTarget = false;
+
+        //trailRenderer.emitting = true;
         transform.localPosition = startPosition;
+        //trailRenderer.emitting = false;
+
     }
 
     private void BreakShield()

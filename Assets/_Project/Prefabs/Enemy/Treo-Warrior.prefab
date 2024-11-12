@@ -137,6 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e847d0624897a343a471f73ab25f107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parryVFX: {fileID: 453610055524029905, guid: ad5a17957420d424ab3f8d5e1687996b, type: 3}
+  shieldDestoyVFX: {fileID: 6913446103682260224, guid: 5a0bc065aed120741855f356fed2c74f, type: 3}
   damageMinimumToHurt: 0
   hasShield: 1
 --- !u!1 &2567305341113988511
@@ -150,6 +152,7 @@ GameObject:
   - component: {fileID: 2018779573582884667}
   - component: {fileID: 2812592496835821450}
   - component: {fileID: 341266661215565640}
+  - component: {fileID: 3394139125374474128}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -165,12 +168,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2567305341113988511}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.5, w: 0.8660254}
-  m_LocalPosition: {x: -0.006, y: 0.088, z: 0}
-  m_LocalScale: {x: 0.29075167, y: 0.29075167, z: 0.29075167}
+  m_LocalRotation: {x: -0, y: -0, z: 0.5, w: 0.8660254}
+  m_LocalPosition: {x: 0, y: -0.169, z: 0}
+  m_LocalScale: {x: 0.3951166, y: 0.3951166, z: 0.3951166}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7040921140157568356}
+  m_Father: {fileID: 6696428073628456141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 60}
 --- !u!212 &2812592496835821450
 SpriteRenderer:
@@ -217,7 +220,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 6
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.9811321, g: 0.8191527, b: 0.8208578, a: 0.25490198}
+  m_Color: {r: 0.9811321, g: 0.8191527, b: 0.8208578, a: 0.7607843}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -272,7 +275,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 0.3
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -282,7 +285,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.1601429
+        value: 0.29347974
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -343,6 +346,20 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &3394139125374474128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567305341113988511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5dc3021b6c6b84382329a8d8050f65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldSpeed: 100
+  resetTime: 0.1
 --- !u!1 &2763475782560408555
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,11 +561,11 @@ Transform:
   m_GameObject: {fileID: 3942892186838828551}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.5, w: 0.8660254}
-  m_LocalPosition: {x: -0.00769256, y: 0.08230767, z: 0}
-  m_LocalScale: {x: 0.30393586, y: 0.30393586, z: 0.30393586}
+  m_LocalPosition: {x: 0, y: -0.169, z: 0}
+  m_LocalScale: {x: 0.3951166, y: 0.3951166, z: 0.3951166}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7040921140157568356}
+  m_Father: {fileID: 6696428073628456141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 60}
 --- !u!212 &5874567846469012829
 SpriteRenderer:
@@ -595,7 +612,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.9811321, g: 0.8191527, b: 0.8208578, a: 1}
+  m_Color: {r: 0.9811321, g: 0.8191527, b: 0.8208578, a: 0.1764706}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -657,6 +674,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1083801408373913395}
+  - {fileID: 2018779573582884667}
+  - {fileID: 6180570221611591510}
   m_Father: {fileID: 5747232673390923786}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8285791383877950042
@@ -689,12 +708,10 @@ Transform:
   m_GameObject: {fileID: 8285791383877950042}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.23, y: 5.84, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.54, y: 1.54, z: 1.54}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 6180570221611591510}
-  - {fileID: 2018779573582884667}
   - {fileID: 5747232673390923786}
   - {fileID: 8000722777185324287}
   m_Father: {fileID: 0}
