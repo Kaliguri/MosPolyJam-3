@@ -3791,20 +3791,19 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 2.7508879, y: 13.758423}
-      - {x: 0.1872406, y: 11.407421}
-      - {x: 0.31772608, y: 5.8025208}
-      - {x: 3.6243215, y: 7.1016045}
-      - {x: 5.748635, y: 10.250877}
-      - {x: 8.933998, y: 10.359821}
-      - {x: 10.618242, y: 7.0966797}
-      - {x: 8.4590645, y: 3.767273}
-      - {x: 6.0367765, y: 3.9656792}
-      - {x: 3.8524752, y: 6.5503387}
-      - {x: 0.37202644, y: 5.3759766}
-      - {x: 0.54640293, y: 0.25582504}
-      - {x: 12.453131, y: 0.24572372}
-      - {x: 13.787121, y: 1.5182037}
+    - - {x: 3.3684826, y: 13.295223}
+      - {x: 0.76623726, y: 11.407421}
+      - {x: 0.549324, y: 6.535919}
+      - {x: 5.825834, y: 10.714069}
+      - {x: 9.397194, y: 10.47562}
+      - {x: 11.274431, y: 7.59848}
+      - {x: 9.115259, y: 3.3040733}
+      - {x: 5.45778, y: 3.6954803}
+      - {x: 3.0804815, y: 7.669731}
+      - {x: 0.9510231, y: 5.916374}
+      - {x: 0.7780018, y: 0.7962227}
+      - {x: 12.260134, y: 0.9019165}
+      - {x: 13.555523, y: 2.4831963}
       - {x: 13.529623, y: 13.72221}
   m_UseDelaunayMesh: 0
 --- !u!1 &467667840
@@ -79477,6 +79476,10 @@ PrefabInstance:
       propertyPath: CompleteUI
       value: 
       objectReference: {fileID: 758363904}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: arenaList.Array.data[3].SpawnAreaListCombat.Array.size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
       propertyPath: 'arenaList.Array.data[0].SpawnAreaListCombat.Array.data[0]'
       value: 
