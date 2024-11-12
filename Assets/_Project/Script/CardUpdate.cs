@@ -63,8 +63,7 @@ public class CardUpdate : MonoBehaviour
 		nameText.text = updateData.Name;
 		descriptionText.text = updateData.Description;
 
-		var art = Instantiate(data.Art, mocap.transform.position, Quaternion.identity);
-		art.transform.SetParent(mocap.transform);
+		var art = Instantiate(data.Art, mocap.transform.position, Quaternion.identity, mocap.transform);
 
 	}
 	protected virtual void Start()
