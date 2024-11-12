@@ -74,7 +74,7 @@ public class EnemyFollow : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (Application.isPlaying && !Application.isEditor)
+        if (Application.isPlaying)
         {
             for (int i = 0; i < healBubleCount; i++)
             {
