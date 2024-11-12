@@ -97,7 +97,7 @@ public class EnemyFollow : MonoBehaviour
         if (currentTeleportCollider != null && CanTeleport())
         {
             Vector2 targetPosition = currentTeleportCollider.linkedTeleport.GetNearestPoint(transform.position);
-            trailRenderer.emitting = true;
+            if (trailRenderer != null) trailRenderer.emitting = true;
             TeleportTo(targetPosition);
             SetTeleportCooldown(teleportCooldown);
         }
