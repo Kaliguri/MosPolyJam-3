@@ -94,7 +94,7 @@ public class PlayerParry : MonoBehaviour
             Instantiate(perfectParryVFXinHit, parryPosition, quaternion.identity);
             parryAnimator.Play("Perfect Parry");
             perfectParrySFX.Play2D();
-            FeelFeedbacksManager.instance.SlowMo.PlayFeedbacks();
+            //FeelFeedbacksManager.instance.SlowMo.PlayFeedbacks();
         }
 
         else

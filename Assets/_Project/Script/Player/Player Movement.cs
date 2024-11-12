@@ -4,7 +4,6 @@ using Sonity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
-using UnityEngine.WSA;
 
 public class PlayerMovement : MonoBehaviour
 {

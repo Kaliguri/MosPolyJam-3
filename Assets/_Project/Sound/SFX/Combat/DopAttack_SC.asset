@@ -18,9 +18,9 @@ MonoBehaviour:
       previewAudioMixerGroup: {fileID: 0}
       expandPreview: 0
       expandAudioClips: 1
-      expandSettings: 0
+      expandSettings: 1
       previewCurves: 1
-      audioMixerGroup: {fileID: 0}
+      audioMixerGroup: {fileID: -1680773598405757152, guid: ff6961ccce7811048b0f80917d5e2d05, type: 2}
       priority: 0.5
       distanceEnabled: 1
       distanceScale: 100

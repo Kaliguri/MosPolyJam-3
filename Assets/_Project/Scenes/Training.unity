@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 176941173}
   - component: {fileID: 176941172}
   - component: {fileID: 176941171}
+  - component: {fileID: 176941177}
   m_Layer: 7
   m_Name: Dummy Triangle (2)
   m_TagString: Untagged
@@ -510,6 +511,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &176941177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176941170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a544d545b62784640a2f11e64d322459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stanTime: 1
+  enemyMoveSpeed: 0
+  teleportCooldown: 2
+  blinkTime: 0.5
+  healBubleCount: 5
+  healBuble: {fileID: 0}
+  animator: {fileID: 0}
+  attackRangeDistance: 5
+  BlinkMaterial: {fileID: 0}
+  minDistanceFromPlayer: 2
+  maxDistanceFromPlayer: 5
+  enemyType: 1
+  timeBetweenAttack: 1
+  bodyDamage: 5
+  attackDashForce: 5
+  attackDashTime: 5
+  extraDashForce: 50
+  extraDashTime: 0.1
+  extraDashCooldown: 2
+  animationAttackSpeedMultiplier: 1.5
+  firePoint: {fileID: 0}
+  bulletDamage: 5
+  attackPrefab: {fileID: 0}
+  bulletMoveSpeed: 10
+  bulletMaxDistance: 10
+  hasKickback: 1
+  recoilForce: 0.5
+  isCursing: 1
+  curseTime: 2
+  timeBeforeCurse: 2
+  swordDamage: 5
+  swordRotationSpeed: 5
+  swordSpeedMultiplayer: 1.25
+  maxCanBlockPlayerAttackCount: 5
+  maxSwordCanSurviveParryCount: 5
+  spearCount: 3
+  timeBetweenSpearSend: 0.5
+  damageMinimumToHurt: 100
+  isAttacking: 1
 --- !u!1 &184551653
 GameObject:
   m_ObjectHideFlags: 0
@@ -11469,6 +11521,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7600810865474003720, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+      propertyPath: healBubleCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600810865474003720, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
       propertyPath: timeBeforeCurse
       value: 2
       objectReference: {fileID: 0}
@@ -11713,7 +11769,7 @@ MonoBehaviour:
   - Text: "\u0422\u0432\u043E\u0439 \u043F\u0435\u0440\u0432\u044B\u0439 \u043F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A!\n\n<b><color=#FF7777>\u0422\u0420\u0415\u0423\u0413\u041E\u041B\u042C\u041D\u0418\u041A-\u0422\u0410\u0420\u0410\u041D<color=#FFFFFF></b>\n\n\u0418\u043C\u0435\u0435\u0442
       \u043C\u043D\u043E\u0433\u043E \u0425\u041F. \u0414\u0435\u043B\u0430\u0435\u0442
       \u0440\u044B\u0432\u043A\u0438 \u0432 \u0442\u0432\u043E\u044E \u0441\u0442\u043E\u0440\u043E\u043D\u0443.
-      \u0410 \u0442\u0430\u043A \u0441\u043F\u043E\u0441\u043E\u0431\u0435\u043D
+      \u0410 \u0442\u0430\u043A\u0436\u0435 \u0441\u043F\u043E\u0441\u043E\u0431\u0435\u043D
       \u0443\u043A\u043B\u043E\u043D\u044F\u0442\u044C\u0441\u044F \u043E\u0442 \u0430\u0442\u0430\u043A
       \u0438 \u0441\u0440\u0430\u0437\u0443 \u043A\u043E\u043D\u0442\u0440\u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0442\u044C.\n\n\u041D\u043E.
       \u041E\u043D \u0442\u0430\u043A\u0436\u0435 \u043C\u043E\u0436\u0435\u0442
@@ -20244,10 +20300,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2659116884184144593, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 54.899994
-      objectReference: {fileID: 0}
     - target: {fileID: 4930803822670830685, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -20352,8 +20404,7 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1313133309}
-    m_RemovedComponents:
-    - {fileID: 2237650123396954412, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

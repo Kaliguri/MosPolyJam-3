@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.9137255}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -328,7 +328,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5846136598623447381}
-  - component: {fileID: 2237650123396954412}
   m_Layer: 5
   m_Name: Training Complete
   m_TagString: Untagged
@@ -358,29 +357,6 @@ RectTransform:
   m_AnchoredPosition: {x: -157.99997, y: 12.718007}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!223 &2237650123396954412
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706092283951712087}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: -1539614807
-  m_SortingOrder: 4
-  m_TargetDisplay: 0
 --- !u!1 &2021685727560202314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,7 +1809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2675498784270905477, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 54.9
+      value: 54.899994
       objectReference: {fileID: 0}
     - target: {fileID: 2675498784270905477, guid: 548f2190dbd213440b3cf4c9db9c6823, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using VFavorites.Libs;
 
 public class SpearAttack2 : MonoBehaviour
 {
