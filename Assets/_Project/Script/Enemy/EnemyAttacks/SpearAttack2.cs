@@ -24,9 +24,11 @@ public class SpearAttack2 : MonoBehaviour
             }
             else
             {
-                transform.parent.rotation = enemyParent.transform.rotation;
-                Vector3 forwardOffset = enemyParent.transform.up * initialLocalPosition.magnitude;
-                transform.position = enemyParent.transform.position + forwardOffset;
+                //transform.parent.rotation = enemyParent.transform.rotation;
+                Vector2 direction = (playerTransform.position - transform.position).normalized;
+                transform.up = direction;
+                Vector3 forwardOffset = enemyParent.GetComponent<EnemyFollow>().firePoint.position;
+                transform.position = /*enemyParent.transform.position -*/ forwardOffset;
             }
         }
     }

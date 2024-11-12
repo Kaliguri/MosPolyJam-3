@@ -39,6 +39,7 @@ public class EnemyAttack2 : MonoBehaviour
     public void Attack2ShootAtPlayerTransform()
     {
         Vector2 direction = (playerTransform.position - bullet.transform.position).normalized;
+        bullet.GetComponentInChildren<SpearAttack2>().enemyParent = transform.parent.gameObject;
         bullet.GetComponentInChildren<Collider2D>().enabled = true;
         bullet.GetComponentInChildren<BulletMovement>().enabled = true;
         bullet.GetComponentInChildren<SpearAttack2>().enabled = false;

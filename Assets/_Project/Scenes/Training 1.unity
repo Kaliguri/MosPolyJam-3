@@ -119,6 +119,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &6040904
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -21.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8285791383877950042, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
+      propertyPath: m_Name
+      value: Treo-Warrior
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
 --- !u!1 &41771656
 GameObject:
   m_ObjectHideFlags: 0
@@ -9766,105 +9823,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1001 &222044754
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 341266661215565640, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2567305341113988511, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3942892186838828551, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6180570221611591510, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6180570221611591510, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -17.507042
-      objectReference: {fileID: 0}
-    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -21.836843
-      objectReference: {fileID: 0}
-    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7040921140157568356, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8285791383877950042, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      propertyPath: m_Name
-      value: Treo-Warrior
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2567305341113988511, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 222044760}
-  m_SourcePrefab: {fileID: 100100000, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
---- !u!1 &222044755 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2567305341113988511, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-  m_PrefabInstance: {fileID: 222044754}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &222044760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222044755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb5dc3021b6c6b84382329a8d8050f65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shieldSpeed: 5
-  resetTime: 0.2
 --- !u!43 &315729553
 Mesh:
   m_ObjectHideFlags: 0
@@ -17678,4 +17636,4 @@ SceneRoots:
   - {fileID: 1397807829}
   - {fileID: 1799617569}
   - {fileID: 486062007}
-  - {fileID: 222044754}
+  - {fileID: 6040904}

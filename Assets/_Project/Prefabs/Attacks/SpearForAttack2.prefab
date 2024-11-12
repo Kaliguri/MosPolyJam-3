@@ -63,7 +63,7 @@ Transform:
   m_GameObject: {fileID: 7438477997356048142}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3719, y: 0.2843, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2562, y: 3.458525, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -195,7 +195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04c6a85be5ab8f40aeb08256018d863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeForPreparation: 1.5
   enemyParent: {fileID: 0}
 --- !u!114 &8750274171663447734
 MonoBehaviour:
@@ -209,8 +208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095aa6ac0d532b04d9c15157ad8530a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  maxDistance: 10
+  moveSpeed: 40
+  maxDistance: 20
 --- !u!95 &7851312168776682115
 Animator:
   serializedVersion: 7

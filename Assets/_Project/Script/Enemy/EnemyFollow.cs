@@ -33,7 +33,7 @@ public class EnemyFollow : MonoBehaviour
     [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashTime = 0.1f;
     [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float extraDashCooldown = 2f;
     [HideIf("@enemyType != EnemyType.BodyRush")] [SerializeField] float animationAttackSpeedMultiplier = 1.5f;
-    [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] Transform firePoint;
+    [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] public Transform firePoint;
     [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] float bulletDamage = 5f;
     [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] GameObject attackPrefab;
     [HideIf("@enemyType != EnemyType.RangeSpear && enemyType != EnemyType.MeleeSpear")] [SerializeField] float bulletMoveSpeed = 10f;
