@@ -138,19 +138,11 @@ public class CombatMethods : MonoBehaviour
         {
             if (damage <= enemyAttack4.damageMinimumToHurt && enemyAttack4.hasShield)
             {
-                if (targetType.GetComponentInChildren<ShieldMovement>() != null)
-                {
-                    targetType.GetComponentInChildren<ShieldMovement>().SetTargetPoint(contact, true);
-                    return true;
-                }
+                return true;
             }
             else if (enemyAttack4.hasShield)
             {
-                if (targetType.GetComponentInChildren<ShieldMovement>() != null)
-                {
-                    targetType.GetComponentInChildren<ShieldMovement>().SetTargetPoint(contact, false);
-                    enemyAttack4.BreakShield();
-                }
+                enemyAttack4.BreakShield();
             }
         }
 
