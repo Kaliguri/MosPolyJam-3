@@ -3,6 +3,10 @@ using UnityEngine;
 public class EnemyAttack2 : MonoBehaviour
 {
     [SerializeField] ParticleSystem cursedApplayVFX;
+    [SerializeField] GameObject curseTriangleObject;
+    [SerializeField] GameObject curseTrianglePrefab;
+
+
     private Transform playerTransform;
     private GameObject bulletPrefab;
     private Transform firePoint;
@@ -18,7 +22,12 @@ public class EnemyAttack2 : MonoBehaviour
     {
         if (Application.isPlaying && isCursing) 
         {
-            Instantiate(cursedApplayVFX, gameObject.transform.position, Quaternion.identity);
+            Instantiate(cursedApplayVFX, curseTriangleObject.transform.position, Quaternion.identity);
+
+            var CurseTriangle = Instantiate(curseTrianglePrefab, curseTriangleObject.transform.position, Quaternion.identity);
+            CurseTriangle.GetComponent<Animator>().enabled = true;
+            Destroy(CurseTriangle, 1f);
+
             playerTransform.gameObject.GetComponent<PlayerComboAttack>().BecomeCursed(timeBeforeCurse, curseTime);
         }
     }
