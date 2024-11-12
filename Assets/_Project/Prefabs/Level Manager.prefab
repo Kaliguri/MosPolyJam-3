@@ -48,6 +48,9 @@ MonoBehaviour:
   waitingTimeBeforeWave: 2
   InTheArena: 0
   CurrentArenaID: -1
+  currentWaveNumber: 1
+  currentEnemyNumber: 0
+  cards: {fileID: 0}
   CompleteUI: {fileID: 0}
   arenaList:
   - combatCount: 3
@@ -61,14 +64,12 @@ MonoBehaviour:
     - {fileID: 0}
     WaveCombat:
     - EnemyList:
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+      - {fileID: 8285791383877950042, guid: 8f6feca2bda96e34d9f47dceb5b29029, type: 3}
     - EnemyList:
       - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
     - EnemyList:
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-  - combatCount: 4
+      - {fileID: 8285791383877950042, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+  - combatCount: 3
     DisableGameObjectsListForStartCombat:
     - {fileID: 0}
     EnableGameObjectsListAfterCombat:
@@ -81,45 +82,45 @@ MonoBehaviour:
     WaveCombat:
     - EnemyList:
       - {fileID: 8285791383877950042, guid: 8f6feca2bda96e34d9f47dceb5b29029, type: 3}
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: 538604edc3928834d89fc3597217ac13, type: 3}
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
       - {fileID: 8285791383877950042, guid: 8f6feca2bda96e34d9f47dceb5b29029, type: 3}
+    - EnemyList:
       - {fileID: 8285791383877950042, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+    - EnemyList:
       - {fileID: 8285791383877950042, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
+      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+  - combatCount: 3
+    DisableGameObjectsListForStartCombat:
+    - {fileID: 0}
+    EnableGameObjectsListAfterCombat:
+    - {fileID: 0}
+    SpawnAreaListCombat:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    WaveCombat:
+    - EnemyList:
+      - {fileID: 8285791383877950042, guid: 8f6feca2bda96e34d9f47dceb5b29029, type: 3}
+      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+      - {fileID: 8285791383877950042, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+    - EnemyList:
+      - {fileID: 8285791383877950042, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
+      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+    - EnemyList:
+      - {fileID: 8285791383877950042, guid: 8f6feca2bda96e34d9f47dceb5b29029, type: 3}
+      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
   - combatCount: 5
     DisableGameObjectsListForStartCombat:
     - {fileID: 0}
     EnableGameObjectsListAfterCombat:
     - {fileID: 0}
-    SpawnAreaListCombat:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    WaveCombat:
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: 538604edc3928834d89fc3597217ac13, type: 3}
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: 8f6feca2bda96e34d9f47dceb5b29029, type: 3}
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: 538604edc3928834d89fc3597217ac13, type: 3}
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-  - combatCount: 6
-    DisableGameObjectsListForStartCombat:
-    - {fileID: 0}
-    EnableGameObjectsListAfterCombat:
-    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
@@ -135,16 +136,14 @@ MonoBehaviour:
     - {fileID: 0}
     WaveCombat:
     - EnemyList:
+      - {fileID: 8285791383877950042, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+      - {fileID: 8285791383877950042, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
+    - EnemyList:
+      - {fileID: 8285791383877950042, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+      - {fileID: 8285791383877950042, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
+    - EnemyList:
       - {fileID: 8285791383877950042, guid: 8f6feca2bda96e34d9f47dceb5b29029, type: 3}
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: 538604edc3928834d89fc3597217ac13, type: 3}
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: 1be181a40cf4b3a4a939c0bc964da409, type: 3}
-      - {fileID: 8285791383877950042, guid: c85ae52500c943d4e851d1ecd7af5d35, type: 3}
-    - EnemyList:
-      - {fileID: 8285791383877950042, guid: 538604edc3928834d89fc3597217ac13, type: 3}
+      - {fileID: 8285791383877950042, guid: 8f6feca2bda96e34d9f47dceb5b29029, type: 3}
+      - {fileID: 8285791383877950042, guid: 8f6feca2bda96e34d9f47dceb5b29029, type: 3}
       - {fileID: 8285791383877950042, guid: 8f6feca2bda96e34d9f47dceb5b29029, type: 3}
