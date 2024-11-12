@@ -9,6 +9,8 @@ public class EnemyAttack4 : MonoBehaviour
 
     public ParticleSystem parryVFX;
     public ParticleSystem shieldDestoyVFX;
+    public Animator shieldAnimator;
+
 
 
     private Transform playerTransform;
@@ -114,6 +116,7 @@ public class EnemyAttack4 : MonoBehaviour
             Debug.Log("Break Shield!");
             
             Instantiate(shieldDestoyVFX, gameObject.transform.position, Quaternion.identity);
+            shieldAnimator.SetTrigger("ShieldDestroy");
         }
     }
 }

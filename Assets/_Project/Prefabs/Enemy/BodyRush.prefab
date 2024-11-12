@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a544d545b62784640a2f11e64d322459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stanTime: 0.2
+  stanTime: 0.5
   enemyMoveSpeed: 3
   teleportCooldown: 2
   blinkTime: 0.1

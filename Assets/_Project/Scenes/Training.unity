@@ -20409,10 +20409,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1220590280}
-    - target: {fileID: 2559724712168833182, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2944132183438647806, guid: 96e4ae6385a6a4245b084a9880020070, type: 3}
       propertyPath: m_Mesh
       value: 

@@ -357,7 +357,7 @@ MonoBehaviour:
   progressBar: {fileID: 0}
   timeProgressBarApears: 0.05
   timeBetweenAttacksInCombo: 0.5
-  longPressThreshold: 0.6
+  longPressThreshold: 0.8
   canSpesialAttack: 1
   attacksList:
   - {fileID: 0}
@@ -383,7 +383,7 @@ MonoBehaviour:
   attack3_Distance: 0.5
   attack3_MoveSpeed: 25
   attack3_MoveDistance: 1.5
-  attack3_TimeBetweenSendSlice: 0.065
+  attack3_TimeBetweenSendSlice: 0.09
   attack3_StartSliceCount: 5
   attack3_MaxSliceCount: 50
   attack3_MaxOffset: 0.7

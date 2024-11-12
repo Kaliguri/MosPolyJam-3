@@ -72,6 +72,8 @@ public class CombatMethods : MonoBehaviour
                     //Debug.Log("fourth enemy get 0 damage");
                     var parryVFX = enemyAttack4.parryVFX;
                     Instantiate(parryVFX, contact, Quaternion.identity);
+
+                    enemyAttack4.shieldAnimator.SetTrigger("Parry");
                     
                 }
             }
