@@ -5904,6 +5904,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4.955415, y: 4.282795}
   m_EdgeRadius: 0
+--- !u!1 &758363904 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1706092283951712087, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
+  m_PrefabInstance: {fileID: 7979538208719544128}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &779942466
 GameObject:
   m_ObjectHideFlags: 0
@@ -79527,6 +79532,10 @@ PrefabInstance:
       value: Level Manager
       objectReference: {fileID: 0}
     - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
+      propertyPath: CompleteUI
+      value: 
+      objectReference: {fileID: 758363904}
+    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
       propertyPath: 'arenaList.Array.data[0].SpawnAreaListCombat.Array.data[0]'
       value: 
       objectReference: {fileID: 652100081}
@@ -79614,10 +79623,6 @@ PrefabInstance:
       propertyPath: 'arenaList.Array.data[3].SpawnAreaListCombat.Array.data[7]'
       value: 
       objectReference: {fileID: 43851881}
-    - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
-      propertyPath: arenaList.Array.data[0].WaveCombat.Array.data[1].EnemyList.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8996503279452010909, guid: 8d3b8bf244615eb47961ccaacb54b3c3, type: 3}
       propertyPath: 'arenaList.Array.data[0].EnableGameObjectsListAfterCombat.Array.data[0]'
       value: 
@@ -79842,8 +79847,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1706092283951712087, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
+      propertyPath: m_Name
+      value: Level Complete
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706092283951712087, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237650123396954412, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686436553673046119, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
+      propertyPath: m_text
+      value: "\u0421\u043F\u0430\u0441\u0438\u0431\u043E \u0437\u0430 \u0438\u0433\u0440\u0443!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686436553673046119, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294965558
       objectReference: {fileID: 0}
     - target: {fileID: 6697597470442830120, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
       propertyPath: m_Pivot.x
