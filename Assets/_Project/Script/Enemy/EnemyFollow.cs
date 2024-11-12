@@ -58,7 +58,20 @@ public class EnemyFollow : MonoBehaviour
     private float lastShotTime = -Mathf.Infinity;
     public bool isAttacking = false;
     private bool isStaned = false;
-    private Transform playerTransform => PlayerComboAttack.instance.gameObject.transform;
+    private Transform playerTransform
+    {
+        get
+        {
+            if (PlayerComboAttack.instance != null && PlayerComboAttack.instance.gameObject != null)
+            {
+                return PlayerComboAttack.instance.gameObject.transform;
+            }
+            else
+            {
+                return transform;
+            }
+        }
+    }
     private float lastTeleportTime = -Mathf.Infinity;
     private EnemyTeleporter currentTeleportCollider;
     private SpriteRenderer spriteRenderer => GetComponentInChildren<SpriteRenderer>();

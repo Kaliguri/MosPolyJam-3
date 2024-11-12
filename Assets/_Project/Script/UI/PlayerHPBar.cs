@@ -18,32 +18,64 @@ public class PlayerHPBar : MonoBehaviour
         if (instance == null) instance = this;
     }
 
-    private float _maxHeatlh => FindFirstObjectByType<PlayerMovement>().gameObject.GetComponent<HPController>().maxHP;
-    private float _currentHeatlh => FindFirstObjectByType<PlayerMovement>().gameObject.GetComponent<HPController>().currentHP;
+    private float _maxHealth
+    {
+        get
+        {
+            var player = FindFirstObjectByType<PlayerMovement>();
+            if (player != null)
+            {
+                var hpController = player.gameObject.GetComponent<HPController>();
+                if (hpController != null)
+                {
+                    return hpController.maxHP;
+                }
+            }
+            return 100f; 
+        }
+    }
+
+    private float _currentHealth
+    {
+        get
+        {
+            var player = FindFirstObjectByType<PlayerMovement>();
+            if (player != null)
+            {
+                var hpController = player.gameObject.GetComponent<HPController>();
+                if (hpController != null)
+                {
+                    return hpController.currentHP;
+                }
+            }
+            return 100f;
+        }
+    }
+
     void Start()
     {
-        _primarySlider.maxValue = _maxHeatlh;
-        _primarySlider.value = _currentHeatlh;
-        _secondarySlider.maxValue = _maxHeatlh;
-        _secondarySlider.value = _currentHeatlh;
+        _primarySlider.maxValue = _maxHealth;
+        _primarySlider.value = _currentHealth;
+        _secondarySlider.maxValue = _maxHealth;
+        _secondarySlider.value = _currentHealth;
     }
 
     void Update()
     {
-        if (_primarySlider.value != _currentHeatlh)
+        if (_primarySlider.value != _currentHealth)
         {
-            _primarySlider.value = _currentHeatlh;
+            _primarySlider.value = _currentHealth;
         }
 
         if (_primarySlider.value != _secondarySlider.value)
         {
-            _secondarySlider.value = Mathf.Lerp(_secondarySlider.value, _currentHeatlh, _lerpSpeed);
+            _secondarySlider.value = Mathf.Lerp(_secondarySlider.value, _currentHealth, _lerpSpeed);
         }
     }
 
     public void SetMaxHP()
     {
-        _primarySlider.maxValue = _maxHeatlh;
-        _secondarySlider.maxValue = _maxHeatlh;
+        _primarySlider.maxValue = _maxHealth;
+        _secondarySlider.maxValue = _maxHealth;
     }
 }

@@ -69,7 +69,15 @@ public class EnemyBecomeInvinsible : MonoBehaviour
     private void CanDashAgain()
     {
         GetComponent<Collider2D>().enabled = true;
-        parentCollider.gameObject.GetComponentInChildren<EnemyFollow>().gameObject.GetComponentInChildren<DashRightFromPlayer>().SetVisability(true);
+        var enemyFollow = parentCollider?.gameObject?.GetComponentInChildren<EnemyFollow>();
+        if (enemyFollow != null)
+        {
+            var dashRightFromPlayer = enemyFollow.gameObject?.GetComponentInChildren<DashRightFromPlayer>();
+            if (dashRightFromPlayer != null)
+            {
+                dashRightFromPlayer.SetVisability(true);
+            }
+        }
     }
 
     void CheckIfOutsidePlatform()

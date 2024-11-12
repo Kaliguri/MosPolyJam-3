@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Title("LoseScreen")]
+    [SerializeField] GameObject loseScreen;
+
     [Title ("Settings")]
 
     public bool IsTraining = false;
@@ -30,9 +33,14 @@ public class GameManager : MonoBehaviour
         if (restartInput.action.IsPressed()) Restart();
     }
 
-    void Restart()
+    public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void LoseGame()
+    {
+        loseScreen.SetActive(true);
     }
 
     public void InputSetActive(bool activeValue)

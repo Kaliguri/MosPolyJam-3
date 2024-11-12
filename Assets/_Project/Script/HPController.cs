@@ -17,7 +17,7 @@ public class HPController : MonoBehaviour
         currentHP -= damage;
         if (currentHP <= 0) 
         {
-            if (canRespawn) currentHP = maxHP * 0.5f;
+            if (canRespawn) { currentHP = maxHP * 0.5f; canRespawn = false; }
             else Death(); 
         }
     }
@@ -57,7 +57,8 @@ public class HPController : MonoBehaviour
             }
             else
             {
-                //Debug.Log("You Lose!"); 
+                GameManager.instance.LoseGame();
+                Destroy(gameObject);
             }
         }
     }
