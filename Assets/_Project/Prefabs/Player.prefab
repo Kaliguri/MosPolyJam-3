@@ -341,6 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   currentHP: 100
+  canRespawn: 0
 --- !u!114 &2516890279868477300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,6 +452,7 @@ MonoBehaviour:
   spherePrefab: {fileID: 3152679303049616010, guid: a509abe9e9810e841a572da6080a253e, type: 3}
   perfectSpherePrefab: {fileID: 3321826984099432400, guid: b4926de3934199948ad47b72788ad5f6, type: 3}
   sphereCount: 3
+  maxSphereCount: 10
   maxOrbitRadius: 1.2
   orbitSpeed: 100
   moveToCenterSpeed: 3

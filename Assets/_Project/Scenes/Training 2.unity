@@ -390,6 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 200
   currentHP: 100
+  canRespawn: 0
 --- !u!60 &176941174
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -11451,6 +11452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 1000
   currentHP: 100
+  canRespawn: 0
 --- !u!60 &729168742
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -20487,26 +20489,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2659116884184144593, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 54.899994
-      objectReference: {fileID: 0}
-    - target: {fileID: 4332757866651927177, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -328.27002
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774310305960830163, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -328.27002
-      objectReference: {fileID: 0}
     - target: {fileID: 4930803822670830685, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1313133310}
-    - target: {fileID: 5367012966359237404, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -328.27002
-      objectReference: {fileID: 0}
     - target: {fileID: 6697597470442830120, guid: 842672f61d51c5c4c86cf7b52459ffd4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
