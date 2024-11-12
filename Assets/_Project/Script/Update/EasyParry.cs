@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EasyParry : UpdateScript
 {
-    [SerializeField] float parryMultiplayerDecreasePercent = 0.7f;
+    private float parryMultiplayerDecreasePercent = 1.3f;
 
     public override void Use()
     {
