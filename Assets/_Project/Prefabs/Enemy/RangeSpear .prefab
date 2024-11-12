@@ -224,7 +224,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d89419137d7dae345aaa07f781fc4196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursedApplayVFX: {fileID: 0}
+  cursedApplayVFX: {fileID: 5919181945426349677, guid: bf148e45fdd578c4bb7c2d1bf7ab3ef9, type: 3}
+  curseTriangleObject: {fileID: 1125954049607659773}
+  curseTrianglePrefab: {fileID: 4390996509325385354, guid: d779e384bfbcd7d45a5ce5abb87d1c79, type: 3}
 --- !u!1 &1785370863604044686
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,6 +657,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d779e384bfbcd7d45a5ce5abb87d1c79, type: 3}
+--- !u!1 &1125954049607659773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4390996509325385354, guid: d779e384bfbcd7d45a5ce5abb87d1c79, type: 3}
+  m_PrefabInstance: {fileID: 3697390635823083127}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1289775117360786055 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2497798580286932208, guid: d779e384bfbcd7d45a5ce5abb87d1c79, type: 3}
