@@ -8,7 +8,8 @@ public class PlayerSphereManager : MonoBehaviour
     [Title("SphereSettings")]
     [SerializeField] GameObject spherePrefab;
     [SerializeField] GameObject perfectSpherePrefab;
-    [SerializeField] int sphereCount = 10;
+    [SerializeField] public int sphereCount = 10;
+    [SerializeField] int maxSphereCount = 10;
     [SerializeField] float maxOrbitRadius = 2f;
     [SerializeField] float orbitSpeed = 30f;
     [SerializeField] float moveToCenterSpeed = 5f;
@@ -32,7 +33,7 @@ public class PlayerSphereManager : MonoBehaviour
         player = FindFirstObjectByType<PlayerTag>().gameObject;
         orbitRadius = maxOrbitRadius;
 
-        for (int i = 0; i < sphereCount; i++)
+        for (int i = 0; i < maxSphereCount; i++)
         {
             GameObject sphere = Instantiate(spherePrefab, player.transform.position, Quaternion.identity);
             sphere.SetActive(false);

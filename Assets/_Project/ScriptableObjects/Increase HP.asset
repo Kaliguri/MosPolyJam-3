@@ -17,10 +17,11 @@ MonoBehaviour:
     \u043C\u0430\u043A\u0441\u0438\u043C\u0443\u043C HP \u043D\u0430 25%"
   Art: {fileID: 3837463186438313418, guid: e9587b0a08497fe4295d78fbfb3800a5, type: 3}
   UpdateScript:
-    rid: 8206562567424573619
+    rid: 742217892393124230
   references:
     version: 2
     RefIds:
-    - rid: 8206562567424573619
-      type: {class: MultipleParries, ns: , asm: Assembly-CSharp}
-      data: 
+    - rid: 742217892393124230
+      type: {class: IncreaseHP, ns: , asm: Assembly-CSharp}
+      data:
+        healIncreaseMultiplayer: 1.25

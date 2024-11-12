@@ -4,6 +4,7 @@ using UnityEngine;
 public class CombatMethods : MonoBehaviour
 {
     [SerializeField] float damageResistOnParry = 0.4f;
+    [HideInInspector] public float healFromParry = 0f;
     public static CombatMethods instance = null;
 
     private void Awake()
@@ -18,7 +19,7 @@ public class CombatMethods : MonoBehaviour
 
         if (targetType.GetComponent<PlayerTag>() != null)
         {
-            float _damage = CalculateDamage(damage, contact, attackingType);
+            float _damage = CalculateDamage(damage, contact, attackingType, collisionTargetType);
 
             if (_damage > 0) 
             {
@@ -91,13 +92,15 @@ public class CombatMethods : MonoBehaviour
 
     }
 
-    private float CalculateDamage(float damage, Vector2 contact, GameObject attackingType)
+    private float CalculateDamage(float damage, Vector2 contact, GameObject attackingType, Collider2D collisionTargetType)
     {
         float _damage = damage;
 
         if (PlayerParry.instance.isParryState)
         {
             _damage = PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime ? 0f : _damage * damageResistOnParry;
+
+            if (_damage == 0 && healFromParry > 0) ApplayHeal(healFromParry, collisionTargetType);
 
             PlayerParry.instance.ParryCast(PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime, contact);
             PlayerSphereManager.instance.ActivateSphere(PlayerParry.instance.parryTime <= PlayerParry.instance.perfectParryTime);

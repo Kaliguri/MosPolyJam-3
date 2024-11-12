@@ -6,6 +6,7 @@ public class HPController : MonoBehaviour
     [Title("HP")]
     [SerializeField] public float maxHP = 100f;
     [ReadOnly] public float currentHP = 100f;
+    [ReadOnly] public bool canRespawn = false;
 
     void Start()
     {
@@ -14,7 +15,11 @@ public class HPController : MonoBehaviour
     public void RecieveDamage(float damage)
     {
         currentHP -= damage;
-        if (currentHP <= 0) { Death(); }
+        if (currentHP <= 0) 
+        {
+            if (canRespawn) currentHP = maxHP * 0.5f;
+            else Death(); 
+        }
     }
 
     public void GetHeal(float heal)

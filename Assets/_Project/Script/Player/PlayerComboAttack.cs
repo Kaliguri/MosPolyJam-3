@@ -19,7 +19,7 @@ public class PlayerComboAttack : MonoBehaviour
 
     [Title("Combo Settings")]
     [SerializeField] float timeBetweenAttacksInCombo = 0.3f;
-    [SerializeField] float longPressThreshold = 0.5f;
+    [SerializeField] public float longPressThreshold = 0.5f;
     [SerializeField] public bool canSpesialAttack = true;
 
     [Title("AttacksGameObjects")]

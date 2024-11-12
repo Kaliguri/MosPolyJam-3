@@ -11,6 +11,13 @@ public class PlayerHPBar : MonoBehaviour
     [SerializeField] Slider _secondarySlider;
     [SerializeField] Slider _primarySlider;
 
+    public static PlayerHPBar instance;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+    }
+
     private float _maxHeatlh => FindFirstObjectByType<PlayerMovement>().gameObject.GetComponent<HPController>().maxHP;
     private float _currentHeatlh => FindFirstObjectByType<PlayerMovement>().gameObject.GetComponent<HPController>().currentHP;
     void Start()
@@ -32,5 +39,11 @@ public class PlayerHPBar : MonoBehaviour
         {
             _secondarySlider.value = Mathf.Lerp(_secondarySlider.value, _currentHeatlh, _lerpSpeed);
         }
+    }
+
+    public void SetMaxHP()
+    {
+        _primarySlider.maxValue = _maxHeatlh;
+        _secondarySlider.maxValue = _maxHeatlh;
     }
 }
