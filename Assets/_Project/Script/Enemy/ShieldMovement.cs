@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class ShieldMovement : MonoBehaviour
 {
-    [SerializeField] float shieldSpeed = 10f; 
     [SerializeField] float resetTime = 1f;
     private Vector3 startPosition;
     private Coroutine coroutine;
